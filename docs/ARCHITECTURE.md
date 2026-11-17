@@ -152,7 +152,7 @@ Clip IDs (the app only ever refers to clip IDs, never to file paths):
 | `<dialogueId>.l<N>.slow` | same, slow | voice by speaker |
 | `<dialogueId>.l<N>.en` | English of line N | English voice |
 | `<dialogueId>.q<N>.en` | dialogue question N read in English | English voice |
-| `sys.silence.<ms>` | silence: 500, 1000, 2000, 3000 | — |
+| `sys.silence.<ms>` | silence: 500, 1000, 1500, 2000, 3000 (1500 is used by the commute playlist, §7.4) | — |
 | `sys.<name>` | fixed English prompts (see `docs/AUDIO.md`) | English voice |
 
 If a clip is missing from the manifest, `player.js` falls back to
@@ -188,14 +188,19 @@ Leitner boxes 0–6. `INTERVAL_DAYS = [0, 1, 2, 4, 8, 16, 32]`.
 * New card: `{ box: 0, due: 0, introduced: false, seen: 0, correct: 0, wrong: 0, lastSeen: 0 }`.
 * `introduce(card, now)` → `introduced: true`, `box` stays 0, `due = now`.
 * `review(card, correct, now)`:
-  * correct → `box = min(box + 1, 6)`, `due = now + INTERVAL_DAYS[box] days`.
+  * correct → `box = min(box + 1, 6)`, `due = now + INTERVAL_DAYS[box] days`, where `box` is the **new** box
+    (so a first correct answer is due in 1 day). `seen`/`correct`/`wrong`/`lastSeen` are updated too.
   * wrong → `box = min(box, 1)`, `due = now` (so the session can re-ask it).
 * `status(card)`: `new` (not introduced) · `learning` (box 0–2) · `familiar` (box 3–4) · `mastered` (box 5–6).
 
 ### 7.2 Quiz session (`engine/session.js → planQuizSession`)
 
-Inputs: curriculum, progress, `now`, `rng`, length (`short` 10 / `normal` 20 / `long` 30 questions),
-optional `unitId` to practise one unit only.
+Inputs: curriculum, progress, `now`, `rng`, length (`short` 10 / `normal` 20 / `long` 30 questions, or a number),
+optional `unitId` to practise one unit only (an explicit `unitId` may name a locked unit).
+Length counts **questions**; intro steps are extra. New items and dialogue questions are
+reserved first, then reviews are trimmed to `min(70 %, length - new - dialogue)`, so a big
+backlog cannot starve new material. Each new item's question is placed ≥ 2 steps after its
+intro whenever the session has at least two steps to spread over.
 
 1. **Reviews**: introduced cards with `due <= now`, most overdue first, up to 70 % of the length.
 2. **New items**: next un-introduced items from the earliest unlocked unit that still has new
@@ -205,7 +210,7 @@ optional `unitId` to practise one unit only.
    dialogue step (1–2 questions).
 4. **Fill**: if still short, add not-yet-due cards with the lowest box.
 5. Wrong answers are re-queued 3–5 steps later, once per item per session (handled at run time
-   by `ui/quiz.js` calling `requeue()`).
+   by `ui/quiz.js` calling `requeue()`; only `question` steps are re-queued).
 
 Step shapes:
 
@@ -224,7 +229,9 @@ Step shapes:
 | `true-false` | play Chinese + show an English meaning | tap ✓ or ✗ (50 % true) | any item at box ≥ 1 (fast, one-thumb) |
 | `dialogue` | play the dialogue | tap 1 of 4 English answers | dialogues |
 
-Distractors: same `type` first, same unit first, then neighbouring units; never an item
+Distractors: same `type` first, then nearest units (same unit = distance 0), introduced items
+preferred within a rank; if fewer than the wanted number exist the question simply has fewer
+options (and degrades to `true-false` when no distractor exists); never an item
 whose `english` or `alt` matches the answer; no duplicate labels.
 
 ### 7.4 Commute / hands-free playlist (`planListenSession`)
@@ -239,17 +246,24 @@ Target length ≈ `minutes` (default 8). Built from clip IDs only, so it can run
 * End with `sys.done`.
 
 Each segment = `{ kind: "new"|"review"|"dialogue"|"prompt", refId, clips: [clipId…] }`.
+Between the two passes of a dialogue the playlist inserts `sys.again`. Duration is estimated
+from the manifest `dur` values (optional `durations` map), else 1.2 s per clip (slow ×1.5) plus
+silences; a dialogue is included only if it fits in 35 % of the target.
 Completing a `new` segment calls `introduce`; review segments update `seen`/`lastSeen` only
 (we cannot know if the listener understood). Listening seconds go to `daily.listenSec`.
 
 ### 7.5 Gamification (`state/progress.js`)
 
 * XP: correct answer +10, dialogue question correct +15, wrong answer +2 (for trying),
-  intro +2, commute segment +3. Combo: every 5 correct in a row +10 bonus.
-* Level `n` needs `50 * n * (n + 1)` total XP. Titles: 1 新手 Newcomer · 3 学生 Student ·
+  intro +2, commute segment +3. Combo: every 5 correct in a row +10 bonus (the caller passes the
+  combo count *including* the current answer; multiples of 5 earn the bonus).
+* Going from level `n` to `n + 1` needs `50 * n * (n + 1)` lifetime XP, i.e. level 1 starts at 0 XP,
+  level 2 at 100, level 3 at 300, level 4 at 600 (level `L` starts at `50 * (L-1) * L`). Titles: 1 新手 Newcomer · 3 学生 Student ·
   6 听众 Listener · 10 行者 Traveller · 15 达人 Expert · 20 大师 Master.
 * Daily goal: `settings.dailyGoalXp` (default 60).
-* Streak: a day counts when the daily goal is reached. Missing a day resets `current` to 0.
+* Streak: a day counts when the daily goal is reached. Missing a day resets `current` to 0:
+  the UI shows `effectiveStreak()` (0 once `lastDay` is older than yesterday) and
+  `finishSession()` stores the lapse; the next goal day then restarts at 1.
 * Unit unlock: unit N+1 unlocks when ≥ 70 % of unit N's items are at box ≥ 2.
   The unit screen also offers "Unlock early".
 * Unit stars: ★ all items introduced · ★★ all at box ≥ 2 · ★★★ all mastered.
