@@ -54,8 +54,10 @@ js/
   audio/
     player.js              Single <audio> element queue, Media Session, speechSynthesis fallback
     sfx.js                 Tiny WebAudio beeps for correct/wrong
+    offline.js             Asks the service worker to cache a unit's clips ("Download audio for offline")
   ui/
-    dom.js                 Small helpers: h() element builder, clear(), formatters
+    dom.js                 Small helpers: h() element builder, put(), clear(), formatters, modal, toast
+    store.js               Shared mutable app state (curriculum, progress) + commit()/updateSettings()
     home.js, units.js, unit.js, quiz.js, listen.js, stats.js, settings.js   One module per screen
 data/
   units.json               Ordered index of units
@@ -173,7 +175,8 @@ regenerated.
   daily: { "2026-11-17": { xp: 120, answered: 22, correct: 19, listenSec: 480, sessions: 2 } },
   streak: { current: 3, best: 5, lastDay: "2026-11-17" },
   settings: { pinyin: "always", sessionLength: "normal", zhSpeed: "normal",
-              dailyGoalXp: 60, sfx: true }
+              dailyGoalXp: 60, sfx: true,
+              autoAdvance: true }   // UI-only; absent = true (read via ui/store.js getSetting)
 }
 ```
 
