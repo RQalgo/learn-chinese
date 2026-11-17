@@ -1,0 +1,6 @@
+# Python dependencies for the authoring tools in tools/ (Python 3.13).
+# validate_content.py needs only pypinyin; the audio tools share this file.
+pypinyin
+sherpa-onnx
+soundfile
+numpy
