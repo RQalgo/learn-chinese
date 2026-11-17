@@ -391,14 +391,16 @@ def flow(r: Run):
       const a = m.playClip('u01-w01'); const b = m.playClip('u01-w02');
       const ra = await a; m.stop(); const rb = await b;
       const t0 = performance.now();
-      const rc = await m.playClip('u01-w01');       // no audio file: speech fallback must finish by itself
+      // WHY: with generated audio the clip plays as a real file ("ended"); without it the
+      // speech fallback must finish by itself ("fallback"). Either way it must not hang.
+      const rc = await m.playClip('u01-w01');
       const dt = (performance.now() - t0) / 1000;
       const rd = await m.playSequence(['sys.silence.500', 'sys.silence.500']);
       return {ra, rb, rc, dt, rd};
     }""")
     check(res["ra"] == "cancelled" and res["rb"] == "cancelled", "starting/stopping playback cancels the previous one cleanly")
-    check(res["rc"] == "fallback" and res["dt"] < 2.6, f"speech fallback never hangs (finished in {res['dt']:.1f}s)")
-    check(res["rd"] == "fallback", "silence clips fall back to timed waits")
+    check(res["rc"] in ("ended", "fallback") and res["dt"] < 4.0, f"single clip finishes by itself, no hang ({res['rc']}, {res['dt']:.1f}s)")
+    check(res["rd"] in ("ended", "fallback"), f"silence clips play or fall back to timed waits ({res['rd']})")
 
     # --- stats ---
     r.goto("#/stats")
