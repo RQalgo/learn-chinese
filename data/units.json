@@ -1,0 +1,197 @@
+{
+  "version": 1,
+  "units": [
+    {
+      "id": "u01",
+      "order": 1,
+      "title": "Greetings",
+      "emoji": "👋",
+      "description": "Say hello, goodbye, thank you and sorry.",
+      "file": "data/units/u01-greetings.json"
+    },
+    {
+      "id": "u02",
+      "order": 2,
+      "title": "Numbers 0–10",
+      "emoji": "🔢",
+      "description": "Count from zero to ten and say yes, no and good.",
+      "file": "data/units/u02-numbers.json"
+    },
+    {
+      "id": "u03",
+      "order": 3,
+      "title": "About me",
+      "emoji": "🙋",
+      "description": "Say who you are, your name and where you are from.",
+      "file": "data/units/u03-about-me.json"
+    },
+    {
+      "id": "u04",
+      "order": 4,
+      "title": "Family",
+      "emoji": "👨‍👩‍👧",
+      "description": "Talk about mum, dad, brothers, sisters and who you have.",
+      "file": "data/units/u04-family.json"
+    },
+    {
+      "id": "u05",
+      "order": 5,
+      "title": "Bigger numbers & age",
+      "emoji": "🎂",
+      "description": "Numbers up to one hundred, and asking how old someone is.",
+      "file": "data/units/u05-numbers-age.json"
+    },
+    {
+      "id": "u06",
+      "order": 6,
+      "title": "Food & drink",
+      "emoji": "🍜",
+      "description": "Rice, noodles, tea and coffee: say what you eat and drink.",
+      "file": "data/units/u06-food-drink.json"
+    },
+    {
+      "id": "u07",
+      "order": 7,
+      "title": "Eating out",
+      "emoji": "🍽️",
+      "description": "Order at a hawker centre or restaurant and ask for the bill.",
+      "file": "data/units/u07-eating-out.json"
+    },
+    {
+      "id": "u08",
+      "order": 8,
+      "title": "Shopping & money",
+      "emoji": "🛍️",
+      "description": "Ask prices, bargain and understand dollars and cents.",
+      "file": "data/units/u08-shopping.json"
+    },
+    {
+      "id": "u09",
+      "order": 9,
+      "title": "Time & dates",
+      "emoji": "📅",
+      "description": "Days of the week, months, today, tomorrow and telling the time.",
+      "file": "data/units/u09-time-dates.json"
+    },
+    {
+      "id": "u10",
+      "order": 10,
+      "title": "Daily routine",
+      "emoji": "⏰",
+      "description": "Talk about getting up, going to work, eating and sleeping.",
+      "file": "data/units/u10-daily-routine.json"
+    },
+    {
+      "id": "u11",
+      "order": 11,
+      "title": "Getting around",
+      "emoji": "🚇",
+      "description": "MRT, bus and taxi: ask how to get somewhere.",
+      "file": "data/units/u11-transport.json"
+    },
+    {
+      "id": "u12",
+      "order": 12,
+      "title": "Places in the city",
+      "emoji": "🏙️",
+      "description": "Find the bank, hospital, school and toilet, and understand directions.",
+      "file": "data/units/u12-places.json"
+    },
+    {
+      "id": "u13",
+      "order": 13,
+      "title": "Weather",
+      "emoji": "⛅",
+      "description": "Hot, cold, rain and sun: talk about the weather.",
+      "file": "data/units/u13-weather.json"
+    },
+    {
+      "id": "u14",
+      "order": 14,
+      "title": "Hobbies & free time",
+      "emoji": "🎵",
+      "description": "Say what you like to do: sports, music, films and weekends.",
+      "file": "data/units/u14-hobbies.json"
+    },
+    {
+      "id": "u15",
+      "order": 15,
+      "title": "Work & office",
+      "emoji": "💼",
+      "description": "Jobs, companies, meetings and being busy.",
+      "file": "data/units/u15-work.json"
+    },
+    {
+      "id": "u16",
+      "order": 16,
+      "title": "Making plans",
+      "emoji": "🤝",
+      "description": "Invite people, check if they are free and make arrangements.",
+      "file": "data/units/u16-plans.json"
+    },
+    {
+      "id": "u17",
+      "order": 17,
+      "title": "Health & body",
+      "emoji": "🩺",
+      "description": "Body parts, pain, being ill, doctors and medicine.",
+      "file": "data/units/u17-health.json"
+    },
+    {
+      "id": "u18",
+      "order": 18,
+      "title": "Feelings & opinions",
+      "emoji": "😊",
+      "description": "Say how you feel and what you think.",
+      "file": "data/units/u18-feelings.json"
+    },
+    {
+      "id": "u19",
+      "order": 19,
+      "title": "Home",
+      "emoji": "🏠",
+      "description": "Rooms, furniture and life in an HDB flat.",
+      "file": "data/units/u19-home.json"
+    },
+    {
+      "id": "u20",
+      "order": 20,
+      "title": "Travel & hotel",
+      "emoji": "✈️",
+      "description": "Airports, passports, hotel rooms and bookings.",
+      "file": "data/units/u20-travel.json"
+    },
+    {
+      "id": "u21",
+      "order": 21,
+      "title": "Colours, clothes & describing",
+      "emoji": "👕",
+      "description": "Colours, clothes, sizes and describing things.",
+      "file": "data/units/u21-describing.json"
+    },
+    {
+      "id": "u22",
+      "order": 22,
+      "title": "Animals & nature",
+      "emoji": "🐱",
+      "description": "Cats, dogs, birds, trees, flowers and the sea.",
+      "file": "data/units/u22-animals-nature.json"
+    },
+    {
+      "id": "u23",
+      "order": 23,
+      "title": "Comparing & choosing",
+      "emoji": "⚖️",
+      "description": "Compare things and choose between them.",
+      "file": "data/units/u23-comparing.json"
+    },
+    {
+      "id": "u24",
+      "order": 24,
+      "title": "Everyday conversations",
+      "emoji": "💬",
+      "description": "Longer mixed dialogues that review everything.",
+      "file": "data/units/u24-conversations.json"
+    }
+  ]
+}
