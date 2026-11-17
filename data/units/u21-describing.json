@@ -1,0 +1,357 @@
+{
+  "id": "u21",
+  "title": "Colours, clothes & describing",
+  "items": [
+    {
+      "id": "u21-w01",
+      "type": "word",
+      "hanzi": "红色",
+      "pinyin": "hóngsè",
+      "english": "red"
+    },
+    {
+      "id": "u21-w02",
+      "type": "word",
+      "hanzi": "蓝色",
+      "pinyin": "lánsè",
+      "english": "blue"
+    },
+    {
+      "id": "u21-w03",
+      "type": "word",
+      "hanzi": "黑色",
+      "pinyin": "hēisè",
+      "english": "black"
+    },
+    {
+      "id": "u21-w04",
+      "type": "word",
+      "hanzi": "白色",
+      "pinyin": "báisè",
+      "english": "white"
+    },
+    {
+      "id": "u21-w05",
+      "type": "word",
+      "hanzi": "绿色",
+      "pinyin": "lǜsè",
+      "english": "green"
+    },
+    {
+      "id": "u21-w06",
+      "type": "word",
+      "hanzi": "黄色",
+      "pinyin": "huángsè",
+      "english": "yellow"
+    },
+    {
+      "id": "u21-w07",
+      "type": "word",
+      "hanzi": "衣服",
+      "pinyin": "yīfu",
+      "english": "clothes"
+    },
+    {
+      "id": "u21-w08",
+      "type": "word",
+      "hanzi": "裤子",
+      "pinyin": "kùzi",
+      "english": "trousers",
+      "alt": [
+        "pants"
+      ]
+    },
+    {
+      "id": "u21-w09",
+      "type": "word",
+      "hanzi": "鞋",
+      "pinyin": "xié",
+      "english": "shoes"
+    },
+    {
+      "id": "u21-w10",
+      "type": "word",
+      "hanzi": "裙子",
+      "pinyin": "qúnzi",
+      "english": "skirt"
+    },
+    {
+      "id": "u21-w11",
+      "type": "word",
+      "hanzi": "衬衫",
+      "pinyin": "chènshān",
+      "english": "shirt"
+    },
+    {
+      "id": "u21-w12",
+      "type": "word",
+      "hanzi": "帽子",
+      "pinyin": "màozi",
+      "english": "hat",
+      "alt": [
+        "cap"
+      ]
+    },
+    {
+      "id": "u21-p01",
+      "type": "phrase",
+      "hanzi": "很漂亮",
+      "pinyin": "hěn piàoliang",
+      "english": "very pretty",
+      "alt": [
+        "beautiful"
+      ]
+    },
+    {
+      "id": "u21-p02",
+      "type": "phrase",
+      "hanzi": "太大了",
+      "pinyin": "tài dà le",
+      "english": "too big"
+    },
+    {
+      "id": "u21-p03",
+      "type": "phrase",
+      "hanzi": "太小了",
+      "pinyin": "tài xiǎo le",
+      "english": "too small"
+    },
+    {
+      "id": "u21-p04",
+      "type": "phrase",
+      "hanzi": "太长了",
+      "pinyin": "tài cháng le",
+      "english": "too long"
+    },
+    {
+      "id": "u21-p05",
+      "type": "phrase",
+      "hanzi": "试一下",
+      "pinyin": "shì yíxià",
+      "english": "to try it on",
+      "alt": [
+        "to try it"
+      ]
+    },
+    {
+      "id": "u21-p06",
+      "type": "phrase",
+      "hanzi": "很合适",
+      "pinyin": "hěn héshì",
+      "english": "a good fit",
+      "alt": [
+        "suitable"
+      ]
+    },
+    {
+      "id": "u21-p07",
+      "type": "phrase",
+      "hanzi": "新的",
+      "pinyin": "xīn de",
+      "english": "a new one"
+    },
+    {
+      "id": "u21-p08",
+      "type": "phrase",
+      "hanzi": "什么颜色",
+      "pinyin": "shénme yánsè",
+      "english": "what colour?"
+    },
+    {
+      "id": "u21-s01",
+      "type": "sentence",
+      "hanzi": "我喜欢红色。",
+      "pinyin": "Wǒ xǐhuan hóngsè.",
+      "english": "I like red."
+    },
+    {
+      "id": "u21-s02",
+      "type": "sentence",
+      "hanzi": "这条裙子很漂亮。",
+      "pinyin": "Zhè tiáo qúnzi hěn piàoliang.",
+      "english": "This skirt is very pretty."
+    },
+    {
+      "id": "u21-s03",
+      "type": "sentence",
+      "hanzi": "这双鞋有点儿小。",
+      "pinyin": "Zhè shuāng xié yǒudiǎnr xiǎo.",
+      "english": "These shoes are a little small."
+    },
+    {
+      "id": "u21-s04",
+      "type": "sentence",
+      "hanzi": "你穿蓝色的衬衫很好看。",
+      "pinyin": "Nǐ chuān lánsè de chènshān hěn hǎokàn.",
+      "english": "You look good in a blue shirt."
+    },
+    {
+      "id": "u21-s05",
+      "type": "sentence",
+      "hanzi": "我想买一条黑色的裤子。",
+      "pinyin": "Wǒ xiǎng mǎi yì tiáo hēisè de kùzi.",
+      "english": "I want to buy a pair of black trousers."
+    },
+    {
+      "id": "u21-s06",
+      "type": "sentence",
+      "hanzi": "这件衣服太长了，有短一点儿的吗？",
+      "pinyin": "Zhè jiàn yīfu tài cháng le, yǒu duǎn yìdiǎnr de ma?",
+      "english": "This is too long. Do you have a shorter one?"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u21-d01",
+      "title": "Buying a shirt",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你好，你想买什么？",
+          "pinyin": "Nǐ hǎo, nǐ xiǎng mǎi shénme?",
+          "english": "Hello, what would you like to buy?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我想买一件衬衫。有白色的吗？",
+          "pinyin": "Wǒ xiǎng mǎi yí jiàn chènshān. Yǒu báisè de ma?",
+          "english": "I want a shirt. Do you have a white one?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "有，这件怎么样？",
+          "pinyin": "Yǒu, zhè jiàn zěnmeyàng?",
+          "english": "Yes. How about this one?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "很漂亮，不过有点儿大。有小一点儿的吗？",
+          "pinyin": "Hěn piàoliang, búguò yǒudiǎnr dà. Yǒu xiǎo yìdiǎnr de ma?",
+          "english": "Very nice, but a bit big. Do you have a smaller one?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "有，你试一下这件。",
+          "pinyin": "Yǒu, nǐ shì yíxià zhè jiàn.",
+          "english": "Yes. Try this one on."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "这件很合适。多少钱？",
+          "pinyin": "Zhè jiàn hěn héshì. Duōshao qián?",
+          "english": "This one fits well. How much is it?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "一百二十块。",
+          "pinyin": "Yìbǎi èrshí kuài.",
+          "english": "One hundred and twenty dollars."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "有点儿贵，不过我喜欢，我买了。",
+          "pinyin": "Yǒudiǎnr guì, búguò wǒ xǐhuan, wǒ mǎi le.",
+          "english": "A bit expensive, but I like it. I'll buy it."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u21-d01-q1",
+          "question": "What colour shirt does B want?",
+          "answer": "White",
+          "distractors": [
+            "Blue",
+            "Black",
+            "Red"
+          ]
+        },
+        {
+          "id": "u21-d01-q2",
+          "question": "What was wrong with the first shirt?",
+          "answer": "It was a bit too big",
+          "distractors": [
+            "It was too small",
+            "It was too long",
+            "It was the wrong colour"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u21-d02",
+      "title": "Finding a friend",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "喂，你到地铁站了吗？",
+          "pinyin": "Wèi, nǐ dào dìtiězhàn le ma?",
+          "english": "Hello, have you reached the MRT station?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "到了，我在门口。你在哪儿？",
+          "pinyin": "Dào le, wǒ zài ménkǒu. Nǐ zài nǎr?",
+          "english": "Yes, I'm at the entrance. Where are you?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我在门口的左边。你看见我了吗？",
+          "pinyin": "Wǒ zài ménkǒu de zuǒbian. Nǐ kànjiàn wǒ le ma?",
+          "english": "I'm on the left of the entrance. Can you see me?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "没看到。你穿什么衣服？",
+          "pinyin": "Méi kàndào. Nǐ chuān shénme yīfu?",
+          "english": "No. What are you wearing?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我穿白色的衬衫和黑色的裤子。",
+          "pinyin": "Wǒ chuān báisè de chènshān hé hēisè de kùzi.",
+          "english": "I'm wearing a white shirt and black trousers."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "看到了！你的衬衫很漂亮。",
+          "pinyin": "Kàndào le! Nǐ de chènshān hěn piàoliang.",
+          "english": "I see you! Your shirt is very nice."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "谢谢！我也看到你了。我们走吧。",
+          "pinyin": "Xièxie! Wǒ yě kàndào nǐ le. Wǒmen zǒu ba.",
+          "english": "Thanks! I can see you too. Let's go."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好，我们去吃饭吧。",
+          "pinyin": "Hǎo, wǒmen qù chī fàn ba.",
+          "english": "OK, let's go and eat."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u21-d02-q1",
+          "question": "What is A wearing?",
+          "answer": "A white shirt and black trousers",
+          "distractors": [
+            "A blue shirt and white trousers",
+            "A red skirt and black shoes",
+            "A black shirt and white trousers"
+          ]
+        },
+        {
+          "id": "u21-d02-q2",
+          "question": "Where is A standing?",
+          "answer": "On the left of the entrance",
+          "distractors": [
+            "On the right of the entrance",
+            "Inside the station",
+            "Next to the bus stop"
+          ]
+        }
+      ]
+    }
+  ]
+}
