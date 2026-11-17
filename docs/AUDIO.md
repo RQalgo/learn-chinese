@@ -51,6 +51,45 @@ intelligibility check (see **Voice evaluation** below).
 | `sys.done` | Well done. That's the end of this session. |
 | `sys.silence.500` / `1000` / `1500` / `2000` / `3000` | silence of that many milliseconds |
 
+## English normalisation and the extra lexicon
+
+Kokoro speaks English only from `lexicon-us-en.txt` (`word phone phone ...`). sherpa-onnx
+splits text at whitespace, `, . ; : ? !` and `-`, lowercases, and **silently skips** any
+word not in the lexicon (log line `OOV word skipped`), so "twenty minutes" was spoken as
+"twenty". A clip whose words are all unknown fails outright. Every English clip (`.en`,
+`sys.*`) therefore goes through two stages in `tools/generate_audio.py`:
+
+1. `normalize_english(text)` (no model needed): contractions the lexicon lacks are spelled
+   out (`that's` -> `that is`), `/` -> ` or `, parentheses -> comma pauses
+   (`you (polite)` -> `you, polite`), characters the tokenizer cannot handle are dropped,
+   spaces are collapsed.
+2. `EnglishLexicon.prepare(text)`, per word: in the base lexicon or hand-written extra
+   lexicon -> keep; all-caps acronym not in the lexicon -> spelled letters (`MRT` ->
+   `M R T`, single letters exist in the lexicon); otherwise inflect a known stem:
+   possessive `'s`, plural `-s/-es/-ies`, `-ed/-d/-ied`, `-ing`. Suffix phones copy the
+   base lexicon's convention: `s` after voiceless, `z` after voiced, `ᵻ z` after a sibilant
+   (`buses b ˈ ʌ s ᵻ z`); `-ed` is `t` / `d` / `ᵻ d` (after `t`, `d`) (`worked`, `played`,
+   `needed`); `-ing` is `ɪ ŋ`.
+
+`tools/lexicon-extra-en.txt` holds hand-written entries (same format) for Mandarin names
+and Singlish that no rule can derive: `Wang`, `Xiao`, `Xiaoming`, `Xiaomei`, `Daming`, `Lin`,
+`Hua`, `Doudou`, `aircon`, spelt with English phones (e.g. Xiao ~ "shyow"). `#` comment
+lines are allowed; the tool strips them. At run time the extra entries plus the inflected
+ones are written to a temporary lexicon passed to sherpa-onnx as
+`lexicon-us-en.txt,<extra>,lexicon-zh.txt`. Verified: later files override earlier ones, so
+extra entries win over the base lexicon.
+
+Checks: before building, the tool reports any word still unresolved (`OOV: ...`) and
+refuses to build. `python3 tools/generate_audio.py --check-en` runs only this check over all
+English clips and exits 1 if anything is unresolved (currently 0). To fix one, add a line to
+`tools/lexicon-extra-en.txt` or reword the content. Do not put digits in English text:
+number FSTs would read them in Mandarin.
+
+Cache: an English clip's key holds its **normalised** text plus a fingerprint of the extra
+entries (hand-written or inflected) its own words use. Clips without such a word keep their
+old key, so only affected clips rebuild when normalisation rules or an extra entry change;
+Chinese clips are never affected and `PIPELINE_VERSION` was not bumped.
+
 ## Verification
 
 `tools/verify_audio.py` transcribes every Mandarin clip with a sherpa-onnx Mandarin
@@ -137,9 +176,8 @@ How it behaves:
   needs this rule.
 * `audio/manifest.json` lists every required clip present on disk. `generatedAt` only
   changes when the clip table changes, so a no-op run leaves no git diff.
-* Contractions the Kokoro English lexicon lacks (`that's`, `what's`...) are spelled out
-  (`that is`) because sherpa-onnx silently drops unknown words. A warning is printed for
-  any other unknown English word.
+* English text is normalised and every word resolved before synthesis; see
+  **English normalisation and the extra lexicon** below. `--check-en` runs only that check.
 * Speed: about 1 s wall time per clip on 2 cores (single process using both cores), about
   1.5 CPU-seconds per clip. `--jobs 2` (two single-thread workers, each with its own model)
   is slightly faster (about 0.8 s per clip) at the cost of 2x model memory.
