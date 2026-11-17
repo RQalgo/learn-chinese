@@ -46,7 +46,7 @@ function xpChart(series, goal) {
   const chart = svg("svg", { class: "chart", id: "xp-chart", viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": `XP per day for the last 14 days. Goal ${goal}. ${summary}` });
   // goal line
   chart.append(svg("line", { class: "goal", x1: 0, x2: W, y1: y(goal), y2: y(goal) }),
-    svg("text", { x: W, y: y(goal) - 4, "text-anchor": "end" }, `goal ${goal}`));
+    svg("text", { x: 0, y: y(goal) - 4, "text-anchor": "start" }, `goal ${goal}`));
   series.forEach((d, i) => {
     const [yy, mm, dd] = d.day.split("-").map(Number);
     const cx = slot * i + slot / 2;

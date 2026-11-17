@@ -28,7 +28,7 @@
  *   render(root, ctx) -> dispose function
  */
 
-import { h, clear, icon, segmented, confirmModal, fmtTime, fmtMinutes } from "./dom.js";
+import { h, put, clear, icon, segmented, confirmModal, fmtTime, fmtMinutes } from "./dom.js";
 import { store, commit, newRng, pinyinMode } from "./store.js";
 import { navigate } from "../router.js";
 import { planListenSession } from "../engine/session.js";
@@ -137,7 +137,8 @@ export function render(root, ctx) {
     function showPrompt(seg) {
       const label = PROMPT_LABEL[seg.refId] || "Listen";
       const text = describeClip(seg.refId).text;
-      clear(nowEl).append(h("span", { class: "section-label" }, label), h("div", { class: "prompt-en" }, text));
+      // WHY: skip the sentence when it only repeats the chip ("New words" / "New words.").
+      put(clear(nowEl), h("span", { class: "section-label" }, label), text.replace(/\.$/, "") === label ? null : h("div", { class: "prompt-en" }, text));
       view = { kind: "prompt" };
       setMediaMetadata({ title: label, artist: text, album: "听 Tīng · Commute" });
     }
@@ -150,7 +151,7 @@ export function render(root, ctx) {
       const enEl = h("div", { class: `prompt-en${isNew ? "" : " hidden"}` }, it.english);
       const hzEl = h("div", { class: `fb-hz hanzi${isNew ? "" : " hidden"}`, style: { visibility: isNew ? "visible" : "hidden" } }, it.hanzi);
       const hint = h("p", { class: "muted" }, isNew ? "" : "Think of the meaning…");
-      clear(nowEl).append(h("span", { class: "section-label" }, KIND_LABEL[seg.kind]),
+      put(clear(nowEl), h("span", { class: "section-label" }, KIND_LABEL[seg.kind]),
         mode === "never" && isNew ? h("div", { class: "intro-hanzi big hanzi" }, it.hanzi) : pyEl,
         enEl, mode === "never" ? null : hzEl, hint);
       view = { kind: seg.kind, it, pyEl, enEl, hzEl, hint };
@@ -170,7 +171,7 @@ export function render(root, ctx) {
         const li = h("li", { hidden: true }, h("span", { class: "who" }, l.speaker), h("div", null, mode === "never" ? null : py, en, hz));
         return { li, py, en, hz, line: l };
       });
-      clear(nowEl).append(h("span", { class: "section-label" }, "Conversation"), h("div", { class: "prompt-label" }, d.title),
+      put(clear(nowEl), h("span", { class: "section-label" }, "Conversation"), h("div", { class: "prompt-label" }, d.title),
         h("ol", { class: "transcript" }, lis.map((x) => x.li)));
       view = { kind: "dialogue", d, lis, mode };
     }

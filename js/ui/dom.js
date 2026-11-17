@@ -19,7 +19,7 @@
  *     works in automated tests (native dialogs are auto-dismissed there).
  *
  * Public API
- *   h, svg, clear, fmtTime, fmtMinutes, pct, icon, stars, statusBar,
+ *   h, svg, put, clear, fmtTime, fmtMinutes, pct, icon, stars, statusBar,
  *   segmented, confirmModal, toast, STATUS_LABEL
  */
 
@@ -80,6 +80,18 @@ export function svg(tag, attrs, ...children) {
   applyAttrs(el, attrs);
   appendAll(el, children);
   return el;
+}
+
+/**
+ * Append children to an existing node, skipping null/false (unlike Node.append,
+ * which would write the text "null"). Accepts the same children as h().
+ * @param {Node} parent
+ * @param {...(Node|string|number|null|Array)} children
+ * @returns {Node} parent
+ */
+export function put(parent, ...children) {
+  appendAll(parent, children);
+  return parent;
 }
 
 /**

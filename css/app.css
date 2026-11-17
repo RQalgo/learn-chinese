@@ -182,7 +182,7 @@ h1, h2, h3, p { margin: 0; }
 
 /* ===== 5. Home =========================================================== */
 .home-head { display: flex; align-items: center; justify-content: space-between; }
-.brand { display: flex; align-items: center; gap: 12px; font-size: 1.5rem; font-weight: 750; letter-spacing: -.01em; }
+.brand { display: flex; align-items: center; gap: 12px; font-size: 1.5rem; font-weight: 750; letter-spacing: .04em; line-height: 1.25; }
 .brand small { display: block; font-size: .8rem; font-weight: 500; color: var(--ink-2); letter-spacing: 0; }
 .streak { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 99px; background: var(--surface); border: 1px solid var(--line); font-weight: 750; }
 .streak.off { color: var(--ink-2); font-weight: 600; }

@@ -34,7 +34,7 @@
  *   render(root, ctx) -> dispose function
  */
 
-import { h, clear, icon, confirmModal } from "./dom.js";
+import { h, put, clear, icon, confirmModal } from "./dom.js";
 import { store, commit, newRng, getSetting, pinyinMode } from "./store.js";
 import { navigate } from "../router.js";
 import { planQuizSession, requeue } from "../engine/session.js";
@@ -219,7 +219,7 @@ export function render(root, ctx) {
       h("div", { class: "fb-actions" },
         h("button", { type: "button", class: "icon-btn", "aria-label": "Replay", onclick: () => { clearTimeout(advanceTimer); o.replay(); } }, icon("replay", 24)),
         nextBtn));
-    clear(bottomEl).append(panel);
+    put(clear(bottomEl), panel);
     nextBtn.focus({ preventScroll: true });
     if (o.correct && getSetting("autoAdvance") !== false) advanceTimer = setTimeout(() => { if (!disposed) o.onNext(); }, AUTO_ADVANCE_MS);
   }
@@ -231,14 +231,14 @@ export function render(root, ctx) {
     const mode = pinyinMode();
     const playBoth = () => playSequence([`${item.id}.slow`, item.id]);
     setReplay(playBoth, { title: item.pinyin, artist: item.english, album: `听 Tīng · ${curriculum.unitOf(item.id)?.title || ""}` });
-    topEl.append(
+    put(topEl, 
       h("span", { class: "badge" }, "New"),
       mode === "never" ? h("div", { class: "intro-hanzi big hanzi" }, item.hanzi) : h("div", { class: "intro-pinyin pinyin" }, item.pinyin),
       h("div", { class: "intro-en" }, item.english),
       item.hint ? h("p", { class: "intro-hint" }, item.hint) : null,
       mode === "never" ? null : h("div", { class: "intro-hanzi hanzi" }, item.hanzi),
       playControl(playBoth, () => playClip(item.id, { slow: true })));
-    bottomEl.append(h("button", { type: "button", class: "btn primary block", id: "got-it", onclick: () => {
+    put(bottomEl, h("button", { type: "button", class: "btn primary block", id: "got-it", onclick: () => {
       const res = commit(applyIntro(store.progress, { itemId: item.id, now: Date.now(), curriculum }));
       S.touched = true; S.xp += res.xpGained; S.events.push(...res.events);
       if (!S.newItems.includes(item)) S.newItems.push(item);
@@ -286,9 +286,9 @@ export function render(root, ctx) {
           playClip(o.clip);
         } }, icon("play", 22), showPyNow ? h("span", { class: "pinyin" }, o.label) : `Option ${"ABC"[i]}`));
       setReplay(() => {}, { title: "Which one means…", artist: q.prompt.text, album: "听 Tīng" });
-      topEl.append(h("div", { class: "prompt-label" }, "Which one means…"), h("div", { class: "prompt-en" }, q.prompt.text),
+      put(topEl, h("div", { class: "prompt-label" }, "Which one means…"), h("div", { class: "prompt-en" }, q.prompt.text),
         h("div", { class: "prompt-label" }, "Tap a row to listen, then check."));
-      bottomEl.append(...rows, check);
+      put(bottomEl, ...rows, check);
       return;
     }
 
@@ -296,12 +296,12 @@ export function render(root, ctx) {
     setReplay(play, meta);
 
     if (q.qtype === "true-false") {
-      topEl.append(playControl(play, () => playClip(q.prompt.clip, { slow: true })),
+      put(topEl, playControl(play, () => playClip(q.prompt.clip, { slow: true })),
         showPyNow ? pinyinLine(item.pinyin) : null,
         h("p", { class: "statement" }, "Does it mean: ", h("b", null, q.prompt.text), "?"));
       const shown = curriculum.items.get(q.shownItemId);
       const note = q.isTrue ? "" : `It doesn't mean “${shown.english}”.`;
-      bottomEl.append(h("div", { class: "tf-pair" },
+      put(bottomEl, h("div", { class: "tf-pair" },
         h("button", { type: "button", class: "opt tf", "aria-label": "Yes, it means that", dataset: { index: "0" }, onclick: () => answer(0, { note }) }, "✓"),
         h("button", { type: "button", class: "opt tf", "aria-label": "No, it does not mean that", dataset: { index: "1" }, onclick: () => answer(1, { note }) }, "✗")));
       play();
@@ -309,10 +309,10 @@ export function render(root, ctx) {
     }
 
     // listen-meaning
-    topEl.append(playControl(play, () => playClip(q.prompt.clip, { slow: true })),
+    put(topEl, playControl(play, () => playClip(q.prompt.clip, { slow: true })),
       showPyNow ? pinyinLine(item.pinyin) : null,
       h("div", { class: "prompt-label" }, "What does it mean?"));
-    bottomEl.append(...optionButtons(q.options, (i) => answer(i)));
+    put(bottomEl, ...optionButtons(q.options, (i) => answer(i)));
     play();
   }
 
@@ -337,10 +337,10 @@ export function render(root, ctx) {
       let answered = false;
       const playAll = () => playSequence([...convClips, q.prompt.questionClip]);
       setReplay(playAll, { title: dlg.title, artist: q.prompt.text, album: `听 Tīng · ${curriculum.unitOf(dlg.id)?.title || ""}` });
-      topEl.append(h("div", { class: "prompt-label" }, step.questionIds.length > 1 ? `Conversation · question ${qi + 1} of ${step.questionIds.length}` : "Conversation"),
+      put(topEl, h("div", { class: "prompt-label" }, step.questionIds.length > 1 ? `Conversation · question ${qi + 1} of ${step.questionIds.length}` : "Conversation"),
         playControl(playAll), h("div", { class: "prompt-en" }, q.prompt.text),
         h("button", { type: "button", class: "btn small ghost", id: "replay-conv", onclick: () => playSequence(convClips) }, icon("replay", 20), "Replay conversation"));
-      bottomEl.append(...optionButtons(q.options, (i) => {
+      put(bottomEl, ...optionButtons(q.options, (i) => {
         if (answered) return;
         answered = true;
         stop();
