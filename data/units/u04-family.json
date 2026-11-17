@@ -1,0 +1,336 @@
+{
+  "id": "u04",
+  "title": "Family",
+  "items": [
+    {
+      "id": "u04-w01",
+      "type": "word",
+      "hanzi": "爸爸",
+      "pinyin": "bàba",
+      "english": "dad",
+      "alt": [
+        "father"
+      ]
+    },
+    {
+      "id": "u04-w02",
+      "type": "word",
+      "hanzi": "妈妈",
+      "pinyin": "māma",
+      "english": "mum",
+      "alt": [
+        "mom",
+        "mother"
+      ]
+    },
+    {
+      "id": "u04-w03",
+      "type": "word",
+      "hanzi": "哥哥",
+      "pinyin": "gēge",
+      "english": "older brother"
+    },
+    {
+      "id": "u04-w04",
+      "type": "word",
+      "hanzi": "姐姐",
+      "pinyin": "jiějie",
+      "english": "older sister"
+    },
+    {
+      "id": "u04-w05",
+      "type": "word",
+      "hanzi": "弟弟",
+      "pinyin": "dìdi",
+      "english": "younger brother"
+    },
+    {
+      "id": "u04-w06",
+      "type": "word",
+      "hanzi": "妹妹",
+      "pinyin": "mèimei",
+      "english": "younger sister"
+    },
+    {
+      "id": "u04-w07",
+      "type": "word",
+      "hanzi": "爷爷",
+      "pinyin": "yéye",
+      "english": "grandpa (father's side)",
+      "alt": [
+        "grandfather"
+      ]
+    },
+    {
+      "id": "u04-w08",
+      "type": "word",
+      "hanzi": "奶奶",
+      "pinyin": "nǎinai",
+      "english": "grandma (father's side)",
+      "alt": [
+        "grandmother"
+      ]
+    },
+    {
+      "id": "u04-w09",
+      "type": "word",
+      "hanzi": "儿子",
+      "pinyin": "érzi",
+      "english": "son"
+    },
+    {
+      "id": "u04-w10",
+      "type": "word",
+      "hanzi": "女儿",
+      "pinyin": "nǚ'ér",
+      "english": "daughter"
+    },
+    {
+      "id": "u04-w11",
+      "type": "word",
+      "hanzi": "有",
+      "pinyin": "yǒu",
+      "english": "to have",
+      "alt": [
+        "there is"
+      ]
+    },
+    {
+      "id": "u04-w12",
+      "type": "word",
+      "hanzi": "家",
+      "pinyin": "jiā",
+      "english": "home",
+      "alt": [
+        "family"
+      ],
+      "hint": "Means both the family and the place."
+    },
+    {
+      "id": "u04-p01",
+      "type": "phrase",
+      "hanzi": "没有",
+      "pinyin": "méiyǒu",
+      "english": "don't have",
+      "alt": [
+        "there isn't"
+      ],
+      "hint": "The only way to negate 有."
+    },
+    {
+      "id": "u04-p02",
+      "type": "phrase",
+      "hanzi": "孩子",
+      "pinyin": "háizi",
+      "english": "child",
+      "alt": [
+        "children"
+      ]
+    },
+    {
+      "id": "u04-p03",
+      "type": "phrase",
+      "hanzi": "我家",
+      "pinyin": "wǒ jiā",
+      "english": "my home",
+      "alt": [
+        "my family"
+      ]
+    },
+    {
+      "id": "u04-p04",
+      "type": "phrase",
+      "hanzi": "爸爸妈妈",
+      "pinyin": "bàba māma",
+      "english": "mum and dad",
+      "alt": [
+        "parents"
+      ]
+    },
+    {
+      "id": "u04-p05",
+      "type": "phrase",
+      "hanzi": "兄弟姐妹",
+      "pinyin": "xiōngdì jiěmèi",
+      "english": "siblings",
+      "alt": [
+        "brothers and sisters"
+      ]
+    },
+    {
+      "id": "u04-p06",
+      "type": "phrase",
+      "hanzi": "几口人",
+      "pinyin": "jǐ kǒu rén",
+      "english": "how many people in the family?"
+    },
+    {
+      "id": "u04-p07",
+      "type": "phrase",
+      "hanzi": "一个哥哥",
+      "pinyin": "yí gè gēge",
+      "english": "one older brother"
+    },
+    {
+      "id": "u04-p08",
+      "type": "phrase",
+      "hanzi": "两个孩子",
+      "pinyin": "liǎng gè háizi",
+      "english": "two children"
+    },
+    {
+      "id": "u04-s01",
+      "type": "sentence",
+      "hanzi": "这是我爸爸。",
+      "pinyin": "Zhè shì wǒ bàba.",
+      "english": "This is my dad."
+    },
+    {
+      "id": "u04-s02",
+      "type": "sentence",
+      "hanzi": "我有哥哥。",
+      "pinyin": "Wǒ yǒu gēge.",
+      "english": "I have an older brother."
+    },
+    {
+      "id": "u04-s03",
+      "type": "sentence",
+      "hanzi": "我没有姐姐。",
+      "pinyin": "Wǒ méiyǒu jiějie.",
+      "english": "I don't have an older sister."
+    },
+    {
+      "id": "u04-s04",
+      "type": "sentence",
+      "hanzi": "我家有五口人。",
+      "pinyin": "Wǒ jiā yǒu wǔ kǒu rén.",
+      "english": "There are five people in my family."
+    },
+    {
+      "id": "u04-s05",
+      "type": "sentence",
+      "hanzi": "你家有几口人？",
+      "pinyin": "Nǐ jiā yǒu jǐ kǒu rén?",
+      "english": "How many people are in your family?"
+    },
+    {
+      "id": "u04-s06",
+      "type": "sentence",
+      "hanzi": "他有两个儿子。",
+      "pinyin": "Tā yǒu liǎng gè érzi.",
+      "english": "He has two sons."
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u04-d01",
+      "title": "Family photo",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "这是你爸爸妈妈吗？",
+          "pinyin": "Zhè shì nǐ bàba māma ma?",
+          "english": "Are these your mum and dad?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "对。我有两个妹妹。",
+          "pinyin": "Duì. Wǒ yǒu liǎng gè mèimei.",
+          "english": "Yes. I have two younger sisters."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你有哥哥吗？",
+          "pinyin": "Nǐ yǒu gēge ma?",
+          "english": "Do you have an older brother?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "没有。我家有五口人。",
+          "pinyin": "Méiyǒu. Wǒ jiā yǒu wǔ kǒu rén.",
+          "english": "No. There are five people in my family."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "五口人，很好！",
+          "pinyin": "Wǔ kǒu rén, hěn hǎo!",
+          "english": "Five people, that's nice!"
+        }
+      ],
+      "questions": [
+        {
+          "id": "u04-d01-q1",
+          "question": "How many younger sisters does B have?",
+          "answer": "Two",
+          "distractors": [
+            "One",
+            "Three",
+            "None"
+          ]
+        },
+        {
+          "id": "u04-d01-q2",
+          "question": "How many people are in B's family?",
+          "answer": "Five",
+          "distractors": [
+            "Three",
+            "Four",
+            "Six"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u04-d02",
+      "title": "Brothers and sisters",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你家有几口人？",
+          "pinyin": "Nǐ jiā yǒu jǐ kǒu rén?",
+          "english": "How many people are in your family?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "四口人。我有一个哥哥。",
+          "pinyin": "Sì kǒu rén. Wǒ yǒu yí gè gēge.",
+          "english": "Four. I have one older brother."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "他叫什么名字？",
+          "pinyin": "Tā jiào shénme míngzi?",
+          "english": "What is his name?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "他叫大明。",
+          "pinyin": "Tā jiào Dàmíng.",
+          "english": "He is called Daming."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u04-d02-q1",
+          "question": "How many people are in B's family?",
+          "answer": "Four",
+          "distractors": [
+            "Two",
+            "Five",
+            "Six"
+          ]
+        },
+        {
+          "id": "u04-d02-q2",
+          "question": "What is B's brother called?",
+          "answer": "Daming",
+          "distractors": [
+            "Xiaoming",
+            "Dahua",
+            "Xiaohua"
+          ]
+        }
+      ]
+    }
+  ]
+}

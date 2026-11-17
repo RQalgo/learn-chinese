@@ -1,0 +1,310 @@
+{
+  "id": "u05",
+  "title": "Bigger numbers & age",
+  "items": [
+    {
+      "id": "u05-w01",
+      "type": "word",
+      "hanzi": "十一",
+      "pinyin": "shíyī",
+      "english": "eleven"
+    },
+    {
+      "id": "u05-w02",
+      "type": "word",
+      "hanzi": "十二",
+      "pinyin": "shí'èr",
+      "english": "twelve"
+    },
+    {
+      "id": "u05-w03",
+      "type": "word",
+      "hanzi": "十五",
+      "pinyin": "shíwǔ",
+      "english": "fifteen"
+    },
+    {
+      "id": "u05-w04",
+      "type": "word",
+      "hanzi": "二十",
+      "pinyin": "èrshí",
+      "english": "twenty"
+    },
+    {
+      "id": "u05-w05",
+      "type": "word",
+      "hanzi": "三十",
+      "pinyin": "sānshí",
+      "english": "thirty"
+    },
+    {
+      "id": "u05-w06",
+      "type": "word",
+      "hanzi": "五十",
+      "pinyin": "wǔshí",
+      "english": "fifty"
+    },
+    {
+      "id": "u05-w07",
+      "type": "word",
+      "hanzi": "一百",
+      "pinyin": "yìbǎi",
+      "english": "one hundred"
+    },
+    {
+      "id": "u05-w08",
+      "type": "word",
+      "hanzi": "几",
+      "pinyin": "jǐ",
+      "english": "how many",
+      "alt": [
+        "a few"
+      ],
+      "hint": "Asks about small numbers, usually under ten."
+    },
+    {
+      "id": "u05-w09",
+      "type": "word",
+      "hanzi": "多少",
+      "pinyin": "duōshao",
+      "english": "how many / how much",
+      "hint": "Use for any quantity, large or small."
+    },
+    {
+      "id": "u05-w10",
+      "type": "word",
+      "hanzi": "岁",
+      "pinyin": "suì",
+      "english": "years old",
+      "alt": [
+        "age"
+      ]
+    },
+    {
+      "id": "u05-w11",
+      "type": "word",
+      "hanzi": "两",
+      "pinyin": "liǎng",
+      "english": "two (of something)",
+      "hint": "Use 两, not 二, before a measure word."
+    },
+    {
+      "id": "u05-w12",
+      "type": "word",
+      "hanzi": "个",
+      "pinyin": "gè",
+      "english": "general measure word",
+      "hint": "Counts people and many things: 三个人."
+    },
+    {
+      "id": "u05-p01",
+      "type": "phrase",
+      "hanzi": "二十五",
+      "pinyin": "èrshíwǔ",
+      "english": "twenty-five"
+    },
+    {
+      "id": "u05-p02",
+      "type": "phrase",
+      "hanzi": "三十八",
+      "pinyin": "sānshíbā",
+      "english": "thirty-eight"
+    },
+    {
+      "id": "u05-p03",
+      "type": "phrase",
+      "hanzi": "六十六",
+      "pinyin": "liùshíliù",
+      "english": "sixty-six"
+    },
+    {
+      "id": "u05-p04",
+      "type": "phrase",
+      "hanzi": "九十九",
+      "pinyin": "jiǔshíjiǔ",
+      "english": "ninety-nine"
+    },
+    {
+      "id": "u05-p05",
+      "type": "phrase",
+      "hanzi": "一百零一",
+      "pinyin": "yìbǎi líng yī",
+      "english": "one hundred and one"
+    },
+    {
+      "id": "u05-p06",
+      "type": "phrase",
+      "hanzi": "几岁",
+      "pinyin": "jǐ suì",
+      "english": "how old? (to a child)"
+    },
+    {
+      "id": "u05-p07",
+      "type": "phrase",
+      "hanzi": "几个人",
+      "pinyin": "jǐ gè rén",
+      "english": "how many people?"
+    },
+    {
+      "id": "u05-p08",
+      "type": "phrase",
+      "hanzi": "二十岁",
+      "pinyin": "èrshí suì",
+      "english": "twenty years old"
+    },
+    {
+      "id": "u05-s01",
+      "type": "sentence",
+      "hanzi": "我二十岁。",
+      "pinyin": "Wǒ èrshí suì.",
+      "english": "I am twenty years old."
+    },
+    {
+      "id": "u05-s02",
+      "type": "sentence",
+      "hanzi": "你多大了？",
+      "pinyin": "Nǐ duō dà le?",
+      "english": "How old are you?"
+    },
+    {
+      "id": "u05-s03",
+      "type": "sentence",
+      "hanzi": "我爸爸五十岁。",
+      "pinyin": "Wǒ bàba wǔshí suì.",
+      "english": "My dad is fifty."
+    },
+    {
+      "id": "u05-s04",
+      "type": "sentence",
+      "hanzi": "我妹妹十二岁。",
+      "pinyin": "Wǒ mèimei shí'èr suì.",
+      "english": "My younger sister is twelve."
+    },
+    {
+      "id": "u05-s05",
+      "type": "sentence",
+      "hanzi": "你爸爸多大了？",
+      "pinyin": "Nǐ bàba duō dà le?",
+      "english": "How old is your dad?"
+    },
+    {
+      "id": "u05-s06",
+      "type": "sentence",
+      "hanzi": "一共有一百个人。",
+      "pinyin": "Yígòng yǒu yìbǎi gè rén.",
+      "english": "There are one hundred people in all."
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u05-d01",
+      "title": "How old?",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你多大了？",
+          "pinyin": "Nǐ duō dà le?",
+          "english": "How old are you?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我二十五岁。你呢？",
+          "pinyin": "Wǒ èrshíwǔ suì. Nǐ ne?",
+          "english": "I'm twenty-five. And you?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我三十岁。你妹妹几岁？",
+          "pinyin": "Wǒ sānshí suì. Nǐ mèimei jǐ suì?",
+          "english": "I'm thirty. How old is your younger sister?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "她十二岁。",
+          "pinyin": "Tā shí'èr suì.",
+          "english": "She is twelve."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u05-d01-q1",
+          "question": "How old is A?",
+          "answer": "Thirty",
+          "distractors": [
+            "Twenty",
+            "Twenty-five",
+            "Thirty-five"
+          ]
+        },
+        {
+          "id": "u05-d01-q2",
+          "question": "How old is B's younger sister?",
+          "answer": "Twelve",
+          "distractors": [
+            "Two",
+            "Fifteen",
+            "Twenty-two"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u05-d02",
+      "title": "How many are coming?",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "明天有几个人来？",
+          "pinyin": "Míngtiān yǒu jǐ gè rén lái?",
+          "english": "How many people are coming tomorrow?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "一共有二十五个人。",
+          "pinyin": "Yígòng yǒu èrshíwǔ gè rén.",
+          "english": "Twenty-five people in all."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "二十五个？",
+          "pinyin": "Èrshíwǔ gè?",
+          "english": "Twenty-five?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "对，有十个孩子。",
+          "pinyin": "Duì, yǒu shí gè háizi.",
+          "english": "Yes, ten of them are children."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "好的，谢谢！",
+          "pinyin": "Hǎo de, xièxie!",
+          "english": "Okay, thanks!"
+        }
+      ],
+      "questions": [
+        {
+          "id": "u05-d02-q1",
+          "question": "How many people are coming?",
+          "answer": "Twenty-five",
+          "distractors": [
+            "Fifteen",
+            "Thirty-five",
+            "Fifty-two"
+          ]
+        },
+        {
+          "id": "u05-d02-q2",
+          "question": "How many of them are children?",
+          "answer": "Ten",
+          "distractors": [
+            "Five",
+            "Fifteen",
+            "Twenty"
+          ]
+        }
+      ]
+    }
+  ]
+}

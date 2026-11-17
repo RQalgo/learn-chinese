@@ -1,0 +1,319 @@
+{
+  "id": "u13",
+  "title": "Weather",
+  "items": [
+    {
+      "id": "u13-w01",
+      "type": "word",
+      "hanzi": "热",
+      "pinyin": "rè",
+      "english": "hot"
+    },
+    {
+      "id": "u13-w02",
+      "type": "word",
+      "hanzi": "冷",
+      "pinyin": "lěng",
+      "english": "cold"
+    },
+    {
+      "id": "u13-w03",
+      "type": "word",
+      "hanzi": "雨",
+      "pinyin": "yǔ",
+      "english": "rain"
+    },
+    {
+      "id": "u13-w04",
+      "type": "word",
+      "hanzi": "风",
+      "pinyin": "fēng",
+      "english": "wind"
+    },
+    {
+      "id": "u13-w05",
+      "type": "word",
+      "hanzi": "云",
+      "pinyin": "yún",
+      "english": "cloud"
+    },
+    {
+      "id": "u13-w06",
+      "type": "word",
+      "hanzi": "太阳",
+      "pinyin": "tàiyáng",
+      "english": "sun"
+    },
+    {
+      "id": "u13-w07",
+      "type": "word",
+      "hanzi": "天气",
+      "pinyin": "tiānqì",
+      "english": "weather"
+    },
+    {
+      "id": "u13-w08",
+      "type": "word",
+      "hanzi": "下雨",
+      "pinyin": "xiàyǔ",
+      "english": "to rain"
+    },
+    {
+      "id": "u13-w09",
+      "type": "word",
+      "hanzi": "晴天",
+      "pinyin": "qíngtiān",
+      "english": "sunny day"
+    },
+    {
+      "id": "u13-w10",
+      "type": "word",
+      "hanzi": "阴天",
+      "pinyin": "yīntiān",
+      "english": "overcast day"
+    },
+    {
+      "id": "u13-w11",
+      "type": "word",
+      "hanzi": "凉快",
+      "pinyin": "liángkuai",
+      "english": "pleasantly cool"
+    },
+    {
+      "id": "u13-w12",
+      "type": "word",
+      "hanzi": "温度",
+      "pinyin": "wēndù",
+      "english": "temperature"
+    },
+    {
+      "id": "u13-p01",
+      "type": "phrase",
+      "hanzi": "很热",
+      "pinyin": "hěn rè",
+      "english": "very hot"
+    },
+    {
+      "id": "u13-p02",
+      "type": "phrase",
+      "hanzi": "有点儿热",
+      "pinyin": "yǒudiǎnr rè",
+      "english": "a bit hot",
+      "hint": "有点儿 is used for things you find a bit unpleasant."
+    },
+    {
+      "id": "u13-p03",
+      "type": "phrase",
+      "hanzi": "有点儿冷",
+      "pinyin": "yǒudiǎnr lěng",
+      "english": "a bit cold"
+    },
+    {
+      "id": "u13-p04",
+      "type": "phrase",
+      "hanzi": "下大雨",
+      "pinyin": "xià dà yǔ",
+      "english": "heavy rain"
+    },
+    {
+      "id": "u13-p05",
+      "type": "phrase",
+      "hanzi": "出太阳",
+      "pinyin": "chū tàiyáng",
+      "english": "the sun comes out"
+    },
+    {
+      "id": "u13-p06",
+      "type": "phrase",
+      "hanzi": "带伞",
+      "pinyin": "dài sǎn",
+      "english": "to bring an umbrella"
+    },
+    {
+      "id": "u13-p07",
+      "type": "phrase",
+      "hanzi": "三十度",
+      "pinyin": "sānshí dù",
+      "english": "thirty degrees"
+    },
+    {
+      "id": "u13-p08",
+      "type": "phrase",
+      "hanzi": "天气怎么样？",
+      "pinyin": "tiānqì zěnmeyàng?",
+      "english": "how's the weather?"
+    },
+    {
+      "id": "u13-s01",
+      "type": "sentence",
+      "hanzi": "今天很热。",
+      "pinyin": "Jīntiān hěn rè.",
+      "english": "It's very hot today."
+    },
+    {
+      "id": "u13-s02",
+      "type": "sentence",
+      "hanzi": "外面在下雨。",
+      "pinyin": "Wàimiàn zài xiàyǔ.",
+      "english": "It's raining outside."
+    },
+    {
+      "id": "u13-s03",
+      "type": "sentence",
+      "hanzi": "明天会下雨吗？",
+      "pinyin": "Míngtiān huì xiàyǔ ma?",
+      "english": "Will it rain tomorrow?"
+    },
+    {
+      "id": "u13-s04",
+      "type": "sentence",
+      "hanzi": "新加坡的天气很热。",
+      "pinyin": "Xīnjiāpō de tiānqì hěn rè.",
+      "english": "Singapore's weather is very hot."
+    },
+    {
+      "id": "u13-s05",
+      "type": "sentence",
+      "hanzi": "今天有点儿阴，可能会下雨。",
+      "pinyin": "Jīntiān yǒudiǎnr yīn, kěnéng huì xiàyǔ.",
+      "english": "It's a bit overcast today, it might rain."
+    },
+    {
+      "id": "u13-s06",
+      "type": "sentence",
+      "hanzi": "今天三十五度，太热了。",
+      "pinyin": "Jīntiān sānshíwǔ dù, tài rè le.",
+      "english": "It's thirty-five degrees today, way too hot."
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u13-d01",
+      "title": "A hot day",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "今天天气怎么样？",
+          "pinyin": "Jīntiān tiānqì zěnmeyàng?",
+          "english": "How's the weather today?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "很热，三十五度。",
+          "pinyin": "Hěn rè, sānshíwǔ dù.",
+          "english": "Very hot, thirty-five degrees."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "下雨吗？",
+          "pinyin": "Xiàyǔ ma?",
+          "english": "Is it raining?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "不下，是晴天。",
+          "pinyin": "Bú xià, shì qíngtiān.",
+          "english": "No, it's sunny."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "那我们去公园吧。",
+          "pinyin": "Nà wǒmen qù gōngyuán ba.",
+          "english": "Then let's go to the park."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好啊，我们带水去。",
+          "pinyin": "Hǎo a, wǒmen dài shuǐ qù.",
+          "english": "Sure, let's take water."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u13-d01-q1",
+          "question": "What's the weather like today?",
+          "answer": "Hot and sunny",
+          "distractors": [
+            "Hot and rainy",
+            "Cold and cloudy",
+            "Cool and windy"
+          ]
+        },
+        {
+          "id": "u13-d01-q2",
+          "question": "Where do they decide to go?",
+          "answer": "The park",
+          "distractors": [
+            "The school",
+            "The supermarket",
+            "The MRT station"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u13-d02",
+      "title": "Bring an umbrella",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你带伞了吗？",
+          "pinyin": "Nǐ dài sǎn le ma?",
+          "english": "Did you bring an umbrella?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "没带，外面下雨吗？",
+          "pinyin": "Méi dài, wàimiàn xiàyǔ ma?",
+          "english": "No, is it raining outside?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "现在不下，可是有点儿阴。",
+          "pinyin": "Xiànzài bú xià, kěshì yǒudiǎnr yīn.",
+          "english": "Not now, but it's a bit overcast."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "明天呢？",
+          "pinyin": "Míngtiān ne?",
+          "english": "And tomorrow?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "明天会下大雨。",
+          "pinyin": "Míngtiān huì xià dà yǔ.",
+          "english": "It will rain heavily tomorrow."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "那我明天不去公园了。",
+          "pinyin": "Nà wǒ míngtiān bú qù gōngyuán le.",
+          "english": "Then I won't go to the park tomorrow."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u13-d02-q1",
+          "question": "What's the weather right now?",
+          "answer": "Not raining but overcast",
+          "distractors": [
+            "Heavy rain",
+            "Hot and sunny",
+            "Windy and cold"
+          ]
+        },
+        {
+          "id": "u13-d02-q2",
+          "question": "What will the weather be tomorrow?",
+          "answer": "Heavy rain",
+          "distractors": [
+            "Sunny",
+            "A bit cold",
+            "Very hot"
+          ]
+        }
+      ]
+    }
+  ]
+}
