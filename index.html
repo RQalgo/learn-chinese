@@ -1,0 +1,31 @@
+<!doctype html>
+<!--
+  index.html — the single page of 听 Tīng. js/main.js boots, the hash router
+  (js/router.js) swaps screens into #screen, and #tabbar is filled by main.js.
+  All URLs are relative so the site also works under /learn-chinese/.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>听 Tīng — Mandarin listening trainer</title>
+  <meta name="description" content="A listening-only Mandarin trainer for short commutes.">
+  <meta name="theme-color" content="#f1f2ee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1116" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div id="app">
+    <main id="screen" aria-live="off">
+      <div class="center-screen" id="boot"><span class="seal large" aria-hidden="true">听</span><p>Loading lessons…</p></div>
+    </main>
+    <nav id="tabbar" class="tabbar" aria-label="Main" hidden></nav>
+  </div>
+  <div id="modal-root"></div>
+  <noscript><p style="padding:24px">听 Tīng needs JavaScript to run.</p></noscript>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
