@@ -80,19 +80,24 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable, Optional
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import zh_lexicon  # noqa: E402  (content-driven Mandarin lexicon)
+from zh_lexicon import ZhLexicon  # noqa: E402
+
 # WHY: bump when the post-processing chain or engine settings change; it is part of
 # every clip's cache hash, so a bump regenerates everything exactly once.
 PIPELINE_VERSION = "1"
-MODEL_NAME = "kokoro-multi-lang-v1_0"
+MODEL_NAME = "kokoro-multi-lang-v1_0"        # English clips (.en, sys.*)
+# WHY a second model: Kokoro v1.1-zh pronounces Mandarin clearly better than v1.0 but has
+# no better English; English clips therefore stay on v1.0 and are never rebuilt.
+ZH_MODEL_NAME = "kokoro-multi-lang-v1_1"     # Mandarin clips (zh, zh-slow)
 
-# --- Voices (Kokoro multi-lang v1.0 speaker ids; see docs/AUDIO.md "Voice evaluation") ---
-# Mandarin voices are ids 45-52: zf_xiaobei 45, zf_xiaoni 46, zf_xiaoxiao 47, zf_xiaoyi 48,
-# zm_yunjian 49, zm_yunxi 50, zm_yunxia 51, zm_yunyang 52.
-# WHY these four: lowest ASR character error rate at normal AND slow speed in
-# tools/eval_voices.py, two female + two male (results table in docs/AUDIO.md).
-# Changing this list changes which voice every item gets -> regenerates the audio.
-ZH_VOICES = [47, 48, 50, 52]  # zf_xiaoxiao, zf_xiaoyi, zm_yunxi, zm_yunyang
-DIALOGUE_VOICES = {"A": 47, "B": 50}  # A = zf_xiaoxiao (female), B = zm_yunxi (male)
+# --- Voices ---
+# Mandarin: Kokoro multi-lang v1.1 speaker ids 3-57 are female, 58-102 male (0-2 are English).
+# WHY these four: two female + two male chosen by ASR screening (docs/AUDIO.md "Voice
+# evaluation"). Changing this list changes which voice every item gets -> regenerates audio.
+ZH_VOICES = [30, 4, 63, 75]  # F, F, M, M (v1.1 ids)
+DIALOGUE_VOICES = {"A": 4, "B": 75}  # A = female, B = male (v1.1 ids)
 EN_VOICE = 3  # af_heart, US English
 SLOW_SPEED = 0.75
 NORMAL_SPEED = 1.0
@@ -149,6 +154,7 @@ class Clip:
     speed: float
     silence_ms: int = 0
     lex_sig: str = ""
+    pinyin: str = ""   # Mandarin clips only: source of the content-driven lexicon (not hashed itself)
 
     @property
     def rel_path(self) -> str:
@@ -165,7 +171,10 @@ class Clip:
         the extra lexicon rebuilds only the English clips it affects (never Chinese
         ones), and editing one entry rebuilds only clips containing that word.
         """
-        parts = [self.text, self.voice, self.speed, self.silence_ms, PIPELINE_VERSION, MODEL_NAME]
+        # WHY: Mandarin clips carry the v1.1 model name so they rebuild exactly once when
+        # moving off v1.0; English clips keep the old identity and so their old keys.
+        model = ZH_MODEL_NAME if self.kind in ("zh", "zh-slow") else MODEL_NAME
+        parts = [self.text, self.voice, self.speed, self.silence_ms, PIPELINE_VERSION, model]
         if self.lex_sig:
             parts.append(self.lex_sig)
         payload = json.dumps(parts, ensure_ascii=False)
@@ -422,15 +431,15 @@ def enumerate_clips(content_root: Path) -> list[Clip]:
         unit = load_json(content_root / unit_ref["file"])
         for item in unit.get("items", []):
             iid, voice = item["id"], item_voice(item["id"])
-            clips.append(Clip(iid, "zh", item["hanzi"], voice, NORMAL_SPEED))
-            clips.append(Clip(f"{iid}.slow", "zh-slow", item["hanzi"], voice, SLOW_SPEED))
+            clips.append(Clip(iid, "zh", item["hanzi"], voice, NORMAL_SPEED, pinyin=item["pinyin"]))
+            clips.append(Clip(f"{iid}.slow", "zh-slow", item["hanzi"], voice, SLOW_SPEED, pinyin=item["pinyin"]))
             clips.append(Clip(f"{iid}.en", "en", normalize_english(item["english"]), EN_VOICE, NORMAL_SPEED))
         for dlg in unit.get("dialogues", []):
             did = dlg["id"]
             for n, line in enumerate(dlg.get("lines", []), start=1):
                 voice = DIALOGUE_VOICES[line["speaker"]]
-                clips.append(Clip(f"{did}.l{n}", "zh", line["hanzi"], voice, NORMAL_SPEED))
-                clips.append(Clip(f"{did}.l{n}.slow", "zh-slow", line["hanzi"], voice, SLOW_SPEED))
+                clips.append(Clip(f"{did}.l{n}", "zh", line["hanzi"], voice, NORMAL_SPEED, pinyin=line["pinyin"]))
+                clips.append(Clip(f"{did}.l{n}.slow", "zh-slow", line["hanzi"], voice, SLOW_SPEED, pinyin=line["pinyin"]))
                 clips.append(Clip(f"{did}.l{n}.en", "en", normalize_english(line["english"]), EN_VOICE, NORMAL_SPEED))
             for n, q in enumerate(dlg.get("questions", []), start=1):
                 clips.append(Clip(f"{did}.q{n}.en", "en", normalize_english(q["question"]), EN_VOICE, NORMAL_SPEED))
@@ -530,7 +539,8 @@ def write_manifest(root: Path, required: list[Clip], cache: dict) -> int:
 
 # ===== Section: TTS engine =========================================================
 
-def load_tts(model_dir: Path, num_threads: int, extra_lexicon: Optional[Path] = None):
+def load_tts(model_dir: Path, num_threads: int, extra_lexicon: Optional[Path] = None,
+             zh_extra_lexicon: Optional[Path] = None):
     """Create the Kokoro ``OfflineTts`` object (slow: several seconds, ~350 MB model).
 
     WHY one model per process: the sherpa-onnx object is not shared across
@@ -542,6 +552,10 @@ def load_tts(model_dir: Path, num_threads: int, extra_lexicon: Optional[Path] = 
     WHY ``extra_lexicon`` sits between the two: later lexicons override earlier ones
     (verified), so hand-written/inflected English entries win over the base English
     ones, and the Mandarin lexicon (hanzi keys) is unaffected.
+    WHY ``zh_extra_lexicon`` comes LAST: for the Mandarin model the content-driven entries
+    (tools/zh_lexicon.py) must override ``lexicon-zh.txt`` (verified: later file wins).
+    The text is cut into words by longest match over the merged lexicons (sherpa-onnx
+    >= 1.12.15 ignores ``dict_dir`` for Kokoro), so a new entry is automatically a token.
     """
     import sherpa_onnx
 
@@ -553,7 +567,7 @@ def load_tts(model_dir: Path, num_threads: int, extra_lexicon: Optional[Path] = 
         tokens=f"{d}/tokens.txt",
         data_dir=f"{d}/espeak-ng-data",
         dict_dir=f"{d}/dict",
-        lexicon=f"{en_lex},{d}/lexicon-zh.txt",
+        lexicon=f"{en_lex},{d}/lexicon-zh.txt" + (f",{zh_extra_lexicon}" if zh_extra_lexicon else ""),
     )
     cfg = sherpa_onnx.OfflineTtsConfig(
         model=sherpa_onnx.OfflineTtsModelConfig(kokoro=kokoro, num_threads=num_threads),
@@ -652,12 +666,46 @@ def build_clip(tts, clip: Clip, root: Path) -> float:
 
 # ===== Section: Workers (multiprocessing) ==========================================
 
+@dataclass(frozen=True)
+class TtsPaths:
+    """Where the two models and their generated extras live (picklable, sent to workers)."""
+
+    en_dir: str
+    zh_dir: str
+    en_extra: str
+    zh_extra: str
+    threads: int
+
+
+class TtsSet:
+    """The two Kokoro models, each loaded the first time a clip needs it.
+
+    WHY lazy: a run that only rebuilds Mandarin (or only English) clips never pays
+    for (about 350 MB and several seconds) the other model.
+    """
+
+    def __init__(self, paths: TtsPaths):
+        self.paths = paths
+        self._tts: dict[str, object] = {}
+
+    def for_clip(self, clip: Clip):
+        """Return the loaded model for ``clip``: v1.1 for zh/zh-slow, v1.0 otherwise."""
+        lang = "zh" if clip.kind in ("zh", "zh-slow") else "en"
+        if lang not in self._tts:
+            p = self.paths
+            if lang == "zh":
+                self._tts[lang] = load_tts(Path(p.zh_dir), p.threads, zh_extra_lexicon=Path(p.zh_extra))
+            else:
+                self._tts[lang] = load_tts(Path(p.en_dir), p.threads, Path(p.en_extra))
+        return self._tts[lang]
+
+
 _WORKER: dict = {}
 
 
-def _worker_init(model_dir: str, threads: int, extra_lexicon: str) -> None:
-    """Pool initializer: load this worker's private TTS model once."""
-    _WORKER["tts"] = load_tts(Path(model_dir), threads, Path(extra_lexicon))
+def _worker_init(paths: TtsPaths) -> None:
+    """Pool initializer: create this worker's private (lazy) model set."""
+    _WORKER["tts"] = TtsSet(paths)
 
 
 def _worker_run(job: tuple[Clip, str]) -> tuple[str, str, Optional[float], Optional[str], float]:
@@ -665,7 +713,7 @@ def _worker_run(job: tuple[Clip, str]) -> tuple[str, str, Optional[float], Optio
     clip, root = job
     t0 = time.time()
     try:
-        dur = build_clip(_WORKER["tts"], clip, Path(root))
+        dur = build_clip(_WORKER["tts"].for_clip(clip), clip, Path(root))
         return clip.id, clip.digest, dur, None, time.time() - t0
     except Exception as exc:  # report per clip; keep the batch going
         return clip.id, clip.digest, None, str(exc), time.time() - t0
@@ -683,6 +731,9 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
                    help="folder containing data/units.json (default: --root; use tests/fixtures/content for tests)")
     p.add_argument("--model-dir", type=Path, default=None,
                    help="Kokoro model dir (default: $AUDIO_MODEL_DIR or <root>/models/kokoro-multi-lang-v1_0)")
+    p.add_argument("--zh-model-dir", type=Path, default=None,
+                   help="Kokoro v1.1 model dir for the Mandarin clips "
+                        "(default: $AUDIO_ZH_MODEL_DIR or <root>/models/kokoro-multi-lang-v1_1)")
     p.add_argument("--only", help="comma-separated unit ids or clip-id prefixes, e.g. u01,sys")
     p.add_argument("--limit", type=int, help="build at most N clips (after cache filtering)")
     p.add_argument("--jobs", type=int, default=1, help="worker processes, one TTS model each (default 1)")
@@ -697,6 +748,9 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
     if args.model_dir is None:
         env = os.environ.get("AUDIO_MODEL_DIR")
         args.model_dir = Path(env) if env else args.root / "models" / MODEL_NAME
+    if args.zh_model_dir is None:
+        env = os.environ.get("AUDIO_ZH_MODEL_DIR")
+        args.zh_model_dir = Path(env) if env else args.root / "models" / ZH_MODEL_NAME
     return args
 
 
@@ -749,6 +803,17 @@ def main(argv: Optional[list[str]] = None) -> int:
     extra_dir = tempfile.TemporaryDirectory(prefix="gen_audio_lex_")
     extra_lex = Path(extra_dir.name) / "lexicon-extra-en.txt"
     lex.write_extra(extra_lex)
+    # Mandarin: content-driven lexicon (neutral tones, 不/一); needs only the zh model's text files.
+    if not (args.zh_model_dir / "lexicon-zh.txt").exists():
+        raise SystemExit(f"error: no Kokoro v1.1 model at {args.zh_model_dir} (--zh-model-dir; see docs/AUDIO.md)")
+    zh_lex = ZhLexicon.build(args.zh_model_dir, zh_lexicon.content_lines(required))
+    for msg in zh_lex.problems:
+        print(f"zh-lexicon: {msg}")
+    zh_extra = zh_lex.write_file(Path(extra_dir.name))
+    required = [replace(c, lex_sig=zh_lex.signature(c.text, c.pinyin)) if c.kind in ("zh", "zh-slow") else c
+                for c in required]
+    print(f"zh-lexicon: {zh_lex.stats['entries']} entries ({zh_lex.stats['repaired']} repairs) "
+          f"from {zh_lex.stats['lines']} lines ({zh_lex.stats['unaligned']} unaligned)")
     cache_path = args.root / "audio" / ".cache.json"
     cache = load_cache(cache_path)
 
@@ -788,8 +853,10 @@ def main(argv: Optional[list[str]] = None) -> int:
             else:
                 speech.append(c)
         total, done, t_start, busy = len(todo), len(todo) - len(speech), time.time(), 0.0
-        if speech and not (args.model_dir / "model.onnx").exists():
-            raise SystemExit(f"error: no Kokoro model at {args.model_dir} (see docs/AUDIO.md, 'How to run')")
+        for needed, kinds in ((args.model_dir, ("en", "sys")), (args.zh_model_dir, ("zh", "zh-slow"))):
+            if any(c.kind in kinds for c in speech) and not (needed / "model.onnx").exists():
+                raise SystemExit(f"error: no Kokoro model at {needed} (see docs/AUDIO.md, 'How to run')")
+        paths = TtsPaths(str(args.model_dir), str(args.zh_model_dir), str(extra_lex), str(zh_extra), 1)
 
         def report(cid: str, err: Optional[str], secs: float) -> None:
             """Print one progress line with elapsed time and ETA."""
@@ -803,11 +870,11 @@ def main(argv: Optional[list[str]] = None) -> int:
 
         try:
             if speech and args.jobs <= 1:
-                tts = load_tts(args.model_dir, os.cpu_count() or 2, extra_lex)
+                tts = TtsSet(replace(paths, threads=os.cpu_count() or 2))
                 for c in speech:
                     t0 = time.time()
                     try:
-                        cache[c.id] = {"hash": c.digest, "dur": build_clip(tts, c, args.root)}
+                        cache[c.id] = {"hash": c.digest, "dur": build_clip(tts.for_clip(c), c, args.root)}
                         report(c.id, None, time.time() - t0)
                     except Exception as exc:
                         failures.append((c.id, str(exc)))
@@ -815,10 +882,10 @@ def main(argv: Optional[list[str]] = None) -> int:
                     if done % 20 == 0:
                         save_cache(cache_path, cache)
             elif speech:
-                threads = max(1, (os.cpu_count() or 2) // args.jobs)
+                paths = replace(paths, threads=max(1, (os.cpu_count() or 2) // args.jobs))
                 # WHY spawn: forking a process that has imported onnxruntime is fragile.
                 ctx = mp.get_context("spawn")
-                with ctx.Pool(args.jobs, _worker_init, (str(args.model_dir), threads, str(extra_lex))) as pool:
+                with ctx.Pool(args.jobs, _worker_init, (paths,)) as pool:
                     jobs = [(c, str(args.root)) for c in speech]
                     for cid, digest, dur, err, secs in pool.imap_unordered(_worker_run, jobs):
                         if err:
