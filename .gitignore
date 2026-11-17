@@ -1,0 +1,4 @@
+# Kokoro/ASR models are downloaded locally (see docs/AUDIO.md); never commit them.
+models/
+__pycache__/
+*.pyc
