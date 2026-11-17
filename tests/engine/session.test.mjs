@@ -17,13 +17,13 @@ const u02 = cur.unit("u02").itemIds;
 const plan = (progress, extra = {}) => planQuizSession({ curriculum: cur, progress, now: T0, rng: makeRng(7), length: 20, ...extra });
 const questions = (p) => p.steps.filter((s) => s.kind === "question");
 
-test("brand-new learner: intros of first unit capped at 6, each question >= 2 steps after intro", () => {
+test("brand-new learner: intros of first unit capped at 8, each question >= 2 steps after intro", () => {
   for (let seed = 1; seed <= 30; seed++) {
     const p = planQuizSession({ curriculum: cur, progress: fresh(), now: T0, rng: makeRng(seed), length: "normal" });
     const intros = p.steps.filter((s) => s.kind === "intro");
-    assert.equal(intros.length, 6);
+    assert.equal(intros.length, 8);
     assert.ok(intros.every((s) => cur.items.get(s.itemId).unitId === "u01"));
-    assert.deepEqual(intros.map((s) => s.itemId), u01.slice(0, 6), "file order");
+    assert.deepEqual(intros.map((s) => s.itemId), u01.slice(0, 8), "file order");
     for (const [i, s] of p.steps.entries()) {
       if (s.kind !== "intro") continue;
       const qi = p.steps.findIndex((x) => x.kind === "question" && x.itemId === s.itemId);
@@ -33,9 +33,9 @@ test("brand-new learner: intros of first unit capped at 6, each question >= 2 st
   }
 });
 
-test("short session caps new items at 3; length respected", () => {
+test("short session caps new items at 4; length respected", () => {
   const p = planQuizSession({ curriculum: cur, progress: fresh(), now: T0, rng: makeRng(1), length: "short" });
-  assert.equal(p.steps.filter((s) => s.kind === "intro").length, 3);
+  assert.equal(p.steps.filter((s) => s.kind === "intro").length, 4);
   assert.ok(questions(p).length + p.counts.dialogue <= 10);
 });
 
@@ -189,5 +189,7 @@ test("listen plan with unitId only touches that unit; empty progress still works
   const p = listen(fresh(), { unitId: "u02" });
   for (const s of p.segments) if (s.kind !== "prompt") assert.equal(cur.unitOf(s.refId).id, "u02");
   assert.ok(p.segments.some((s) => s.kind === "new"));
-  assert.ok(!p.segments.some((s) => s.kind === "review"));
+  // Self-test segments only repeat words introduced in this same playlist.
+  const introduced = new Set(p.segments.filter((s) => s.kind === "new").map((s) => s.refId));
+  assert.ok(p.segments.filter((s) => s.kind === "review").every((s) => introduced.has(s.refId)));
 });

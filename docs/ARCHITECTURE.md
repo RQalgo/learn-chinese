@@ -204,12 +204,17 @@ intro whenever the session has at least two steps to spread over.
 
 1. **Reviews**: introduced cards with `due <= now`, most overdue first, up to 70 % of the length.
 2. **New items**: next un-introduced items from the earliest unlocked unit that still has new
-   items (in file order), max 6 per session (3 for `short`). Each new item gets an `intro` step,
-   and later in the session (≥ 2 steps after its intro) a question.
+   items (in file order), capped by length: `short` 4, `normal` 8, `long` 10. Each new item gets an
+   `intro` step, and later in the session (≥ 2 steps after its intro) a question.
 3. **Dialogue**: if the current unit has a dialogue whose items are mostly introduced, add one
    dialogue step (1–2 questions).
-4. **Fill**: if still short, add not-yet-due cards with the lowest box.
-5. Wrong answers are re-queued 3–5 steps later, once per item per session (handled at run time
+4. **Fill**: if still short, add not-yet-due introduced cards with the lowest box.
+5. **Second questions**: if the question count is *still* below `length` (typical for a new learner
+   with nothing due), each new item of this session gets a second `listen-meaning` question, appended
+   after the others so it is ≥ 3 steps after its first question. The body is built lazily, so the
+   distractors and option order differ from the first time. The count never exceeds `length`; a brand-new
+   learner therefore gets 8 intros + 16 questions in a `normal` session.
+6. Wrong answers are re-queued 3–5 steps later, once per item per session (handled at run time
    by `ui/quiz.js` calling `requeue()`; only `question` steps are re-queued).
 
 Step shapes:
@@ -240,10 +245,16 @@ Target length ≈ `minutes` (default 8). Built from clip IDs only, so it can run
 
 * Section prompt `sys.newWords`, then per new item:
   `item.slow → silence.1000 → item.en → silence.500 → item → silence.1500 → item`
-* Section prompt `sys.review`, then per due/review item (self-test):
+* New-item cap scales with the target: one per 40 s, at most 12 (8 min → 12).
+* Section prompt `sys.review`, then per self-test item, in this order: due items; the new items
+  just taught in this same playlist; not-due introduced items with the lowest box. If that pool is
+  smaller than the remaining time it is cycled (reshuffled), up to 6 rounds:
   `sys.whatMeans`(first only) `item → silence.3000 → item.en → silence.500 → item`
 * Optional dialogue: `sys.dialogue`, each line `l<N> → silence.500 → l<N>.en`, then all lines again at normal speed.
 * End with `sys.done`.
+
+The planner aims for `estimatedSec` within ±20 % of the target for a brand-new learner and for a
+learner with many due items (checked in `tests/engine/fill.test.mjs` against the real data).
 
 Each segment = `{ kind: "new"|"review"|"dialogue"|"prompt", refId, clips: [clipId…] }`.
 Between the two passes of a dialogue the playlist inserts `sys.again`. Duration is estimated

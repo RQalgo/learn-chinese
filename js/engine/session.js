@@ -17,7 +17,9 @@
  *   - Quiz length counts QUESTIONS (intro steps are extra).
  *   - Budget order: dialogue slots and new items are reserved first, then due
  *     reviews fill up to 70 % of the length, then not-yet-due cards fill the rest.
- *   - Listen plans are built from clip ids only and sized by estimated seconds.
+ *   - Quiz sessions with little due get second questions for new items (appended, spaced >= 3).
+ *   - Listen plans are built from clip ids only and sized by estimated seconds; the
+ *     self-test section cycles through this playlist's new words when little is due.
  *
  * Public API
  *   QUIZ_LENGTHS
@@ -48,7 +50,7 @@ import { chooseQtype } from "./questions.js";
  * @property {"quiz"} kind
  * @property {Step[]} steps
  * @property {number} length          Requested number of questions.
- * @property {{review:number, new:number, dialogue:number, fill:number}} counts Questions per source.
+ * @property {{review:number, new:number, dialogue:number, fill:number, second:number}} counts Questions per source (second = repeat questions for new items).
  * @property {string[]} requeued      Item ids already re-queued (once per item per session).
  */
 
@@ -71,8 +73,15 @@ import { chooseQtype } from "./questions.js";
 
 /** Questions per session length setting. */
 export const QUIZ_LENGTHS = { short: 10, normal: 20, long: 30 };
-const MAX_NEW = 6;
-const MAX_NEW_SHORT = 3;
+/** New-item cap per quiz session by length: short / normal / long (and anything in between rounds up). */
+const NEW_CAP = { short: 4, normal: 8, long: 10 };
+/** Gap (steps) between a new item's first and second question. */
+const SECOND_Q_GAP = 3;
+/** Listen: one new item per this many target seconds, at most MAX_NEW_LISTEN. */
+const LISTEN_SEC_PER_NEW = 40;
+const MAX_NEW_LISTEN = 12;
+/** Listen: how many times the self-test pool may be cycled to fill the time. */
+const MAX_SELFTEST_ROUNDS = 6;
 const REVIEW_SHARE = 0.7;
 /** A dialogue is offered once this share of its unit's items are introduced. */
 const DIALOGUE_READY = 0.6;
@@ -126,7 +135,7 @@ export function planQuizSession({ curriculum, progress, now, rng, length = "norm
 
   // --- new items (earliest unit with new items, capped) ---
   const { unit: newUnit, items: freshItems } = nextNewItems(curriculum, progress, unitId);
-  const newCap = L <= QUIZ_LENGTHS.short ? MAX_NEW_SHORT : MAX_NEW;
+  const newCap = L <= QUIZ_LENGTHS.short ? NEW_CAP.short : L <= QUIZ_LENGTHS.normal ? NEW_CAP.normal : NEW_CAP.long;
   const newItems = freshItems.slice(0, Math.min(newCap, L));
 
   // --- dialogue (decided early so its slots are reserved) ---
@@ -168,9 +177,35 @@ export function planQuizSession({ curriculum, progress, now, rng, length = "norm
   // to its intro; push any too-close question to the end instead.
   enforceSpacing(steps);
 
+  // --- second questions for new items, only while the session is still short ---
+  // WHY: a learner with few reviews due (new learner, or just after a break)
+  // would otherwise get ~8 questions. Asking each freshly introduced item a
+  // second time later is good practice (repetition inside the session) and
+  // never pushes the question count past `length`.
+  // WHY listen-meaning: at plan time a new card is box 0, which only allows
+  // listen-meaning; questions.js builds the body lazily, so the distractor
+  // set and option order are drawn fresh when the step is reached.
+  let secondCount = 0;
+  let room2 = L - (reviews.length + newItems.length + dlgIds.length + fill.length);
+  const order = newItems
+    .map((it) => ({ it, at: steps.findIndex((x) => x.kind === "question" && x.itemId === it.id) }))
+    .sort((a, b) => a.at - b.at);
+  // WHY: second questions are appended as a block at the end, in the order of the
+  // first questions. Inserting them mid-session would push the last new item's
+  // first question to the very end with nothing after it, so it could never be
+  // spaced >= SECOND_Q_GAP; appending in order guarantees the spacing for
+  // everyone but a lone item at the very end of a tiny session (skipped).
+  for (const { it, at } of order) {
+    if (room2 <= 0) break;
+    const first = steps.findIndex((x) => x.kind === "question" && x.itemId === it.id);
+    if (at === -1 || first === -1 || steps.length - first < SECOND_Q_GAP) continue;
+    steps.push({ kind: "question", qtype: "listen-meaning", itemId: it.id });
+    secondCount++; room2--;
+  }
+
   return {
     kind: "quiz", steps, length: L, requeued: [],
-    counts: { review: reviews.length, new: newItems.length, dialogue: dlgIds.length, fill: fill.length },
+    counts: { review: reviews.length, new: newItems.length, dialogue: dlgIds.length, fill: fill.length, second: secondCount },
   };
 }
 
@@ -280,14 +315,19 @@ export function planListenSession({ curriculum, progress, now, rng, minutes = 8,
 
   // --- candidates ---
   const scope = itemsInScope(curriculum, progress, unitId);
-  const { unit: newUnit, items: freshItems } = nextNewItems(curriculum, progress, unitId);
+  const { unit: newUnit, items: allFresh } = nextNewItems(curriculum, progress, unitId);
+  // WHY: cap new items by time so a long playlist is not all vocabulary firehose.
+  const newCap = Math.min(MAX_NEW_LISTEN, Math.max(1, Math.floor(targetSec / LISTEN_SEC_PER_NEW)));
+  const freshItems = allFresh.slice(0, newCap);
   const due = scope.filter((it) => isDue(cardOf(progress, it.id), now))
     .sort((a, b) => cardOf(progress, a.id).due - cardOf(progress, b.id).due);
   const dueIds = new Set(due.map((i) => i.id));
   // WHY: if little is due, revisit the weakest introduced items so a session is never empty.
   const extra = shuffle(scope.filter((it) => cardOf(progress, it.id).introduced && !dueIds.has(it.id)), rng)
     .sort((a, b) => cardOf(progress, a.id).box - cardOf(progress, b.id).box);
-  const reviewPool = [...due, ...extra];
+  // Self-test pool order: due items, then items introduced earlier in THIS
+  // playlist (listen again and test yourself), then the weakest not-due items.
+  const poolFor = (placedNew) => [...due, ...placedNew, ...extra];
 
   // Dialogue: prefer the new-items unit, else unitId, else the latest unit with introduced items.
   let dlgUnit = newUnit || (unitId ? curriculum.unit(unitId) : null);
@@ -312,9 +352,9 @@ export function planListenSession({ curriculum, progress, now, rng, minutes = 8,
   const newSegs = [], revSegs = [];
   const budget = targetSec - used;
   let newSpent = dur("sys.newWords"), revSpent = dur("sys.review");
-  let ni = 0, ri = 0;
-  // Fill alternately: new items get ~40 % of the budget, reviews the rest; whichever
-  // runs out of candidates yields its share to the other.
+  let ni = 0;
+  // New items get at most ~40 % of the budget; the self-test/review section
+  // below takes whatever time is left.
   const newBudget = budget * 0.4;
   while (ni < freshItems.length) {
     const seg = newSeg(freshItems[ni]);
@@ -323,18 +363,19 @@ export function planListenSession({ curriculum, progress, now, rng, minutes = 8,
     if (newSpent + c > budget) break;
     newSegs.push(seg); newSpent += c; ni++;
   }
-  while (ri < reviewPool.length) {
-    const seg = reviewSeg(reviewPool[ri], revSegs.length === 0);
-    const c = clipsSec(seg.clips);
-    if (newSpent + revSpent + c > budget) break;
-    revSegs.push(seg); revSpent += c; ri++;
-  }
-  // Leftover time (not enough reviews)? give it back to new items.
-  while (ni < freshItems.length) {
-    const seg = newSeg(freshItems[ni]);
-    const c = clipsSec(seg.clips);
-    if ((newSegs.length ? newSpent : dur("sys.newWords")) + revSpent + c > budget) break;
-    newSegs.push(seg); newSpent += c; ni++;
+  // Only new items that actually made it into the playlist are self-tested.
+  const reviewPool = poolFor(newSegs.map((g) => curriculum.items.get(g.refId)));
+  // WHY: cycle the pool (reshuffled) when it is smaller than the time budget,
+  // e.g. a brand-new learner who only has this playlist's new words to test.
+  let full = false, firstReview = true;
+  for (let round = 0; round < MAX_SELFTEST_ROUNDS && !full && reviewPool.length; round++) {
+    const pool = round === 0 ? reviewPool : shuffle(reviewPool, rng);
+    for (const it of pool) {
+      const seg = reviewSeg(it, firstReview);
+      const c = clipsSec(seg.clips);
+      if (newSpent + revSpent + c > budget) { full = true; break; }
+      revSegs.push(seg); revSpent += c; firstReview = false;
+    }
   }
 
   const segments = [];
