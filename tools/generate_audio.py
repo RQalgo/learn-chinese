@@ -8,7 +8,8 @@ PURPOSE
     prompts in docs/AUDIO.md into those clips, plus ``audio/manifest.json``.
 
 HOW IT FITS
-    content JSON --(this tool)--> audio/{zh,zh-slow,en,sys}/*.mp3 + audio/manifest.json
+    content JSON --(this tool)--> audio/{zh,zh-slow,en,sys}/*.mp3 + audio/manifest.json   (--accent cn)
+    content JSON --(this tool)--> audio-sg/{zh,zh-slow}/*.mp3 + audio-sg/manifest.json    (--accent sg)
                                        |
         tools/verify_audio.py  <-------+   (ASR round trip, reuses enumerate_clips())
         js/data/loader.js reads manifest.json; js/audio/player.js plays clip ids.
@@ -30,6 +31,14 @@ CLIP IDS AND FILE NAMES (ARCHITECTURE section 5)
     The manifest stores the *relative* path (``audio/zh/u01-w01.mp3``) so the app
     never has to know this rule.
 
+ACCENTS (ARCHITECTURE section 5)
+    ``--accent cn`` (default) is the Mainland set under ``audio/``: Mandarin plus every
+    English and ``sys.*`` clip. ``--accent sg`` builds ONLY the Mandarin clips (same clip
+    ids) into ``audio-sg/zh``, ``audio-sg/zh-slow`` with its own ``audio-sg/.cache.json``
+    and ``audio-sg/manifest.json``; the app falls back to ``audio/`` for anything missing.
+    Mandarin synthesis sits behind the ``ZhEngine`` interface (``--zh-engine``) so another
+    engine (e.g. a CosyVoice-based Singapore Mandarin model) is one more class.
+
 USAGE
     python3 tools/generate_audio.py --model-dir models/kokoro-multi-lang-v1_0
     python3 tools/generate_audio.py --dry-run                # list what would be built
@@ -38,6 +47,7 @@ USAGE
     python3 tools/generate_audio.py --prune                  # also delete unreferenced mp3 files
     python3 tools/generate_audio.py --root /tmp/r --content-root tests/fixtures/content
     python3 tools/generate_audio.py --check-en               # only check English words; exit 1 on OOV
+    python3 tools/generate_audio.py --accent sg --zh-engine kokoro --dry-run   # Singapore set
 
     Environment: AUDIO_MODEL_DIR can replace --model-dir. Needs ffmpeg/ffprobe on PATH.
 
@@ -53,7 +63,7 @@ ENGLISH TEXT (why it is not spoken verbatim)
     normalisation and the extra lexicon".
 
 PIPELINE PER CLIP
-    Kokoro (sherpa-onnx) -> float samples -> ffmpeg trims leading/trailing silence ->
+    TTS engine (Kokoro via sherpa-onnx) -> float samples -> ffmpeg trims leading/trailing silence ->
     gain to a fixed RMS level with a peak ceiling -> ~120 ms silence added at both
     ends -> mono 24 kHz 40 kbps MP3. Silence clips come straight from ffmpeg.
 """
@@ -78,7 +88,7 @@ import zlib
 from dataclasses import dataclass, replace
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Iterable, Optional
+from typing import Iterable, Optional, Union
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import zh_lexicon  # noqa: E402  (content-driven Mandarin lexicon)
@@ -133,6 +143,11 @@ CONTRACTIONS = {"that's": "that is", "what's": "what is", "here's": "here is",
 EXTRA_LEXICON_PATH = Path(__file__).resolve().parent / "lexicon-extra-en.txt"
 
 AUDIO_SUBDIRS = ("zh", "zh-slow", "en", "sys")
+# Accent -> output folder and the clip kinds (sub-folders) that set contains.
+# WHY: the Singapore set holds Mandarin only; English and sys.* always come from audio/.
+ACCENT_DIRS = {"cn": "audio", "sg": "audio-sg"}
+ACCENT_KINDS = {"cn": AUDIO_SUBDIRS, "sg": ("zh", "zh-slow")}
+ZH_KINDS = ("zh", "zh-slow")
 CACHE_VERSION = 1
 MANIFEST_VERSION = 1
 
@@ -150,16 +165,18 @@ class Clip:
     id: str
     kind: str
     text: str
-    voice: int
+    voice: Union[int, str]   # engine-specific voice id (Kokoro: speaker id)
     speed: float
     silence_ms: int = 0
     lex_sig: str = ""
     pinyin: str = ""   # Mandarin clips only: source of the content-driven lexicon (not hashed itself)
+    audio_dir: str = "audio"     # output folder of the accent set: audio | audio-sg
+    engine_id: str = ""          # Mandarin clips: ZhEngine.cache_id ("" = legacy Kokoro v1.1)
 
     @property
     def rel_path(self) -> str:
         """Manifest path, relative to the repo root (``audio/zh/u01-w01.mp3``)."""
-        return f"audio/{self.kind}/{self.id.replace('.', '_')}.mp3"
+        return f"{self.audio_dir}/{self.kind}/{self.id.replace('.', '_')}.mp3"
 
     @property
     def digest(self) -> str:
@@ -171,9 +188,10 @@ class Clip:
         the extra lexicon rebuilds only the English clips it affects (never Chinese
         ones), and editing one entry rebuilds only clips containing that word.
         """
-        # WHY: Mandarin clips carry the v1.1 model name so they rebuild exactly once when
-        # moving off v1.0; English clips keep the old identity and so their old keys.
-        model = ZH_MODEL_NAME if self.kind in ("zh", "zh-slow") else MODEL_NAME
+        # WHY: Mandarin clips carry the engine identity (ZhEngine.cache_id) so switching engine
+        # rebuilds them; for Kokoro that is the v1.1 model name, i.e. exactly the pre-engine key
+        # (no mass rebuild). English clips keep the old identity and so their old keys.
+        model = (self.engine_id or ZH_MODEL_NAME) if self.kind in ZH_KINDS else MODEL_NAME
         parts = [self.text, self.voice, self.speed, self.silence_ms, PIPELINE_VERSION, model]
         if self.lex_sig:
             parts.append(self.lex_sig)
@@ -399,14 +417,15 @@ def resolve_english(clips: list[Clip], lex: EnglishLexicon) -> tuple[list[Clip],
     return out, oov
 
 
-def item_voice(item_id: str) -> int:
-    """Pick the Mandarin voice for an item, stable across runs and machines.
+def item_voice(item_id: str, voices: Optional[list] = None) -> Union[int, str]:
+    """Pick the Mandarin voice for an item from ``voices`` (default: Kokoro's), stable across runs.
 
     WHY: zlib.crc32 rather than ``hash()`` -- Python randomises str hashes per
     process (PYTHONHASHSEED), which would silently reshuffle voices and
     invalidate the whole cache on every run.
     """
-    return ZH_VOICES[zlib.crc32(item_id.encode("utf-8")) % len(ZH_VOICES)]
+    voices = ZH_VOICES if voices is None else voices
+    return voices[zlib.crc32(item_id.encode("utf-8")) % len(voices)]
 
 
 def load_json(path: Path):
@@ -418,28 +437,32 @@ def load_json(path: Path):
         raise SystemExit(f"error: cannot read {path}: {exc}")
 
 
-def enumerate_clips(content_root: Path) -> list[Clip]:
-    """Return every clip the content requires, in a stable order.
+def enumerate_clips(content_root: Path, accent: str = "cn", engine: Optional[type] = None) -> list[Clip]:
+    """Return every clip the content requires for ``accent``, in a stable order.
 
     Covers ARCHITECTURE section 5: item normal/slow/en, dialogue line
     normal/slow/en, dialogue question en, plus all ``sys.*`` prompts and silences.
+    ``accent="sg"`` returns only the Mandarin clips (normal/slow), written under ``audio-sg/``.
+    ``engine`` supplies the Mandarin voices and the cache identity (no model is loaded).
     Raises SystemExit on a duplicate clip id or malformed content.
     """
+    engine = engine or ZH_ENGINES["kokoro"]  # WHY lazy default: the engine classes are defined further down
+    adir, eid = ACCENT_DIRS[accent], engine.cache_id()
     clips: list[Clip] = []
     index = load_json(content_root / "data" / "units.json")
     for unit_ref in sorted(index["units"], key=lambda u: u.get("order", 0)):
         unit = load_json(content_root / unit_ref["file"])
         for item in unit.get("items", []):
-            iid, voice = item["id"], item_voice(item["id"])
-            clips.append(Clip(iid, "zh", item["hanzi"], voice, NORMAL_SPEED, pinyin=item["pinyin"]))
-            clips.append(Clip(f"{iid}.slow", "zh-slow", item["hanzi"], voice, SLOW_SPEED, pinyin=item["pinyin"]))
+            iid, voice = item["id"], item_voice(item["id"], engine.voices)
+            clips.append(Clip(iid, "zh", item["hanzi"], voice, NORMAL_SPEED, pinyin=item["pinyin"], audio_dir=adir, engine_id=eid))
+            clips.append(Clip(f"{iid}.slow", "zh-slow", item["hanzi"], voice, SLOW_SPEED, pinyin=item["pinyin"], audio_dir=adir, engine_id=eid))
             clips.append(Clip(f"{iid}.en", "en", normalize_english(item["english"]), EN_VOICE, NORMAL_SPEED))
         for dlg in unit.get("dialogues", []):
             did = dlg["id"]
             for n, line in enumerate(dlg.get("lines", []), start=1):
-                voice = DIALOGUE_VOICES[line["speaker"]]
-                clips.append(Clip(f"{did}.l{n}", "zh", line["hanzi"], voice, NORMAL_SPEED, pinyin=line["pinyin"]))
-                clips.append(Clip(f"{did}.l{n}.slow", "zh-slow", line["hanzi"], voice, SLOW_SPEED, pinyin=line["pinyin"]))
+                voice = engine.dialogue_voices[line["speaker"]]
+                clips.append(Clip(f"{did}.l{n}", "zh", line["hanzi"], voice, NORMAL_SPEED, pinyin=line["pinyin"], audio_dir=adir, engine_id=eid))
+                clips.append(Clip(f"{did}.l{n}.slow", "zh-slow", line["hanzi"], voice, SLOW_SPEED, pinyin=line["pinyin"], audio_dir=adir, engine_id=eid))
                 clips.append(Clip(f"{did}.l{n}.en", "en", normalize_english(line["english"]), EN_VOICE, NORMAL_SPEED))
             for n, q in enumerate(dlg.get("questions", []), start=1):
                 clips.append(Clip(f"{did}.q{n}.en", "en", normalize_english(q["question"]), EN_VOICE, NORMAL_SPEED))
@@ -447,6 +470,8 @@ def enumerate_clips(content_root: Path) -> list[Clip]:
         clips.append(Clip(cid, "sys", normalize_english(text), EN_VOICE, NORMAL_SPEED))
     for ms in SILENCE_MS:
         clips.append(Clip(f"sys.silence.{ms}", "sys", "", 0, 1.0, silence_ms=ms))
+    # WHY filter at the end: ids, voices and the duplicate check stay identical for both accents.
+    clips = [c for c in clips if c.kind in ACCENT_KINDS[accent]]
 
     seen: set[str] = set()
     for c in clips:
@@ -471,7 +496,7 @@ def select_clips(clips: list[Clip], only: Optional[str]) -> list[Clip]:
 # ===== Section: Cache and manifest ================================================
 
 def load_cache(path: Path) -> dict:
-    """Load ``audio/.cache.json`` -> ``{clipId: {"hash": ..., "dur": ...}}`` (empty if absent)."""
+    """Load ``<audio_dir>/.cache.json`` -> ``{clipId: {"hash": ..., "dur": ...}}`` (empty if absent)."""
     if not path.exists():
         return {}
     data = load_json(path)
@@ -504,8 +529,11 @@ def audio_duration(path: Path) -> float:
         return round(float(out), 2)
 
 
-def write_manifest(root: Path, required: list[Clip], cache: dict) -> int:
-    """Write ``audio/manifest.json`` listing each required clip that exists on disk.
+def write_manifest(root: Path, required: list[Clip], cache: dict, audio_dir: str = "audio") -> int:
+    """Write ``<audio_dir>/manifest.json`` listing each required clip that exists on disk.
+
+    ``audio_dir`` is ``audio`` (Mainland) or ``audio-sg`` (Singapore). ``src`` paths are
+    always relative to the SITE ROOT (``audio-sg/zh/u01-w01.mp3?v=...``), never to the manifest.
 
     Returns the number of clips listed. ``generatedAt`` is only refreshed when the
     clip table actually changed.
@@ -525,7 +553,7 @@ def write_manifest(root: Path, required: list[Clip], cache: dict) -> int:
         digest = hashlib.sha1(path.read_bytes()).hexdigest()[:10]
         clips[c.id] = {"src": f"{c.rel_path}?v={digest}", "dur": round(dur, 2)}
 
-    mpath = root / "audio" / "manifest.json"
+    mpath = root / audio_dir / "manifest.json"
     generated = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     if mpath.exists():
         try:
@@ -540,6 +568,99 @@ def write_manifest(root: Path, required: list[Clip], cache: dict) -> int:
         json.dumps(manifest, indent=1, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8"
     )
     return len(clips)
+
+
+# ===== Section: Mandarin engines ===================================================
+
+class ZhEngine:
+    """Interface of a Mandarin text-to-speech engine (one subclass per engine).
+
+    Class attributes describe the engine and are readable WITHOUT loading a model
+    (``enumerate_clips`` needs them to pick voices):
+
+    * ``name``       -- short id used by ``--zh-engine`` (``"kokoro"``).
+    * ``model_id``   -- identity of the model/weights (``"kokoro-multi-lang-v1_1"``).
+    * ``voices``     -- voice ids rotated over items (stable per item id, see ``item_voice``).
+    * ``dialogue_voices`` -- ``{"A": voice, "B": voice}`` for dialogue speakers.
+
+    Instances are created once per worker process and load their model lazily on the first
+    ``synth`` call. Subclasses implement ``synth`` (and ``check_model`` / ``prepare`` when needed).
+    To add an engine: subclass, set the attributes, implement ``synth``, add it to ``ZH_ENGINES``.
+    WHY an engine returns raw samples: trimming, loudness, padding and MP3 encoding stay
+    shared (``encode_speech``), so every engine ends up with the same loudness and format.
+    """
+
+    name = "base"
+    model_id = ""
+    voices: list = []
+    dialogue_voices: dict = {}
+
+    def __init__(self, model_dir: str, extra_lexicon: str = "", threads: int = 1):
+        self.model_dir, self.extra_lexicon, self.threads = model_dir, extra_lexicon, threads
+
+    @classmethod
+    def cache_id(cls) -> str:
+        """Engine identity hashed into every clip key (engine name + model)."""
+        return f"{cls.name}:{cls.model_id}"
+
+    @classmethod
+    def check_model(cls, model_dir: Path) -> None:
+        """Raise SystemExit when ``model_dir`` cannot be used (called before building)."""
+
+    @classmethod
+    def prepare(cls, clips: list[Clip], model_dir: Path, workdir: Path) -> tuple[list[Clip], str]:
+        """Engine-specific text preparation. Returns ``(clips, extra_lexicon_path_or_"")``.
+
+        Default: nothing to do. May return clips with ``lex_sig`` set (cache key part) and write
+        helper files into ``workdir`` for the workers (path passed back as the second value).
+        """
+        return clips, ""
+
+    def synth(self, text: str, voice, speed: float):
+        """Synthesize ``text``; return ``(float32 mono samples, sample_rate)``."""
+        raise NotImplementedError
+
+
+class KokoroZhEngine(ZhEngine):
+    """Kokoro multi-lang v1.1 through sherpa-onnx: the Mainland voices (``--zh-engine kokoro``)."""
+
+    name = "kokoro"
+    model_id = ZH_MODEL_NAME
+    voices = ZH_VOICES
+    dialogue_voices = DIALOGUE_VOICES
+
+    @classmethod
+    def cache_id(cls) -> str:
+        # WHY: keep the pre-engine key (the bare model name) so existing audio stays up to date.
+        return ZH_MODEL_NAME
+
+    @classmethod
+    def check_model(cls, model_dir: Path) -> None:
+        if not (model_dir / "model.onnx").exists():
+            raise SystemExit(f"error: no Kokoro model at {model_dir} (see docs/AUDIO.md, 'How to run')")
+
+    @classmethod
+    def prepare(cls, clips: list[Clip], model_dir: Path, workdir: Path) -> tuple[list[Clip], str]:
+        """Content-driven lexicon (neutral tones, 不/一); needs only the model's text files."""
+        if not (model_dir / "lexicon-zh.txt").exists():
+            raise SystemExit(f"error: no Kokoro v1.1 model at {model_dir} (--zh-model-dir; see docs/AUDIO.md)")
+        zh_lex = ZhLexicon.build(model_dir, zh_lexicon.content_lines(clips))
+        for msg in zh_lex.problems:
+            print(f"zh-lexicon: {msg}")
+        extra = zh_lex.write_file(workdir)
+        out = [replace(c, lex_sig=zh_lex.signature(c.text, c.pinyin)) if c.kind in ZH_KINDS else c for c in clips]
+        print(f"zh-lexicon: {zh_lex.stats['entries']} entries ({zh_lex.stats['repaired']} repairs) "
+              f"from {zh_lex.stats['lines']} lines ({zh_lex.stats['unaligned']} unaligned)")
+        return out, str(extra)
+
+    def synth(self, text: str, voice, speed: float):
+        if not hasattr(self, "_tts"):
+            self._tts = load_tts(Path(self.model_dir), self.threads, zh_extra_lexicon=Path(self.extra_lexicon))
+        return synthesize(self._tts, text, voice, speed)
+
+
+# WHY a registry: --zh-engine picks a class by name; a new engine is one class + one entry here.
+ZH_ENGINES: dict[str, type] = {KokoroZhEngine.name: KokoroZhEngine}
 
 
 # ===== Section: TTS engine =========================================================
@@ -658,13 +779,13 @@ def encode_silence(ms: int, out_path: Path) -> None:
                 "-b:a", MP3_BITRATE, str(out_path)])
 
 
-def build_clip(tts, clip: Clip, root: Path) -> float:
-    """Generate one clip file under ``root``; return its duration in seconds."""
+def build_clip(tts: Optional["TtsSet"], clip: Clip, root: Path) -> float:
+    """Generate one clip file under ``root``; return its duration in seconds (``tts`` may be None for silence)."""
     out = root / clip.rel_path
     if clip.silence_ms:
         encode_silence(clip.silence_ms, out)
     else:
-        samples, sr = synthesize(tts, clip.text, clip.voice, clip.speed)
+        samples, sr = tts.synth(clip)
         encode_speech(samples, sr, out)
     return audio_duration(out)
 
@@ -673,17 +794,18 @@ def build_clip(tts, clip: Clip, root: Path) -> float:
 
 @dataclass(frozen=True)
 class TtsPaths:
-    """Where the two models and their generated extras live (picklable, sent to workers)."""
+    """Where the models and their generated extras live (picklable, sent to workers)."""
 
     en_dir: str
     zh_dir: str
     en_extra: str
     zh_extra: str
     threads: int
+    zh_engine: str = "kokoro"
 
 
 class TtsSet:
-    """The two Kokoro models, each loaded the first time a clip needs it.
+    """The English Kokoro model plus the chosen Mandarin engine, each loaded on first use.
 
     WHY lazy: a run that only rebuilds Mandarin (or only English) clips never pays
     for (about 350 MB and several seconds) the other model.
@@ -691,18 +813,19 @@ class TtsSet:
 
     def __init__(self, paths: TtsPaths):
         self.paths = paths
-        self._tts: dict[str, object] = {}
+        self._en = None
+        self._zh: Optional[ZhEngine] = None
 
-    def for_clip(self, clip: Clip):
-        """Return the loaded model for ``clip``: v1.1 for zh/zh-slow, v1.0 otherwise."""
-        lang = "zh" if clip.kind in ("zh", "zh-slow") else "en"
-        if lang not in self._tts:
-            p = self.paths
-            if lang == "zh":
-                self._tts[lang] = load_tts(Path(p.zh_dir), p.threads, zh_extra_lexicon=Path(p.zh_extra))
-            else:
-                self._tts[lang] = load_tts(Path(p.en_dir), p.threads, Path(p.en_extra))
-        return self._tts[lang]
+    def synth(self, clip: Clip):
+        """Synthesize ``clip``: the Mandarin engine for zh/zh-slow, English Kokoro v1.0 otherwise."""
+        p = self.paths
+        if clip.kind in ZH_KINDS:
+            if self._zh is None:
+                self._zh = ZH_ENGINES[p.zh_engine](p.zh_dir, p.zh_extra, p.threads)
+            return self._zh.synth(clip.text, clip.voice, clip.speed)
+        if self._en is None:
+            self._en = load_tts(Path(p.en_dir), p.threads, Path(p.en_extra))
+        return synthesize(self._en, clip.text, clip.voice, clip.speed)
 
 
 _WORKER: dict = {}
@@ -718,7 +841,7 @@ def _worker_run(job: tuple[Clip, str]) -> tuple[str, str, Optional[float], Optio
     clip, root = job
     t0 = time.time()
     try:
-        dur = build_clip(_WORKER["tts"].for_clip(clip), clip, Path(root))
+        dur = build_clip(_WORKER["tts"], clip, Path(root))
         return clip.id, clip.digest, dur, None, time.time() - t0
     except Exception as exc:  # report per clip; keep the batch going
         return clip.id, clip.digest, None, str(exc), time.time() - t0
@@ -730,7 +853,7 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
     """Parse the command line (see the module docstring for examples)."""
     here = Path(__file__).resolve().parent.parent
     p = argparse.ArgumentParser(
-        description="Generate all MP3 clips + audio/manifest.json from the lesson content.")
+        description="Generate all MP3 clips + manifest (audio/ or audio-sg/) from the lesson content.")
     p.add_argument("--root", type=Path, default=here, help="repo root; audio/ is written here (default: inferred)")
     p.add_argument("--content-root", type=Path, default=None,
                    help="folder containing data/units.json (default: --root; use tests/fixtures/content for tests)")
@@ -739,6 +862,11 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
     p.add_argument("--zh-model-dir", type=Path, default=None,
                    help="Kokoro v1.1 model dir for the Mandarin clips "
                         "(default: $AUDIO_ZH_MODEL_DIR or <root>/models/kokoro-multi-lang-v1_1)")
+    p.add_argument("--accent", choices=sorted(ACCENT_DIRS), default="cn",
+                   help="cn = Mainland set in audio/ (Mandarin + English + sys); "
+                        "sg = Singapore Mandarin only, in audio-sg/ (default: cn)")
+    p.add_argument("--zh-engine", choices=sorted(ZH_ENGINES), default="kokoro",
+                   help="Mandarin TTS engine (default: kokoro)")
     p.add_argument("--only", help="comma-separated unit ids or clip-id prefixes, e.g. u01,sys")
     p.add_argument("--limit", type=int, help="build at most N clips (after cache filtering)")
     p.add_argument("--jobs", type=int, default=1, help="worker processes, one TTS model each (default 1)")
@@ -765,15 +893,15 @@ def fmt_time(seconds: float) -> str:
     return f"{seconds // 60}:{seconds % 60:02d}"
 
 
-def prune_stale(root: Path, required: Iterable[Clip], cache: dict, do_delete: bool) -> int:
+def prune_stale(root: Path, required: Iterable[Clip], cache: dict, do_delete: bool, accent: str = "cn") -> int:
     """Find (and with ``do_delete`` remove) mp3 files not referenced by any required clip.
 
     Returns the count found. Cache entries for unknown clips are dropped when deleting.
     """
     keep = {root / c.rel_path for c in required}
     stale = []
-    for sub in AUDIO_SUBDIRS:
-        d = root / "audio" / sub
+    for sub in ACCENT_KINDS[accent]:
+        d = root / ACCENT_DIRS[accent] / sub
         if d.is_dir():
             stale += [f for f in sorted(d.glob("*.mp3")) if f not in keep]
     for f in stale:
@@ -790,36 +918,34 @@ def prune_stale(root: Path, required: Iterable[Clip], cache: dict, do_delete: bo
 def main(argv: Optional[list[str]] = None) -> int:
     """Entry point: enumerate, filter, build, then write cache and manifest."""
     args = parse_args(argv)
-    lex = EnglishLexicon.load(args.model_dir)
-    required, oov = resolve_english(enumerate_clips(args.content_root), lex)
-    # WHY a hard stop: an OOV word is silently dropped from the audio, which is worse
-    # than no clip. Add the word to tools/lexicon-extra-en.txt or fix the content.
-    for word, ids in sorted(oov.items()):
-        print(f"OOV: English word {word!r} is not speakable (in: {', '.join(ids[:4])}"
-              f"{', ...' if len(ids) > 4 else ''})")
-    if args.check_en:
-        n_en = sum(1 for c in required if c.kind in ("en", "sys") and c.text)
-        print(f"check-en: {n_en} English clips, {len(oov)} unresolved word(s), "
-              f"{len(lex.generated)} inflected + {len(lex.manual)} hand-written extra entries")
-        return 1 if oov else 0
-    if oov:
-        print("error: fix the OOV words above first (tools/lexicon-extra-en.txt); nothing was built")
-        return 1
+    accent, audio_dir = args.accent, ACCENT_DIRS[args.accent]
+    engine = ZH_ENGINES[args.zh_engine]
+    required = enumerate_clips(args.content_root, accent, engine)
     extra_dir = tempfile.TemporaryDirectory(prefix="gen_audio_lex_")
     extra_lex = Path(extra_dir.name) / "lexicon-extra-en.txt"
-    lex.write_extra(extra_lex)
-    # Mandarin: content-driven lexicon (neutral tones, 不/一); needs only the zh model's text files.
-    if not (args.zh_model_dir / "lexicon-zh.txt").exists():
-        raise SystemExit(f"error: no Kokoro v1.1 model at {args.zh_model_dir} (--zh-model-dir; see docs/AUDIO.md)")
-    zh_lex = ZhLexicon.build(args.zh_model_dir, zh_lexicon.content_lines(required))
-    for msg in zh_lex.problems:
-        print(f"zh-lexicon: {msg}")
-    zh_extra = zh_lex.write_file(Path(extra_dir.name))
-    required = [replace(c, lex_sig=zh_lex.signature(c.text, c.pinyin)) if c.kind in ("zh", "zh-slow") else c
-                for c in required]
-    print(f"zh-lexicon: {zh_lex.stats['entries']} entries ({zh_lex.stats['repaired']} repairs) "
-          f"from {zh_lex.stats['lines']} lines ({zh_lex.stats['unaligned']} unaligned)")
-    cache_path = args.root / "audio" / ".cache.json"
+    if accent == "cn":
+        lex = EnglishLexicon.load(args.model_dir)
+        required, oov = resolve_english(required, lex)
+        # WHY a hard stop: an OOV word is silently dropped from the audio, which is worse
+        # than no clip. Add the word to tools/lexicon-extra-en.txt or fix the content.
+        for word, ids in sorted(oov.items()):
+            print(f"OOV: English word {word!r} is not speakable (in: {', '.join(ids[:4])}"
+                  f"{', ...' if len(ids) > 4 else ''})")
+        if args.check_en:
+            n_en = sum(1 for c in required if c.kind in ("en", "sys") and c.text)
+            print(f"check-en: {n_en} English clips, {len(oov)} unresolved word(s), "
+                  f"{len(lex.generated)} inflected + {len(lex.manual)} hand-written extra entries")
+            return 1 if oov else 0
+        if oov:
+            print("error: fix the OOV words above first (tools/lexicon-extra-en.txt); nothing was built")
+            return 1
+        lex.write_extra(extra_lex)
+    elif args.check_en:
+        raise SystemExit("error: --check-en checks English clips, which only exist with --accent cn")
+    # WHY: the Singapore set has no English/sys clips, so it never loads the English lexicon or model.
+    # Mandarin: engine-specific preparation (Kokoro: content-driven lexicon for neutral tones, 不/一).
+    required, zh_extra = engine.prepare(required, args.zh_model_dir, Path(extra_dir.name))
+    cache_path = args.root / audio_dir / ".cache.json"
     cache = load_cache(cache_path)
 
     def up_to_date(c: Clip) -> bool:
@@ -839,9 +965,9 @@ def main(argv: Optional[list[str]] = None) -> int:
         return 0
 
     if args.prune:
-        prune_stale(args.root, required, cache, True)
+        prune_stale(args.root, required, cache, True, accent)
     else:
-        n = prune_stale(args.root, required, cache, False)
+        n = prune_stale(args.root, required, cache, False, accent)
         if n:
             print(f"note: {n} stale file(s) on disk")
 
@@ -858,10 +984,11 @@ def main(argv: Optional[list[str]] = None) -> int:
             else:
                 speech.append(c)
         total, done, t_start, busy = len(todo), len(todo) - len(speech), time.time(), 0.0
-        for needed, kinds in ((args.model_dir, ("en", "sys")), (args.zh_model_dir, ("zh", "zh-slow"))):
-            if any(c.kind in kinds for c in speech) and not (needed / "model.onnx").exists():
-                raise SystemExit(f"error: no Kokoro model at {needed} (see docs/AUDIO.md, 'How to run')")
-        paths = TtsPaths(str(args.model_dir), str(args.zh_model_dir), str(extra_lex), str(zh_extra), 1)
+        if any(c.kind in ("en", "sys") for c in speech) and not (args.model_dir / "model.onnx").exists():
+            raise SystemExit(f"error: no Kokoro model at {args.model_dir} (see docs/AUDIO.md, 'How to run')")
+        if any(c.kind in ZH_KINDS for c in speech):
+            engine.check_model(args.zh_model_dir)
+        paths = TtsPaths(str(args.model_dir), str(args.zh_model_dir), str(extra_lex), zh_extra, 1, args.zh_engine)
 
         def report(cid: str, err: Optional[str], secs: float) -> None:
             """Print one progress line with elapsed time and ETA."""
@@ -879,7 +1006,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                 for c in speech:
                     t0 = time.time()
                     try:
-                        cache[c.id] = {"hash": c.digest, "dur": build_clip(tts.for_clip(c), c, args.root)}
+                        cache[c.id] = {"hash": c.digest, "dur": build_clip(tts, c, args.root)}
                         report(c.id, None, time.time() - t0)
                     except Exception as exc:
                         failures.append((c.id, str(exc)))
@@ -911,8 +1038,8 @@ def main(argv: Optional[list[str]] = None) -> int:
     for cid in [k for k in cache if k in {c.id for c in required} and k not in on_disk]:
         del cache[cid]
     save_cache(cache_path, cache)
-    n = write_manifest(args.root, required, cache)
-    print(f"manifest: {n}/{len(required)} required clips on disk -> audio/manifest.json")
+    n = write_manifest(args.root, required, cache, audio_dir)
+    print(f"manifest: {n}/{len(required)} required clips on disk -> {audio_dir}/manifest.json")
     if failures:
         print(f"{len(failures)} clip(s) FAILED:")
         for cid, err in failures:
