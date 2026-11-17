@@ -17,7 +17,7 @@
  *     `ting-audio-v1` (kept across releases: clips are large and rarely change).
  *   - Network-first for html/js/css/json, so updates arrive when online, with the
  *     cache as the offline fallback.
- *   - Cache-first for audio/. WHY range handling: media elements request audio
+ *   - Cache-first for audio/ and audio-sg/ (the two accent sets). WHY range handling: media elements request audio
  *     with `Range` headers; a cached full response must be answered with a 206
  *     slice or Chrome may refuse to play/seek it.
  *   - Bump VERSION on every release that changes the shell file list (and keep
@@ -30,7 +30,7 @@
 // ===== Section: Config =====
 
 /** Bump to force clients to re-download the app shell. */
-const VERSION = "1";
+const VERSION = "2";
 const SHELL_CACHE = `ting-shell-v${VERSION}`;
 const AUDIO_CACHE = "ting-audio-v1";
 
@@ -43,6 +43,7 @@ const SHELL_FILES = [
   "js/main.js",
   "js/router.js",
   "js/data/loader.js",
+  "js/data/clips.js",
   "js/audio/player.js",
   "js/audio/sfx.js",
   "js/audio/offline.js",
@@ -69,6 +70,9 @@ const SHELL_FILES = [
   "data/units.json",
 ];
 
+/** Optional audio manifests (Mainland set, Singapore set), precached when they exist. */
+const AUDIO_MANIFESTS = ["audio/manifest.json", "audio-sg/manifest.json"];
+
 // ===== Section: Install / activate =====
 
 self.addEventListener("install", (event) => {
@@ -80,6 +84,9 @@ self.addEventListener("install", (event) => {
       const index = await (await cache.match("data/units.json")).json();
       await Promise.all((index.units || []).map((u) => cache.add(u.file).catch(() => {})));
     } catch { /* lessons will be cached on first use instead */ }
+    // WHY best effort: both audio manifests are optional (audio-sg/ 404s until generated), so
+    // they must not go through addAll; with them cached the app starts offline with its voices.
+    await Promise.all(AUDIO_MANIFESTS.map((u) => cache.add(u).catch(() => {})));
     await self.skipWaiting();
   })());
 });
@@ -95,7 +102,10 @@ self.addEventListener("activate", (event) => {
 // ===== Section: Fetch strategies =====
 
 /** Is this an audio clip request? */
-const isAudio = (url) => /\/audio\/.+\.(mp3|ogg|wav|m4a)$/i.test(url.pathname);
+// WHY (audio-sg): the Singapore Mandarin set lives beside audio/ (ARCHITECTURE §5) and is
+// cached the same way. The manifests (audio/manifest.json, audio-sg/manifest.json) end in
+// .json, so they are not matched here and stay network-first.
+const isAudio = (url) => /\/audio(-sg)?\/.+\.(mp3|ogg|wav|m4a)$/i.test(url.pathname);
 
 /**
  * Answer a (possibly ranged) request from a full cached response.
@@ -159,7 +169,7 @@ self.addEventListener("fetch", (event) => {
   if (request.method !== "GET") return;
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
-  // audio/manifest.json is JSON: it must stay fresh, so it goes network-first.
+  // audio/manifest.json and audio-sg/manifest.json are JSON: they must stay fresh, so they go network-first.
   event.respondWith(isAudio(url) ? audioFirst(request) : networkFirst(request));
 });
 

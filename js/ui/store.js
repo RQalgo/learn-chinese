@@ -2,7 +2,7 @@
  * store.js — the one mutable app state shared by all screens.
  *
  * Purpose
- *   Holds the loaded curriculum, audio manifest data and the current progress
+ *   Holds the loaded curriculum, audio clip table and the current progress
  *   blob, and is the single place that saves progress. The engine and
  *   state/progress.js are pure and return NEW blobs; screens hand those to
  *   commit() so persistence and settings side effects cannot be forgotten.
@@ -14,6 +14,11 @@
  *   This file is UI-side glue; it is not part of the engine layer.
  *
  * Key concepts
+ *   - `store.clips` / `store.durations` are the EFFECTIVE clip table for the
+ *     Mandarin accent in settings (data/clips.js). They are recomputed when
+ *     `settings.accent` changes (no reload) and subscribers are told through
+ *     onClipsChange() so the player can be re-pointed. `store.accent` is the
+ *     accent really in use ("cn" while no Singapore clips exist).
  *   - `store.progress` is always the latest blob; never keep a stale copy in a
  *     screen across an await/answer.
  *   - Settings live inside progress.settings (so they travel with backups).
@@ -21,25 +26,35 @@
  *     stored there too; storage.js preserves unknown keys.
  *
  * Public API
- *   APP_VERSION, store, initStore(), commit(), setProgress(), updateSettings(),
- *   getSetting(), newRng(), pinyinMode()
+ *   APP_VERSION, store, initStore(), onClipsChange(), commit(), setProgress(),
+ *   updateSettings(), getSetting(), newRng(), pinyinMode()
  */
 
 import { loadProgress, saveProgress } from "../state/storage.js";
 import { checkUnlocks } from "../state/progress.js";
+import { effectiveClips } from "../data/clips.js";
 import { makeRng } from "../engine/rng.js";
 import { setSfxEnabled } from "../audio/sfx.js";
 
 // ===== Section: State =====
 
 /** App version shown in Settings. Keep in step with VERSION in sw.js when releasing. */
-export const APP_VERSION = "1.0.0";
+export const APP_VERSION = "1.1.0";
 
 /**
  * @type {{curriculum: Object|null, clips: Object, durations: Object<string,number>,
- *         audioAvailable: boolean, progress: Object|null}}
+ *         audioAvailable: boolean, accent: "sg"|"cn", sgAvailable: boolean,
+ *         manifests: {cn: Object|null, sg: Object|null}, progress: Object|null}}
  */
-export const store = { curriculum: null, clips: {}, durations: {}, audioAvailable: false, progress: null };
+export const store = {
+  curriculum: null, clips: {}, durations: {}, audioAvailable: false,
+  accent: "cn", sgAvailable: false, manifests: { cn: null, sg: null }, progress: null,
+};
+
+/** Subscribers called after the effective clip table changed. @type {Set<() => void>} */
+const clipListeners = new Set();
+/** The requested accent the current table was built for (to skip needless rebuilds). */
+let builtFor = null;
 
 /** Defaults for UI-only settings that progress.js does not know about. */
 const UI_DEFAULTS = { autoAdvance: true };
@@ -47,14 +62,37 @@ const UI_DEFAULTS = { autoAdvance: true };
 // ===== Section: Init and persistence =====
 
 /**
- * Initialise the store from the loader result and saved progress.
- * @param {{curriculum: Object, clips: Object, durations: Object<string,number>}} content
+ * Rebuild store.clips / durations for the accent in settings and notify subscribers.
+ * No-op when the requested accent is unchanged since the last build.
  */
-export function initStore({ curriculum, clips, durations }) {
+function refreshClips() {
+  const want = store.progress.settings.accent;
+  if (want === builtFor) return;
+  builtFor = want;
+  // WHY: anything but "cn" means the default, "sg" (storage.js already repairs bad values).
+  const r = effectiveClips(store.manifests.cn, store.manifests.sg, want === "cn" ? "cn" : "sg");
+  store.clips = r.clips;
+  store.durations = r.durations;
+  store.accent = r.accent;
+  store.sgAvailable = r.sgAvailable;
+  store.audioAvailable = Object.keys(r.clips).length > 0;
+  clipListeners.forEach((cb) => cb());
+}
+
+/**
+ * Subscribe to effective-clip-table changes (accent switched).
+ * @param {() => void} cb
+ * @returns {() => void} Unsubscribe.
+ */
+export function onClipsChange(cb) { clipListeners.add(cb); return () => clipListeners.delete(cb); }
+
+/**
+ * Initialise the store from the loader result and saved progress.
+ * @param {{curriculum: Object, manifests: {cn: Object|null, sg: Object|null}}} content
+ */
+export function initStore({ curriculum, manifests }) {
   store.curriculum = curriculum;
-  store.clips = clips;
-  store.durations = durations;
-  store.audioAvailable = Object.keys(clips).length > 0;
+  store.manifests = manifests;
   let p = loadProgress(undefined, Date.now());
   // WHY: repair `unlocked` against the real curriculum (first unit always open,
   // units whose predecessor reached 70 % open) in case content changed.
@@ -69,6 +107,7 @@ export function initStore({ curriculum, clips, durations }) {
 export function setProgress(progress) {
   store.progress = progress;
   saveProgress(progress);
+  refreshClips();
   setSfxEnabled(progress.settings.sfx !== false);
 }
 

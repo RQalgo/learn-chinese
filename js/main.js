@@ -20,7 +20,7 @@
  */
 
 import { loadContent } from "./data/loader.js";
-import { initStore, store } from "./ui/store.js";
+import { initStore, onClipsChange, store } from "./ui/store.js";
 import { configurePlayer, stop as stopAudio, clearMediaSession } from "./audio/player.js";
 import { route, startRouter } from "./router.js";
 import { h, icon, clear } from "./ui/dom.js";
@@ -95,6 +95,8 @@ async function boot() {
   }
   initStore(content);
   configurePlayer({ clips: store.clips, curriculum: store.curriculum });
+  // WHY: switching the Mandarin accent in Settings swaps the clip table without a reload.
+  onClipsChange(() => configurePlayer({ clips: store.clips, curriculum: store.curriculum }));
 
   buildTabbar(document.getElementById("tabbar"));
   route("/home", home.render, { tab: "home" });
