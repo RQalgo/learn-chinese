@@ -1,0 +1,370 @@
+{
+  "id": "u18",
+  "title": "Feelings & opinions",
+  "items": [
+    {
+      "id": "u18-w01",
+      "type": "word",
+      "hanzi": "高兴",
+      "pinyin": "gāoxìng",
+      "english": "happy",
+      "alt": [
+        "glad"
+      ]
+    },
+    {
+      "id": "u18-w02",
+      "type": "word",
+      "hanzi": "累",
+      "pinyin": "lèi",
+      "english": "tired"
+    },
+    {
+      "id": "u18-w03",
+      "type": "word",
+      "hanzi": "难过",
+      "pinyin": "nánguò",
+      "english": "sad"
+    },
+    {
+      "id": "u18-w04",
+      "type": "word",
+      "hanzi": "生气",
+      "pinyin": "shēngqì",
+      "english": "angry",
+      "alt": [
+        "to be angry"
+      ]
+    },
+    {
+      "id": "u18-w05",
+      "type": "word",
+      "hanzi": "担心",
+      "pinyin": "dānxīn",
+      "english": "worried",
+      "alt": [
+        "to worry"
+      ]
+    },
+    {
+      "id": "u18-w06",
+      "type": "word",
+      "hanzi": "害怕",
+      "pinyin": "hàipà",
+      "english": "afraid",
+      "alt": [
+        "scared"
+      ]
+    },
+    {
+      "id": "u18-w07",
+      "type": "word",
+      "hanzi": "紧张",
+      "pinyin": "jǐnzhāng",
+      "english": "nervous"
+    },
+    {
+      "id": "u18-w08",
+      "type": "word",
+      "hanzi": "无聊",
+      "pinyin": "wúliáo",
+      "english": "bored",
+      "alt": [
+        "boring"
+      ]
+    },
+    {
+      "id": "u18-w09",
+      "type": "word",
+      "hanzi": "笑",
+      "pinyin": "xiào",
+      "english": "to laugh",
+      "alt": [
+        "to smile"
+      ]
+    },
+    {
+      "id": "u18-w10",
+      "type": "word",
+      "hanzi": "觉得",
+      "pinyin": "juéde",
+      "english": "to think / to feel"
+    },
+    {
+      "id": "u18-w11",
+      "type": "word",
+      "hanzi": "同意",
+      "pinyin": "tóngyì",
+      "english": "to agree"
+    },
+    {
+      "id": "u18-w12",
+      "type": "word",
+      "hanzi": "意见",
+      "pinyin": "yìjiàn",
+      "english": "opinion",
+      "alt": [
+        "view"
+      ]
+    },
+    {
+      "id": "u18-p01",
+      "type": "phrase",
+      "hanzi": "太累了",
+      "pinyin": "tài lèi le",
+      "english": "so tired!"
+    },
+    {
+      "id": "u18-p02",
+      "type": "phrase",
+      "hanzi": "别担心",
+      "pinyin": "bié dānxīn",
+      "english": "don't worry"
+    },
+    {
+      "id": "u18-p03",
+      "type": "phrase",
+      "hanzi": "有意思",
+      "pinyin": "yǒu yìsi",
+      "english": "interesting",
+      "alt": [
+        "fun"
+      ]
+    },
+    {
+      "id": "u18-p04",
+      "type": "phrase",
+      "hanzi": "没意思",
+      "pinyin": "méi yìsi",
+      "english": "not interesting",
+      "alt": [
+        "dull",
+        "boring"
+      ]
+    },
+    {
+      "id": "u18-p05",
+      "type": "phrase",
+      "hanzi": "怎么样",
+      "pinyin": "zěnmeyàng",
+      "english": "how is it?",
+      "alt": [
+        "how about it?"
+      ]
+    },
+    {
+      "id": "u18-p06",
+      "type": "phrase",
+      "hanzi": "太好了",
+      "pinyin": "tài hǎo le",
+      "english": "that's great!"
+    },
+    {
+      "id": "u18-p07",
+      "type": "phrase",
+      "hanzi": "我同意",
+      "pinyin": "wǒ tóngyì",
+      "english": "I agree"
+    },
+    {
+      "id": "u18-p08",
+      "type": "phrase",
+      "hanzi": "我觉得",
+      "pinyin": "wǒ juéde",
+      "english": "I think",
+      "alt": [
+        "I feel"
+      ]
+    },
+    {
+      "id": "u18-s01",
+      "type": "sentence",
+      "hanzi": "我今天很高兴。",
+      "pinyin": "Wǒ jīntiān hěn gāoxìng.",
+      "english": "I'm very happy today."
+    },
+    {
+      "id": "u18-s02",
+      "type": "sentence",
+      "hanzi": "他不太高兴。",
+      "pinyin": "Tā bú tài gāoxìng.",
+      "english": "He's not very happy."
+    },
+    {
+      "id": "u18-s03",
+      "type": "sentence",
+      "hanzi": "这个电影太无聊了。",
+      "pinyin": "Zhège diànyǐng tài wúliáo le.",
+      "english": "This film is too boring."
+    },
+    {
+      "id": "u18-s04",
+      "type": "sentence",
+      "hanzi": "明天要开会，我有点儿紧张。",
+      "pinyin": "Míngtiān yào kāihuì, wǒ yǒudiǎnr jǐnzhāng.",
+      "english": "I have a meeting tomorrow and I'm a bit nervous."
+    },
+    {
+      "id": "u18-s05",
+      "type": "sentence",
+      "hanzi": "我觉得中文很有意思。",
+      "pinyin": "Wǒ juéde Zhōngwén hěn yǒu yìsi.",
+      "english": "I think Chinese is very interesting."
+    },
+    {
+      "id": "u18-s06",
+      "type": "sentence",
+      "hanzi": "你觉得这家饭馆怎么样？",
+      "pinyin": "Nǐ juéde zhè jiā fànguǎn zěnmeyàng?",
+      "english": "What do you think of this restaurant?"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u18-d01",
+      "title": "A bad day",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你怎么了？不高兴吗？",
+          "pinyin": "Nǐ zěnme le? Bù gāoxìng ma?",
+          "english": "What's wrong? Are you unhappy?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "对，我今天很累，老板还生气了。",
+          "pinyin": "Duì, wǒ jīntiān hěn lèi, lǎobǎn hái shēngqì le.",
+          "english": "Yes. I'm very tired today and the boss got angry too."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "为什么？",
+          "pinyin": "Wèishénme?",
+          "english": "Why?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "因为我的工作没做好。",
+          "pinyin": "Yīnwèi wǒ de gōngzuò méi zuò hǎo.",
+          "english": "Because my work wasn't done well."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "别难过，明天会好的。",
+          "pinyin": "Bié nánguò, míngtiān huì hǎo de.",
+          "english": "Don't be sad. Tomorrow will be better."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "谢谢你。我们去吃饭吧？",
+          "pinyin": "Xièxie nǐ. Wǒmen qù chī fàn ba?",
+          "english": "Thank you. Shall we go eat?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "太好了！我想吃面。",
+          "pinyin": "Tài hǎo le! Wǒ xiǎng chī miàn.",
+          "english": "Great! I want to eat noodles."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u18-d01-q1",
+          "question": "Why was the boss angry?",
+          "answer": "B's work was not done well",
+          "distractors": [
+            "B was late",
+            "B lost his phone",
+            "B skipped the meeting"
+          ]
+        },
+        {
+          "id": "u18-d01-q2",
+          "question": "What do they decide to do?",
+          "answer": "Go and eat",
+          "distractors": [
+            "Go home to sleep",
+            "Go to see a film",
+            "Go back to the office"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u18-d02",
+      "title": "Talking about a film",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "昨天的电影你觉得怎么样？",
+          "pinyin": "Zuótiān de diànyǐng nǐ juéde zěnmeyàng?",
+          "english": "What did you think of yesterday's film?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我觉得有点儿无聊，太长了。",
+          "pinyin": "Wǒ juéde yǒudiǎnr wúliáo, tài cháng le.",
+          "english": "I thought it was a bit boring, too long."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "是吗？我觉得很有意思。",
+          "pinyin": "Shì ma? Wǒ juéde hěn yǒu yìsi.",
+          "english": "Really? I thought it was very interesting."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "你为什么觉得有意思？",
+          "pinyin": "Nǐ wèishénme juéde yǒu yìsi?",
+          "english": "Why did you find it interesting?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我很喜欢那个电影的音乐。",
+          "pinyin": "Wǒ hěn xǐhuan nàge diànyǐng de yīnyuè.",
+          "english": "I really like the music in that film."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "音乐我同意，音乐很好听。",
+          "pinyin": "Yīnyuè wǒ tóngyì, yīnyuè hěn hǎotīng.",
+          "english": "I agree about the music. It sounds great."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "下次我们再一起去看吧！",
+          "pinyin": "Xià cì wǒmen zài yìqǐ qù kàn ba!",
+          "english": "Let's go and watch one together again next time!"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好啊，不过这次我选。",
+          "pinyin": "Hǎo a, búguò zhè cì wǒ xuǎn.",
+          "english": "Sure, but this time I'll choose."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u18-d02-q1",
+          "question": "What does B think of the film?",
+          "answer": "A bit boring and too long",
+          "distractors": [
+            "Very interesting",
+            "Too scary",
+            "Too short"
+          ]
+        },
+        {
+          "id": "u18-d02-q2",
+          "question": "What does A like about the film?",
+          "answer": "The music",
+          "distractors": [
+            "The actors",
+            "The story",
+            "The cinema seats"
+          ]
+        }
+      ]
+    }
+  ]
+}

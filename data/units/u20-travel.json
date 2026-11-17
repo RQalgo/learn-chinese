@@ -1,0 +1,366 @@
+{
+  "id": "u20",
+  "title": "Travel & hotel",
+  "items": [
+    {
+      "id": "u20-w01",
+      "type": "word",
+      "hanzi": "机场",
+      "pinyin": "jīchǎng",
+      "english": "airport"
+    },
+    {
+      "id": "u20-w02",
+      "type": "word",
+      "hanzi": "护照",
+      "pinyin": "hùzhào",
+      "english": "passport"
+    },
+    {
+      "id": "u20-w03",
+      "type": "word",
+      "hanzi": "飞机",
+      "pinyin": "fēijī",
+      "english": "plane",
+      "alt": [
+        "aeroplane"
+      ]
+    },
+    {
+      "id": "u20-w04",
+      "type": "word",
+      "hanzi": "机票",
+      "pinyin": "jīpiào",
+      "english": "flight ticket",
+      "alt": [
+        "plane ticket"
+      ]
+    },
+    {
+      "id": "u20-w05",
+      "type": "word",
+      "hanzi": "行李",
+      "pinyin": "xíngli",
+      "english": "luggage",
+      "alt": [
+        "baggage"
+      ]
+    },
+    {
+      "id": "u20-w06",
+      "type": "word",
+      "hanzi": "旅游",
+      "pinyin": "lǚyóu",
+      "english": "to travel",
+      "alt": [
+        "to go sightseeing"
+      ]
+    },
+    {
+      "id": "u20-w07",
+      "type": "word",
+      "hanzi": "酒店",
+      "pinyin": "jiǔdiàn",
+      "english": "hotel"
+    },
+    {
+      "id": "u20-w08",
+      "type": "word",
+      "hanzi": "房间",
+      "pinyin": "fángjiān",
+      "english": "room"
+    },
+    {
+      "id": "u20-w09",
+      "type": "word",
+      "hanzi": "钥匙",
+      "pinyin": "yàoshi",
+      "english": "key"
+    },
+    {
+      "id": "u20-w10",
+      "type": "word",
+      "hanzi": "地图",
+      "pinyin": "dìtú",
+      "english": "map"
+    },
+    {
+      "id": "u20-w11",
+      "type": "word",
+      "hanzi": "照片",
+      "pinyin": "zhàopiàn",
+      "english": "photo",
+      "alt": [
+        "picture"
+      ]
+    },
+    {
+      "id": "u20-w12",
+      "type": "word",
+      "hanzi": "签证",
+      "pinyin": "qiānzhèng",
+      "english": "visa"
+    },
+    {
+      "id": "u20-p01",
+      "type": "phrase",
+      "hanzi": "去旅游",
+      "pinyin": "qù lǚyóu",
+      "english": "to go on a trip"
+    },
+    {
+      "id": "u20-p02",
+      "type": "phrase",
+      "hanzi": "预订房间",
+      "pinyin": "yùdìng fángjiān",
+      "english": "to book a room",
+      "alt": [
+        "to reserve a room"
+      ]
+    },
+    {
+      "id": "u20-p03",
+      "type": "phrase",
+      "hanzi": "有空房吗",
+      "pinyin": "yǒu kòngfáng ma",
+      "english": "any rooms available?",
+      "alt": [
+        "do you have a vacant room?"
+      ]
+    },
+    {
+      "id": "u20-p04",
+      "type": "phrase",
+      "hanzi": "单人房",
+      "pinyin": "dānrénfáng",
+      "english": "single room"
+    },
+    {
+      "id": "u20-p05",
+      "type": "phrase",
+      "hanzi": "双人房",
+      "pinyin": "shuāngrénfáng",
+      "english": "double room"
+    },
+    {
+      "id": "u20-p06",
+      "type": "phrase",
+      "hanzi": "住几天",
+      "pinyin": "zhù jǐ tiān",
+      "english": "how many days to stay"
+    },
+    {
+      "id": "u20-p07",
+      "type": "phrase",
+      "hanzi": "退房",
+      "pinyin": "tuìfáng",
+      "english": "to check out"
+    },
+    {
+      "id": "u20-p08",
+      "type": "phrase",
+      "hanzi": "一路平安",
+      "pinyin": "yílù píng'ān",
+      "english": "have a safe trip",
+      "alt": [
+        "bon voyage"
+      ]
+    },
+    {
+      "id": "u20-s01",
+      "type": "sentence",
+      "hanzi": "我的护照在哪儿？",
+      "pinyin": "Wǒ de hùzhào zài nǎr?",
+      "english": "Where is my passport?"
+    },
+    {
+      "id": "u20-s02",
+      "type": "sentence",
+      "hanzi": "我想去北京旅游。",
+      "pinyin": "Wǒ xiǎng qù Běijīng lǚyóu.",
+      "english": "I want to travel to Beijing."
+    },
+    {
+      "id": "u20-s03",
+      "type": "sentence",
+      "hanzi": "我已经预订了酒店。",
+      "pinyin": "Wǒ yǐjīng yùdìng le jiǔdiàn.",
+      "english": "I have already booked the hotel."
+    },
+    {
+      "id": "u20-s04",
+      "type": "sentence",
+      "hanzi": "飞机三点半起飞。",
+      "pinyin": "Fēijī sān diǎn bàn qǐfēi.",
+      "english": "The plane takes off at three thirty."
+    },
+    {
+      "id": "u20-s05",
+      "type": "sentence",
+      "hanzi": "请给我一个双人房。",
+      "pinyin": "Qǐng gěi wǒ yí gè shuāngrénfáng.",
+      "english": "Please give me a double room."
+    },
+    {
+      "id": "u20-s06",
+      "type": "sentence",
+      "hanzi": "你的房间在五楼，这是钥匙。",
+      "pinyin": "Nǐ de fángjiān zài wǔ lóu, zhè shì yàoshi.",
+      "english": "Your room is on the fifth floor. Here is the key."
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u20-d01",
+      "title": "Hotel check-in",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "您好，欢迎光临。",
+          "pinyin": "Nín hǎo, huānyíng guānglín.",
+          "english": "Hello, welcome."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "你好，我预订了一个房间，我姓王。",
+          "pinyin": "Nǐ hǎo, wǒ yùdìng le yí gè fángjiān, wǒ xìng Wáng.",
+          "english": "Hello, I booked a room. My surname is Wang."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "好的，王先生，请给我您的护照。",
+          "pinyin": "Hǎo de, Wáng xiānsheng, qǐng gěi wǒ nín de hùzhào.",
+          "english": "OK, Mr Wang, please give me your passport."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "给你。",
+          "pinyin": "Gěi nǐ.",
+          "english": "Here you are."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "您订了单人房，住三天，对吗？",
+          "pinyin": "Nín dìng le dānrénfáng, zhù sān tiān, duì ma?",
+          "english": "You booked a single room for three days, right?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "对。早饭几点开始？",
+          "pinyin": "Duì. Zǎofàn jǐ diǎn kāishǐ?",
+          "english": "Right. What time does breakfast start?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "早上七点到十点。房间在八楼，这是钥匙。",
+          "pinyin": "Zǎoshang qī diǎn dào shí diǎn. Fángjiān zài bā lóu, zhè shì yàoshi.",
+          "english": "From seven to ten in the morning. The room is on the eighth floor. Here is the key."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "谢谢！",
+          "pinyin": "Xièxie!",
+          "english": "Thank you!"
+        }
+      ],
+      "questions": [
+        {
+          "id": "u20-d01-q1",
+          "question": "What kind of room did B book?",
+          "answer": "A single room",
+          "distractors": [
+            "A double room",
+            "A family suite",
+            "A room with a sea view"
+          ]
+        },
+        {
+          "id": "u20-d01-q2",
+          "question": "Which floor is the room on?",
+          "answer": "The eighth floor",
+          "distractors": [
+            "The third floor",
+            "The fifth floor",
+            "The tenth floor"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u20-d02",
+      "title": "Planning a trip",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "今年你想去哪儿旅游？",
+          "pinyin": "Jīnnián nǐ xiǎng qù nǎr lǚyóu?",
+          "english": "Where do you want to travel this year?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我想去上海，机票已经买了。",
+          "pinyin": "Wǒ xiǎng qù Shànghǎi, jīpiào yǐjīng mǎi le.",
+          "english": "I want to go to Shanghai. I've already bought the ticket."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "几号的飞机？",
+          "pinyin": "Jǐ hào de fēijī?",
+          "english": "Which date is the flight?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "十二号早上八点的。",
+          "pinyin": "Shí'èr hào zǎoshang bā diǎn de.",
+          "english": "The twelfth, at eight in the morning."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你有签证吗？",
+          "pinyin": "Nǐ yǒu qiānzhèng ma?",
+          "english": "Do you have a visa?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "有，我已经办好了。",
+          "pinyin": "Yǒu, wǒ yǐjīng bàn hǎo le.",
+          "english": "Yes, I've already arranged it."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "酒店订了吗？",
+          "pinyin": "Jiǔdiàn dìng le ma?",
+          "english": "Have you booked a hotel?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "订了，住五天。你也去吗？",
+          "pinyin": "Dìng le, zhù wǔ tiān. Nǐ yě qù ma?",
+          "english": "Yes, for five days. Are you going too?"
+        }
+      ],
+      "questions": [
+        {
+          "id": "u20-d02-q1",
+          "question": "Where does B want to go?",
+          "answer": "Shanghai",
+          "distractors": [
+            "Beijing",
+            "Japan",
+            "Taipei"
+          ]
+        },
+        {
+          "id": "u20-d02-q2",
+          "question": "How many days will B stay at the hotel?",
+          "answer": "Five days",
+          "distractors": [
+            "Three days",
+            "Seven days",
+            "Two weeks"
+          ]
+        }
+      ]
+    }
+  ]
+}

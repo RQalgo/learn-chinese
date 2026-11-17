@@ -1,0 +1,364 @@
+{
+  "id": "u17",
+  "title": "Health & body",
+  "items": [
+    {
+      "id": "u17-w01",
+      "type": "word",
+      "hanzi": "头",
+      "pinyin": "tóu",
+      "english": "head"
+    },
+    {
+      "id": "u17-w02",
+      "type": "word",
+      "hanzi": "手",
+      "pinyin": "shǒu",
+      "english": "hand"
+    },
+    {
+      "id": "u17-w03",
+      "type": "word",
+      "hanzi": "眼睛",
+      "pinyin": "yǎnjing",
+      "english": "eyes"
+    },
+    {
+      "id": "u17-w04",
+      "type": "word",
+      "hanzi": "肚子",
+      "pinyin": "dùzi",
+      "english": "stomach",
+      "alt": [
+        "belly"
+      ]
+    },
+    {
+      "id": "u17-w05",
+      "type": "word",
+      "hanzi": "疼",
+      "pinyin": "téng",
+      "english": "to hurt",
+      "alt": [
+        "to ache"
+      ]
+    },
+    {
+      "id": "u17-w06",
+      "type": "word",
+      "hanzi": "药",
+      "pinyin": "yào",
+      "english": "medicine"
+    },
+    {
+      "id": "u17-w07",
+      "type": "word",
+      "hanzi": "医生",
+      "pinyin": "yīshēng",
+      "english": "doctor"
+    },
+    {
+      "id": "u17-w08",
+      "type": "word",
+      "hanzi": "病",
+      "pinyin": "bìng",
+      "english": "illness",
+      "alt": [
+        "disease"
+      ]
+    },
+    {
+      "id": "u17-w09",
+      "type": "word",
+      "hanzi": "感冒",
+      "pinyin": "gǎnmào",
+      "english": "a cold",
+      "alt": [
+        "to catch a cold"
+      ]
+    },
+    {
+      "id": "u17-w10",
+      "type": "word",
+      "hanzi": "发烧",
+      "pinyin": "fāshāo",
+      "english": "to have a fever",
+      "alt": [
+        "fever"
+      ]
+    },
+    {
+      "id": "u17-w11",
+      "type": "word",
+      "hanzi": "咳嗽",
+      "pinyin": "késou",
+      "english": "to cough",
+      "alt": [
+        "cough"
+      ]
+    },
+    {
+      "id": "u17-w12",
+      "type": "word",
+      "hanzi": "休息",
+      "pinyin": "xiūxi",
+      "english": "to rest"
+    },
+    {
+      "id": "u17-p01",
+      "type": "phrase",
+      "hanzi": "头疼",
+      "pinyin": "tóu téng",
+      "english": "to have a headache",
+      "alt": [
+        "headache"
+      ]
+    },
+    {
+      "id": "u17-p02",
+      "type": "phrase",
+      "hanzi": "肚子疼",
+      "pinyin": "dùzi téng",
+      "english": "to have a stomachache",
+      "alt": [
+        "stomachache"
+      ]
+    },
+    {
+      "id": "u17-p03",
+      "type": "phrase",
+      "hanzi": "不舒服",
+      "pinyin": "bù shūfu",
+      "english": "not feeling well"
+    },
+    {
+      "id": "u17-p04",
+      "type": "phrase",
+      "hanzi": "请假",
+      "pinyin": "qǐng jià",
+      "english": "to ask for leave",
+      "hint": "For example, to take sick leave from work."
+    },
+    {
+      "id": "u17-p05",
+      "type": "phrase",
+      "hanzi": "看医生",
+      "pinyin": "kàn yīshēng",
+      "english": "to see a doctor"
+    },
+    {
+      "id": "u17-p06",
+      "type": "phrase",
+      "hanzi": "吃药",
+      "pinyin": "chī yào",
+      "english": "to take medicine"
+    },
+    {
+      "id": "u17-p07",
+      "type": "phrase",
+      "hanzi": "多喝水",
+      "pinyin": "duō hē shuǐ",
+      "english": "drink more water"
+    },
+    {
+      "id": "u17-p08",
+      "type": "phrase",
+      "hanzi": "好点儿了",
+      "pinyin": "hǎo diǎnr le",
+      "english": "feeling better",
+      "alt": [
+        "a bit better"
+      ]
+    },
+    {
+      "id": "u17-s01",
+      "type": "sentence",
+      "hanzi": "我肚子很疼。",
+      "pinyin": "Wǒ dùzi hěn téng.",
+      "english": "My stomach really hurts."
+    },
+    {
+      "id": "u17-s02",
+      "type": "sentence",
+      "hanzi": "你哪儿不舒服？",
+      "pinyin": "Nǐ nǎr bù shūfu?",
+      "english": "Where do you feel unwell?"
+    },
+    {
+      "id": "u17-s03",
+      "type": "sentence",
+      "hanzi": "我昨天晚上发烧了。",
+      "pinyin": "Wǒ zuótiān wǎnshang fāshāo le.",
+      "english": "I had a fever last night."
+    },
+    {
+      "id": "u17-s04",
+      "type": "sentence",
+      "hanzi": "你应该去看医生。",
+      "pinyin": "Nǐ yīnggāi qù kàn yīshēng.",
+      "english": "You should go see a doctor."
+    },
+    {
+      "id": "u17-s05",
+      "type": "sentence",
+      "hanzi": "医生说我要多休息。",
+      "pinyin": "Yīshēng shuō wǒ yào duō xiūxi.",
+      "english": "The doctor says I need more rest."
+    },
+    {
+      "id": "u17-s06",
+      "type": "sentence",
+      "hanzi": "这个药一天吃两次。",
+      "pinyin": "Zhège yào yì tiān chī liǎng cì.",
+      "english": "Take this medicine twice a day."
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u17-d01",
+      "title": "At the doctor's",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你好，你哪儿不舒服？",
+          "pinyin": "Nǐ hǎo, nǐ nǎr bù shūfu?",
+          "english": "Hello, where do you feel unwell?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "医生，我头疼，还咳嗽。",
+          "pinyin": "Yīshēng, wǒ tóu téng, hái késou.",
+          "english": "Doctor, I have a headache, and I cough too."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "发烧吗？",
+          "pinyin": "Fāshāo ma?",
+          "english": "Do you have a fever?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "昨天晚上发烧了，今天好点儿了。",
+          "pinyin": "Zuótiān wǎnshang fāshāo le, jīntiān hǎo diǎnr le.",
+          "english": "I had a fever last night; I'm a bit better today."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你感冒了。吃两天药，多喝水，多休息。",
+          "pinyin": "Nǐ gǎnmào le. Chī liǎng tiān yào, duō hē shuǐ, duō xiūxi.",
+          "english": "You have a cold. Take medicine for two days, drink more water and rest more."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "谢谢医生。",
+          "pinyin": "Xièxie yīshēng.",
+          "english": "Thank you, doctor."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "不客气。",
+          "pinyin": "Bú kèqi.",
+          "english": "You're welcome."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u17-d01-q1",
+          "question": "What does the patient complain about?",
+          "answer": "A headache and a cough",
+          "distractors": [
+            "A stomachache and a fever",
+            "Sore eyes and a cold",
+            "A pain in the hand"
+          ]
+        },
+        {
+          "id": "u17-d01-q2",
+          "question": "What does the doctor tell the patient to do?",
+          "answer": "Take medicine, drink water and rest",
+          "distractors": [
+            "Have an operation at the hospital",
+            "Keep working and do exercise",
+            "Eat more rice and sleep late"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u17-d02",
+      "title": "A sick day",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "喂，小王，你今天怎么没来上班？",
+          "pinyin": "Wèi, Xiǎo Wáng, nǐ jīntiān zěnme méi lái shàngbān?",
+          "english": "Hello, Xiao Wang, why didn't you come to work today?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我生病了，肚子很疼。",
+          "pinyin": "Wǒ shēngbìng le, dùzi hěn téng.",
+          "english": "I'm sick. My stomach really hurts."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你看医生了吗？",
+          "pinyin": "Nǐ kàn yīshēng le ma?",
+          "english": "Have you seen a doctor?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "看了，我现在在家吃药。",
+          "pinyin": "Kàn le, wǒ xiànzài zài jiā chī yào.",
+          "english": "Yes. I'm at home taking medicine now."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "好，你多休息，别想工作了。",
+          "pinyin": "Hǎo, nǐ duō xiūxi, bié xiǎng gōngzuò le.",
+          "english": "OK, rest more and don't think about work."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "谢谢你，我明天可能就好了。",
+          "pinyin": "Xièxie nǐ, wǒ míngtiān kěnéng jiù hǎo le.",
+          "english": "Thank you. I might be fine tomorrow."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "好，明天我再打电话。",
+          "pinyin": "Hǎo, míngtiān wǒ zài dǎ diànhuà.",
+          "english": "OK, I'll call again tomorrow."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好的，再见。",
+          "pinyin": "Hǎo de, zàijiàn.",
+          "english": "OK, goodbye."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u17-d02-q1",
+          "question": "Why didn't B come to work?",
+          "answer": "B is sick with a stomachache",
+          "distractors": [
+            "B has a meeting elsewhere",
+            "B missed the MRT",
+            "B is on holiday"
+          ]
+        },
+        {
+          "id": "u17-d02-q2",
+          "question": "What will A do tomorrow?",
+          "answer": "Call B again",
+          "distractors": [
+            "Visit B at home",
+            "Take B to the doctor",
+            "Send B some medicine"
+          ]
+        }
+      ]
+    }
+  ]
+}
