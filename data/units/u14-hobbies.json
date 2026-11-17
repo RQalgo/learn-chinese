@@ -1,0 +1,306 @@
+{
+  "id": "u14",
+  "title": "Hobbies & free time",
+  "items": [
+    {
+      "id": "u14-w01",
+      "type": "word",
+      "hanzi": "喜欢",
+      "pinyin": "xǐhuan",
+      "english": "to like"
+    },
+    {
+      "id": "u14-w02",
+      "type": "word",
+      "hanzi": "看",
+      "pinyin": "kàn",
+      "english": "to watch; to look"
+    },
+    {
+      "id": "u14-w03",
+      "type": "word",
+      "hanzi": "听",
+      "pinyin": "tīng",
+      "english": "to listen"
+    },
+    {
+      "id": "u14-w04",
+      "type": "word",
+      "hanzi": "玩",
+      "pinyin": "wán",
+      "english": "to play; to have fun"
+    },
+    {
+      "id": "u14-w05",
+      "type": "word",
+      "hanzi": "歌",
+      "pinyin": "gē",
+      "english": "song"
+    },
+    {
+      "id": "u14-w06",
+      "type": "word",
+      "hanzi": "书",
+      "pinyin": "shū",
+      "english": "book"
+    },
+    {
+      "id": "u14-w07",
+      "type": "word",
+      "hanzi": "球",
+      "pinyin": "qiú",
+      "english": "ball"
+    },
+    {
+      "id": "u14-w08",
+      "type": "word",
+      "hanzi": "音乐",
+      "pinyin": "yīnyuè",
+      "english": "music"
+    },
+    {
+      "id": "u14-w09",
+      "type": "word",
+      "hanzi": "电影",
+      "pinyin": "diànyǐng",
+      "english": "film"
+    },
+    {
+      "id": "u14-w10",
+      "type": "word",
+      "hanzi": "爱好",
+      "pinyin": "àihào",
+      "english": "hobby"
+    },
+    {
+      "id": "u14-w11",
+      "type": "word",
+      "hanzi": "周末",
+      "pinyin": "zhōumò",
+      "english": "weekend"
+    },
+    {
+      "id": "u14-w12",
+      "type": "word",
+      "hanzi": "游泳",
+      "pinyin": "yóuyǒng",
+      "english": "to swim"
+    },
+    {
+      "id": "u14-p01",
+      "type": "phrase",
+      "hanzi": "看电影",
+      "pinyin": "kàn diànyǐng",
+      "english": "to watch a film"
+    },
+    {
+      "id": "u14-p02",
+      "type": "phrase",
+      "hanzi": "听音乐",
+      "pinyin": "tīng yīnyuè",
+      "english": "to listen to music"
+    },
+    {
+      "id": "u14-p03",
+      "type": "phrase",
+      "hanzi": "唱歌",
+      "pinyin": "chànggē",
+      "english": "to sing"
+    },
+    {
+      "id": "u14-p04",
+      "type": "phrase",
+      "hanzi": "跑步",
+      "pinyin": "pǎobù",
+      "english": "to run"
+    },
+    {
+      "id": "u14-p05",
+      "type": "phrase",
+      "hanzi": "打篮球",
+      "pinyin": "dǎ lánqiú",
+      "english": "to play basketball"
+    },
+    {
+      "id": "u14-p06",
+      "type": "phrase",
+      "hanzi": "踢足球",
+      "pinyin": "tī zúqiú",
+      "english": "to play football"
+    },
+    {
+      "id": "u14-p07",
+      "type": "phrase",
+      "hanzi": "你有什么爱好？",
+      "pinyin": "nǐ yǒu shénme àihào?",
+      "english": "what are your hobbies?"
+    },
+    {
+      "id": "u14-p08",
+      "type": "phrase",
+      "hanzi": "周末做什么？",
+      "pinyin": "zhōumò zuò shénme?",
+      "english": "what do you do at weekends?"
+    },
+    {
+      "id": "u14-s01",
+      "type": "sentence",
+      "hanzi": "我喜欢看电影。",
+      "pinyin": "Wǒ xǐhuan kàn diànyǐng.",
+      "english": "I like watching films."
+    },
+    {
+      "id": "u14-s02",
+      "type": "sentence",
+      "hanzi": "我不喜欢跑步。",
+      "pinyin": "Wǒ bù xǐhuan pǎobù.",
+      "english": "I don't like running."
+    },
+    {
+      "id": "u14-s03",
+      "type": "sentence",
+      "hanzi": "周末我喜欢听音乐。",
+      "pinyin": "Zhōumò wǒ xǐhuan tīng yīnyuè.",
+      "english": "At weekends I like listening to music."
+    },
+    {
+      "id": "u14-s04",
+      "type": "sentence",
+      "hanzi": "我爸爸喜欢踢足球。",
+      "pinyin": "Wǒ bàba xǐhuan tī zúqiú.",
+      "english": "My dad likes playing football."
+    },
+    {
+      "id": "u14-s05",
+      "type": "sentence",
+      "hanzi": "我每个周末都去游泳。",
+      "pinyin": "Wǒ měi gè zhōumò dōu qù yóuyǒng.",
+      "english": "I go swimming every weekend."
+    },
+    {
+      "id": "u14-s06",
+      "type": "sentence",
+      "hanzi": "我昨天看了一个很好看的电影。",
+      "pinyin": "Wǒ zuótiān kàn le yí gè hěn hǎokàn de diànyǐng.",
+      "english": "Yesterday I watched a really good film."
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u14-d01",
+      "title": "Weekend plans",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你周末做什么？",
+          "pinyin": "Nǐ zhōumò zuò shénme?",
+          "english": "What do you do at weekends?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我喜欢去游泳。",
+          "pinyin": "Wǒ xǐhuan qù yóuyǒng.",
+          "english": "I like to go swimming."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我不会游泳，我喜欢看电影。",
+          "pinyin": "Wǒ bú huì yóuyǒng, wǒ xǐhuan kàn diànyǐng.",
+          "english": "I can't swim, I like watching films."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "你喜欢看什么电影？",
+          "pinyin": "Nǐ xǐhuan kàn shénme diànyǐng?",
+          "english": "What kind of films do you like?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我喜欢好看的电影！",
+          "pinyin": "Wǒ xǐhuan hǎokàn de diànyǐng!",
+          "english": "I like good films!"
+        }
+      ],
+      "questions": [
+        {
+          "id": "u14-d01-q1",
+          "question": "What does B like to do at weekends?",
+          "answer": "Swimming",
+          "distractors": [
+            "Running",
+            "Singing",
+            "Playing football"
+          ]
+        },
+        {
+          "id": "u14-d01-q2",
+          "question": "What can't A do?",
+          "answer": "Swim",
+          "distractors": [
+            "Run",
+            "Sing",
+            "Drive"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u14-d02",
+      "title": "Hobbies",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你有什么爱好？",
+          "pinyin": "Nǐ yǒu shénme àihào?",
+          "english": "What are your hobbies?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我喜欢听音乐，也喜欢唱歌。",
+          "pinyin": "Wǒ xǐhuan tīng yīnyuè, yě xǐhuan chànggē.",
+          "english": "I like listening to music, and I also like singing."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你喜欢什么歌？",
+          "pinyin": "Nǐ xǐhuan shénme gē?",
+          "english": "What songs do you like?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我喜欢中国的歌。你呢？",
+          "pinyin": "Wǒ xǐhuan Zhōngguó de gē. Nǐ ne?",
+          "english": "I like Chinese songs. And you?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我喜欢踢足球，不喜欢唱歌。",
+          "pinyin": "Wǒ xǐhuan tī zúqiú, bù xǐhuan chànggē.",
+          "english": "I like playing football, I don't like singing."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u14-d02-q1",
+          "question": "What are B's hobbies?",
+          "answer": "Music and singing",
+          "distractors": [
+            "Football and swimming",
+            "Films and running",
+            "Books and basketball"
+          ]
+        },
+        {
+          "id": "u14-d02-q2",
+          "question": "What does A not like?",
+          "answer": "Singing",
+          "distractors": [
+            "Football",
+            "Music",
+            "Films"
+          ]
+        }
+      ]
+    }
+  ]
+}
