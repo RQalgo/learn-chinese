@@ -88,20 +88,14 @@
       "type": "word",
       "hanzi": "觉得",
       "pinyin": "juéde",
-      "english": "to think / to feel",
-      "alt": [
-        "I think"
-      ]
+      "english": "to think / to feel"
     },
     {
       "id": "u18-w11",
       "type": "word",
       "hanzi": "同意",
       "pinyin": "tóngyì",
-      "english": "to agree",
-      "alt": [
-        "I agree"
-      ]
+      "english": "to agree"
     },
     {
       "id": "u18-w12",
@@ -170,10 +164,7 @@
       "type": "phrase",
       "hanzi": "我同意",
       "pinyin": "wǒ tóngyì",
-      "english": "I agree",
-      "alt": [
-        "to agree"
-      ]
+      "english": "I agree"
     },
     {
       "id": "u18-p08",
@@ -182,8 +173,7 @@
       "pinyin": "wǒ juéde",
       "english": "I think",
       "alt": [
-        "I feel",
-        "to think / to feel"
+        "I feel"
       ]
     },
     {
