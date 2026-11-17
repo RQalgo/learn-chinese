@@ -1,0 +1,53 @@
+{
+ "clips": {
+  "sys.again": {
+   "dur": 1.83,
+   "hash": "95226523eca7366a"
+  },
+  "sys.dialogue": {
+   "dur": 1.68,
+   "hash": "59c89a181afb6aec"
+  },
+  "sys.done": {
+   "dur": 2.16,
+   "hash": "c1d2f590df32f6b6"
+  },
+  "sys.newWords": {
+   "dur": 0.95,
+   "hash": "1d8162d6c75113a0"
+  },
+  "sys.review": {
+   "dur": 2.32,
+   "hash": "ab6889a1cda0a7f2"
+  },
+  "sys.silence.1000": {
+   "dur": 1.0,
+   "hash": "cf1cd971f7c5151e"
+  },
+  "sys.silence.1500": {
+   "dur": 1.5,
+   "hash": "149469e0af1776b3"
+  },
+  "sys.silence.2000": {
+   "dur": 2.0,
+   "hash": "b5d7de1c190b6bcb"
+  },
+  "sys.silence.3000": {
+   "dur": 3.0,
+   "hash": "d0d5c0a9ea254f25"
+  },
+  "sys.silence.500": {
+   "dur": 0.5,
+   "hash": "48a08c40e8cb8079"
+  },
+  "sys.welcome": {
+   "dur": 1.01,
+   "hash": "82550a3865bd2613"
+  },
+  "sys.whatMeans": {
+   "dur": 1.21,
+   "hash": "fc1cf89d63e61f0a"
+  }
+ },
+ "version": 1
+}
