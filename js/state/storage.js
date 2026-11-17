@@ -31,7 +31,7 @@
  *   validateProgress(blob) -> string[] (problems; empty = valid)
  */
 
-import { defaultProgress, DEFAULT_SETTINGS } from "./progress.js";
+import { defaultProgress, DEFAULT_SETTINGS, ACCENTS } from "./progress.js";
 
 // ===== Section: Constants =====
 
@@ -78,8 +78,21 @@ export function migrate(blob) {
     daily: isObj(b.daily) ? b.daily : {},
     unlocked: Array.isArray(b.unlocked) && b.unlocked.length ? b.unlocked : d.unlocked,
     streak: { ...d.streak, ...(isObj(b.streak) ? b.streak : {}) },
-    settings: { ...DEFAULT_SETTINGS, ...(isObj(b.settings) ? b.settings : {}) },
+    settings: normalizeSettings(b.settings),
   };
+}
+
+/**
+ * Merge saved settings over the defaults and repair values the app depends on.
+ * WHY: old saves have no `accent`, and a hand-edited backup may hold junk; either
+ * way the app should see a valid value, never `undefined`.
+ * @param {any} saved
+ * @returns {Object}
+ */
+function normalizeSettings(saved) {
+  const s = { ...DEFAULT_SETTINGS, ...(isObj(saved) ? saved : {}) };
+  if (!ACCENTS.includes(s.accent)) s.accent = DEFAULT_SETTINGS.accent;
+  return s;
 }
 
 /**
