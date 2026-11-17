@@ -1,0 +1,365 @@
+{
+  "id": "u24",
+  "title": "Everyday conversations",
+  "items": [
+    {
+      "id": "u24-w01",
+      "type": "word",
+      "hanzi": "当然",
+      "pinyin": "dāngrán",
+      "english": "of course"
+    },
+    {
+      "id": "u24-w02",
+      "type": "word",
+      "hanzi": "可能",
+      "pinyin": "kěnéng",
+      "english": "maybe",
+      "alt": [
+        "possibly"
+      ]
+    },
+    {
+      "id": "u24-w03",
+      "type": "word",
+      "hanzi": "马上",
+      "pinyin": "mǎshàng",
+      "english": "right away",
+      "alt": [
+        "immediately"
+      ]
+    },
+    {
+      "id": "u24-w04",
+      "type": "word",
+      "hanzi": "一定",
+      "pinyin": "yídìng",
+      "english": "definitely",
+      "alt": [
+        "surely"
+      ]
+    },
+    {
+      "id": "u24-w05",
+      "type": "word",
+      "hanzi": "已经",
+      "pinyin": "yǐjīng",
+      "english": "already"
+    },
+    {
+      "id": "u24-w06",
+      "type": "word",
+      "hanzi": "刚才",
+      "pinyin": "gāngcái",
+      "english": "just now"
+    },
+    {
+      "id": "u24-w07",
+      "type": "word",
+      "hanzi": "突然",
+      "pinyin": "tūrán",
+      "english": "suddenly"
+    },
+    {
+      "id": "u24-w08",
+      "type": "word",
+      "hanzi": "随便",
+      "pinyin": "suíbiàn",
+      "english": "whatever you like",
+      "alt": [
+        "as you like"
+      ]
+    },
+    {
+      "id": "u24-w09",
+      "type": "word",
+      "hanzi": "麻烦",
+      "pinyin": "máfan",
+      "english": "troublesome",
+      "alt": [
+        "trouble"
+      ],
+      "hint": "Also used to say 'sorry to trouble you'."
+    },
+    {
+      "id": "u24-w10",
+      "type": "word",
+      "hanzi": "帮忙",
+      "pinyin": "bāngmáng",
+      "english": "to help"
+    },
+    {
+      "id": "u24-w11",
+      "type": "word",
+      "hanzi": "忘",
+      "pinyin": "wàng",
+      "english": "to forget"
+    },
+    {
+      "id": "u24-w12",
+      "type": "word",
+      "hanzi": "记得",
+      "pinyin": "jìde",
+      "english": "to remember"
+    },
+    {
+      "id": "u24-p01",
+      "type": "phrase",
+      "hanzi": "没问题",
+      "pinyin": "méi wèntí",
+      "english": "no problem"
+    },
+    {
+      "id": "u24-p02",
+      "type": "phrase",
+      "hanzi": "等一下",
+      "pinyin": "děng yíxià",
+      "english": "wait a moment",
+      "alt": [
+        "hold on"
+      ]
+    },
+    {
+      "id": "u24-p03",
+      "type": "phrase",
+      "hanzi": "真的吗",
+      "pinyin": "zhēn de ma",
+      "english": "really?"
+    },
+    {
+      "id": "u24-p04",
+      "type": "phrase",
+      "hanzi": "慢慢来",
+      "pinyin": "mànmàn lái",
+      "english": "take your time"
+    },
+    {
+      "id": "u24-p05",
+      "type": "phrase",
+      "hanzi": "不好意思",
+      "pinyin": "bù hǎoyìsi",
+      "english": "excuse me / sorry"
+    },
+    {
+      "id": "u24-p06",
+      "type": "phrase",
+      "hanzi": "怎么办",
+      "pinyin": "zěnme bàn",
+      "english": "what should I do?"
+    },
+    {
+      "id": "u24-p07",
+      "type": "phrase",
+      "hanzi": "加油",
+      "pinyin": "jiāyóu",
+      "english": "come on! / good luck",
+      "hint": "Literally 'add fuel'; used to cheer someone on."
+    },
+    {
+      "id": "u24-p08",
+      "type": "phrase",
+      "hanzi": "一会儿见",
+      "pinyin": "yíhuìr jiàn",
+      "english": "see you in a bit",
+      "alt": [
+        "see you later"
+      ]
+    },
+    {
+      "id": "u24-s01",
+      "type": "sentence",
+      "hanzi": "请你等一下，我马上来。",
+      "pinyin": "Qǐng nǐ děng yíxià, wǒ mǎshàng lái.",
+      "english": "Please wait a moment, I'll be right there."
+    },
+    {
+      "id": "u24-s02",
+      "type": "sentence",
+      "hanzi": "对不起，我刚才忘了。",
+      "pinyin": "Duìbuqǐ, wǒ gāngcái wàng le.",
+      "english": "Sorry, I forgot just now."
+    },
+    {
+      "id": "u24-s03",
+      "type": "sentence",
+      "hanzi": "没问题，我一定帮你。",
+      "pinyin": "Méi wèntí, wǒ yídìng bāng nǐ.",
+      "english": "No problem, I will definitely help you."
+    },
+    {
+      "id": "u24-s04",
+      "type": "sentence",
+      "hanzi": "你记得带护照吗？",
+      "pinyin": "Nǐ jìde dài hùzhào ma?",
+      "english": "Do you remember to bring your passport?"
+    },
+    {
+      "id": "u24-s05",
+      "type": "sentence",
+      "hanzi": "我已经吃了，你们慢慢吃。",
+      "pinyin": "Wǒ yǐjīng chī le, nǐmen mànmàn chī.",
+      "english": "I've already eaten. You take your time."
+    },
+    {
+      "id": "u24-s06",
+      "type": "sentence",
+      "hanzi": "不好意思，麻烦你帮我一下。",
+      "pinyin": "Bù hǎoyìsi, máfan nǐ bāng wǒ yíxià.",
+      "english": "Sorry, could you help me for a moment?"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u24-d01",
+      "title": "A busy morning",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "早！你今天怎么来晚了？",
+          "pinyin": "Zǎo! Nǐ jīntiān zěnme lái wǎn le?",
+          "english": "Morning! Why are you late today?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "地铁出问题了，我等了二十分钟。",
+          "pinyin": "Dìtiě chū wèntí le, wǒ děng le èrshí fēnzhōng.",
+          "english": "The MRT had a problem. I waited twenty minutes."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "真的吗？那你吃早饭了吗？",
+          "pinyin": "Zhēn de ma? Nà nǐ chī zǎofàn le ma?",
+          "english": "Really? Have you had breakfast then?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "还没有。我现在去买咖啡，你要吗？",
+          "pinyin": "Hái méiyǒu. Wǒ xiànzài qù mǎi kāfēi, nǐ yào ma?",
+          "english": "Not yet. I'm going to buy coffee now. Do you want one?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "好啊，我要一杯热的，谢谢。",
+          "pinyin": "Hǎo a, wǒ yào yì bēi rè de, xièxie.",
+          "english": "Yes, I'd like a hot one, thanks."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "没问题。十点的会，你记得吗？",
+          "pinyin": "Méi wèntí. Shí diǎn de huì, nǐ jìde ma?",
+          "english": "No problem. The ten o'clock meeting, do you remember?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "当然记得，老板马上就来。",
+          "pinyin": "Dāngrán jìde, lǎobǎn mǎshàng jiù lái.",
+          "english": "Of course. The boss will be here soon."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "那我快点儿去，一会儿见！",
+          "pinyin": "Nà wǒ kuài diǎnr qù, yíhuìr jiàn!",
+          "english": "Then I'll hurry. See you in a bit!"
+        }
+      ],
+      "questions": [
+        {
+          "id": "u24-d01-q1",
+          "question": "Why was B late?",
+          "answer": "The MRT had a problem",
+          "distractors": [
+            "B was ill",
+            "B missed the bus",
+            "B overslept"
+          ]
+        },
+        {
+          "id": "u24-d01-q2",
+          "question": "What time is the meeting?",
+          "answer": "Ten o'clock",
+          "distractors": [
+            "Nine o'clock",
+            "Eleven o'clock",
+            "Two o'clock"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u24-d02",
+      "title": "Weekend plans",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "喂，小李，这个周末你有空吗？",
+          "pinyin": "Wèi, Xiǎo Lǐ, zhège zhōumò nǐ yǒu kòng ma?",
+          "english": "Hello, Xiao Li, are you free this weekend?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "星期六有空，星期天我要去看医生。",
+          "pinyin": "Xīngqīliù yǒu kòng, xīngqītiān wǒ yào qù kàn yīshēng.",
+          "english": "Saturday I'm free. On Sunday I'm going to see a doctor."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "真的吗？你怎么了？",
+          "pinyin": "Zhēn de ma? Nǐ zěnme le?",
+          "english": "Really? What's wrong?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "没什么，就是有点儿咳嗽。",
+          "pinyin": "Méi shénme, jiùshì yǒudiǎnr késou.",
+          "english": "Nothing much, just a bit of a cough."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "那你要多休息。星期六晚上一起吃饭吧？",
+          "pinyin": "Nà nǐ yào duō xiūxi. Xīngqīliù wǎnshang yìqǐ chī fàn ba?",
+          "english": "Then rest more. Shall we have dinner together on Saturday night?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好啊。去哪儿吃？你选吧。",
+          "pinyin": "Hǎo a. Qù nǎr chī? Nǐ xuǎn ba.",
+          "english": "Sure. Where shall we eat? You choose."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你咳嗽，我们吃面吧，别吃太辣的。",
+          "pinyin": "Nǐ késou, wǒmen chī miàn ba, bié chī tài là de.",
+          "english": "You have a cough, so let's have noodles, nothing too spicy."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好，七点地铁站见。",
+          "pinyin": "Hǎo, qī diǎn dìtiězhàn jiàn.",
+          "english": "OK, see you at the MRT station at seven."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u24-d02-q1",
+          "question": "What is wrong with B?",
+          "answer": "A cough",
+          "distractors": [
+            "A fever",
+            "A stomachache",
+            "A headache"
+          ]
+        },
+        {
+          "id": "u24-d02-q2",
+          "question": "When and where will they meet?",
+          "answer": "At seven, at the MRT station",
+          "distractors": [
+            "At six, at the MRT station",
+            "At seven, at the restaurant",
+            "At eight, at B's home"
+          ]
+        }
+      ]
+    }
+  ]
+}

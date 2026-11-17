@@ -1,0 +1,337 @@
+{
+  "id": "u19",
+  "title": "Home",
+  "items": [
+    {
+      "id": "u19-w01",
+      "type": "word",
+      "hanzi": "客厅",
+      "pinyin": "kètīng",
+      "english": "living room"
+    },
+    {
+      "id": "u19-w02",
+      "type": "word",
+      "hanzi": "卧室",
+      "pinyin": "wòshì",
+      "english": "bedroom"
+    },
+    {
+      "id": "u19-w03",
+      "type": "word",
+      "hanzi": "厨房",
+      "pinyin": "chúfáng",
+      "english": "kitchen"
+    },
+    {
+      "id": "u19-w04",
+      "type": "word",
+      "hanzi": "洗手间",
+      "pinyin": "xǐshǒujiān",
+      "english": "bathroom"
+    },
+    {
+      "id": "u19-w05",
+      "type": "word",
+      "hanzi": "门",
+      "pinyin": "mén",
+      "english": "door"
+    },
+    {
+      "id": "u19-w06",
+      "type": "word",
+      "hanzi": "窗户",
+      "pinyin": "chuānghu",
+      "english": "window"
+    },
+    {
+      "id": "u19-w07",
+      "type": "word",
+      "hanzi": "桌子",
+      "pinyin": "zhuōzi",
+      "english": "table"
+    },
+    {
+      "id": "u19-w08",
+      "type": "word",
+      "hanzi": "椅子",
+      "pinyin": "yǐzi",
+      "english": "chair"
+    },
+    {
+      "id": "u19-w09",
+      "type": "word",
+      "hanzi": "床",
+      "pinyin": "chuáng",
+      "english": "bed"
+    },
+    {
+      "id": "u19-w10",
+      "type": "word",
+      "hanzi": "沙发",
+      "pinyin": "shāfā",
+      "english": "sofa"
+    },
+    {
+      "id": "u19-w11",
+      "type": "word",
+      "hanzi": "冰箱",
+      "pinyin": "bīngxiāng",
+      "english": "fridge"
+    },
+    {
+      "id": "u19-w12",
+      "type": "word",
+      "hanzi": "空调",
+      "pinyin": "kōngtiáo",
+      "english": "air conditioner",
+      "alt": [
+        "aircon"
+      ]
+    },
+    {
+      "id": "u19-p01",
+      "type": "phrase",
+      "hanzi": "住在这儿",
+      "pinyin": "zhù zài zhèr",
+      "english": "to live here"
+    },
+    {
+      "id": "u19-p02",
+      "type": "phrase",
+      "hanzi": "组屋",
+      "pinyin": "zǔwū",
+      "english": "HDB flat",
+      "hint": "Singapore term for public housing flats."
+    },
+    {
+      "id": "u19-p03",
+      "type": "phrase",
+      "hanzi": "很干净",
+      "pinyin": "hěn gānjìng",
+      "english": "very clean"
+    },
+    {
+      "id": "u19-p04",
+      "type": "phrase",
+      "hanzi": "太乱了",
+      "pinyin": "tài luàn le",
+      "english": "too messy"
+    },
+    {
+      "id": "u19-p05",
+      "type": "phrase",
+      "hanzi": "开空调",
+      "pinyin": "kāi kōngtiáo",
+      "english": "turn on the aircon",
+      "alt": [
+        "turn on the air conditioner"
+      ]
+    },
+    {
+      "id": "u19-p06",
+      "type": "phrase",
+      "hanzi": "关门",
+      "pinyin": "guān mén",
+      "english": "close the door"
+    },
+    {
+      "id": "u19-p07",
+      "type": "phrase",
+      "hanzi": "开灯",
+      "pinyin": "kāi dēng",
+      "english": "turn on the light"
+    },
+    {
+      "id": "u19-p08",
+      "type": "phrase",
+      "hanzi": "搬家",
+      "pinyin": "bānjiā",
+      "english": "to move house"
+    },
+    {
+      "id": "u19-s01",
+      "type": "sentence",
+      "hanzi": "我们住在组屋。",
+      "pinyin": "Wǒmen zhù zài zǔwū.",
+      "english": "We live in an HDB flat."
+    },
+    {
+      "id": "u19-s02",
+      "type": "sentence",
+      "hanzi": "我家有两个卧室。",
+      "pinyin": "Wǒ jiā yǒu liǎng gè wòshì.",
+      "english": "My home has two bedrooms."
+    },
+    {
+      "id": "u19-s03",
+      "type": "sentence",
+      "hanzi": "冰箱在厨房里。",
+      "pinyin": "Bīngxiāng zài chúfáng lǐ.",
+      "english": "The fridge is in the kitchen."
+    },
+    {
+      "id": "u19-s04",
+      "type": "sentence",
+      "hanzi": "客厅里有一个大沙发。",
+      "pinyin": "Kètīng lǐ yǒu yí gè dà shāfā.",
+      "english": "There is a big sofa in the living room."
+    },
+    {
+      "id": "u19-s05",
+      "type": "sentence",
+      "hanzi": "我的房间不太干净。",
+      "pinyin": "Wǒ de fángjiān bú tài gānjìng.",
+      "english": "My room isn't very clean."
+    },
+    {
+      "id": "u19-s06",
+      "type": "sentence",
+      "hanzi": "太热了，请开一下空调。",
+      "pinyin": "Tài rè le, qǐng kāi yíxià kōngtiáo.",
+      "english": "It's too hot. Please turn on the aircon."
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u19-d01",
+      "title": "Visiting a friend's home",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "欢迎来我家！",
+          "pinyin": "Huānyíng lái wǒ jiā!",
+          "english": "Welcome to my home!"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "谢谢！你家很大啊。",
+          "pinyin": "Xièxie! Nǐ jiā hěn dà a.",
+          "english": "Thanks! Your home is big."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我们住在组屋，有三个房间。",
+          "pinyin": "Wǒmen zhù zài zǔwū, yǒu sān gè fángjiān.",
+          "english": "We live in an HDB flat. It has three rooms."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "客厅真干净。这个沙发是新的吗？",
+          "pinyin": "Kètīng zhēn gānjìng. Zhège shāfā shì xīn de ma?",
+          "english": "The living room is so clean. Is this sofa new?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "对，上星期买的。",
+          "pinyin": "Duì, shàng xīngqī mǎi de.",
+          "english": "Yes, I bought it last week."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "厨房在哪儿？我想喝水。",
+          "pinyin": "Chúfáng zài nǎr? Wǒ xiǎng hē shuǐ.",
+          "english": "Where is the kitchen? I want some water."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "在那边，冰箱里有水。",
+          "pinyin": "Zài nàbiān, bīngxiāng lǐ yǒu shuǐ.",
+          "english": "Over there. There's water in the fridge."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u19-d01-q1",
+          "question": "What does B say about the living room?",
+          "answer": "It is very clean",
+          "distractors": [
+            "It is too small",
+            "It is too messy",
+            "It is too hot"
+          ]
+        },
+        {
+          "id": "u19-d01-q2",
+          "question": "Where is the water?",
+          "answer": "In the fridge",
+          "distractors": [
+            "On the dining table",
+            "In the bathroom",
+            "On the sofa"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u19-d02",
+      "title": "The broken aircon",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你的卧室太热了，怎么不开空调？",
+          "pinyin": "Nǐ de wòshì tài rè le, zěnme bù kāi kōngtiáo?",
+          "english": "Your bedroom is too hot. Why don't you turn on the aircon?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "空调坏了。",
+          "pinyin": "Kōngtiáo huài le.",
+          "english": "The aircon is broken."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "什么时候坏的？",
+          "pinyin": "Shénme shíhou huài de?",
+          "english": "When did it break?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "昨天晚上。我打电话了，明天有人来看。",
+          "pinyin": "Zuótiān wǎnshang. Wǒ dǎ diànhuà le, míngtiān yǒu rén lái kàn.",
+          "english": "Last night. I made a call. Someone is coming to look tomorrow."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "那今天晚上你睡哪儿？",
+          "pinyin": "Nà jīntiān wǎnshang nǐ shuì nǎr?",
+          "english": "Then where will you sleep tonight?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我睡客厅，客厅的空调是好的。",
+          "pinyin": "Wǒ shuì kètīng, kètīng de kōngtiáo shì hǎo de.",
+          "english": "I'll sleep in the living room. Its aircon works."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "好，那你早点儿睡吧。晚安！",
+          "pinyin": "Hǎo, nà nǐ zǎo diǎnr shuì ba. Wǎn'ān!",
+          "english": "OK, then go to bed early. Good night!"
+        }
+      ],
+      "questions": [
+        {
+          "id": "u19-d02-q1",
+          "question": "What is wrong with the bedroom?",
+          "answer": "The aircon is broken",
+          "distractors": [
+            "The window won't close",
+            "The bed is broken",
+            "The light is off"
+          ]
+        },
+        {
+          "id": "u19-d02-q2",
+          "question": "Where will B sleep tonight?",
+          "answer": "In the living room",
+          "distractors": [
+            "In the kitchen",
+            "In A's bedroom",
+            "In the bathroom"
+          ]
+        }
+      ]
+    }
+  ]
+}
