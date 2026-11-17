@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#c2352a"/>
+  <rect x="40" y="40" width="432" height="432" rx="64" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="8"/>
+  <text x="256" y="372" text-anchor="middle" font-size="330" font-weight="700" fill="#fff"
+        font-family="'Noto Serif CJK SC','Source Han Serif SC','Songti SC',serif">听</text>
+</svg>
