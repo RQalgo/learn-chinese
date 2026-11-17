@@ -25,6 +25,44 @@ English clips were left exactly as they were.
   into `audio/.cache.json`; unchanged clips are skipped. Mandarin clips hash the v1.1
   model name, English clips still hash the v1.0 name (so they never rebuilt on the switch).
 
+## Accents and Mandarin engines
+
+The app has two Mandarin accents (ARCHITECTURE section 5.1). `tools/generate_audio.py --accent`
+selects the set to build:
+
+| `--accent` | Output | Clips | Cache / manifest |
+|---|---|---|---|
+| `cn` (default) | `audio/{zh,zh-slow,en,sys}/` | Mandarin + English + `sys.*` (the **Mainland** set) | `audio/.cache.json`, `audio/manifest.json` |
+| `sg` | `audio-sg/{zh,zh-slow}/` | Mandarin only, same clip ids (the **Singapore** set) | `audio-sg/.cache.json`, `audio-sg/manifest.json` |
+
+`sg` never loads the English lexicon or model and skips `.en` and `sys.*` clips (the app plays
+those from `audio/`). Clips missing from `audio-sg/` fall back to `audio/` in the app, so the
+set can be generated partially or by unit (`--only u01`).
+
+Mandarin synthesis is behind a small interface, `ZhEngine`, chosen by `--zh-engine`
+(default `kokoro`, the existing Kokoro v1.1 implementation, registered in `ZH_ENGINES`):
+
+```python
+class ZhEngine:
+    name: str                 # "kokoro" (the --zh-engine value)
+    model_id: str             # "kokoro-multi-lang-v1_1"
+    voices: list              # voice ids rotated over items (stable per item id)
+    dialogue_voices: dict     # {"A": voice, "B": voice}
+    def __init__(self, model_dir, extra_lexicon="", threads=1)   # model loads lazily
+    @classmethod cache_id() -> str          # hashed into every Mandarin clip key
+    @classmethod check_model(model_dir)     # SystemExit if unusable
+    @classmethod prepare(clips, model_dir, workdir) -> (clips, extra_lexicon_path)
+    def synth(self, text, voice, speed) -> (float32 samples, sample_rate)
+```
+
+Everything after `synth` (trim, loudness to a fixed RMS, padding, 24 kHz mono 40 kbps MP3,
+manifest) is shared, so engines end up equally loud and in the same format. The engine's
+`cache_id()` (`name:model_id`) is part of the clip hash; Kokoro keeps the bare model name so
+all existing keys are unchanged (`--accent cn` reports 0 clips to build). The Singapore engine
+(a CosyVoice-based model) is meant to be one more `ZhEngine` subclass plus a `ZH_ENGINES` entry;
+nothing else in the pipeline changes. Note that `--accent sg --zh-engine kokoro` just
+re-renders the Mainland voices into `audio-sg/` (useful for testing the plumbing only).
+
 ## Voices (Kokoro speaker IDs)
 
 | Use | Speaker IDs |
@@ -218,6 +256,16 @@ python3 tools/generate_audio.py --force --only u01-w01         # rebuild regardl
 python3 tools/generate_audio.py --prune                        # delete mp3 files no longer in content
 python3 tools/generate_audio.py --root /tmp/r --content-root tests/fixtures/content   # fixture test
 ```
+
+Singapore set (Mandarin only; needs only `--zh-model-dir`, or the model dir of the chosen engine):
+
+```bash
+python3 tools/generate_audio.py --accent sg --zh-engine <engine> --dry-run   # what would be built
+python3 tools/generate_audio.py --accent sg --zh-engine <engine> --jobs 2    # build/update audio-sg/
+```
+
+Commit `audio-sg/**/*.mp3`, `audio-sg/manifest.json` and `audio-sg/.cache.json` together
+(the app picks the set up automatically; Singapore is the default accent once it has clips).
 
 `--model-dir` (or `$AUDIO_MODEL_DIR`, English) defaults to `models/kokoro-multi-lang-v1_0`;
 `--zh-model-dir` (or `$AUDIO_ZH_MODEL_DIR`, Mandarin) to `models/kokoro-multi-lang-v1_1`. Commit

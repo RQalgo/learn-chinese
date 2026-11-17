@@ -26,7 +26,7 @@
  *   - Streak: a day counts once its XP reaches settings.dailyGoalXp.
  *
  * Public API
- *   DEFAULT_SETTINGS, XP
+ *   DEFAULT_SETTINGS, ACCENTS, XP
  *   defaultProgress(now) -> Progress
  *   dayKey(now) / shiftDayKey(key, delta)
  *   getCard(progress, id) -> Card
@@ -66,15 +66,22 @@ import { newCard, introduce, review, status } from "../engine/srs.js";
  * @property {number} xp                            Lifetime XP.
  * @property {Object<string, DayLog>} daily         Keyed by local day key.
  * @property {{current:number, best:number, lastDay:(string|null)}} streak
- * @property {{pinyin:string, sessionLength:string, zhSpeed:string, dailyGoalXp:number, sfx:boolean}} settings
+ * @property {{pinyin:string, sessionLength:string, zhSpeed:string, dailyGoalXp:number, sfx:boolean, accent:"sg"|"cn"}} settings
  */
 
 // ===== Section: Constants =====
 
-/** Default user settings (§6). */
+/**
+ * Default user settings (§6).
+ * WHY accent "sg": the learner lives in Singapore, so Singapore Mandarin is the
+ * default; the app falls back to Mainland audio while no Singapore clips exist (§5).
+ */
 export const DEFAULT_SETTINGS = Object.freeze({
-  pinyin: "always", sessionLength: "normal", zhSpeed: "normal", dailyGoalXp: 60, sfx: true,
+  pinyin: "always", sessionLength: "normal", zhSpeed: "normal", dailyGoalXp: 60, sfx: true, accent: "sg",
 });
+
+/** Allowed values of `settings.accent`. */
+export const ACCENTS = Object.freeze(["sg", "cn"]);
 
 /** XP awards (§7.5). */
 export const XP = Object.freeze({

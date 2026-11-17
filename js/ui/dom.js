@@ -207,7 +207,7 @@ export function statusBar(counts, { legend = false } = {}) {
 
 /**
  * Segmented control (radio group) with big tap targets.
- * @param {Array<{value: any, label: string}>} options
+ * @param {Array<{value: any, label: string, disabled?: boolean}>} options
  * @param {any} value Currently selected value.
  * @param {(v: any) => void} onChange
  * @param {string} label Accessible group label.
@@ -224,7 +224,7 @@ export function segmented(options, value, onChange, label) {
   };
   for (const o of options) {
     group.append(h("button", {
-      type: "button", role: "radio", class: "seg-btn", dataset: { value: String(o.value) },
+      type: "button", role: "radio", class: "seg-btn", dataset: { value: String(o.value) }, disabled: o.disabled || null,
       onclick: () => { paint(o.value); onChange(o.value); },
     }, o.label));
   }

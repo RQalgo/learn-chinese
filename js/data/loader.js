@@ -3,8 +3,9 @@
  *
  * Purpose
  *   Step 1 at boot: data/units.json, then every unit file in parallel, then the
- *   (optional) audio manifest. Returns a ready Curriculum plus the audio clip
- *   table and a clip-id -> seconds map used for commute planning.
+ *   (optional) audio manifests. Returns a ready Curriculum plus the raw
+ *   Mainland and Singapore manifests; ui/store.js turns them into the effective
+ *   clip table for the chosen accent (data/clips.js).
  *
  * How it fits
  *   main.js calls loadContent() and shows an error screen if it throws. The
@@ -13,15 +14,16 @@
  *   works under a sub-path such as /learn-chinese/.
  *
  * Key concepts
- *   - The audio manifest is optional: before audio is generated it 404s, and
- *     it may be partial. Both cases give an empty/partial `clips` map; the
- *     player then falls back to speechSynthesis per missing clip.
+ *   - Both audio manifests are optional: before audio is generated they 404, and
+ *     they may be partial. A missing one is `null`; the player then falls back
+ *     to speechSynthesis per missing clip. The Singapore manifest
+ *     (`audio-sg/manifest.json`) usually 404s until that set is generated.
  *   - A single failing unit file does not abort boot: that unit is passed on
  *     as missing and the curriculum marks it `available: false`.
  *     A failing units.json is fatal (nothing to show).
  *
  * Public API
- *   loadContent() -> Promise<{curriculum, clips, durations, failedUnits}>
+ *   loadContent() -> Promise<{curriculum, manifests: {cn, sg}, failedUnits}>
  */
 
 import { buildCurriculum } from "../engine/curriculum.js";
@@ -44,22 +46,22 @@ async function getJson(url) {
 /**
  * Load everything the app needs.
  * @returns {Promise<{curriculum: import("../engine/curriculum.js").Curriculum,
- *   clips: Object<string, {src: string, dur: number}>, durations: Object<string, number>,
- *   failedUnits: string[]}>}
+ *   manifests: {cn: Object|null, sg: Object|null}, failedUnits: string[]}>}
  * @throws {Error} When units.json (or every unit file) cannot be loaded.
  */
 export async function loadContent() {
   const index = await getJson("data/units.json");
   const units = index.units || [];
 
-  // WHY: all unit files and the audio manifest are independent, so fetch them concurrently
+  // WHY: all unit files and the audio manifests are independent, so fetch them concurrently
   // (matters on a slow mobile connection).
-  const [unitResults, manifest] = await Promise.all([
+  const [unitResults, cnManifest, sgManifest] = await Promise.all([
     Promise.all(units.map(async (u) => {
       try { return { id: u.id, file: await getJson(u.file) }; }
       catch (e) { console.warn("unit failed to load:", u.id, e.message); return { id: u.id, file: null }; }
     })),
     getJson("audio/manifest.json").catch(() => null),
+    getJson("audio-sg/manifest.json").catch(() => null),
   ]);
 
   const unitFiles = {};
@@ -67,9 +69,5 @@ export async function loadContent() {
   for (const r of unitResults) { if (r.file) unitFiles[r.id] = r.file; else failedUnits.push(r.id); }
   if (units.length && !Object.keys(unitFiles).length) throw new Error("None of the lesson files could be loaded.");
 
-  const clips = (manifest && manifest.clips && typeof manifest.clips === "object") ? manifest.clips : {};
-  const durations = {};
-  for (const [id, c] of Object.entries(clips)) if (c && typeof c.dur === "number") durations[id] = c.dur;
-
-  return { curriculum: buildCurriculum(index, unitFiles), clips, durations, failedUnits };
+  return { curriculum: buildCurriculum(index, unitFiles), manifests: { cn: cnManifest, sg: sgManifest }, failedUnits };
 }

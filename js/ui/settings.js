@@ -2,8 +2,8 @@
  * settings.js — Settings screen (#/settings).
  *
  * Purpose
- *   Let the learner choose how pinyin is shown, lesson length, daily goal,
- *   sound effects and auto-advance, and back up / restore / reset progress.
+ *   Let the learner choose how pinyin is shown, the Mandarin accent of the
+ *   audio, lesson length, daily goal, sound effects and auto-advance, and back up / restore / reset progress.
  *
  * How it fits
  *   Registered by main.js. Reads and writes settings through ui/store.js
@@ -15,6 +15,9 @@
  *   - Settings live inside the progress blob, so a backup carries them too.
  *   - Destructive actions use the in-page confirmModal: import asks once
  *     (it overwrites), reset asks twice.
+ *   - The accent control writes settings.accent; ui/store.js then swaps the clip
+ *     table at once. With no Singapore clips published the Singapore option is
+ *     disabled ("coming soon") and Mainland is shown as the active choice.
  *   - Reset keeps the settings, so the learner's preferences survive.
  *
  * Public API
@@ -77,6 +80,14 @@ export function render(root) {
       segmented([{ value: "always", label: "Always" }, { value: "after", label: "After answering" }, { value: "never", label: "Never" }],
         s.pinyin, (v) => updateSettings({ pinyin: v }), "Show pinyin"),
       h("p", { class: "desc" }, "Always shows it while you listen. After answering hides it until you've chosen.")),
+
+    h("div", { class: "card setting", id: "accent-setting" }, h("b", null, "Mandarin accent"),
+      segmented([{ value: "sg", label: "Singapore", disabled: !store.sgAvailable }, { value: "cn", label: "Mainland" }],
+        // WHY store.accent, not s.accent: with no Singapore clips the stored "sg" default is not in effect.
+        store.accent, (v) => updateSettings({ accent: v }), "Mandarin accent"),
+      h("p", { class: "desc", id: "accent-desc" }, store.sgAvailable
+        ? "Singapore or standard Mainland Mandarin voices; English stays the same."
+        : "Singapore voices coming soon. Mainland voices are used for now.")),
 
     h("div", { class: "card setting" }, h("b", null, "Lesson length"),
       segmented([{ value: "short", label: "Short 10" }, { value: "normal", label: "Normal 20" }, { value: "long", label: "Long 30" }],

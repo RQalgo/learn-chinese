@@ -42,7 +42,8 @@ css/app.css                All styles (mobile-first, light/dark via prefers-colo
 js/
   main.js                  Boot: load data, load progress, start router
   router.js                Hash router (#/home, #/units, #/unit/u01, #/quiz, #/listen, #/stats, #/settings)
-  data/loader.js           Fetches units index, unit files, audio manifest → Curriculum object
+  data/loader.js           Fetches units index, unit files, both audio manifests → Curriculum object + raw manifests
+  data/clips.js            PURE effectiveClips(cn, sg, accent): the clip table for the chosen Mandarin accent
   engine/                  PURE logic. No DOM, no fetch, no Date.now() — time and randomness are passed in.
     srs.js                 Spaced-repetition card state (Leitner boxes)
     questions.js           Builds one question (options, distractors) from an item
@@ -57,14 +58,17 @@ js/
     offline.js             Asks the service worker to cache a unit's clips ("Download audio for offline")
   ui/
     dom.js                 Small helpers: h() element builder, put(), clear(), formatters, modal, toast
-    store.js               Shared mutable app state (curriculum, progress) + commit()/updateSettings()
+    store.js               Shared mutable app state (curriculum, effective clips, progress) + commit()/updateSettings()
     home.js, units.js, unit.js, quiz.js, listen.js, stats.js, settings.js   One module per screen
 data/
   units.json               Ordered index of units
   units/uNN-slug.json      One file per unit (items + dialogues)
-audio/
+audio/                     Mainland set (+ all English and sys.* clips)
   manifest.json            clipId → { src, dur }
   zh/ zh-slow/ en/ sys/    Generated MP3 files (committed)
+audio-sg/                  Singapore set: Mandarin clips only (may be absent or partial)
+  manifest.json            same format and clip ids; src paths relative to the site root
+  zh/ zh-slow/             Generated MP3 files (committed)
 tools/                     Python authoring tools (not shipped to the browser, but harmless if served)
   validate_content.py      Schema + pinyin cross-check (pypinyin) + duplicate checks
   generate_audio.py        Builds all clips listed by the content; incremental
@@ -164,6 +168,31 @@ If a clip is missing from the manifest, `player.js` falls back to
 `speechSynthesis` (zh-CN or en-US) so new content still works before audio is
 regenerated.
 
+### 5.1 Two Mandarin accents
+
+There are two audio sets with the **same clip IDs**:
+
+| Set | Manifest | Contains |
+|---|---|---|
+| Mainland (`cn`) | `audio/manifest.json` | everything: Mandarin (`zh`, `zh-slow`) **and** all English (`.en`) and `sys.*` clips |
+| Singapore (`sg`) | `audio-sg/manifest.json` | **only** Mandarin clips: item normal/slow, dialogue line normal/slow (`audio-sg/zh/`, `audio-sg/zh-slow/`) |
+
+`audio-sg/manifest.json` has the manifest format above; its `src` paths are relative to the
+**site root** (`audio-sg/zh/u01-w01.mp3?v=…`), not to the manifest. It may be missing (404) or
+partial. The pure function `effectiveClips(cnManifest, sgManifest, accent)` in `js/data/clips.js`
+builds the table the rest of the app uses:
+
+* English and `sys.*` clips always come from `audio/manifest.json` (an SG entry for them is ignored).
+* accent `cn`: the Mainland table as is.
+* accent `sg`: a Mandarin clip uses its SG entry if it has one, otherwise falls back to the
+  Mainland entry (a partial SG set therefore still plays everything). `dur` follows the chosen entry.
+* If the SG manifest holds no Mandarin clip at all, the effective accent is `cn` and Settings
+  disables the Singapore option ("Singapore voices coming soon").
+
+`store.clips` / `store.durations` are this effective table, `store.accent` the accent really
+in use, `store.sgAvailable` whether Singapore can be offered. Every consumer (player, commute
+planner `durations`, "Download audio for offline") reads `store.*`, never a manifest directly.
+
 ## 6. Progress state (localStorage key `tingProgress.v1`)
 
 ```js
@@ -179,9 +208,17 @@ regenerated.
   streak: { current: 3, best: 5, lastDay: "2026-11-17" },
   settings: { pinyin: "always", sessionLength: "normal", zhSpeed: "normal",
               dailyGoalXp: 60, sfx: true,
+              accent: "sg",         // Mandarin accent: "sg" | "cn"; see §5.1
               autoAdvance: true }   // UI-only; absent = true (read via ui/store.js getSetting)
 }
 ```
+
+`settings.accent` is `"sg"` (Singapore, default) or `"cn"` (Mainland). Old saves without it, and
+invalid values, load as the default (`state/storage.js` merges `DEFAULT_SETTINGS`). It is the
+*requested* accent: while no Singapore clips exist the effective accent (`store.accent`) is
+`cn`, and the stored value is left alone so Singapore takes effect as soon as the set is published.
+Changing it in Settings recomputes the clip table at once (`store.js` → `onClipsChange` →
+`configurePlayer`), no reload.
 
 Day keys use the **device's local date** (`YYYY-MM-DD`).
 
@@ -293,6 +330,8 @@ Completing a `new` segment calls `introduce`; review segments update `seen`/`las
   Gaps are therefore real silent MP3 clips.
 * Media Session: metadata (title = pinyin, artist = English, album = unit title),
   handlers `play`, `pause`, `nexttrack` (skip segment), `previoustrack` (replay segment).
+* The player only knows the effective clip table (§5.1); `configurePlayer({clips, curriculum})` is
+  called at boot and again whenever the accent changes.
 * API (promise-based): `playClip(id, {slow})`, `playSequence(ids)`, `stop()`, plus a
   `Playlist` class for the commute mode with `onSegmentStart / onSegmentEnd / onFinish`.
 
@@ -300,9 +339,13 @@ Completing a `new` segment calls `introduce`; review segments update `seen`/`las
 
 * Cache `ting-shell-vN`: html, css, js, data JSON, manifest. Network-first for JSON and
   JS (so updates arrive), cache fallback offline.
-* Cache `ting-audio-v1`: audio files, cache-first, filled on first play.
-* Unit screen has "Download audio for offline": posts the unit's clip URLs to the service
-  worker, which adds them to the audio cache.
+* Cache `ting-audio-v1`: audio files of **both** sets (`audio/` and `audio-sg/`), cache-first,
+  filled on first play. `audio/manifest.json` and `audio-sg/manifest.json` are JSON, so they are
+  network-first like the other JSON and are precached best-effort at install (`audio-sg/`
+  usually 404s until generated; that must not fail the install).
+* Unit screen has "Download audio for offline": posts the unit's clip URLs (from the
+  effective table, so the current accent) to the service worker, which adds them to the audio
+  cache. Switching accent later needs a new download for the other accent's clips.
 
 ## 10. Code conventions (all files)
 

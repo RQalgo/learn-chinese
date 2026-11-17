@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { loadProgress, saveProgress, exportProgress, importProgress, migrate, validateProgress, STORAGE_KEY } from "../../js/state/storage.js";
-import { applyAnswer } from "../../js/state/progress.js";
+import { applyAnswer, DEFAULT_SETTINGS } from "../../js/state/progress.js";
 import { fresh, T0 } from "./fixture.mjs";
 
 function fakeStorage(initial = {}) {
@@ -59,4 +59,22 @@ test("corrupt stored data is kept aside and a fresh blob returned", () => {
   const p = loadProgress(st, T0);
   assert.equal(p.xp, 0);
   assert.equal(st.getItem(`${STORAGE_KEY}.corrupt`), "{broken");
+});
+
+test("accent setting defaults to sg and survives old saves, junk and round trips", () => {
+  assert.equal(DEFAULT_SETTINGS.accent, "sg");
+  assert.equal(fresh().settings.accent, "sg");
+  // old save without the key (settings written before accent existed)
+  const { accent, ...oldSettings } = fresh().settings;
+  const old = migrate({ ...fresh(), settings: oldSettings });
+  assert.equal(old.settings.accent, "sg"); assert.deepEqual(validateProgress(old), []);
+  // saved choice is kept; junk is repaired to the default
+  assert.equal(migrate({ ...fresh(), settings: { ...fresh().settings, accent: "cn" } }).settings.accent, "cn");
+  assert.equal(migrate({ ...fresh(), settings: { ...fresh().settings, accent: "xx" } }).settings.accent, "sg");
+  // storage round trip through loadProgress
+  const st = fakeStorage();
+  saveProgress({ ...fresh(), settings: { ...fresh().settings, accent: "cn" } }, st);
+  assert.equal(loadProgress(st, 0).settings.accent, "cn");
+  const legacy = fakeStorage({ [STORAGE_KEY]: JSON.stringify({ ...fresh(), settings: oldSettings }) });
+  assert.equal(loadProgress(legacy, 0).settings.accent, "sg");
 });
