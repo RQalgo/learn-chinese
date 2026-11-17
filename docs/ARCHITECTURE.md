@@ -140,8 +140,11 @@ Detailed writing guidelines are in `docs/CONTENT.md`.
 
 ```json
 { "version": 1, "generatedAt": "…",
-  "clips": { "u01-w01": { "src": "audio/zh/u01-w01.mp3", "dur": 0.92 } } }
+  "clips": { "u01-w01": { "src": "audio/zh/u01-w01.mp3?v=39c3a36cac", "dur": 0.92 } } }
 ```
+
+`src` carries a short content hash (`?v=`) so a regenerated clip gets a new URL and
+bypasses the service worker's cache-first audio cache; unchanged clips keep their URL.
 
 Clip IDs (the app only ever refers to clip IDs, never to file paths):
 

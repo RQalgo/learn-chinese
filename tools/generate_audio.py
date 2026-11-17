@@ -518,7 +518,12 @@ def write_manifest(root: Path, required: list[Clip], cache: dict) -> int:
             continue
         entry = cache.get(c.id)
         dur = entry["dur"] if entry and "dur" in entry else audio_duration(path)
-        clips[c.id] = {"src": c.rel_path, "dur": round(dur, 2)}
+        # WHY: the service worker serves audio cache-first, keyed by full URL. A
+        # short content hash in the query string means a regenerated clip gets a
+        # new URL, so phones that cached the old recording fetch the new one,
+        # while unchanged clips keep their URL and stay cached.
+        digest = hashlib.sha1(path.read_bytes()).hexdigest()[:10]
+        clips[c.id] = {"src": f"{c.rel_path}?v={digest}", "dur": round(dur, 2)}
 
     mpath = root / "audio" / "manifest.json"
     generated = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
