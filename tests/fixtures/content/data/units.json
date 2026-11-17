@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "units": [
+    { "id": "u01", "order": 1, "title": "Greetings", "emoji": "👋",
+      "description": "Say hello, goodbye, thank you and sorry.",
+      "file": "data/units/u01-greetings.json" }
+  ]
+}

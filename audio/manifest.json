@@ -1,0 +1,54 @@
+{
+ "clips": {
+  "sys.again": {
+   "dur": 1.83,
+   "src": "audio/sys/sys_again.mp3"
+  },
+  "sys.dialogue": {
+   "dur": 1.68,
+   "src": "audio/sys/sys_dialogue.mp3"
+  },
+  "sys.done": {
+   "dur": 2.16,
+   "src": "audio/sys/sys_done.mp3"
+  },
+  "sys.newWords": {
+   "dur": 0.95,
+   "src": "audio/sys/sys_newWords.mp3"
+  },
+  "sys.review": {
+   "dur": 2.32,
+   "src": "audio/sys/sys_review.mp3"
+  },
+  "sys.silence.1000": {
+   "dur": 1.0,
+   "src": "audio/sys/sys_silence_1000.mp3"
+  },
+  "sys.silence.1500": {
+   "dur": 1.5,
+   "src": "audio/sys/sys_silence_1500.mp3"
+  },
+  "sys.silence.2000": {
+   "dur": 2.0,
+   "src": "audio/sys/sys_silence_2000.mp3"
+  },
+  "sys.silence.3000": {
+   "dur": 3.0,
+   "src": "audio/sys/sys_silence_3000.mp3"
+  },
+  "sys.silence.500": {
+   "dur": 0.5,
+   "src": "audio/sys/sys_silence_500.mp3"
+  },
+  "sys.welcome": {
+   "dur": 1.01,
+   "src": "audio/sys/sys_welcome.mp3"
+  },
+  "sys.whatMeans": {
+   "dur": 1.21,
+   "src": "audio/sys/sys_whatMeans.mp3"
+  }
+ },
+ "generatedAt": "2026-11-17T11:35:26Z",
+ "version": 1
+}

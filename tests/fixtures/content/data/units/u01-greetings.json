@@ -1,0 +1,31 @@
+{
+  "id": "u01",
+  "title": "Greetings",
+  "items": [
+    { "id": "u01-w01", "type": "word", "hanzi": "你好", "pinyin": "nǐ hǎo",
+      "english": "hello", "alt": ["hi"], "hint": "The most common greeting." },
+    { "id": "u01-w02", "type": "word", "hanzi": "谢谢", "pinyin": "xièxie",
+      "english": "thank you" },
+    { "id": "u01-w03", "type": "word", "hanzi": "再见", "pinyin": "zàijiàn",
+      "english": "goodbye", "alt": ["see you"] },
+    { "id": "u01-p01", "type": "phrase", "hanzi": "对不起", "pinyin": "duìbuqǐ",
+      "english": "sorry" },
+    { "id": "u01-s01", "type": "sentence", "hanzi": "这个多少钱？", "pinyin": "Zhège duōshao qián?",
+      "english": "How much is this?" },
+    { "id": "u01-s02", "type": "sentence", "hanzi": "现在两点半。", "pinyin": "Xiànzài liǎng diǎn bàn.",
+      "english": "It is half past two." }
+  ],
+  "dialogues": [
+    { "id": "u01-d01", "title": "Meeting someone",
+      "lines": [
+        { "speaker": "A", "hanzi": "你好！", "pinyin": "Nǐ hǎo!", "english": "Hello!" },
+        { "speaker": "B", "hanzi": "你好！你叫什么名字？", "pinyin": "Nǐ hǎo! Nǐ jiào shénme míngzi?", "english": "Hello! What's your name?" },
+        { "speaker": "A", "hanzi": "我叫小明。", "pinyin": "Wǒ jiào Xiǎo Míng.", "english": "My name is Xiao Ming." }
+      ],
+      "questions": [
+        { "id": "u01-d01-q1", "question": "What does B ask?",
+          "answer": "A's name", "distractors": ["A's age", "Where A is from", "What A does"] }
+      ]
+    }
+  ]
+}
