@@ -1,0 +1,336 @@
+{
+  "id": "u08",
+  "title": "Shopping & money",
+  "items": [
+    {
+      "id": "u08-w01",
+      "type": "word",
+      "hanzi": "钱",
+      "pinyin": "qián",
+      "english": "money"
+    },
+    {
+      "id": "u08-w02",
+      "type": "word",
+      "hanzi": "块",
+      "pinyin": "kuài",
+      "english": "dollar (spoken)",
+      "alt": [
+        "yuan (spoken)"
+      ],
+      "hint": "Spoken word for a dollar, e.g. 五块."
+    },
+    {
+      "id": "u08-w03",
+      "type": "word",
+      "hanzi": "元",
+      "pinyin": "yuán",
+      "english": "dollar (written)",
+      "alt": [
+        "yuan (written)"
+      ],
+      "hint": "Used on price tags and in formal speech."
+    },
+    {
+      "id": "u08-w04",
+      "type": "word",
+      "hanzi": "毛",
+      "pinyin": "máo",
+      "english": "ten cents (spoken)",
+      "alt": [
+        "dime"
+      ],
+      "hint": "One tenth of a 块."
+    },
+    {
+      "id": "u08-w05",
+      "type": "word",
+      "hanzi": "买",
+      "pinyin": "mǎi",
+      "english": "to buy"
+    },
+    {
+      "id": "u08-w06",
+      "type": "word",
+      "hanzi": "卖",
+      "pinyin": "mài",
+      "english": "to sell"
+    },
+    {
+      "id": "u08-w07",
+      "type": "word",
+      "hanzi": "贵",
+      "pinyin": "guì",
+      "english": "expensive"
+    },
+    {
+      "id": "u08-w08",
+      "type": "word",
+      "hanzi": "便宜",
+      "pinyin": "piányi",
+      "english": "cheap"
+    },
+    {
+      "id": "u08-w09",
+      "type": "word",
+      "hanzi": "商店",
+      "pinyin": "shāngdiàn",
+      "english": "shop",
+      "alt": [
+        "store"
+      ]
+    },
+    {
+      "id": "u08-w10",
+      "type": "word",
+      "hanzi": "东西",
+      "pinyin": "dōngxi",
+      "english": "thing",
+      "alt": [
+        "stuff"
+      ]
+    },
+    {
+      "id": "u08-w11",
+      "type": "word",
+      "hanzi": "那个",
+      "pinyin": "nàge",
+      "english": "that one",
+      "alt": [
+        "that"
+      ]
+    },
+    {
+      "id": "u08-w12",
+      "type": "word",
+      "hanzi": "一共",
+      "pinyin": "yígòng",
+      "english": "altogether",
+      "alt": [
+        "in total"
+      ]
+    },
+    {
+      "id": "u08-p01",
+      "type": "phrase",
+      "hanzi": "多少钱",
+      "pinyin": "duōshao qián",
+      "english": "how much is it?"
+    },
+    {
+      "id": "u08-p02",
+      "type": "phrase",
+      "hanzi": "太贵了",
+      "pinyin": "tài guì le",
+      "english": "too expensive"
+    },
+    {
+      "id": "u08-p03",
+      "type": "phrase",
+      "hanzi": "不贵",
+      "pinyin": "bú guì",
+      "english": "not expensive"
+    },
+    {
+      "id": "u08-p04",
+      "type": "phrase",
+      "hanzi": "便宜点儿",
+      "pinyin": "piányi diǎnr",
+      "english": "a bit cheaper"
+    },
+    {
+      "id": "u08-p05",
+      "type": "phrase",
+      "hanzi": "打折",
+      "pinyin": "dǎzhé",
+      "english": "discount",
+      "alt": [
+        "on sale"
+      ]
+    },
+    {
+      "id": "u08-p06",
+      "type": "phrase",
+      "hanzi": "超市",
+      "pinyin": "chāoshì",
+      "english": "supermarket"
+    },
+    {
+      "id": "u08-p07",
+      "type": "phrase",
+      "hanzi": "买东西",
+      "pinyin": "mǎi dōngxi",
+      "english": "to go shopping",
+      "alt": [
+        "to buy things"
+      ]
+    },
+    {
+      "id": "u08-p08",
+      "type": "phrase",
+      "hanzi": "我要这个",
+      "pinyin": "wǒ yào zhège",
+      "english": "I'll take this one"
+    },
+    {
+      "id": "u08-s01",
+      "type": "sentence",
+      "hanzi": "这个多少钱？",
+      "pinyin": "Zhège duōshao qián?",
+      "english": "How much is this?"
+    },
+    {
+      "id": "u08-s02",
+      "type": "sentence",
+      "hanzi": "这个五块钱。",
+      "pinyin": "Zhège wǔ kuài qián.",
+      "english": "This one costs five dollars."
+    },
+    {
+      "id": "u08-s03",
+      "type": "sentence",
+      "hanzi": "那个太贵了。",
+      "pinyin": "Nàge tài guì le.",
+      "english": "That one is too expensive."
+    },
+    {
+      "id": "u08-s04",
+      "type": "sentence",
+      "hanzi": "便宜点儿，好吗？",
+      "pinyin": "Piányi diǎnr, hǎo ma?",
+      "english": "Cheaper, okay?"
+    },
+    {
+      "id": "u08-s05",
+      "type": "sentence",
+      "hanzi": "我想买两个。",
+      "pinyin": "Wǒ xiǎng mǎi liǎng gè.",
+      "english": "I'd like to buy two."
+    },
+    {
+      "id": "u08-s06",
+      "type": "sentence",
+      "hanzi": "一共十八块五毛。",
+      "pinyin": "Yígòng shíbā kuài wǔ máo.",
+      "english": "That's eighteen dollars fifty in all."
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u08-d01",
+      "title": "Bargaining",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "请问，这个多少钱？",
+          "pinyin": "Qǐngwèn, zhège duōshao qián?",
+          "english": "Excuse me, how much is this?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "五块一个。",
+          "pinyin": "Wǔ kuài yí gè.",
+          "english": "Five dollars each."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "太贵了！便宜点儿，好吗？",
+          "pinyin": "Tài guì le! Piányi diǎnr, hǎo ma?",
+          "english": "Too expensive! Cheaper, okay?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好，四块。你要几个？",
+          "pinyin": "Hǎo, sì kuài. Nǐ yào jǐ gè?",
+          "english": "Okay, four dollars. How many do you want?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我要三个。",
+          "pinyin": "Wǒ yào sān gè.",
+          "english": "I'll take three."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u08-d01-q1",
+          "question": "What is the final price for one?",
+          "answer": "Four dollars",
+          "distractors": [
+            "Five dollars",
+            "Three dollars",
+            "Fourteen dollars"
+          ]
+        },
+        {
+          "id": "u08-d01-q2",
+          "question": "How many does A buy?",
+          "answer": "Three",
+          "distractors": [
+            "Two",
+            "Four",
+            "Five"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u08-d02",
+      "title": "Paying at the till",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "一共多少钱？",
+          "pinyin": "Yígòng duōshao qián?",
+          "english": "How much is it altogether?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "一共二十三块。",
+          "pinyin": "Yígòng èrshísān kuài.",
+          "english": "Twenty-three dollars in all."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "给你一百块。",
+          "pinyin": "Gěi nǐ yìbǎi kuài.",
+          "english": "Here's one hundred dollars."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "找你七十七块。",
+          "pinyin": "Zhǎo nǐ qīshíqī kuài.",
+          "english": "Your change is seventy-seven dollars."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "谢谢，再见！",
+          "pinyin": "Xièxie, zàijiàn!",
+          "english": "Thanks, goodbye!"
+        }
+      ],
+      "questions": [
+        {
+          "id": "u08-d02-q1",
+          "question": "What is the total?",
+          "answer": "Twenty-three dollars",
+          "distractors": [
+            "Thirty-two dollars",
+            "Twenty dollars",
+            "Seventy-seven dollars"
+          ]
+        },
+        {
+          "id": "u08-d02-q2",
+          "question": "How much change does A get?",
+          "answer": "Seventy-seven dollars",
+          "distractors": [
+            "Twenty-three dollars",
+            "Eighty-seven dollars",
+            "Seven dollars"
+          ]
+        }
+      ]
+    }
+  ]
+}

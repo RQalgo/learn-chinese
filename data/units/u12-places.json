@@ -1,0 +1,319 @@
+{
+  "id": "u12",
+  "title": "Places in the city",
+  "items": [
+    {
+      "id": "u12-w01",
+      "type": "word",
+      "hanzi": "家",
+      "pinyin": "jiā",
+      "english": "home"
+    },
+    {
+      "id": "u12-w02",
+      "type": "word",
+      "hanzi": "银行",
+      "pinyin": "yínháng",
+      "english": "bank"
+    },
+    {
+      "id": "u12-w03",
+      "type": "word",
+      "hanzi": "医院",
+      "pinyin": "yīyuàn",
+      "english": "hospital"
+    },
+    {
+      "id": "u12-w04",
+      "type": "word",
+      "hanzi": "学校",
+      "pinyin": "xuéxiào",
+      "english": "school"
+    },
+    {
+      "id": "u12-w05",
+      "type": "word",
+      "hanzi": "厕所",
+      "pinyin": "cèsuǒ",
+      "english": "toilet"
+    },
+    {
+      "id": "u12-w06",
+      "type": "word",
+      "hanzi": "超市",
+      "pinyin": "chāoshì",
+      "english": "supermarket"
+    },
+    {
+      "id": "u12-w07",
+      "type": "word",
+      "hanzi": "公园",
+      "pinyin": "gōngyuán",
+      "english": "park"
+    },
+    {
+      "id": "u12-w08",
+      "type": "word",
+      "hanzi": "商店",
+      "pinyin": "shāngdiàn",
+      "english": "shop"
+    },
+    {
+      "id": "u12-w09",
+      "type": "word",
+      "hanzi": "地方",
+      "pinyin": "dìfang",
+      "english": "place"
+    },
+    {
+      "id": "u12-w10",
+      "type": "word",
+      "hanzi": "左",
+      "pinyin": "zuǒ",
+      "english": "left"
+    },
+    {
+      "id": "u12-w11",
+      "type": "word",
+      "hanzi": "右",
+      "pinyin": "yòu",
+      "english": "right"
+    },
+    {
+      "id": "u12-w12",
+      "type": "word",
+      "hanzi": "这儿",
+      "pinyin": "zhèr",
+      "english": "here"
+    },
+    {
+      "id": "u12-p01",
+      "type": "phrase",
+      "hanzi": "在哪儿？",
+      "pinyin": "zài nǎr?",
+      "english": "where is it?"
+    },
+    {
+      "id": "u12-p02",
+      "type": "phrase",
+      "hanzi": "洗手间",
+      "pinyin": "xǐshǒujiān",
+      "english": "restroom",
+      "hint": "The polite word for toilet."
+    },
+    {
+      "id": "u12-p03",
+      "type": "phrase",
+      "hanzi": "左边",
+      "pinyin": "zuǒbian",
+      "english": "left side"
+    },
+    {
+      "id": "u12-p04",
+      "type": "phrase",
+      "hanzi": "右边",
+      "pinyin": "yòubian",
+      "english": "right side"
+    },
+    {
+      "id": "u12-p05",
+      "type": "phrase",
+      "hanzi": "前面",
+      "pinyin": "qiánmian",
+      "english": "in front"
+    },
+    {
+      "id": "u12-p06",
+      "type": "phrase",
+      "hanzi": "后面",
+      "pinyin": "hòumian",
+      "english": "behind"
+    },
+    {
+      "id": "u12-p07",
+      "type": "phrase",
+      "hanzi": "旁边",
+      "pinyin": "pángbiān",
+      "english": "next to"
+    },
+    {
+      "id": "u12-p08",
+      "type": "phrase",
+      "hanzi": "一直走",
+      "pinyin": "yìzhí zǒu",
+      "english": "go straight"
+    },
+    {
+      "id": "u12-s01",
+      "type": "sentence",
+      "hanzi": "厕所在哪儿？",
+      "pinyin": "Cèsuǒ zài nǎr?",
+      "english": "Where is the toilet?"
+    },
+    {
+      "id": "u12-s02",
+      "type": "sentence",
+      "hanzi": "银行在前面。",
+      "pinyin": "Yínháng zài qiánmian.",
+      "english": "The bank is in front."
+    },
+    {
+      "id": "u12-s03",
+      "type": "sentence",
+      "hanzi": "医院在地铁站旁边。",
+      "pinyin": "Yīyuàn zài dìtiězhàn pángbiān.",
+      "english": "The hospital is next to the MRT station."
+    },
+    {
+      "id": "u12-s04",
+      "type": "sentence",
+      "hanzi": "超市在学校的后面。",
+      "pinyin": "Chāoshì zài xuéxiào de hòumian.",
+      "english": "The supermarket is behind the school."
+    },
+    {
+      "id": "u12-s05",
+      "type": "sentence",
+      "hanzi": "一直走，然后往右拐。",
+      "pinyin": "Yìzhí zǒu, ránhòu wǎng yòu guǎi.",
+      "english": "Go straight, then turn right."
+    },
+    {
+      "id": "u12-s06",
+      "type": "sentence",
+      "hanzi": "公园不远，就在银行的左边。",
+      "pinyin": "Gōngyuán bù yuǎn, jiù zài yínháng de zuǒbian.",
+      "english": "The park isn't far, it's just left of the bank."
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u12-d01",
+      "title": "Looking for the restroom",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "请问，洗手间在哪儿？",
+          "pinyin": "Qǐngwèn, xǐshǒujiān zài nǎr?",
+          "english": "Excuse me, where is the restroom?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "在银行的旁边。",
+          "pinyin": "Zài yínháng de pángbiān.",
+          "english": "It's next to the bank."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "银行在哪儿？",
+          "pinyin": "Yínháng zài nǎr?",
+          "english": "Where is the bank?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "一直走，然后往右拐。",
+          "pinyin": "Yìzhí zǒu, ránhòu wǎng yòu guǎi.",
+          "english": "Go straight, then turn right."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "远吗？",
+          "pinyin": "Yuǎn ma?",
+          "english": "Is it far?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "不远，就在前面。",
+          "pinyin": "Bù yuǎn, jiù zài qiánmian.",
+          "english": "Not far, it's just ahead."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u12-d01-q1",
+          "question": "What is A looking for?",
+          "answer": "The restroom",
+          "distractors": [
+            "A bank",
+            "A hospital",
+            "A supermarket"
+          ]
+        },
+        {
+          "id": "u12-d01-q2",
+          "question": "After going straight, which way does A turn?",
+          "answer": "Right",
+          "distractors": [
+            "Left",
+            "Back",
+            "No turn"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u12-d02",
+      "title": "Where do you live?",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你家在哪儿？",
+          "pinyin": "Nǐ jiā zài nǎr?",
+          "english": "Where is your home?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我家在学校后面。",
+          "pinyin": "Wǒ jiā zài xuéxiào hòumian.",
+          "english": "My home is behind the school."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "学校旁边有超市吗？",
+          "pinyin": "Xuéxiào pángbiān yǒu chāoshì ma?",
+          "english": "Is there a supermarket next to the school?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "有，超市在地铁站的左边。",
+          "pinyin": "Yǒu, chāoshì zài dìtiězhàn de zuǒbian.",
+          "english": "Yes, it's to the left of the MRT station."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "那医院呢？",
+          "pinyin": "Nà yīyuàn ne?",
+          "english": "And the hospital?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "医院在公园的前面。",
+          "pinyin": "Yīyuàn zài gōngyuán de qiánmian.",
+          "english": "The hospital is in front of the park."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u12-d02-q1",
+          "question": "Where is B's home?",
+          "answer": "Behind the school",
+          "distractors": [
+            "Next to the bank",
+            "In front of the park",
+            "Left of the MRT station"
+          ]
+        },
+        {
+          "id": "u12-d02-q2",
+          "question": "Where is the supermarket?",
+          "answer": "Left of the MRT station",
+          "distractors": [
+            "Behind the school",
+            "In front of the park",
+            "Next to the hospital"
+          ]
+        }
+      ]
+    }
+  ]
+}

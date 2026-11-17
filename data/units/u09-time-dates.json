@@ -1,0 +1,317 @@
+{
+  "id": "u09",
+  "title": "Time & dates",
+  "items": [
+    {
+      "id": "u09-w01",
+      "type": "word",
+      "hanzi": "今天",
+      "pinyin": "jīntiān",
+      "english": "today"
+    },
+    {
+      "id": "u09-w02",
+      "type": "word",
+      "hanzi": "明天",
+      "pinyin": "míngtiān",
+      "english": "tomorrow"
+    },
+    {
+      "id": "u09-w03",
+      "type": "word",
+      "hanzi": "昨天",
+      "pinyin": "zuótiān",
+      "english": "yesterday"
+    },
+    {
+      "id": "u09-w04",
+      "type": "word",
+      "hanzi": "现在",
+      "pinyin": "xiànzài",
+      "english": "now"
+    },
+    {
+      "id": "u09-w05",
+      "type": "word",
+      "hanzi": "星期",
+      "pinyin": "xīngqī",
+      "english": "week"
+    },
+    {
+      "id": "u09-w06",
+      "type": "word",
+      "hanzi": "月",
+      "pinyin": "yuè",
+      "english": "month"
+    },
+    {
+      "id": "u09-w07",
+      "type": "word",
+      "hanzi": "点",
+      "pinyin": "diǎn",
+      "english": "o'clock",
+      "hint": "Used for clock time: 三点 = three o'clock."
+    },
+    {
+      "id": "u09-w08",
+      "type": "word",
+      "hanzi": "分钟",
+      "pinyin": "fēnzhōng",
+      "english": "minute"
+    },
+    {
+      "id": "u09-w09",
+      "type": "word",
+      "hanzi": "年",
+      "pinyin": "nián",
+      "english": "year"
+    },
+    {
+      "id": "u09-w10",
+      "type": "word",
+      "hanzi": "星期天",
+      "pinyin": "xīngqītiān",
+      "english": "Sunday"
+    },
+    {
+      "id": "u09-w11",
+      "type": "word",
+      "hanzi": "时间",
+      "pinyin": "shíjiān",
+      "english": "time"
+    },
+    {
+      "id": "u09-w12",
+      "type": "word",
+      "hanzi": "生日",
+      "pinyin": "shēngrì",
+      "english": "birthday"
+    },
+    {
+      "id": "u09-p01",
+      "type": "phrase",
+      "hanzi": "星期一",
+      "pinyin": "xīngqīyī",
+      "english": "Monday"
+    },
+    {
+      "id": "u09-p02",
+      "type": "phrase",
+      "hanzi": "星期五",
+      "pinyin": "xīngqīwǔ",
+      "english": "Friday"
+    },
+    {
+      "id": "u09-p03",
+      "type": "phrase",
+      "hanzi": "下个星期",
+      "pinyin": "xià gè xīngqī",
+      "english": "next week"
+    },
+    {
+      "id": "u09-p04",
+      "type": "phrase",
+      "hanzi": "几点了？",
+      "pinyin": "jǐ diǎn le?",
+      "english": "what time is it?"
+    },
+    {
+      "id": "u09-p05",
+      "type": "phrase",
+      "hanzi": "三点半",
+      "pinyin": "sān diǎn bàn",
+      "english": "half past three",
+      "hint": "半 means half."
+    },
+    {
+      "id": "u09-p06",
+      "type": "phrase",
+      "hanzi": "十二月",
+      "pinyin": "shí'èr yuè",
+      "english": "December",
+      "hint": "Months are just numbers + 月."
+    },
+    {
+      "id": "u09-p07",
+      "type": "phrase",
+      "hanzi": "星期几？",
+      "pinyin": "xīngqī jǐ?",
+      "english": "what day of the week?"
+    },
+    {
+      "id": "u09-p08",
+      "type": "phrase",
+      "hanzi": "今天几号？",
+      "pinyin": "jīntiān jǐ hào?",
+      "english": "what is the date today?",
+      "hint": "号 is the spoken word for the day of the month."
+    },
+    {
+      "id": "u09-s01",
+      "type": "sentence",
+      "hanzi": "现在两点。",
+      "pinyin": "Xiànzài liǎng diǎn.",
+      "english": "It's two o'clock now."
+    },
+    {
+      "id": "u09-s02",
+      "type": "sentence",
+      "hanzi": "明天是星期六。",
+      "pinyin": "Míngtiān shì xīngqīliù.",
+      "english": "Tomorrow is Saturday."
+    },
+    {
+      "id": "u09-s03",
+      "type": "sentence",
+      "hanzi": "今天是五月十号。",
+      "pinyin": "Jīntiān shì wǔ yuè shí hào.",
+      "english": "Today is the tenth of May."
+    },
+    {
+      "id": "u09-s04",
+      "type": "sentence",
+      "hanzi": "现在差五分三点。",
+      "pinyin": "Xiànzài chà wǔ fēn sān diǎn.",
+      "english": "It's five to three."
+    },
+    {
+      "id": "u09-s05",
+      "type": "sentence",
+      "hanzi": "我们七点一刻吃饭。",
+      "pinyin": "Wǒmen qī diǎn yí kè chīfàn.",
+      "english": "We eat at a quarter past seven.",
+      "hint": "一刻 = a quarter of an hour (15 min)."
+    },
+    {
+      "id": "u09-s06",
+      "type": "sentence",
+      "hanzi": "我的生日是八月三号。",
+      "pinyin": "Wǒ de shēngrì shì bā yuè sān hào.",
+      "english": "My birthday is on August the third."
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u09-d01",
+      "title": "What time is it?",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "现在几点了？",
+          "pinyin": "Xiànzài jǐ diǎn le?",
+          "english": "What time is it now?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "现在差五分三点。",
+          "pinyin": "Xiànzài chà wǔ fēn sān diǎn.",
+          "english": "It's five to three."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我们三点半喝咖啡，好吗？",
+          "pinyin": "Wǒmen sān diǎn bàn hē kāfēi, hǎo ma?",
+          "english": "Shall we have coffee at half past three?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好的，三点半见。",
+          "pinyin": "Hǎo de, sān diǎn bàn jiàn.",
+          "english": "Okay, see you at half past three."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "好，再见！",
+          "pinyin": "Hǎo, zàijiàn!",
+          "english": "Good, bye!"
+        }
+      ],
+      "questions": [
+        {
+          "id": "u09-d01-q1",
+          "question": "What time is it now?",
+          "answer": "Five to three",
+          "distractors": [
+            "Half past three",
+            "Five past three",
+            "Three o'clock"
+          ]
+        },
+        {
+          "id": "u09-d01-q2",
+          "question": "What do they plan to do at half past three?",
+          "answer": "Have coffee",
+          "distractors": [
+            "Eat dinner",
+            "Go shopping",
+            "Have a meeting"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u09-d02",
+      "title": "A birthday",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你的生日是几月几号？",
+          "pinyin": "Nǐ de shēngrì shì jǐ yuè jǐ hào?",
+          "english": "What month and day is your birthday?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我的生日是十二月二十号。",
+          "pinyin": "Wǒ de shēngrì shì shí'èr yuè èrshí hào.",
+          "english": "My birthday is on December the twentieth."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "今天是几号？",
+          "pinyin": "Jīntiān shì jǐ hào?",
+          "english": "What's the date today?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "今天是十二月十号。",
+          "pinyin": "Jīntiān shì shí'èr yuè shí hào.",
+          "english": "Today is December the tenth."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "那还有十天！",
+          "pinyin": "Nà hái yǒu shí tiān!",
+          "english": "Then there are still ten days!"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "对，生日那天是星期六。",
+          "pinyin": "Duì, shēngrì nà tiān shì xīngqīliù.",
+          "english": "Yes, my birthday is on a Saturday."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u09-d02-q1",
+          "question": "When is B's birthday?",
+          "answer": "December 20th",
+          "distractors": [
+            "December 10th",
+            "November 20th",
+            "February 20th"
+          ]
+        },
+        {
+          "id": "u09-d02-q2",
+          "question": "What day of the week is B's birthday?",
+          "answer": "Saturday",
+          "distractors": [
+            "Sunday",
+            "Friday",
+            "Monday"
+          ]
+        }
+      ]
+    }
+  ]
+}

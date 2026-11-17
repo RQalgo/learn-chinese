@@ -14,4 +14,4 @@ Rules of thumb:
 * Engine modules (`js/engine/`, `js/state/progress.js`) are pure: `now` and `rng` are passed in.
 * Every file has a header comment explaining its area; exported functions have JSDoc; non-obvious choices get `// WHY:` comments.
 * One branch per small change; PR into `main`.
-* Tests: `node --test tests/engine/` and `python3 tools/validate_content.py`.
+* Tests: `node --test tests/engine/*.test.mjs` (Node 22 does not accept a bare directory) and `python3 tools/validate_content.py`.

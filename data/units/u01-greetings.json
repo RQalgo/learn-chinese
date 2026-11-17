@@ -1,0 +1,325 @@
+{
+  "id": "u01",
+  "title": "Greetings",
+  "items": [
+    {
+      "id": "u01-w01",
+      "type": "word",
+      "hanzi": "你好",
+      "pinyin": "nǐ hǎo",
+      "english": "hello",
+      "alt": [
+        "hi"
+      ],
+      "hint": "The most common greeting, any time of day."
+    },
+    {
+      "id": "u01-w02",
+      "type": "word",
+      "hanzi": "谢谢",
+      "pinyin": "xièxie",
+      "english": "thank you",
+      "alt": [
+        "thanks"
+      ]
+    },
+    {
+      "id": "u01-w03",
+      "type": "word",
+      "hanzi": "再见",
+      "pinyin": "zàijiàn",
+      "english": "goodbye",
+      "alt": [
+        "bye"
+      ],
+      "hint": "Literally 'see you again'."
+    },
+    {
+      "id": "u01-w04",
+      "type": "word",
+      "hanzi": "请",
+      "pinyin": "qǐng",
+      "english": "please",
+      "hint": "Also means 'to invite'."
+    },
+    {
+      "id": "u01-w05",
+      "type": "word",
+      "hanzi": "对不起",
+      "pinyin": "duìbuqǐ",
+      "english": "sorry",
+      "alt": [
+        "I apologise"
+      ],
+      "hint": "Said when you apologise."
+    },
+    {
+      "id": "u01-w06",
+      "type": "word",
+      "hanzi": "您",
+      "pinyin": "nín",
+      "english": "you (polite)",
+      "hint": "Polite 'you', for elders and customers."
+    },
+    {
+      "id": "u01-w07",
+      "type": "word",
+      "hanzi": "晚安",
+      "pinyin": "wǎn'ān",
+      "english": "good night",
+      "hint": "Said before going to bed."
+    },
+    {
+      "id": "u01-w08",
+      "type": "word",
+      "hanzi": "欢迎",
+      "pinyin": "huānyíng",
+      "english": "welcome"
+    },
+    {
+      "id": "u01-w09",
+      "type": "word",
+      "hanzi": "老师",
+      "pinyin": "lǎoshī",
+      "english": "teacher"
+    },
+    {
+      "id": "u01-w10",
+      "type": "word",
+      "hanzi": "先生",
+      "pinyin": "xiānsheng",
+      "english": "Mr / sir",
+      "alt": [
+        "mister"
+      ]
+    },
+    {
+      "id": "u01-w11",
+      "type": "word",
+      "hanzi": "小姐",
+      "pinyin": "xiǎojiě",
+      "english": "Miss"
+    },
+    {
+      "id": "u01-w12",
+      "type": "word",
+      "hanzi": "朋友",
+      "pinyin": "péngyou",
+      "english": "friend"
+    },
+    {
+      "id": "u01-p01",
+      "type": "phrase",
+      "hanzi": "不客气",
+      "pinyin": "bú kèqi",
+      "english": "you're welcome",
+      "alt": [
+        "don't mention it"
+      ],
+      "hint": "The reply to 谢谢."
+    },
+    {
+      "id": "u01-p02",
+      "type": "phrase",
+      "hanzi": "没关系",
+      "pinyin": "méi guānxi",
+      "english": "it's okay",
+      "alt": [
+        "no problem",
+        "never mind"
+      ],
+      "hint": "The reply to 对不起."
+    },
+    {
+      "id": "u01-p03",
+      "type": "phrase",
+      "hanzi": "早上好",
+      "pinyin": "zǎoshang hǎo",
+      "english": "good morning"
+    },
+    {
+      "id": "u01-p04",
+      "type": "phrase",
+      "hanzi": "晚上好",
+      "pinyin": "wǎnshang hǎo",
+      "english": "good evening"
+    },
+    {
+      "id": "u01-p05",
+      "type": "phrase",
+      "hanzi": "你好吗",
+      "pinyin": "nǐ hǎo ma",
+      "english": "how are you?"
+    },
+    {
+      "id": "u01-p06",
+      "type": "phrase",
+      "hanzi": "你们好",
+      "pinyin": "nǐmen hǎo",
+      "english": "hello, everyone",
+      "hint": "你们 means 'you' for more than one person."
+    },
+    {
+      "id": "u01-p07",
+      "type": "phrase",
+      "hanzi": "明天见",
+      "pinyin": "míngtiān jiàn",
+      "english": "see you tomorrow"
+    },
+    {
+      "id": "u01-p08",
+      "type": "phrase",
+      "hanzi": "好久不见",
+      "pinyin": "hǎojiǔ bú jiàn",
+      "english": "long time no see"
+    },
+    {
+      "id": "u01-s01",
+      "type": "sentence",
+      "hanzi": "谢谢，再见！",
+      "pinyin": "Xièxie, zàijiàn!",
+      "english": "Thanks, goodbye!"
+    },
+    {
+      "id": "u01-s02",
+      "type": "sentence",
+      "hanzi": "老师，早上好！",
+      "pinyin": "Lǎoshī, zǎoshang hǎo!",
+      "english": "Good morning, teacher!"
+    },
+    {
+      "id": "u01-s03",
+      "type": "sentence",
+      "hanzi": "欢迎，请进！",
+      "pinyin": "Huānyíng, qǐng jìn!",
+      "english": "Welcome, please come in."
+    },
+    {
+      "id": "u01-s04",
+      "type": "sentence",
+      "hanzi": "对不起，我来晚了。",
+      "pinyin": "Duìbuqǐ, wǒ lái wǎn le.",
+      "english": "Sorry, I'm late."
+    },
+    {
+      "id": "u01-s05",
+      "type": "sentence",
+      "hanzi": "我很好，谢谢。你呢？",
+      "pinyin": "Wǒ hěn hǎo, xièxie. Nǐ ne?",
+      "english": "I'm fine, thanks. And you?"
+    },
+    {
+      "id": "u01-s06",
+      "type": "sentence",
+      "hanzi": "好久不见，你好吗？",
+      "pinyin": "Hǎojiǔ bú jiàn, nǐ hǎo ma?",
+      "english": "Long time no see, how are you?"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u01-d01",
+      "title": "Meeting a friend",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你好！好久不见。",
+          "pinyin": "Nǐ hǎo! Hǎojiǔ bú jiàn.",
+          "english": "Hello! Long time no see."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "你好！你好吗？",
+          "pinyin": "Nǐ hǎo! Nǐ hǎo ma?",
+          "english": "Hello! How are you?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我很好，谢谢。你呢？",
+          "pinyin": "Wǒ hěn hǎo, xièxie. Nǐ ne?",
+          "english": "I'm fine, thanks. And you?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我也很好。明天见！",
+          "pinyin": "Wǒ yě hěn hǎo. Míngtiān jiàn!",
+          "english": "I'm fine too. See you tomorrow!"
+        }
+      ],
+      "questions": [
+        {
+          "id": "u01-d01-q1",
+          "question": "How is A?",
+          "answer": "Fine",
+          "distractors": [
+            "Tired",
+            "Sick",
+            "Busy"
+          ]
+        },
+        {
+          "id": "u01-d01-q2",
+          "question": "When will they see each other again?",
+          "answer": "Tomorrow",
+          "distractors": [
+            "Tonight",
+            "Next week",
+            "Next year"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u01-d02",
+      "title": "Late for class",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "老师，对不起，我来晚了。",
+          "pinyin": "Lǎoshī, duìbuqǐ, wǒ lái wǎn le.",
+          "english": "Teacher, sorry, I'm late."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "没关系。请进，请坐。",
+          "pinyin": "Méi guānxi. Qǐng jìn, qǐng zuò.",
+          "english": "It's okay. Please come in and sit down."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "谢谢您！",
+          "pinyin": "Xièxie nín!",
+          "english": "Thank you!"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "不客气。",
+          "pinyin": "Bú kèqi.",
+          "english": "You're welcome."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u01-d02-q1",
+          "question": "Why does A apologise?",
+          "answer": "A is late",
+          "distractors": [
+            "A forgot a book",
+            "A broke something",
+            "A is leaving early"
+          ]
+        },
+        {
+          "id": "u01-d02-q2",
+          "question": "What does B tell A to do?",
+          "answer": "Come in and sit down",
+          "distractors": [
+            "Wait outside",
+            "Go home",
+            "Say it again"
+          ]
+        }
+      ]
+    }
+  ]
+}

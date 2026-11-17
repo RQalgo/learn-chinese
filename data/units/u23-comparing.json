@@ -1,0 +1,354 @@
+{
+  "id": "u23",
+  "title": "Comparing & choosing",
+  "items": [
+    {
+      "id": "u23-w01",
+      "type": "word",
+      "hanzi": "快",
+      "pinyin": "kuài",
+      "english": "fast",
+      "alt": [
+        "quick"
+      ]
+    },
+    {
+      "id": "u23-w02",
+      "type": "word",
+      "hanzi": "慢",
+      "pinyin": "màn",
+      "english": "slow"
+    },
+    {
+      "id": "u23-w03",
+      "type": "word",
+      "hanzi": "远",
+      "pinyin": "yuǎn",
+      "english": "far"
+    },
+    {
+      "id": "u23-w04",
+      "type": "word",
+      "hanzi": "近",
+      "pinyin": "jìn",
+      "english": "near",
+      "alt": [
+        "close"
+      ]
+    },
+    {
+      "id": "u23-w05",
+      "type": "word",
+      "hanzi": "高",
+      "pinyin": "gāo",
+      "english": "tall / high"
+    },
+    {
+      "id": "u23-w06",
+      "type": "word",
+      "hanzi": "矮",
+      "pinyin": "ǎi",
+      "english": "short (height)",
+      "alt": [
+        "short"
+      ]
+    },
+    {
+      "id": "u23-w07",
+      "type": "word",
+      "hanzi": "比",
+      "pinyin": "bǐ",
+      "english": "than / compared with"
+    },
+    {
+      "id": "u23-w08",
+      "type": "word",
+      "hanzi": "更",
+      "pinyin": "gèng",
+      "english": "even more"
+    },
+    {
+      "id": "u23-w09",
+      "type": "word",
+      "hanzi": "最",
+      "pinyin": "zuì",
+      "english": "most"
+    },
+    {
+      "id": "u23-w10",
+      "type": "word",
+      "hanzi": "一样",
+      "pinyin": "yíyàng",
+      "english": "the same"
+    },
+    {
+      "id": "u23-w11",
+      "type": "word",
+      "hanzi": "还是",
+      "pinyin": "háishi",
+      "english": "or"
+    },
+    {
+      "id": "u23-w12",
+      "type": "word",
+      "hanzi": "选",
+      "pinyin": "xuǎn",
+      "english": "to choose",
+      "alt": [
+        "to pick"
+      ]
+    },
+    {
+      "id": "u23-p01",
+      "type": "phrase",
+      "hanzi": "一样大",
+      "pinyin": "yíyàng dà",
+      "english": "the same size"
+    },
+    {
+      "id": "u23-p02",
+      "type": "phrase",
+      "hanzi": "差不多",
+      "pinyin": "chàbuduō",
+      "english": "about the same",
+      "alt": [
+        "almost"
+      ]
+    },
+    {
+      "id": "u23-p03",
+      "type": "phrase",
+      "hanzi": "最好",
+      "pinyin": "zuì hǎo",
+      "english": "the best"
+    },
+    {
+      "id": "u23-p04",
+      "type": "phrase",
+      "hanzi": "更便宜",
+      "pinyin": "gèng piányi",
+      "english": "even cheaper"
+    },
+    {
+      "id": "u23-p05",
+      "type": "phrase",
+      "hanzi": "比较贵",
+      "pinyin": "bǐjiào guì",
+      "english": "fairly expensive"
+    },
+    {
+      "id": "u23-p06",
+      "type": "phrase",
+      "hanzi": "哪个好",
+      "pinyin": "nǎge hǎo",
+      "english": "which one is better?"
+    },
+    {
+      "id": "u23-p07",
+      "type": "phrase",
+      "hanzi": "都可以",
+      "pinyin": "dōu kěyǐ",
+      "english": "either is fine"
+    },
+    {
+      "id": "u23-p08",
+      "type": "phrase",
+      "hanzi": "选这个",
+      "pinyin": "xuǎn zhège",
+      "english": "I'll take this one",
+      "alt": [
+        "choose this one"
+      ]
+    },
+    {
+      "id": "u23-s01",
+      "type": "sentence",
+      "hanzi": "这个比那个贵。",
+      "pinyin": "Zhège bǐ nàge guì.",
+      "english": "This one is more expensive than that one."
+    },
+    {
+      "id": "u23-s02",
+      "type": "sentence",
+      "hanzi": "我哥哥比我高。",
+      "pinyin": "Wǒ gēge bǐ wǒ gāo.",
+      "english": "My older brother is taller than me."
+    },
+    {
+      "id": "u23-s03",
+      "type": "sentence",
+      "hanzi": "地铁比公共汽车快。",
+      "pinyin": "Dìtiě bǐ gōnggòng qìchē kuài.",
+      "english": "The MRT is faster than the bus."
+    },
+    {
+      "id": "u23-s04",
+      "type": "sentence",
+      "hanzi": "今天比昨天更热。",
+      "pinyin": "Jīntiān bǐ zuótiān gèng rè.",
+      "english": "Today is even hotter than yesterday."
+    },
+    {
+      "id": "u23-s05",
+      "type": "sentence",
+      "hanzi": "这家店的面最好吃。",
+      "pinyin": "Zhè jiā diàn de miàn zuì hǎochī.",
+      "english": "The noodles at this shop are the tastiest."
+    },
+    {
+      "id": "u23-s06",
+      "type": "sentence",
+      "hanzi": "你喝茶还是喝咖啡？",
+      "pinyin": "Nǐ hē chá háishi hē kāfēi?",
+      "english": "Do you want tea or coffee?"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u23-d01",
+      "title": "Choosing lunch",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "中午吃什么？米饭还是面条？",
+          "pinyin": "Zhōngwǔ chī shénme? Mǐfàn háishi miàntiáo?",
+          "english": "What shall we eat at noon? Rice or noodles?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "都可以。你想吃什么？",
+          "pinyin": "Dōu kěyǐ. Nǐ xiǎng chī shénme?",
+          "english": "Either is fine. What do you want?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我想吃面。楼下那家的面最好吃。",
+          "pinyin": "Wǒ xiǎng chī miàn. Lóuxià nà jiā de miàn zuì hǎochī.",
+          "english": "I want noodles. The noodles at the shop downstairs are the tastiest."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "可是那家比较贵。",
+          "pinyin": "Kěshì nà jiā bǐjiào guì.",
+          "english": "But that shop is fairly expensive."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "比旁边那家贵一点儿，不过更好吃。",
+          "pinyin": "Bǐ pángbiān nà jiā guì yìdiǎnr, búguò gèng hǎochī.",
+          "english": "A bit pricier than the one next door, but even tastier."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好，那就去楼下那家吧。",
+          "pinyin": "Hǎo, nà jiù qù lóuxià nà jiā ba.",
+          "english": "OK, then let's go to the one downstairs."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "太好了，快走吧！",
+          "pinyin": "Tài hǎo le, kuài zǒu ba!",
+          "english": "Great, let's go quickly!"
+        }
+      ],
+      "questions": [
+        {
+          "id": "u23-d01-q1",
+          "question": "Why does B hesitate about the shop downstairs?",
+          "answer": "It is fairly expensive",
+          "distractors": [
+            "It is far away",
+            "It is always full",
+            "It is too slow"
+          ]
+        },
+        {
+          "id": "u23-d01-q2",
+          "question": "What do they decide?",
+          "answer": "Noodles at the shop downstairs",
+          "distractors": [
+            "Rice at the shop next door",
+            "Coffee in the office",
+            "Noodles at home"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u23-d02",
+      "title": "Getting to the airport",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "去机场，我们坐地铁还是坐出租车？",
+          "pinyin": "Qù jīchǎng, wǒmen zuò dìtiě háishi zuò chūzūchē?",
+          "english": "To the airport, shall we take the MRT or a taxi?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "出租车比地铁快，不过贵很多。",
+          "pinyin": "Chūzūchē bǐ dìtiě kuài, búguò guì hěn duō.",
+          "english": "A taxi is faster than the MRT, but much more expensive."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "这儿到机场远吗？",
+          "pinyin": "Zhèr dào jīchǎng yuǎn ma?",
+          "english": "Is it far from here to the airport?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "不太远，坐地铁四十分钟。",
+          "pinyin": "Bú tài yuǎn, zuò dìtiě sìshí fēnzhōng.",
+          "english": "Not too far. Forty minutes by MRT."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "出租车呢？",
+          "pinyin": "Chūzūchē ne?",
+          "english": "And by taxi?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "差不多二十分钟，可是要四十块。",
+          "pinyin": "Chàbuduō èrshí fēnzhōng, kěshì yào sìshí kuài.",
+          "english": "About twenty minutes, but it costs forty dollars."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "那我们坐地铁吧，便宜一点儿。",
+          "pinyin": "Nà wǒmen zuò dìtiě ba, piányi yìdiǎnr.",
+          "english": "Then let's take the MRT. It's a bit cheaper."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好，我同意。",
+          "pinyin": "Hǎo, wǒ tóngyì.",
+          "english": "OK, I agree."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u23-d02-q1",
+          "question": "How long does the MRT trip take?",
+          "answer": "Forty minutes",
+          "distractors": [
+            "Twenty minutes",
+            "One hour",
+            "Ten minutes"
+          ]
+        },
+        {
+          "id": "u23-d02-q2",
+          "question": "Why do they choose the MRT?",
+          "answer": "It is cheaper",
+          "distractors": [
+            "It is faster",
+            "It is more comfortable",
+            "No taxi is available"
+          ]
+        }
+      ]
+    }
+  ]
+}

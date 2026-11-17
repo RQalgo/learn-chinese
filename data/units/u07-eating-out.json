@@ -1,0 +1,317 @@
+{
+  "id": "u07",
+  "title": "Eating out",
+  "items": [
+    {
+      "id": "u07-w01",
+      "type": "word",
+      "hanzi": "菜单",
+      "pinyin": "càidān",
+      "english": "menu"
+    },
+    {
+      "id": "u07-w02",
+      "type": "word",
+      "hanzi": "服务员",
+      "pinyin": "fúwùyuán",
+      "english": "waiter / waitress",
+      "alt": [
+        "server"
+      ],
+      "hint": "Call them over with 服务员!"
+    },
+    {
+      "id": "u07-w03",
+      "type": "word",
+      "hanzi": "好吃",
+      "pinyin": "hǎochī",
+      "english": "tasty",
+      "alt": [
+        "delicious"
+      ]
+    },
+    {
+      "id": "u07-w04",
+      "type": "word",
+      "hanzi": "饿",
+      "pinyin": "è",
+      "english": "hungry"
+    },
+    {
+      "id": "u07-w05",
+      "type": "word",
+      "hanzi": "渴",
+      "pinyin": "kě",
+      "english": "thirsty"
+    },
+    {
+      "id": "u07-w06",
+      "type": "word",
+      "hanzi": "饱",
+      "pinyin": "bǎo",
+      "english": "full (from eating)"
+    },
+    {
+      "id": "u07-w07",
+      "type": "word",
+      "hanzi": "汤",
+      "pinyin": "tāng",
+      "english": "soup"
+    },
+    {
+      "id": "u07-w08",
+      "type": "word",
+      "hanzi": "筷子",
+      "pinyin": "kuàizi",
+      "english": "chopsticks"
+    },
+    {
+      "id": "u07-w09",
+      "type": "word",
+      "hanzi": "碗",
+      "pinyin": "wǎn",
+      "english": "bowl"
+    },
+    {
+      "id": "u07-w10",
+      "type": "word",
+      "hanzi": "辣",
+      "pinyin": "là",
+      "english": "spicy"
+    },
+    {
+      "id": "u07-w11",
+      "type": "word",
+      "hanzi": "买单",
+      "pinyin": "mǎidān",
+      "english": "the bill",
+      "alt": [
+        "to pay the bill"
+      ],
+      "hint": "Said to the waiter when you want to pay."
+    },
+    {
+      "id": "u07-w12",
+      "type": "word",
+      "hanzi": "鸡饭",
+      "pinyin": "jīfàn",
+      "english": "chicken rice"
+    },
+    {
+      "id": "u07-p01",
+      "type": "phrase",
+      "hanzi": "点菜",
+      "pinyin": "diǎn cài",
+      "english": "to order food"
+    },
+    {
+      "id": "u07-p02",
+      "type": "phrase",
+      "hanzi": "打包",
+      "pinyin": "dǎbāo",
+      "english": "takeaway",
+      "alt": [
+        "to take away"
+      ]
+    },
+    {
+      "id": "u07-p03",
+      "type": "phrase",
+      "hanzi": "这个",
+      "pinyin": "zhège",
+      "english": "this one",
+      "alt": [
+        "this"
+      ]
+    },
+    {
+      "id": "u07-p04",
+      "type": "phrase",
+      "hanzi": "不辣",
+      "pinyin": "bú là",
+      "english": "not spicy"
+    },
+    {
+      "id": "u07-p05",
+      "type": "phrase",
+      "hanzi": "很好吃",
+      "pinyin": "hěn hǎochī",
+      "english": "very tasty"
+    },
+    {
+      "id": "u07-p06",
+      "type": "phrase",
+      "hanzi": "不好吃",
+      "pinyin": "bù hǎochī",
+      "english": "not tasty"
+    },
+    {
+      "id": "u07-p07",
+      "type": "phrase",
+      "hanzi": "请慢用",
+      "pinyin": "qǐng màn yòng",
+      "english": "enjoy your meal"
+    },
+    {
+      "id": "u07-p08",
+      "type": "phrase",
+      "hanzi": "再来一碗",
+      "pinyin": "zài lái yì wǎn",
+      "english": "another bowl, please"
+    },
+    {
+      "id": "u07-s01",
+      "type": "sentence",
+      "hanzi": "我要一碗面条。",
+      "pinyin": "Wǒ yào yì wǎn miàntiáo.",
+      "english": "I'd like a bowl of noodles."
+    },
+    {
+      "id": "u07-s02",
+      "type": "sentence",
+      "hanzi": "请给我菜单。",
+      "pinyin": "Qǐng gěi wǒ càidān.",
+      "english": "Please give me the menu."
+    },
+    {
+      "id": "u07-s03",
+      "type": "sentence",
+      "hanzi": "这个很好吃。",
+      "pinyin": "Zhège hěn hǎochī.",
+      "english": "This is delicious."
+    },
+    {
+      "id": "u07-s04",
+      "type": "sentence",
+      "hanzi": "我很饿，也很渴。",
+      "pinyin": "Wǒ hěn è, yě hěn kě.",
+      "english": "I'm hungry and thirsty."
+    },
+    {
+      "id": "u07-s05",
+      "type": "sentence",
+      "hanzi": "这个汤不辣。",
+      "pinyin": "Zhège tāng bú là.",
+      "english": "This soup isn't spicy."
+    },
+    {
+      "id": "u07-s06",
+      "type": "sentence",
+      "hanzi": "服务员，请买单。",
+      "pinyin": "Fúwùyuán, qǐng mǎidān.",
+      "english": "Waiter, the bill please."
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u07-d01",
+      "title": "Placing an order",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你好，想吃什么？",
+          "pinyin": "Nǐ hǎo, xiǎng chī shénme?",
+          "english": "Hello, what would you like to eat?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我要一份鸡饭，一碗汤。",
+          "pinyin": "Wǒ yào yí fèn jīfàn, yì wǎn tāng.",
+          "english": "I'd like a chicken rice and a bowl of soup."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "想喝什么？",
+          "pinyin": "Xiǎng hē shénme?",
+          "english": "What would you like to drink?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "一杯茶，谢谢。",
+          "pinyin": "Yì bēi chá, xièxie.",
+          "english": "A cup of tea, thank you."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "好的，请等一下。",
+          "pinyin": "Hǎo de, qǐng děng yíxià.",
+          "english": "Okay, please wait a moment."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u07-d01-q1",
+          "question": "What food does B order?",
+          "answer": "Chicken rice and soup",
+          "distractors": [
+            "Noodles and soup",
+            "Rice and an egg",
+            "Chicken rice and fruit"
+          ]
+        },
+        {
+          "id": "u07-d01-q2",
+          "question": "What does B order to drink?",
+          "answer": "Tea",
+          "distractors": [
+            "Coffee",
+            "Milk",
+            "Water"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u07-d02",
+      "title": "Asking for the bill",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "服务员，请买单。",
+          "pinyin": "Fúwùyuán, qǐng mǎidān.",
+          "english": "Waiter, the bill please."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好的。你们吃饱了吗？",
+          "pinyin": "Hǎo de. Nǐmen chī bǎo le ma?",
+          "english": "Okay. Are you full?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "吃饱了，很好吃，谢谢！",
+          "pinyin": "Chī bǎo le, hěn hǎochī, xièxie!",
+          "english": "Yes, it was delicious, thank you!"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "不客气，再见！",
+          "pinyin": "Bú kèqi, zàijiàn!",
+          "english": "You're welcome, goodbye!"
+        }
+      ],
+      "questions": [
+        {
+          "id": "u07-d02-q1",
+          "question": "What does A ask for?",
+          "answer": "The bill",
+          "distractors": [
+            "The menu",
+            "Another bowl",
+            "Some water"
+          ]
+        },
+        {
+          "id": "u07-d02-q2",
+          "question": "What does A say about the food?",
+          "answer": "It was delicious",
+          "distractors": [
+            "It was too spicy",
+            "It was not tasty",
+            "It was too cold"
+          ]
+        }
+      ]
+    }
+  ]
+}

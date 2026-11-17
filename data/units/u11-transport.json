@@ -1,0 +1,319 @@
+{
+  "id": "u11",
+  "title": "Getting around",
+  "items": [
+    {
+      "id": "u11-w01",
+      "type": "word",
+      "hanzi": "车",
+      "pinyin": "chē",
+      "english": "car"
+    },
+    {
+      "id": "u11-w02",
+      "type": "word",
+      "hanzi": "地铁",
+      "pinyin": "dìtiě",
+      "english": "MRT"
+    },
+    {
+      "id": "u11-w03",
+      "type": "word",
+      "hanzi": "巴士",
+      "pinyin": "bāshì",
+      "english": "bus"
+    },
+    {
+      "id": "u11-w04",
+      "type": "word",
+      "hanzi": "出租车",
+      "pinyin": "chūzūchē",
+      "english": "taxi"
+    },
+    {
+      "id": "u11-w05",
+      "type": "word",
+      "hanzi": "站",
+      "pinyin": "zhàn",
+      "english": "station; stop"
+    },
+    {
+      "id": "u11-w06",
+      "type": "word",
+      "hanzi": "路",
+      "pinyin": "lù",
+      "english": "road"
+    },
+    {
+      "id": "u11-w07",
+      "type": "word",
+      "hanzi": "坐",
+      "pinyin": "zuò",
+      "english": "to take (a bus or train)"
+    },
+    {
+      "id": "u11-w08",
+      "type": "word",
+      "hanzi": "开",
+      "pinyin": "kāi",
+      "english": "to drive"
+    },
+    {
+      "id": "u11-w09",
+      "type": "word",
+      "hanzi": "走",
+      "pinyin": "zǒu",
+      "english": "to walk"
+    },
+    {
+      "id": "u11-w10",
+      "type": "word",
+      "hanzi": "到",
+      "pinyin": "dào",
+      "english": "to arrive"
+    },
+    {
+      "id": "u11-w11",
+      "type": "word",
+      "hanzi": "远",
+      "pinyin": "yuǎn",
+      "english": "far"
+    },
+    {
+      "id": "u11-w12",
+      "type": "word",
+      "hanzi": "近",
+      "pinyin": "jìn",
+      "english": "near"
+    },
+    {
+      "id": "u11-p01",
+      "type": "phrase",
+      "hanzi": "地铁站",
+      "pinyin": "dìtiězhàn",
+      "english": "MRT station"
+    },
+    {
+      "id": "u11-p02",
+      "type": "phrase",
+      "hanzi": "坐地铁",
+      "pinyin": "zuò dìtiě",
+      "english": "to take the MRT"
+    },
+    {
+      "id": "u11-p03",
+      "type": "phrase",
+      "hanzi": "坐巴士",
+      "pinyin": "zuò bāshì",
+      "english": "to take the bus"
+    },
+    {
+      "id": "u11-p04",
+      "type": "phrase",
+      "hanzi": "打车",
+      "pinyin": "dǎchē",
+      "english": "to take a taxi",
+      "hint": "Literally 'hit a car' — means to hail a taxi."
+    },
+    {
+      "id": "u11-p05",
+      "type": "phrase",
+      "hanzi": "走路",
+      "pinyin": "zǒulù",
+      "english": "to go on foot"
+    },
+    {
+      "id": "u11-p06",
+      "type": "phrase",
+      "hanzi": "开车",
+      "pinyin": "kāichē",
+      "english": "to drive a car"
+    },
+    {
+      "id": "u11-p07",
+      "type": "phrase",
+      "hanzi": "怎么去？",
+      "pinyin": "zěnme qù?",
+      "english": "how do I get there?"
+    },
+    {
+      "id": "u11-p08",
+      "type": "phrase",
+      "hanzi": "要多久？",
+      "pinyin": "yào duōjiǔ?",
+      "english": "how long does it take?"
+    },
+    {
+      "id": "u11-s01",
+      "type": "sentence",
+      "hanzi": "我坐地铁去。",
+      "pinyin": "Wǒ zuò dìtiě qù.",
+      "english": "I'm going by MRT."
+    },
+    {
+      "id": "u11-s02",
+      "type": "sentence",
+      "hanzi": "地铁站很近。",
+      "pinyin": "Dìtiězhàn hěn jìn.",
+      "english": "The MRT station is very close."
+    },
+    {
+      "id": "u11-s03",
+      "type": "sentence",
+      "hanzi": "你怎么回家？",
+      "pinyin": "Nǐ zěnme huí jiā?",
+      "english": "How do you get home?"
+    },
+    {
+      "id": "u11-s04",
+      "type": "sentence",
+      "hanzi": "我走路回家要二十分钟。",
+      "pinyin": "Wǒ zǒulù huí jiā yào èrshí fēnzhōng.",
+      "english": "It takes me twenty minutes to walk home."
+    },
+    {
+      "id": "u11-s05",
+      "type": "sentence",
+      "hanzi": "太远了，我们打车吧。",
+      "pinyin": "Tài yuǎn le, wǒmen dǎchē ba.",
+      "english": "It's too far, let's take a taxi."
+    },
+    {
+      "id": "u11-s06",
+      "type": "sentence",
+      "hanzi": "我不会开车，所以坐地铁。",
+      "pinyin": "Wǒ bú huì kāichē, suǒyǐ zuò dìtiě.",
+      "english": "I can't drive, so I take the MRT."
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u11-d01",
+      "title": "Asking the way",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "请问，怎么去乌节路？",
+          "pinyin": "Qǐngwèn, zěnme qù Wūjiélù?",
+          "english": "Excuse me, how do I get to Orchard Road?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "你可以坐地铁。",
+          "pinyin": "Nǐ kěyǐ zuò dìtiě.",
+          "english": "You can take the MRT."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "地铁站远吗？",
+          "pinyin": "Dìtiězhàn yuǎn ma?",
+          "english": "Is the MRT station far?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "不远，走路五分钟。",
+          "pinyin": "Bù yuǎn, zǒulù wǔ fēnzhōng.",
+          "english": "Not far, five minutes on foot."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "谢谢！",
+          "pinyin": "Xièxie!",
+          "english": "Thank you!"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "不客气。",
+          "pinyin": "Bú kèqi.",
+          "english": "You're welcome."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u11-d01-q1",
+          "question": "How does B suggest getting to Orchard Road?",
+          "answer": "Take the MRT",
+          "distractors": [
+            "Take a taxi",
+            "Take a bus",
+            "Walk the whole way"
+          ]
+        },
+        {
+          "id": "u11-d01-q2",
+          "question": "How long is the walk to the station?",
+          "answer": "Five minutes",
+          "distractors": [
+            "Ten minutes",
+            "Fifteen minutes",
+            "Twenty minutes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u11-d02",
+      "title": "Bus or taxi?",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "我们怎么去？",
+          "pinyin": "Wǒmen zěnme qù?",
+          "english": "How shall we go?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "坐巴士吧。",
+          "pinyin": "Zuò bāshì ba.",
+          "english": "Let's take the bus."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "巴士要多久？",
+          "pinyin": "Bāshì yào duōjiǔ?",
+          "english": "How long does the bus take?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "要四十分钟。",
+          "pinyin": "Yào sìshí fēnzhōng.",
+          "english": "Forty minutes."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "太久了，我们打车吧。",
+          "pinyin": "Tài jiǔ le, wǒmen dǎchē ba.",
+          "english": "Too long, let's take a taxi."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好，打车要二十分钟。",
+          "pinyin": "Hǎo, dǎchē yào èrshí fēnzhōng.",
+          "english": "Okay, a taxi takes twenty minutes."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u11-d02-q1",
+          "question": "How long does the bus take?",
+          "answer": "Forty minutes",
+          "distractors": [
+            "Twenty minutes",
+            "Thirty minutes",
+            "Fifty minutes"
+          ]
+        },
+        {
+          "id": "u11-d02-q2",
+          "question": "How do they decide to go?",
+          "answer": "By taxi",
+          "distractors": [
+            "By bus",
+            "By MRT",
+            "On foot"
+          ]
+        }
+      ]
+    }
+  ]
+}

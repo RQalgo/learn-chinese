@@ -1,0 +1,316 @@
+{
+  "id": "u06",
+  "title": "Food & drink",
+  "items": [
+    {
+      "id": "u06-w01",
+      "type": "word",
+      "hanzi": "米饭",
+      "pinyin": "mǐfàn",
+      "english": "rice",
+      "alt": [
+        "cooked rice"
+      ]
+    },
+    {
+      "id": "u06-w02",
+      "type": "word",
+      "hanzi": "面条",
+      "pinyin": "miàntiáo",
+      "english": "noodles"
+    },
+    {
+      "id": "u06-w03",
+      "type": "word",
+      "hanzi": "水",
+      "pinyin": "shuǐ",
+      "english": "water"
+    },
+    {
+      "id": "u06-w04",
+      "type": "word",
+      "hanzi": "茶",
+      "pinyin": "chá",
+      "english": "tea"
+    },
+    {
+      "id": "u06-w05",
+      "type": "word",
+      "hanzi": "咖啡",
+      "pinyin": "kāfēi",
+      "english": "coffee",
+      "alt": [
+        "kopi"
+      ]
+    },
+    {
+      "id": "u06-w06",
+      "type": "word",
+      "hanzi": "牛奶",
+      "pinyin": "niúnǎi",
+      "english": "milk"
+    },
+    {
+      "id": "u06-w07",
+      "type": "word",
+      "hanzi": "鸡蛋",
+      "pinyin": "jīdàn",
+      "english": "egg"
+    },
+    {
+      "id": "u06-w08",
+      "type": "word",
+      "hanzi": "肉",
+      "pinyin": "ròu",
+      "english": "meat"
+    },
+    {
+      "id": "u06-w09",
+      "type": "word",
+      "hanzi": "吃",
+      "pinyin": "chī",
+      "english": "to eat"
+    },
+    {
+      "id": "u06-w10",
+      "type": "word",
+      "hanzi": "喝",
+      "pinyin": "hē",
+      "english": "to drink"
+    },
+    {
+      "id": "u06-w11",
+      "type": "word",
+      "hanzi": "想",
+      "pinyin": "xiǎng",
+      "english": "would like to",
+      "alt": [
+        "to want to",
+        "to think"
+      ],
+      "hint": "想 + verb: 想吃 'would like to eat'."
+    },
+    {
+      "id": "u06-w12",
+      "type": "word",
+      "hanzi": "要",
+      "pinyin": "yào",
+      "english": "to want (something)",
+      "alt": [
+        "to order"
+      ],
+      "hint": "Used when ordering: 我要…"
+    },
+    {
+      "id": "u06-p01",
+      "type": "phrase",
+      "hanzi": "吃饭",
+      "pinyin": "chī fàn",
+      "english": "to have a meal",
+      "hint": "Also a common way to say 'let's eat'."
+    },
+    {
+      "id": "u06-p02",
+      "type": "phrase",
+      "hanzi": "喝水",
+      "pinyin": "hē shuǐ",
+      "english": "to drink water"
+    },
+    {
+      "id": "u06-p03",
+      "type": "phrase",
+      "hanzi": "吃面条",
+      "pinyin": "chī miàntiáo",
+      "english": "to eat noodles"
+    },
+    {
+      "id": "u06-p04",
+      "type": "phrase",
+      "hanzi": "喝咖啡",
+      "pinyin": "hē kāfēi",
+      "english": "to drink coffee"
+    },
+    {
+      "id": "u06-p05",
+      "type": "phrase",
+      "hanzi": "早饭",
+      "pinyin": "zǎofàn",
+      "english": "breakfast"
+    },
+    {
+      "id": "u06-p06",
+      "type": "phrase",
+      "hanzi": "午饭",
+      "pinyin": "wǔfàn",
+      "english": "lunch"
+    },
+    {
+      "id": "u06-p07",
+      "type": "phrase",
+      "hanzi": "晚饭",
+      "pinyin": "wǎnfàn",
+      "english": "dinner"
+    },
+    {
+      "id": "u06-p08",
+      "type": "phrase",
+      "hanzi": "水果",
+      "pinyin": "shuǐguǒ",
+      "english": "fruit"
+    },
+    {
+      "id": "u06-s01",
+      "type": "sentence",
+      "hanzi": "我想吃米饭。",
+      "pinyin": "Wǒ xiǎng chī mǐfàn.",
+      "english": "I'd like to eat rice."
+    },
+    {
+      "id": "u06-s02",
+      "type": "sentence",
+      "hanzi": "我想喝茶。",
+      "pinyin": "Wǒ xiǎng hē chá.",
+      "english": "I'd like to drink tea."
+    },
+    {
+      "id": "u06-s03",
+      "type": "sentence",
+      "hanzi": "你想吃什么？",
+      "pinyin": "Nǐ xiǎng chī shénme?",
+      "english": "What would you like to eat?"
+    },
+    {
+      "id": "u06-s04",
+      "type": "sentence",
+      "hanzi": "你想喝什么？",
+      "pinyin": "Nǐ xiǎng hē shénme?",
+      "english": "What would you like to drink?"
+    },
+    {
+      "id": "u06-s05",
+      "type": "sentence",
+      "hanzi": "我要一杯咖啡。",
+      "pinyin": "Wǒ yào yì bēi kāfēi.",
+      "english": "I'd like a cup of coffee."
+    },
+    {
+      "id": "u06-s06",
+      "type": "sentence",
+      "hanzi": "我不喝咖啡，我喝茶。",
+      "pinyin": "Wǒ bù hē kāfēi, wǒ hē chá.",
+      "english": "I don't drink coffee, I drink tea."
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u06-d01",
+      "title": "What to eat",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你想吃什么？",
+          "pinyin": "Nǐ xiǎng chī shénme?",
+          "english": "What would you like to eat?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我想吃面条。你呢？",
+          "pinyin": "Wǒ xiǎng chī miàntiáo. Nǐ ne?",
+          "english": "I'd like noodles. And you?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我想吃米饭。",
+          "pinyin": "Wǒ xiǎng chī mǐfàn.",
+          "english": "I'd like rice."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好！我们吃饭。",
+          "pinyin": "Hǎo! Wǒmen chī fàn.",
+          "english": "Okay! Let's eat."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u06-d01-q1",
+          "question": "What does B want to eat?",
+          "answer": "Noodles",
+          "distractors": [
+            "Rice",
+            "Eggs",
+            "Fruit"
+          ]
+        },
+        {
+          "id": "u06-d01-q2",
+          "question": "What does A want to eat?",
+          "answer": "Rice",
+          "distractors": [
+            "Noodles",
+            "Meat",
+            "Soup"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u06-d02",
+      "title": "What to drink",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你想喝什么？",
+          "pinyin": "Nǐ xiǎng hē shénme?",
+          "english": "What would you like to drink?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我不喝咖啡，我想喝茶。",
+          "pinyin": "Wǒ bù hē kāfēi, wǒ xiǎng hē chá.",
+          "english": "I don't drink coffee, I'd like tea."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你要牛奶吗？",
+          "pinyin": "Nǐ yào niúnǎi ma?",
+          "english": "Do you want milk?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "不要，谢谢。",
+          "pinyin": "Bú yào, xièxie.",
+          "english": "No, thank you."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "好的，一杯茶。",
+          "pinyin": "Hǎo de, yì bēi chá.",
+          "english": "Okay, one cup of tea."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u06-d02-q1",
+          "question": "What does B not drink?",
+          "answer": "Coffee",
+          "distractors": [
+            "Tea",
+            "Milk",
+            "Water"
+          ]
+        },
+        {
+          "id": "u06-d02-q2",
+          "question": "What drink will B get?",
+          "answer": "Tea",
+          "distractors": [
+            "Coffee",
+            "Milk",
+            "Water"
+          ]
+        }
+      ]
+    }
+  ]
+}

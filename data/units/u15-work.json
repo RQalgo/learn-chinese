@@ -1,0 +1,324 @@
+{
+  "id": "u15",
+  "title": "Work & office",
+  "items": [
+    {
+      "id": "u15-w01",
+      "type": "word",
+      "hanzi": "忙",
+      "pinyin": "máng",
+      "english": "busy"
+    },
+    {
+      "id": "u15-w02",
+      "type": "word",
+      "hanzi": "工作",
+      "pinyin": "gōngzuò",
+      "english": "work; job"
+    },
+    {
+      "id": "u15-w03",
+      "type": "word",
+      "hanzi": "公司",
+      "pinyin": "gōngsī",
+      "english": "company"
+    },
+    {
+      "id": "u15-w04",
+      "type": "word",
+      "hanzi": "上班",
+      "pinyin": "shàngbān",
+      "english": "to go to work"
+    },
+    {
+      "id": "u15-w05",
+      "type": "word",
+      "hanzi": "下班",
+      "pinyin": "xiàbān",
+      "english": "to finish work"
+    },
+    {
+      "id": "u15-w06",
+      "type": "word",
+      "hanzi": "老师",
+      "pinyin": "lǎoshī",
+      "english": "teacher"
+    },
+    {
+      "id": "u15-w07",
+      "type": "word",
+      "hanzi": "学生",
+      "pinyin": "xuésheng",
+      "english": "student"
+    },
+    {
+      "id": "u15-w08",
+      "type": "word",
+      "hanzi": "老板",
+      "pinyin": "lǎobǎn",
+      "english": "boss"
+    },
+    {
+      "id": "u15-w09",
+      "type": "word",
+      "hanzi": "同事",
+      "pinyin": "tóngshì",
+      "english": "colleague"
+    },
+    {
+      "id": "u15-w10",
+      "type": "word",
+      "hanzi": "经理",
+      "pinyin": "jīnglǐ",
+      "english": "manager"
+    },
+    {
+      "id": "u15-w11",
+      "type": "word",
+      "hanzi": "电脑",
+      "pinyin": "diànnǎo",
+      "english": "computer"
+    },
+    {
+      "id": "u15-w12",
+      "type": "word",
+      "hanzi": "开会",
+      "pinyin": "kāihuì",
+      "english": "to have a meeting"
+    },
+    {
+      "id": "u15-p01",
+      "type": "phrase",
+      "hanzi": "很忙",
+      "pinyin": "hěn máng",
+      "english": "very busy"
+    },
+    {
+      "id": "u15-p02",
+      "type": "phrase",
+      "hanzi": "不忙",
+      "pinyin": "bù máng",
+      "english": "not busy"
+    },
+    {
+      "id": "u15-p03",
+      "type": "phrase",
+      "hanzi": "在公司",
+      "pinyin": "zài gōngsī",
+      "english": "at the company"
+    },
+    {
+      "id": "u15-p04",
+      "type": "phrase",
+      "hanzi": "工作很忙",
+      "pinyin": "gōngzuò hěn máng",
+      "english": "work is busy"
+    },
+    {
+      "id": "u15-p05",
+      "type": "phrase",
+      "hanzi": "几点下班？",
+      "pinyin": "jǐ diǎn xiàbān?",
+      "english": "what time do you finish work?"
+    },
+    {
+      "id": "u15-p06",
+      "type": "phrase",
+      "hanzi": "做什么工作？",
+      "pinyin": "zuò shénme gōngzuò?",
+      "english": "what job do you do?"
+    },
+    {
+      "id": "u15-p07",
+      "type": "phrase",
+      "hanzi": "加班",
+      "pinyin": "jiābān",
+      "english": "to work overtime"
+    },
+    {
+      "id": "u15-p08",
+      "type": "phrase",
+      "hanzi": "请假",
+      "pinyin": "qǐngjià",
+      "english": "to take leave"
+    },
+    {
+      "id": "u15-s01",
+      "type": "sentence",
+      "hanzi": "我在公司工作。",
+      "pinyin": "Wǒ zài gōngsī gōngzuò.",
+      "english": "I work at a company."
+    },
+    {
+      "id": "u15-s02",
+      "type": "sentence",
+      "hanzi": "我哥哥是经理。",
+      "pinyin": "Wǒ gēge shì jīnglǐ.",
+      "english": "My older brother is a manager."
+    },
+    {
+      "id": "u15-s03",
+      "type": "sentence",
+      "hanzi": "我每天九点上班。",
+      "pinyin": "Wǒ měitiān jiǔ diǎn shàngbān.",
+      "english": "I start work at nine every day."
+    },
+    {
+      "id": "u15-s04",
+      "type": "sentence",
+      "hanzi": "我们下午三点开会。",
+      "pinyin": "Wǒmen xiàwǔ sān diǎn kāihuì.",
+      "english": "We have a meeting at three in the afternoon."
+    },
+    {
+      "id": "u15-s05",
+      "type": "sentence",
+      "hanzi": "老板今天不在公司。",
+      "pinyin": "Lǎobǎn jīntiān bú zài gōngsī.",
+      "english": "The boss isn't at the company today."
+    },
+    {
+      "id": "u15-s06",
+      "type": "sentence",
+      "hanzi": "今天很忙，我七点才下班。",
+      "pinyin": "Jīntiān hěn máng, wǒ qī diǎn cái xiàbān.",
+      "english": "I'm busy today, I won't finish work until seven."
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u15-d01",
+      "title": "What do you do?",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你在哪儿工作？",
+          "pinyin": "Nǐ zài nǎr gōngzuò?",
+          "english": "Where do you work?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我在一家公司工作。",
+          "pinyin": "Wǒ zài yì jiā gōngsī gōngzuò.",
+          "english": "I work at a company."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你做什么工作？",
+          "pinyin": "Nǐ zuò shénme gōngzuò?",
+          "english": "What job do you do?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我是经理。你呢？",
+          "pinyin": "Wǒ shì jīnglǐ. Nǐ ne?",
+          "english": "I'm a manager. And you?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我是老师。",
+          "pinyin": "Wǒ shì lǎoshī.",
+          "english": "I'm a teacher."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "你每天几点下班？",
+          "pinyin": "Nǐ měitiān jǐ diǎn xiàbān?",
+          "english": "What time do you finish work every day?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我每天四点下班。",
+          "pinyin": "Wǒ měitiān sì diǎn xiàbān.",
+          "english": "I finish at four every day."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u15-d01-q1",
+          "question": "What is B's job?",
+          "answer": "Manager",
+          "distractors": [
+            "Teacher",
+            "Student",
+            "Doctor"
+          ]
+        },
+        {
+          "id": "u15-d01-q2",
+          "question": "What time does A finish work?",
+          "answer": "Four o'clock",
+          "distractors": [
+            "Three o'clock",
+            "Five o'clock",
+            "Six o'clock"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u15-d02",
+      "title": "A busy day",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你今天忙吗？",
+          "pinyin": "Nǐ jīntiān máng ma?",
+          "english": "Are you busy today?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "很忙，我三点开会。",
+          "pinyin": "Hěn máng, wǒ sān diǎn kāihuì.",
+          "english": "Very busy, I have a meeting at three."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "老板也去吗？",
+          "pinyin": "Lǎobǎn yě qù ma?",
+          "english": "Is the boss going too?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "去，经理也去。",
+          "pinyin": "Qù, jīnglǐ yě qù.",
+          "english": "Yes, the manager is going too."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "那你几点下班？",
+          "pinyin": "Nà nǐ jǐ diǎn xiàbān?",
+          "english": "Then what time do you finish work?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "开会以后就下班。",
+          "pinyin": "Kāihuì yǐhòu jiù xiàbān.",
+          "english": "I'll leave right after the meeting."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u15-d02-q1",
+          "question": "What time is the meeting?",
+          "answer": "Three o'clock",
+          "distractors": [
+            "Two o'clock",
+            "Four o'clock",
+            "Five o'clock"
+          ]
+        },
+        {
+          "id": "u15-d02-q2",
+          "question": "When does B finish work?",
+          "answer": "After the meeting",
+          "distractors": [
+            "Before the meeting",
+            "At noon",
+            "Not until midnight"
+          ]
+        }
+      ]
+    }
+  ]
+}

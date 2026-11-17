@@ -1,0 +1,311 @@
+{
+  "id": "u03",
+  "title": "About me",
+  "items": [
+    {
+      "id": "u03-w01",
+      "type": "word",
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "english": "I / me"
+    },
+    {
+      "id": "u03-w02",
+      "type": "word",
+      "hanzi": "你",
+      "pinyin": "nǐ",
+      "english": "you"
+    },
+    {
+      "id": "u03-w03",
+      "type": "word",
+      "hanzi": "他",
+      "pinyin": "tā",
+      "english": "he / him"
+    },
+    {
+      "id": "u03-w04",
+      "type": "word",
+      "hanzi": "她",
+      "pinyin": "tā",
+      "english": "she / her"
+    },
+    {
+      "id": "u03-w05",
+      "type": "word",
+      "hanzi": "我们",
+      "pinyin": "wǒmen",
+      "english": "we / us"
+    },
+    {
+      "id": "u03-w06",
+      "type": "word",
+      "hanzi": "他们",
+      "pinyin": "tāmen",
+      "english": "they / them"
+    },
+    {
+      "id": "u03-w07",
+      "type": "word",
+      "hanzi": "叫",
+      "pinyin": "jiào",
+      "english": "to be called",
+      "hint": "我叫… 'I am called…'."
+    },
+    {
+      "id": "u03-w08",
+      "type": "word",
+      "hanzi": "姓",
+      "pinyin": "xìng",
+      "english": "surname",
+      "alt": [
+        "to have the surname"
+      ],
+      "hint": "Family name comes first in Chinese names."
+    },
+    {
+      "id": "u03-w09",
+      "type": "word",
+      "hanzi": "名字",
+      "pinyin": "míngzi",
+      "english": "name"
+    },
+    {
+      "id": "u03-w10",
+      "type": "word",
+      "hanzi": "哪儿",
+      "pinyin": "nǎr",
+      "english": "where",
+      "alt": [
+        "which place"
+      ]
+    },
+    {
+      "id": "u03-w11",
+      "type": "word",
+      "hanzi": "中国",
+      "pinyin": "Zhōngguó",
+      "english": "China"
+    },
+    {
+      "id": "u03-w12",
+      "type": "word",
+      "hanzi": "新加坡",
+      "pinyin": "Xīnjiāpō",
+      "english": "Singapore"
+    },
+    {
+      "id": "u03-p01",
+      "type": "phrase",
+      "hanzi": "我也是",
+      "pinyin": "wǒ yě shì",
+      "english": "me too",
+      "alt": [
+        "I am too"
+      ]
+    },
+    {
+      "id": "u03-p02",
+      "type": "phrase",
+      "hanzi": "你是谁",
+      "pinyin": "nǐ shì shéi",
+      "english": "who are you?"
+    },
+    {
+      "id": "u03-p03",
+      "type": "phrase",
+      "hanzi": "他们是谁",
+      "pinyin": "tāmen shì shéi",
+      "english": "who are they?"
+    },
+    {
+      "id": "u03-p04",
+      "type": "phrase",
+      "hanzi": "你叫什么",
+      "pinyin": "nǐ jiào shénme",
+      "english": "what are you called?"
+    },
+    {
+      "id": "u03-p05",
+      "type": "phrase",
+      "hanzi": "你姓什么",
+      "pinyin": "nǐ xìng shénme",
+      "english": "what is your surname?"
+    },
+    {
+      "id": "u03-p06",
+      "type": "phrase",
+      "hanzi": "我姓王",
+      "pinyin": "wǒ xìng Wáng",
+      "english": "my surname is Wang"
+    },
+    {
+      "id": "u03-p07",
+      "type": "phrase",
+      "hanzi": "你是哪国人",
+      "pinyin": "nǐ shì nǎ guó rén",
+      "english": "what is your nationality?"
+    },
+    {
+      "id": "u03-p08",
+      "type": "phrase",
+      "hanzi": "新加坡人",
+      "pinyin": "Xīnjiāpōrén",
+      "english": "Singaporean"
+    },
+    {
+      "id": "u03-s01",
+      "type": "sentence",
+      "hanzi": "我是新加坡人。",
+      "pinyin": "Wǒ shì Xīnjiāpōrén.",
+      "english": "I'm Singaporean."
+    },
+    {
+      "id": "u03-s02",
+      "type": "sentence",
+      "hanzi": "她是我的朋友。",
+      "pinyin": "Tā shì wǒ de péngyou.",
+      "english": "She is my friend."
+    },
+    {
+      "id": "u03-s03",
+      "type": "sentence",
+      "hanzi": "我叫王小明。",
+      "pinyin": "Wǒ jiào Wáng Xiǎomíng.",
+      "english": "My name is Wang Xiaoming."
+    },
+    {
+      "id": "u03-s04",
+      "type": "sentence",
+      "hanzi": "你叫什么名字？",
+      "pinyin": "Nǐ jiào shénme míngzi?",
+      "english": "What is your name?"
+    },
+    {
+      "id": "u03-s05",
+      "type": "sentence",
+      "hanzi": "你从哪儿来？",
+      "pinyin": "Nǐ cóng nǎr lái?",
+      "english": "Where are you from?"
+    },
+    {
+      "id": "u03-s06",
+      "type": "sentence",
+      "hanzi": "很高兴认识你。",
+      "pinyin": "Hěn gāoxìng rènshi nǐ.",
+      "english": "Nice to meet you."
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u03-d01",
+      "title": "Introductions",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你好！你叫什么名字？",
+          "pinyin": "Nǐ hǎo! Nǐ jiào shénme míngzi?",
+          "english": "Hello! What's your name?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我叫李明。你呢？",
+          "pinyin": "Wǒ jiào Lǐ Míng. Nǐ ne?",
+          "english": "I'm Li Ming. And you?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我叫王华。你是哪儿人？",
+          "pinyin": "Wǒ jiào Wáng Huá. Nǐ shì nǎr rén?",
+          "english": "I'm Wang Hua. Where are you from?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我是中国人。",
+          "pinyin": "Wǒ shì Zhōngguórén.",
+          "english": "I'm Chinese."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "很高兴认识你！",
+          "pinyin": "Hěn gāoxìng rènshi nǐ!",
+          "english": "Nice to meet you!"
+        }
+      ],
+      "questions": [
+        {
+          "id": "u03-d01-q1",
+          "question": "What is B's name?",
+          "answer": "Li Ming",
+          "distractors": [
+            "Wang Hua",
+            "Li Hua",
+            "Wang Ming"
+          ]
+        },
+        {
+          "id": "u03-d01-q2",
+          "question": "Where is B from?",
+          "answer": "China",
+          "distractors": [
+            "Singapore",
+            "Malaysia",
+            "Japan"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u03-d02",
+      "title": "Who is she?",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "她是谁？",
+          "pinyin": "Tā shì shéi?",
+          "english": "Who is she?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "她是我的朋友。她姓林。",
+          "pinyin": "Tā shì wǒ de péngyou. Tā xìng Lín.",
+          "english": "She is my friend. Her surname is Lin."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "她叫什么名字？",
+          "pinyin": "Tā jiào shénme míngzi?",
+          "english": "What is her name?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "她叫林小美。",
+          "pinyin": "Tā jiào Lín Xiǎoměi.",
+          "english": "Her name is Lin Xiaomei."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u03-d02-q1",
+          "question": "Who is she to B?",
+          "answer": "B's friend",
+          "distractors": [
+            "B's teacher",
+            "B's sister",
+            "B's boss"
+          ]
+        },
+        {
+          "id": "u03-d02-q2",
+          "question": "What is her full name?",
+          "answer": "Lin Xiaomei",
+          "distractors": [
+            "Lin Xiaoming",
+            "Li Xiaomei",
+            "Wang Xiaomei"
+          ]
+        }
+      ]
+    }
+  ]
+}
