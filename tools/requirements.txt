@@ -4,3 +4,5 @@ pypinyin
 sherpa-onnx
 soundfile
 numpy
+scipy
+opencc-python-reimplemented
