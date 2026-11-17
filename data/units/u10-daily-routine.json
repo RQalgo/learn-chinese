@@ -1,0 +1,312 @@
+{
+  "id": "u10",
+  "title": "Daily routine",
+  "items": [
+    {
+      "id": "u10-w01",
+      "type": "word",
+      "hanzi": "早上",
+      "pinyin": "zǎoshang",
+      "english": "morning"
+    },
+    {
+      "id": "u10-w02",
+      "type": "word",
+      "hanzi": "晚上",
+      "pinyin": "wǎnshang",
+      "english": "evening"
+    },
+    {
+      "id": "u10-w03",
+      "type": "word",
+      "hanzi": "中午",
+      "pinyin": "zhōngwǔ",
+      "english": "noon"
+    },
+    {
+      "id": "u10-w04",
+      "type": "word",
+      "hanzi": "下午",
+      "pinyin": "xiàwǔ",
+      "english": "afternoon"
+    },
+    {
+      "id": "u10-w05",
+      "type": "word",
+      "hanzi": "每天",
+      "pinyin": "měitiān",
+      "english": "every day"
+    },
+    {
+      "id": "u10-w06",
+      "type": "word",
+      "hanzi": "起床",
+      "pinyin": "qǐchuáng",
+      "english": "to get up"
+    },
+    {
+      "id": "u10-w07",
+      "type": "word",
+      "hanzi": "睡觉",
+      "pinyin": "shuìjiào",
+      "english": "to sleep"
+    },
+    {
+      "id": "u10-w08",
+      "type": "word",
+      "hanzi": "早饭",
+      "pinyin": "zǎofàn",
+      "english": "breakfast"
+    },
+    {
+      "id": "u10-w09",
+      "type": "word",
+      "hanzi": "晚饭",
+      "pinyin": "wǎnfàn",
+      "english": "dinner"
+    },
+    {
+      "id": "u10-w10",
+      "type": "word",
+      "hanzi": "洗澡",
+      "pinyin": "xǐzǎo",
+      "english": "to shower"
+    },
+    {
+      "id": "u10-w11",
+      "type": "word",
+      "hanzi": "回家",
+      "pinyin": "huí jiā",
+      "english": "to go home"
+    },
+    {
+      "id": "u10-w12",
+      "type": "word",
+      "hanzi": "刷牙",
+      "pinyin": "shuāyá",
+      "english": "to brush teeth"
+    },
+    {
+      "id": "u10-p01",
+      "type": "phrase",
+      "hanzi": "每天早上",
+      "pinyin": "měitiān zǎoshang",
+      "english": "every morning"
+    },
+    {
+      "id": "u10-p02",
+      "type": "phrase",
+      "hanzi": "吃早饭",
+      "pinyin": "chī zǎofàn",
+      "english": "to eat breakfast"
+    },
+    {
+      "id": "u10-p03",
+      "type": "phrase",
+      "hanzi": "做饭",
+      "pinyin": "zuòfàn",
+      "english": "to cook"
+    },
+    {
+      "id": "u10-p04",
+      "type": "phrase",
+      "hanzi": "起得很早",
+      "pinyin": "qǐ de hěn zǎo",
+      "english": "to get up very early"
+    },
+    {
+      "id": "u10-p05",
+      "type": "phrase",
+      "hanzi": "睡得很晚",
+      "pinyin": "shuì de hěn wǎn",
+      "english": "to go to bed very late"
+    },
+    {
+      "id": "u10-p06",
+      "type": "phrase",
+      "hanzi": "晚上十点",
+      "pinyin": "wǎnshang shí diǎn",
+      "english": "ten o'clock at night"
+    },
+    {
+      "id": "u10-p07",
+      "type": "phrase",
+      "hanzi": "几点起床？",
+      "pinyin": "jǐ diǎn qǐchuáng?",
+      "english": "what time do you get up?"
+    },
+    {
+      "id": "u10-p08",
+      "type": "phrase",
+      "hanzi": "睡不着",
+      "pinyin": "shuì bu zháo",
+      "english": "can't fall asleep"
+    },
+    {
+      "id": "u10-s01",
+      "type": "sentence",
+      "hanzi": "我早上喝咖啡。",
+      "pinyin": "Wǒ zǎoshang hē kāfēi.",
+      "english": "I drink coffee in the morning."
+    },
+    {
+      "id": "u10-s02",
+      "type": "sentence",
+      "hanzi": "我每天六点起床。",
+      "pinyin": "Wǒ měitiān liù diǎn qǐchuáng.",
+      "english": "I get up at six every day."
+    },
+    {
+      "id": "u10-s03",
+      "type": "sentence",
+      "hanzi": "中午我和朋友吃饭。",
+      "pinyin": "Zhōngwǔ wǒ hé péngyou chīfàn.",
+      "english": "At noon I eat with friends."
+    },
+    {
+      "id": "u10-s04",
+      "type": "sentence",
+      "hanzi": "晚上我七点回家。",
+      "pinyin": "Wǎnshang wǒ qī diǎn huí jiā.",
+      "english": "I go home at seven in the evening."
+    },
+    {
+      "id": "u10-s05",
+      "type": "sentence",
+      "hanzi": "我回家以后洗澡。",
+      "pinyin": "Wǒ huí jiā yǐhòu xǐzǎo.",
+      "english": "After I get home, I take a shower."
+    },
+    {
+      "id": "u10-s06",
+      "type": "sentence",
+      "hanzi": "我昨天晚上十二点才睡觉。",
+      "pinyin": "Wǒ zuótiān wǎnshang shí'èr diǎn cái shuìjiào.",
+      "english": "Last night I didn't go to sleep until twelve."
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u10-d01",
+      "title": "Getting up",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你每天几点起床？",
+          "pinyin": "Nǐ měitiān jǐ diǎn qǐchuáng?",
+          "english": "What time do you get up every day?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我每天六点半起床。",
+          "pinyin": "Wǒ měitiān liù diǎn bàn qǐchuáng.",
+          "english": "I get up at half past six every day."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "这么早！你吃早饭吗？",
+          "pinyin": "Zhème zǎo! Nǐ chī zǎofàn ma?",
+          "english": "So early! Do you eat breakfast?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "吃，我吃面条，喝茶。",
+          "pinyin": "Chī, wǒ chī miàntiáo, hē chá.",
+          "english": "Yes, I eat noodles and drink tea."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我七点才起床，不吃早饭。",
+          "pinyin": "Wǒ qī diǎn cái qǐchuáng, bù chī zǎofàn.",
+          "english": "I don't get up until seven and I skip breakfast."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u10-d01-q1",
+          "question": "What time does B get up?",
+          "answer": "Half past six",
+          "distractors": [
+            "Six o'clock",
+            "Seven o'clock",
+            "Half past seven"
+          ]
+        },
+        {
+          "id": "u10-d01-q2",
+          "question": "When does A get up?",
+          "answer": "Seven o'clock",
+          "distractors": [
+            "Six o'clock",
+            "Half past six",
+            "Eight o'clock"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u10-d02",
+      "title": "A late night",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "你昨天晚上几点睡觉？",
+          "pinyin": "Nǐ zuótiān wǎnshang jǐ diǎn shuìjiào?",
+          "english": "What time did you go to sleep last night?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我十二点才睡觉。",
+          "pinyin": "Wǒ shí'èr diǎn cái shuìjiào.",
+          "english": "I didn't sleep until twelve."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "怎么这么晚？",
+          "pinyin": "Zěnme zhème wǎn?",
+          "english": "Why so late?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我睡不着。",
+          "pinyin": "Wǒ shuì bu zháo.",
+          "english": "I couldn't fall asleep."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "那你今天几点起床？",
+          "pinyin": "Nà nǐ jīntiān jǐ diǎn qǐchuáng?",
+          "english": "Then what time did you get up today?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "七点。我现在想睡觉。",
+          "pinyin": "Qī diǎn. Wǒ xiànzài xiǎng shuìjiào.",
+          "english": "Seven. Now I want to sleep."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u10-d02-q1",
+          "question": "What time did B go to sleep?",
+          "answer": "At twelve o'clock",
+          "distractors": [
+            "At ten o'clock",
+            "At eleven o'clock",
+            "At one o'clock"
+          ]
+        },
+        {
+          "id": "u10-d02-q2",
+          "question": "Why did B go to sleep so late?",
+          "answer": "B couldn't fall asleep",
+          "distractors": [
+            "B was cooking",
+            "B had a meeting",
+            "B was out with friends"
+          ]
+        }
+      ]
+    }
+  ]
+}

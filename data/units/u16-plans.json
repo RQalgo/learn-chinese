@@ -1,0 +1,324 @@
+{
+  "id": "u16",
+  "title": "Making plans",
+  "items": [
+    {
+      "id": "u16-w01",
+      "type": "word",
+      "hanzi": "来",
+      "pinyin": "lái",
+      "english": "to come"
+    },
+    {
+      "id": "u16-w02",
+      "type": "word",
+      "hanzi": "请",
+      "pinyin": "qǐng",
+      "english": "to invite"
+    },
+    {
+      "id": "u16-w03",
+      "type": "word",
+      "hanzi": "等",
+      "pinyin": "děng",
+      "english": "to wait"
+    },
+    {
+      "id": "u16-w04",
+      "type": "word",
+      "hanzi": "想",
+      "pinyin": "xiǎng",
+      "english": "to want to"
+    },
+    {
+      "id": "u16-w05",
+      "type": "word",
+      "hanzi": "约",
+      "pinyin": "yuē",
+      "english": "to arrange to meet"
+    },
+    {
+      "id": "u16-w06",
+      "type": "word",
+      "hanzi": "可以",
+      "pinyin": "kěyǐ",
+      "english": "can; may"
+    },
+    {
+      "id": "u16-w07",
+      "type": "word",
+      "hanzi": "一起",
+      "pinyin": "yìqǐ",
+      "english": "together"
+    },
+    {
+      "id": "u16-w08",
+      "type": "word",
+      "hanzi": "电话",
+      "pinyin": "diànhuà",
+      "english": "phone call"
+    },
+    {
+      "id": "u16-w09",
+      "type": "word",
+      "hanzi": "手机",
+      "pinyin": "shǒujī",
+      "english": "mobile phone"
+    },
+    {
+      "id": "u16-w10",
+      "type": "word",
+      "hanzi": "见面",
+      "pinyin": "jiànmiàn",
+      "english": "to meet up"
+    },
+    {
+      "id": "u16-w11",
+      "type": "word",
+      "hanzi": "有空",
+      "pinyin": "yǒu kòng",
+      "english": "to be free"
+    },
+    {
+      "id": "u16-w12",
+      "type": "word",
+      "hanzi": "喂",
+      "pinyin": "wèi",
+      "english": "hello (on the phone)"
+    },
+    {
+      "id": "u16-p01",
+      "type": "phrase",
+      "hanzi": "好的",
+      "pinyin": "hǎo de",
+      "english": "sure"
+    },
+    {
+      "id": "u16-p02",
+      "type": "phrase",
+      "hanzi": "没问题",
+      "pinyin": "méi wèntí",
+      "english": "no problem"
+    },
+    {
+      "id": "u16-p03",
+      "type": "phrase",
+      "hanzi": "有空吗？",
+      "pinyin": "yǒu kòng ma?",
+      "english": "are you free?"
+    },
+    {
+      "id": "u16-p04",
+      "type": "phrase",
+      "hanzi": "一起去",
+      "pinyin": "yìqǐ qù",
+      "english": "go together"
+    },
+    {
+      "id": "u16-p05",
+      "type": "phrase",
+      "hanzi": "打电话",
+      "pinyin": "dǎ diànhuà",
+      "english": "to make a phone call"
+    },
+    {
+      "id": "u16-p06",
+      "type": "phrase",
+      "hanzi": "等一下",
+      "pinyin": "děng yíxià",
+      "english": "wait a moment"
+    },
+    {
+      "id": "u16-p07",
+      "type": "phrase",
+      "hanzi": "我没空",
+      "pinyin": "wǒ méi kòng",
+      "english": "I'm not free"
+    },
+    {
+      "id": "u16-p08",
+      "type": "phrase",
+      "hanzi": "下次吧",
+      "pinyin": "xià cì ba",
+      "english": "maybe next time"
+    },
+    {
+      "id": "u16-s01",
+      "type": "sentence",
+      "hanzi": "你明天有空吗？",
+      "pinyin": "Nǐ míngtiān yǒu kòng ma?",
+      "english": "Are you free tomorrow?"
+    },
+    {
+      "id": "u16-s02",
+      "type": "sentence",
+      "hanzi": "我们一起吃饭吧。",
+      "pinyin": "Wǒmen yìqǐ chīfàn ba.",
+      "english": "Let's eat together."
+    },
+    {
+      "id": "u16-s03",
+      "type": "sentence",
+      "hanzi": "我给你打电话。",
+      "pinyin": "Wǒ gěi nǐ dǎ diànhuà.",
+      "english": "I'll call you."
+    },
+    {
+      "id": "u16-s04",
+      "type": "sentence",
+      "hanzi": "对不起，我星期六没空。",
+      "pinyin": "Duìbuqǐ, wǒ xīngqīliù méi kòng.",
+      "english": "Sorry, I'm not free on Saturday."
+    },
+    {
+      "id": "u16-s05",
+      "type": "sentence",
+      "hanzi": "我们在地铁站见面，好吗？",
+      "pinyin": "Wǒmen zài dìtiězhàn jiànmiàn, hǎo ma?",
+      "english": "Shall we meet at the MRT station?"
+    },
+    {
+      "id": "u16-s06",
+      "type": "sentence",
+      "hanzi": "你可以等我十分钟吗？",
+      "pinyin": "Nǐ kěyǐ děng wǒ shí fēnzhōng ma?",
+      "english": "Can you wait ten minutes for me?"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "u16-d01",
+      "title": "Inviting a friend",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "喂，你周末有空吗？",
+          "pinyin": "Wèi, nǐ zhōumò yǒu kòng ma?",
+          "english": "Hello, are you free at the weekend?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "星期六有空，怎么了？",
+          "pinyin": "Xīngqīliù yǒu kòng, zěnme le?",
+          "english": "I'm free on Saturday, why?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我们一起看电影吧。",
+          "pinyin": "Wǒmen yìqǐ kàn diànyǐng ba.",
+          "english": "Let's watch a film together."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好啊，几点？",
+          "pinyin": "Hǎo a, jǐ diǎn?",
+          "english": "Sure, what time?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "下午三点，在地铁站见面。",
+          "pinyin": "Xiàwǔ sān diǎn, zài dìtiězhàn jiànmiàn.",
+          "english": "Three in the afternoon, meet at the MRT station."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "没问题，星期六见！",
+          "pinyin": "Méi wèntí, xīngqīliù jiàn!",
+          "english": "No problem, see you Saturday!"
+        }
+      ],
+      "questions": [
+        {
+          "id": "u16-d01-q1",
+          "question": "Which day is B free?",
+          "answer": "Saturday",
+          "distractors": [
+            "Sunday",
+            "Friday",
+            "Monday"
+          ]
+        },
+        {
+          "id": "u16-d01-q2",
+          "question": "Where will they meet?",
+          "answer": "The MRT station",
+          "distractors": [
+            "The cinema",
+            "The park",
+            "B's home"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u16-d02",
+      "title": "A phone call",
+      "lines": [
+        {
+          "speaker": "A",
+          "hanzi": "喂，你好，我是小王。",
+          "pinyin": "Wèi, nǐ hǎo, wǒ shì Xiǎo Wáng.",
+          "english": "Hello, it's Xiao Wang."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "小王，你好！",
+          "pinyin": "Xiǎo Wáng, nǐ hǎo!",
+          "english": "Hi, Xiao Wang!"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "今天晚上一起吃饭，好吗？",
+          "pinyin": "Jīntiān wǎnshang yìqǐ chīfàn, hǎo ma?",
+          "english": "Shall we have dinner together tonight?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "对不起，我今天要开会。",
+          "pinyin": "Duìbuqǐ, wǒ jīntiān yào kāihuì.",
+          "english": "Sorry, I have a meeting today."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "那明天呢？",
+          "pinyin": "Nà míngtiān ne?",
+          "english": "What about tomorrow?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "明天可以。",
+          "pinyin": "Míngtiān kěyǐ.",
+          "english": "Tomorrow works."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "好，我给你打电话。",
+          "pinyin": "Hǎo, wǒ gěi nǐ dǎ diànhuà.",
+          "english": "Good, I'll call you."
+        }
+      ],
+      "questions": [
+        {
+          "id": "u16-d02-q1",
+          "question": "Why can't B have dinner tonight?",
+          "answer": "B has a meeting",
+          "distractors": [
+            "B is not free on weekends",
+            "B is going home",
+            "B doesn't like eating out"
+          ]
+        },
+        {
+          "id": "u16-d02-q2",
+          "question": "When will they have dinner?",
+          "answer": "Tomorrow",
+          "distractors": [
+            "Tonight",
+            "On Saturday",
+            "Next week"
+          ]
+        }
+      ]
+    }
+  ]
+}
