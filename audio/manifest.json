@@ -393,7 +393,7 @@
    "src": "audio/zh/u01-w06.mp3"
   },
   "u01-w06.en": {
-   "dur": 0.6,
+   "dur": 0.87,
    "src": "audio/en/u01-w06_en.mp3"
   },
   "u01-w06.slow": {
@@ -441,7 +441,7 @@
    "src": "audio/zh/u01-w10.mp3"
   },
   "u01-w10.en": {
-   "dur": 0.98,
+   "dur": 1.12,
    "src": "audio/en/u01-w10_en.mp3"
   },
   "u01-w10.slow": {
@@ -937,7 +937,7 @@
    "src": "audio/zh/u03-d01_l3.mp3"
   },
   "u03-d01.l3.en": {
-   "dur": 1.28,
+   "dur": 1.72,
    "src": "audio/en/u03-d01_l3_en.mp3"
   },
   "u03-d01.l3.slow": {
@@ -993,7 +993,7 @@
    "src": "audio/zh/u03-d02_l2.mp3"
   },
   "u03-d02.l2.en": {
-   "dur": 2.28,
+   "dur": 2.48,
    "src": "audio/en/u03-d02_l2_en.mp3"
   },
   "u03-d02.l2.slow": {
@@ -1017,7 +1017,7 @@
    "src": "audio/zh/u03-d02_l4.mp3"
   },
   "u03-d02.l4.en": {
-   "dur": 1.03,
+   "dur": 1.48,
    "src": "audio/en/u03-d02_l4_en.mp3"
   },
   "u03-d02.l4.slow": {
@@ -1097,7 +1097,7 @@
    "src": "audio/zh/u03-p06.mp3"
   },
   "u03-p06.en": {
-   "dur": 1.12,
+   "dur": 1.3,
    "src": "audio/en/u03-p06_en.mp3"
   },
   "u03-p06.slow": {
@@ -1157,7 +1157,7 @@
    "src": "audio/zh/u03-s03.mp3"
   },
   "u03-s03.en": {
-   "dur": 1.0,
+   "dur": 1.57,
    "src": "audio/en/u03-s03_en.mp3"
   },
   "u03-s03.slow": {
@@ -1205,7 +1205,7 @@
    "src": "audio/zh/u03-w01.mp3"
   },
   "u03-w01.en": {
-   "dur": 0.71,
+   "dur": 0.86,
    "src": "audio/en/u03-w01_en.mp3"
   },
   "u03-w01.slow": {
@@ -1229,7 +1229,7 @@
    "src": "audio/zh/u03-w03.mp3"
   },
   "u03-w03.en": {
-   "dur": 0.77,
+   "dur": 0.84,
    "src": "audio/en/u03-w03_en.mp3"
   },
   "u03-w03.slow": {
@@ -1241,7 +1241,7 @@
    "src": "audio/zh/u03-w04.mp3"
   },
   "u03-w04.en": {
-   "dur": 0.79,
+   "dur": 0.81,
    "src": "audio/en/u03-w04_en.mp3"
   },
   "u03-w04.slow": {
@@ -1253,7 +1253,7 @@
    "src": "audio/zh/u03-w05.mp3"
   },
   "u03-w05.en": {
-   "dur": 0.8,
+   "dur": 0.89,
    "src": "audio/en/u03-w05_en.mp3"
   },
   "u03-w05.slow": {
@@ -1265,7 +1265,7 @@
    "src": "audio/zh/u03-w06.mp3"
   },
   "u03-w06.en": {
-   "dur": 0.81,
+   "dur": 0.89,
    "src": "audio/en/u03-w06_en.mp3"
   },
   "u03-w06.slow": {
@@ -1453,7 +1453,7 @@
    "src": "audio/zh/u04-d02_l4.mp3"
   },
   "u04-d02.l4.en": {
-   "dur": 0.93,
+   "dur": 1.33,
    "src": "audio/en/u04-d02_l4_en.mp3"
   },
   "u04-d02.l4.slow": {
@@ -1713,7 +1713,7 @@
    "src": "audio/zh/u04-w07.mp3"
   },
   "u04-w07.en": {
-   "dur": 0.91,
+   "dur": 1.48,
    "src": "audio/en/u04-w07_en.mp3"
   },
   "u04-w07.slow": {
@@ -1725,7 +1725,7 @@
    "src": "audio/zh/u04-w08.mp3"
   },
   "u04-w08.en": {
-   "dur": 0.84,
+   "dur": 1.4,
    "src": "audio/en/u04-w08_en.mp3"
   },
   "u04-w08.slow": {
@@ -1969,7 +1969,7 @@
    "src": "audio/zh/u05-p06.mp3"
   },
   "u05-p06.en": {
-   "dur": 0.87,
+   "dur": 1.34,
    "src": "audio/en/u05-p06_en.mp3"
   },
   "u05-p06.slow": {
@@ -2173,7 +2173,7 @@
    "src": "audio/zh/u05-w09.mp3"
   },
   "u05-w09.en": {
-   "dur": 1.24,
+   "dur": 1.36,
    "src": "audio/en/u05-w09_en.mp3"
   },
   "u05-w09.slow": {
@@ -2197,7 +2197,7 @@
    "src": "audio/zh/u05-w11.mp3"
   },
   "u05-w11.en": {
-   "dur": 0.66,
+   "dur": 1.14,
    "src": "audio/en/u05-w11_en.mp3"
   },
   "u05-w11.slow": {
@@ -2645,7 +2645,7 @@
    "src": "audio/zh/u06-w12.mp3"
   },
   "u06-w12.en": {
-   "dur": 0.75,
+   "dur": 1.17,
    "src": "audio/en/u06-w12_en.mp3"
   },
   "u06-w12.slow": {
@@ -2961,7 +2961,7 @@
    "src": "audio/zh/u07-w02.mp3"
   },
   "u07-w02.en": {
-   "dur": 1.24,
+   "dur": 1.32,
    "src": "audio/en/u07-w02_en.mp3"
   },
   "u07-w02.slow": {
@@ -3009,7 +3009,7 @@
    "src": "audio/zh/u07-w06.mp3"
   },
   "u07-w06.en": {
-   "dur": 0.68,
+   "dur": 1.03,
    "src": "audio/en/u07-w06_en.mp3"
   },
   "u07-w06.slow": {
@@ -3031,6 +3031,10 @@
   "u07-w08": {
    "dur": 0.69,
    "src": "audio/zh/u07-w08.mp3"
+  },
+  "u07-w08.en": {
+   "dur": 0.95,
+   "src": "audio/en/u07-w08_en.mp3"
   },
   "u07-w08.slow": {
    "dur": 0.9,
@@ -3405,7 +3409,7 @@
    "src": "audio/zh/u08-w02.mp3"
   },
   "u08-w02.en": {
-   "dur": 0.71,
+   "dur": 1.09,
    "src": "audio/en/u08-w02_en.mp3"
   },
   "u08-w02.slow": {
@@ -3417,7 +3421,7 @@
    "src": "audio/zh/u08-w03.mp3"
   },
   "u08-w03.en": {
-   "dur": 0.71,
+   "dur": 1.03,
    "src": "audio/en/u08-w03_en.mp3"
   },
   "u08-w03.slow": {
@@ -3429,7 +3433,7 @@
    "src": "audio/zh/u08-w04.mp3"
   },
   "u08-w04.en": {
-   "dur": 0.92,
+   "dur": 1.38,
    "src": "audio/en/u08-w04_en.mp3"
   },
   "u08-w04.slow": {
@@ -4469,7 +4473,7 @@
    "src": "audio/zh/u11-d01_l2.mp3"
   },
   "u11-d01.l2.en": {
-   "dur": 1.15,
+   "dur": 1.61,
    "src": "audio/en/u11-d01_l2_en.mp3"
   },
   "u11-d01.l2.slow": {
@@ -4481,7 +4485,7 @@
    "src": "audio/zh/u11-d01_l3.mp3"
   },
   "u11-d01.l3.en": {
-   "dur": 1.43,
+   "dur": 1.9,
    "src": "audio/en/u11-d01_l3_en.mp3"
   },
   "u11-d01.l3.slow": {
@@ -4493,7 +4497,7 @@
    "src": "audio/zh/u11-d01_l4.mp3"
   },
   "u11-d01.l4.en": {
-   "dur": 1.56,
+   "dur": 1.91,
    "src": "audio/en/u11-d01_l4_en.mp3"
   },
   "u11-d01.l4.slow": {
@@ -4573,7 +4577,7 @@
    "src": "audio/zh/u11-d02_l4.mp3"
   },
   "u11-d02.l4.en": {
-   "dur": 0.77,
+   "dur": 1.03,
    "src": "audio/en/u11-d02_l4_en.mp3"
   },
   "u11-d02.l4.slow": {
@@ -4597,7 +4601,7 @@
    "src": "audio/zh/u11-d02_l6.mp3"
   },
   "u11-d02.l6.en": {
-   "dur": 1.92,
+   "dur": 2.2,
    "src": "audio/en/u11-d02_l6_en.mp3"
   },
   "u11-d02.l6.slow": {
@@ -4617,7 +4621,7 @@
    "src": "audio/zh/u11-p01.mp3"
   },
   "u11-p01.en": {
-   "dur": 0.84,
+   "dur": 1.35,
    "src": "audio/en/u11-p01_en.mp3"
   },
   "u11-p01.slow": {
@@ -4629,7 +4633,7 @@
    "src": "audio/zh/u11-p02.mp3"
   },
   "u11-p02.en": {
-   "dur": 0.96,
+   "dur": 1.46,
    "src": "audio/en/u11-p02_en.mp3"
   },
   "u11-p02.slow": {
@@ -4713,7 +4717,7 @@
    "src": "audio/zh/u11-s01.mp3"
   },
   "u11-s01.en": {
-   "dur": 1.04,
+   "dur": 1.6,
    "src": "audio/en/u11-s01_en.mp3"
   },
   "u11-s01.slow": {
@@ -4725,7 +4729,7 @@
    "src": "audio/zh/u11-s02.mp3"
   },
   "u11-s02.en": {
-   "dur": 1.77,
+   "dur": 2.39,
    "src": "audio/en/u11-s02_en.mp3"
   },
   "u11-s02.slow": {
@@ -4749,7 +4753,7 @@
    "src": "audio/zh/u11-s04.mp3"
   },
   "u11-s04.en": {
-   "dur": 1.86,
+   "dur": 2.11,
    "src": "audio/en/u11-s04_en.mp3"
   },
   "u11-s04.slow": {
@@ -4773,7 +4777,7 @@
    "src": "audio/zh/u11-s06.mp3"
   },
   "u11-s06.en": {
-   "dur": 1.99,
+   "dur": 2.59,
    "src": "audio/en/u11-s06_en.mp3"
   },
   "u11-s06.slow": {
@@ -4795,6 +4799,10 @@
   "u11-w02": {
    "dur": 0.6,
    "src": "audio/zh/u11-w02.mp3"
+  },
+  "u11-w02.en": {
+   "dur": 0.97,
+   "src": "audio/en/u11-w02_en.mp3"
   },
   "u11-w02.slow": {
    "dur": 0.7,
@@ -4853,7 +4861,7 @@
    "src": "audio/zh/u11-w07.mp3"
   },
   "u11-w07.en": {
-   "dur": 1.32,
+   "dur": 1.59,
    "src": "audio/en/u11-w07_en.mp3"
   },
   "u11-w07.slow": {
@@ -5041,7 +5049,7 @@
    "src": "audio/zh/u12-d02_l4.mp3"
   },
   "u12-d02.l4.en": {
-   "dur": 2.12,
+   "dur": 2.79,
    "src": "audio/en/u12-d02_l4_en.mp3"
   },
   "u12-d02.l4.slow": {
@@ -5205,7 +5213,7 @@
    "src": "audio/zh/u12-s03.mp3"
   },
   "u12-s03.en": {
-   "dur": 2.12,
+   "dur": 2.76,
    "src": "audio/en/u12-s03_en.mp3"
   },
   "u12-s03.slow": {
@@ -5409,7 +5417,7 @@
    "src": "audio/zh/u13-d01_l2.mp3"
   },
   "u13-d01.l2.en": {
-   "dur": 1.55,
+   "dur": 2.06,
    "src": "audio/en/u13-d01_l2_en.mp3"
   },
   "u13-d01.l2.slow": {
@@ -5629,7 +5637,7 @@
    "src": "audio/zh/u13-p07.mp3"
   },
   "u13-p07.en": {
-   "dur": 0.76,
+   "dur": 1.07,
    "src": "audio/en/u13-p07_en.mp3"
   },
   "u13-p07.slow": {
@@ -5689,7 +5697,7 @@
    "src": "audio/zh/u13-s04.mp3"
   },
   "u13-s04.en": {
-   "dur": 1.4,
+   "dur": 1.9,
    "src": "audio/en/u13-s04_en.mp3"
   },
   "u13-s04.slow": {
@@ -5713,7 +5721,7 @@
    "src": "audio/zh/u13-s06.mp3"
   },
   "u13-s06.en": {
-   "dur": 2.19,
+   "dur": 2.57,
    "src": "audio/en/u13-s06_en.mp3"
   },
   "u13-s06.slow": {
@@ -5869,7 +5877,7 @@
    "src": "audio/zh/u14-d01_l1.mp3"
   },
   "u14-d01.l1.en": {
-   "dur": 1.1,
+   "dur": 1.41,
    "src": "audio/en/u14-d01_l1_en.mp3"
   },
   "u14-d01.l1.slow": {
@@ -5925,7 +5933,7 @@
    "src": "audio/zh-slow/u14-d01_l5_slow.mp3"
   },
   "u14-d01.q1.en": {
-   "dur": 1.52,
+   "dur": 1.89,
    "src": "audio/en/u14-d01_q1_en.mp3"
   },
   "u14-d01.q2.en": {
@@ -5937,7 +5945,7 @@
    "src": "audio/zh/u14-d02_l1.mp3"
   },
   "u14-d02.l1.en": {
-   "dur": 0.84,
+   "dur": 1.15,
    "src": "audio/en/u14-d02_l1_en.mp3"
   },
   "u14-d02.l1.slow": {
@@ -5993,7 +6001,7 @@
    "src": "audio/zh-slow/u14-d02_l5_slow.mp3"
   },
   "u14-d02.q1.en": {
-   "dur": 0.97,
+   "dur": 1.29,
    "src": "audio/en/u14-d02_q1_en.mp3"
   },
   "u14-d02.q2.en": {
@@ -6077,7 +6085,7 @@
    "src": "audio/zh/u14-p07.mp3"
   },
   "u14-p07.en": {
-   "dur": 0.84,
+   "dur": 1.15,
    "src": "audio/en/u14-p07_en.mp3"
   },
   "u14-p07.slow": {
@@ -6089,7 +6097,7 @@
    "src": "audio/zh/u14-p08.mp3"
   },
   "u14-p08.en": {
-   "dur": 1.1,
+   "dur": 1.41,
    "src": "audio/en/u14-p08_en.mp3"
   },
   "u14-p08.slow": {
@@ -6125,7 +6133,7 @@
    "src": "audio/zh/u14-s03.mp3"
   },
   "u14-s03.en": {
-   "dur": 1.72,
+   "dur": 2.37,
    "src": "audio/en/u14-s03_en.mp3"
   },
   "u14-s03.slow": {
@@ -6849,7 +6857,7 @@
    "src": "audio/zh/u16-d01_l5.mp3"
   },
   "u16-d01.l5.en": {
-   "dur": 2.26,
+   "dur": 3.02,
    "src": "audio/en/u16-d01_l5_en.mp3"
   },
   "u16-d01.l5.slow": {
@@ -6881,7 +6889,7 @@
    "src": "audio/zh/u16-d02_l1.mp3"
   },
   "u16-d02.l1.en": {
-   "dur": 0.92,
+   "dur": 1.28,
    "src": "audio/en/u16-d02_l1_en.mp3"
   },
   "u16-d02.l1.slow": {
@@ -6893,7 +6901,7 @@
    "src": "audio/zh/u16-d02_l2.mp3"
   },
   "u16-d02.l2.en": {
-   "dur": 0.71,
+   "dur": 1.02,
    "src": "audio/en/u16-d02_l2_en.mp3"
   },
   "u16-d02.l2.slow": {
@@ -7117,7 +7125,7 @@
    "src": "audio/zh/u16-s05.mp3"
   },
   "u16-s05.en": {
-   "dur": 1.47,
+   "dur": 2.14,
    "src": "audio/en/u16-s05_en.mp3"
   },
   "u16-s05.slow": {
@@ -7129,7 +7137,7 @@
    "src": "audio/zh/u16-s06.mp3"
   },
   "u16-s06.en": {
-   "dur": 1.48,
+   "dur": 1.69,
    "src": "audio/en/u16-s06_en.mp3"
   },
   "u16-s06.slow": {
@@ -7273,7 +7281,7 @@
    "src": "audio/zh/u16-w12.mp3"
   },
   "u16-w12.en": {
-   "dur": 0.85,
+   "dur": 1.1,
    "src": "audio/en/u16-w12_en.mp3"
   },
   "u16-w12.slow": {
@@ -7377,7 +7385,7 @@
    "src": "audio/zh/u17-d02_l1.mp3"
   },
   "u17-d02.l1.en": {
-   "dur": 2.06,
+   "dur": 2.48,
    "src": "audio/en/u17-d02_l1_en.mp3"
   },
   "u17-d02.l1.slow": {
@@ -7885,7 +7893,7 @@
    "src": "audio/zh/u18-d02_l1.mp3"
   },
   "u18-d02.l1.en": {
-   "dur": 1.37,
+   "dur": 1.92,
    "src": "audio/en/u18-d02_l1_en.mp3"
   },
   "u18-d02.l1.slow": {
@@ -8265,7 +8273,7 @@
    "src": "audio/zh/u18-w10.mp3"
   },
   "u18-w10.en": {
-   "dur": 1.15,
+   "dur": 1.35,
    "src": "audio/en/u18-w10_en.mp3"
   },
   "u18-w10.slow": {
@@ -8325,7 +8333,7 @@
    "src": "audio/zh/u19-d01_l3.mp3"
   },
   "u19-d01.l3.en": {
-   "dur": 2.56,
+   "dur": 3.09,
    "src": "audio/en/u19-d01_l3_en.mp3"
   },
   "u19-d01.l3.slow": {
@@ -8393,7 +8401,7 @@
    "src": "audio/zh/u19-d02_l1.mp3"
   },
   "u19-d02.l1.en": {
-   "dur": 2.72,
+   "dur": 2.99,
    "src": "audio/en/u19-d02_l1_en.mp3"
   },
   "u19-d02.l1.slow": {
@@ -8405,7 +8413,7 @@
    "src": "audio/zh/u19-d02_l2.mp3"
   },
   "u19-d02.l2.en": {
-   "dur": 1.08,
+   "dur": 1.47,
    "src": "audio/en/u19-d02_l2_en.mp3"
   },
   "u19-d02.l2.slow": {
@@ -8453,7 +8461,7 @@
    "src": "audio/zh/u19-d02_l6.mp3"
   },
   "u19-d02.l6.en": {
-   "dur": 2.47,
+   "dur": 2.85,
    "src": "audio/en/u19-d02_l6_en.mp3"
   },
   "u19-d02.l6.slow": {
@@ -8497,7 +8505,7 @@
    "src": "audio/zh/u19-p02.mp3"
   },
   "u19-p02.en": {
-   "dur": 0.7,
+   "dur": 1.2,
    "src": "audio/en/u19-p02_en.mp3"
   },
   "u19-p02.slow": {
@@ -8533,7 +8541,7 @@
    "src": "audio/zh/u19-p05.mp3"
   },
   "u19-p05.en": {
-   "dur": 0.95,
+   "dur": 1.26,
    "src": "audio/en/u19-p05_en.mp3"
   },
   "u19-p05.slow": {
@@ -8581,7 +8589,7 @@
    "src": "audio/zh/u19-s01.mp3"
   },
   "u19-s01.en": {
-   "dur": 1.36,
+   "dur": 1.88,
    "src": "audio/en/u19-s01_en.mp3"
   },
   "u19-s01.slow": {
@@ -8593,7 +8601,7 @@
    "src": "audio/zh/u19-s02.mp3"
   },
   "u19-s02.en": {
-   "dur": 1.24,
+   "dur": 1.64,
    "src": "audio/en/u19-s02_en.mp3"
   },
   "u19-s02.slow": {
@@ -8641,7 +8649,7 @@
    "src": "audio/zh/u19-s06.mp3"
   },
   "u19-s06.en": {
-   "dur": 1.91,
+   "dur": 2.21,
    "src": "audio/en/u19-s06_en.mp3"
   },
   "u19-s06.slow": {
@@ -8809,7 +8817,7 @@
    "src": "audio/zh/u20-d01_l2.mp3"
   },
   "u20-d01.l2.en": {
-   "dur": 2.57,
+   "dur": 2.76,
    "src": "audio/en/u20-d01_l2_en.mp3"
   },
   "u20-d01.l2.slow": {
@@ -8821,7 +8829,7 @@
    "src": "audio/zh/u20-d01_l3.mp3"
   },
   "u20-d01.l3.en": {
-   "dur": 2.39,
+   "dur": 2.52,
    "src": "audio/en/u20-d01_l3_en.mp3"
   },
   "u20-d01.l3.slow": {
@@ -8961,7 +8969,7 @@
    "src": "audio/zh/u20-d02_l6.mp3"
   },
   "u20-d02.l6.en": {
-   "dur": 1.37,
+   "dur": 1.79,
    "src": "audio/en/u20-d02_l6_en.mp3"
   },
   "u20-d02.l6.slow": {
@@ -9421,7 +9429,7 @@
    "src": "audio/zh/u21-d02_l1.mp3"
   },
   "u21-d02.l1.en": {
-   "dur": 1.88,
+   "dur": 2.43,
    "src": "audio/en/u21-d02_l1_en.mp3"
   },
   "u21-d02.l1.slow": {
@@ -9837,7 +9845,7 @@
    "src": "audio/zh/u22-d01_l1.mp3"
   },
   "u22-d01.l1.en": {
-   "dur": 1.04,
+   "dur": 1.34,
    "src": "audio/en/u22-d01_l1_en.mp3"
   },
   "u22-d01.l1.slow": {
@@ -9849,7 +9857,7 @@
    "src": "audio/zh/u22-d01_l2.mp3"
   },
   "u22-d01.l2.en": {
-   "dur": 1.63,
+   "dur": 2.25,
    "src": "audio/en/u22-d01_l2_en.mp3"
   },
   "u22-d01.l2.slow": {
@@ -10425,7 +10433,7 @@
    "src": "audio/zh/u23-d02_l1.mp3"
   },
   "u23-d02.l1.en": {
-   "dur": 2.4,
+   "dur": 2.93,
    "src": "audio/en/u23-d02_l1_en.mp3"
   },
   "u23-d02.l1.slow": {
@@ -10437,7 +10445,7 @@
    "src": "audio/zh/u23-d02_l2.mp3"
   },
   "u23-d02.l2.en": {
-   "dur": 3.0,
+   "dur": 3.56,
    "src": "audio/en/u23-d02_l2_en.mp3"
   },
   "u23-d02.l2.slow": {
@@ -10461,7 +10469,7 @@
    "src": "audio/zh/u23-d02_l4.mp3"
   },
   "u23-d02.l4.en": {
-   "dur": 1.73,
+   "dur": 2.62,
    "src": "audio/en/u23-d02_l4_en.mp3"
   },
   "u23-d02.l4.slow": {
@@ -10485,7 +10493,7 @@
    "src": "audio/zh/u23-d02_l6.mp3"
   },
   "u23-d02.l6.en": {
-   "dur": 2.42,
+   "dur": 2.59,
    "src": "audio/en/u23-d02_l6_en.mp3"
   },
   "u23-d02.l6.slow": {
@@ -10497,7 +10505,7 @@
    "src": "audio/zh/u23-d02_l7.mp3"
   },
   "u23-d02.l7.en": {
-   "dur": 2.45,
+   "dur": 2.93,
    "src": "audio/en/u23-d02_l7_en.mp3"
   },
   "u23-d02.l7.slow": {
@@ -10517,11 +10525,11 @@
    "src": "audio/zh-slow/u23-d02_l8_slow.mp3"
   },
   "u23-d02.q1.en": {
-   "dur": 1.65,
+   "dur": 2.19,
    "src": "audio/en/u23-d02_q1_en.mp3"
   },
   "u23-d02.q2.en": {
-   "dur": 1.32,
+   "dur": 1.74,
    "src": "audio/en/u23-d02_q2_en.mp3"
   },
   "u23-p01": {
@@ -10649,7 +10657,7 @@
    "src": "audio/zh/u23-s03.mp3"
   },
   "u23-s03.en": {
-   "dur": 1.57,
+   "dur": 2.27,
    "src": "audio/en/u23-s03_en.mp3"
   },
   "u23-s03.slow": {
@@ -10745,7 +10753,7 @@
    "src": "audio/zh/u23-w05.mp3"
   },
   "u23-w05.en": {
-   "dur": 0.82,
+   "dur": 0.93,
    "src": "audio/en/u23-w05_en.mp3"
   },
   "u23-w05.slow": {
@@ -10757,7 +10765,7 @@
    "src": "audio/zh/u23-w06.mp3"
   },
   "u23-w06.en": {
-   "dur": 0.72,
+   "dur": 0.9,
    "src": "audio/en/u23-w06_en.mp3"
   },
   "u23-w06.slow": {
@@ -10769,7 +10777,7 @@
    "src": "audio/zh/u23-w07.mp3"
   },
   "u23-w07.en": {
-   "dur": 1.15,
+   "dur": 1.23,
    "src": "audio/en/u23-w07_en.mp3"
   },
   "u23-w07.slow": {
@@ -10853,7 +10861,7 @@
    "src": "audio/zh/u24-d01_l2.mp3"
   },
   "u24-d01.l2.en": {
-   "dur": 2.21,
+   "dur": 3.26,
    "src": "audio/en/u24-d01_l2_en.mp3"
   },
   "u24-d01.l2.slow": {
@@ -10945,7 +10953,7 @@
    "src": "audio/zh/u24-d02_l1.mp3"
   },
   "u24-d02.l1.en": {
-   "dur": 2.07,
+   "dur": 2.23,
    "src": "audio/en/u24-d02_l1_en.mp3"
   },
   "u24-d02.l1.slow": {
@@ -11029,7 +11037,7 @@
    "src": "audio/zh/u24-d02_l8.mp3"
   },
   "u24-d02.l8.en": {
-   "dur": 2.3,
+   "dur": 3.02,
    "src": "audio/en/u24-d02_l8_en.mp3"
   },
   "u24-d02.l8.slow": {
@@ -11097,7 +11105,7 @@
    "src": "audio/zh/u24-p05.mp3"
   },
   "u24-p05.en": {
-   "dur": 1.25,
+   "dur": 1.44,
    "src": "audio/en/u24-p05_en.mp3"
   },
   "u24-p05.slow": {
@@ -11121,7 +11129,7 @@
    "src": "audio/zh/u24-p07.mp3"
   },
   "u24-p07.en": {
-   "dur": 1.27,
+   "dur": 1.35,
    "src": "audio/en/u24-p07_en.mp3"
   },
   "u24-p07.slow": {
@@ -11357,6 +11365,6 @@
    "src": "audio/zh-slow/u24-w12_slow.mp3"
   }
  },
- "generatedAt": "2026-11-17T12:10:51Z",
+ "generatedAt": "2026-11-17T12:17:47Z",
  "version": 1
 }

@@ -37,8 +37,20 @@ USAGE
     python3 tools/generate_audio.py --limit 5 --force        # rebuild 5 clips regardless of cache
     python3 tools/generate_audio.py --prune                  # also delete unreferenced mp3 files
     python3 tools/generate_audio.py --root /tmp/r --content-root tests/fixtures/content
+    python3 tools/generate_audio.py --check-en               # only check English words; exit 1 on OOV
 
     Environment: AUDIO_MODEL_DIR can replace --model-dir. Needs ffmpeg/ffprobe on PATH.
+
+ENGLISH TEXT (why it is not spoken verbatim)
+    The Kokoro English front end looks every word up in ``lexicon-us-en.txt`` and
+    silently SKIPS any word that is missing ("twenty minutes" -> "twenty"). So all
+    English clip text (``.en`` clips and ``sys.*``) is normalised first (``/`` ->
+    "or", parentheses -> commas, acronyms -> spelled letters), then every word is
+    resolved: from the base lexicon, from the hand-written ``tools/lexicon-extra-en.txt``
+    (Mandarin names, Singlish), or by *inflecting* a known stem (plural, possessive,
+    -ed, -ing). The resolved extra entries are written to a temporary lexicon that is
+    passed to sherpa-onnx after the base one. See docs/AUDIO.md, "English
+    normalisation and the extra lexicon".
 
 PIPELINE PER CLIP
     Kokoro (sherpa-onnx) -> float samples -> ffmpeg trims leading/trailing silence ->
@@ -63,7 +75,7 @@ import sys
 import tempfile
 import time
 import zlib
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable, Optional
@@ -112,6 +124,9 @@ SYS_PROMPTS = {
 CONTRACTIONS = {"that's": "that is", "what's": "what is", "here's": "here is",
                 "how's": "how is", "where's": "where is", "when's": "when is"}
 
+# Hand-written English-lexicon entries (Mandarin names, Singlish, ...); see docs/AUDIO.md.
+EXTRA_LEXICON_PATH = Path(__file__).resolve().parent / "lexicon-extra-en.txt"
+
 AUDIO_SUBDIRS = ("zh", "zh-slow", "en", "sys")
 CACHE_VERSION = 1
 MANIFEST_VERSION = 1
@@ -133,6 +148,7 @@ class Clip:
     voice: int
     speed: float
     silence_ms: int = 0
+    lex_sig: str = ""
 
     @property
     def rel_path(self) -> str:
@@ -141,24 +157,237 @@ class Clip:
 
     @property
     def digest(self) -> str:
-        """Hash of everything that influences the output bytes (cache key)."""
-        payload = json.dumps(
-            [self.text, self.voice, self.speed, self.silence_ms, PIPELINE_VERSION, MODEL_NAME],
-            ensure_ascii=False,
-        )
+        """Hash of everything that influences the output bytes (cache key).
+
+        ``lex_sig`` fingerprints the extra-lexicon entries (hand-written or inflected)
+        this clip's words use; it is appended only when non-empty.
+        WHY: clips that use no extra entry keep the exact pre-existing key, so adding
+        the extra lexicon rebuilds only the English clips it affects (never Chinese
+        ones), and editing one entry rebuilds only clips containing that word.
+        """
+        parts = [self.text, self.voice, self.speed, self.silence_ms, PIPELINE_VERSION, MODEL_NAME]
+        if self.lex_sig:
+            parts.append(self.lex_sig)
+        payload = json.dumps(parts, ensure_ascii=False)
         return hashlib.sha256(payload.encode("utf-8")).hexdigest()[:16]
 
 
-def speakable_english(text: str) -> str:
-    """Rewrite English text so Kokoro's lexicon can speak every word (see CONTRACTIONS)."""
+# ===== Section: English normalisation and extra lexicon ===========================
+
+_PUNCT = ",.;:?!"  # sentence punctuation the sherpa-onnx tokenizer splits off words
+
+
+def normalize_english(text: str) -> str:
+    """Stage 1 (model-free): rewrite English text into plain speakable prose.
+
+    Spells out contractions the lexicon lacks (CONTRACTIONS), turns ``/`` into "or",
+    parentheses into comma pauses, drops characters the tokenizer cannot handle and
+    collapses whitespace. Stage 2 (``EnglishLexicon.prepare``) then resolves each word.
+    WHY two stages: enumerate_clips() is also used by verify_audio.py, which has no
+    model; only word resolution needs the lexicon.
+    """
     def fix(match: "re.Match[str]") -> str:
         word = match.group(0)
-        repl = CONTRACTIONS.get(word.lower().replace("\u2019", "'"))
+        repl = CONTRACTIONS.get(word.lower())
         if repl is None:
             return word
         return repl.capitalize() if word[0].isupper() else repl
 
-    return re.sub(r"[A-Za-z]+['\u2019][A-Za-z]+", fix, text)
+    t = text.replace("\u2019", "'").replace("\u2018", "'")
+    t = re.sub(r"[A-Za-z]+'[A-Za-z]+", fix, t)
+    t = re.sub(r"\s*/\s*", " or ", t)               # "I / me" -> "I or me"
+    t = re.sub(r"\s*\(\s*", ", ", t)                # "you (polite)" -> "you, polite"
+    t = re.sub(r"\s*\)\s*(?=\S)", ", ", t)          # ")" followed by more text -> pause
+    t = t.replace(")", "")
+    t = re.sub(rf"([{_PUNCT}]),", r"\1", t)         # "old?, to" -> "old? to"
+    # WHY: sherpa-onnx only splits words at whitespace, ",.;:?!" and "-"; any other
+    # symbol stays glued to the word, which then misses the lexicon and is skipped.
+    t = re.sub(rf"[^\w'\-{_PUNCT} ]", " ", t)
+    t = re.sub(r"(?<![A-Za-z])'|'(?![A-Za-z])", " ", t)     # apostrophes outside words
+    t = re.sub(r"(?<![A-Za-z0-9])-|-(?![A-Za-z0-9])", " ", t)  # hyphens outside words
+    t = re.sub(r"\s+", " ", t)
+    t = re.sub(rf"\s+([{_PUNCT}])", r"\1", t)
+    return re.sub(rf"^[{_PUNCT}\s]+", "", t).strip()
+
+
+def parse_lexicon(path: Path) -> dict[str, str]:
+    """Read a ``word phone phone ...`` lexicon into ``{word: "phone phone ..."}``.
+
+    Blank lines and ``#`` comment lines are skipped; the first entry of a word wins.
+    """
+    entries: dict[str, str] = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        word, _, phones = line.partition(" ")
+        entries.setdefault(word, phones.strip())
+    return entries
+
+
+# Phone classes of the Kokoro English lexicon, used to pick suffix allomorphs.
+_SIBILANT = {"s", "z", "\u0283", "\u0292", "\u02a7", "\u02a4"}
+_VOICELESS = {"p", "t", "k", "f", "\u03b8", "s", "\u0283", "\u02a7"}
+_ALVEOLAR_STOP = {"t", "d", "\u027e"}
+
+
+def _suffix_s(phones: str) -> str:
+    """Phones of plural / possessive / 3rd-person ``-s`` (``\u1d7b z`` / ``s`` / ``z``).
+
+    Copies the lexicon's own convention: ``buses b \u02c8 \u028c s \u1d7b z``, ``cats ... t s``,
+    ``cars ... \u0279 z``.
+    """
+    last = phones.split()[-1]
+    if last in _SIBILANT:
+        return "\u1d7b z"
+    return "s" if last in _VOICELESS else "z"
+
+
+def _suffix_ed(phones: str) -> str:
+    """Phones of ``-ed`` (``\u1d7b d`` / ``t`` / ``d``), per ``needed``, ``worked``, ``played``."""
+    last = phones.split()[-1]
+    if last in _ALVEOLAR_STOP:
+        return "\u1d7b d"
+    return "t" if last in _VOICELESS else "d"
+
+
+class EnglishLexicon:
+    """Word -> phones lookup mirroring what sherpa-onnx will know, plus inflection.
+
+    ``base`` is Kokoro's ``lexicon-us-en.txt``; ``manual`` is the hand-written
+    ``tools/lexicon-extra-en.txt``. ``generated`` collects the entries inflected
+    on demand (``minutes`` from ``minute``); write all non-base entries with
+    ``write_extra`` and pass that file to sherpa-onnx after the base lexicon.
+    """
+
+    def __init__(self, base: dict[str, str], manual: dict[str, str]):
+        self.base = base
+        self.manual = manual
+        self.generated: dict[str, str] = {}
+
+    @classmethod
+    def load(cls, model_dir: Path, extra_path: Path = EXTRA_LEXICON_PATH) -> "EnglishLexicon":
+        """Load the model's English lexicon and the committed extra lexicon."""
+        lex = model_dir / "lexicon-us-en.txt"
+        if not lex.exists():
+            raise SystemExit(f"error: no English lexicon at {lex} (see docs/AUDIO.md, 'How to run')")
+        manual = parse_lexicon(extra_path) if extra_path.exists() else {}
+        return cls(parse_lexicon(lex), manual)
+
+    def phones(self, word: str) -> Optional[str]:
+        """Phones for a lowercase word from manual, generated or base entries (or None)."""
+        return self.manual.get(word) or self.generated.get(word) or self.base.get(word)
+
+    def inflect(self, word: str) -> Optional[str]:
+        """Build phones for an OOV inflected word from its stem, or return None.
+
+        Handles possessive ``'s``, plural/3rd-person ``-s/-es/-ies``, past ``-ed/-d/-ied``
+        and ``-ing`` (including doubled consonants and dropped ``e``). Suffix phones
+        follow the base lexicon's own spelling (see ``_suffix_s`` / ``_suffix_ed``).
+        """
+        def stem_of(cands: list[str]) -> Optional[str]:
+            for cand in cands:
+                if len(cand) >= 2 and self.phones(cand):
+                    return self.phones(cand)
+            return None
+
+        w = word
+        if w.endswith("'s"):
+            stem = stem_of([w[:-2]])
+            return f"{stem} {_suffix_s(stem)}" if stem else None
+        if w.endswith("s") and not w.endswith("ss"):
+            cands = ([w[:-3] + "y"] if w.endswith("ies") else []) + \
+                    ([w[:-2]] if w.endswith("es") else []) + [w[:-1]]
+            stem = stem_of(cands)
+            if stem:
+                return f"{stem} {_suffix_s(stem)}"
+        if w.endswith("ed"):
+            cands = ([w[:-3] + "y"] if w.endswith("ied") else []) + [w[:-2], w[:-1]]
+            if len(w) > 4 and w[-3] == w[-4]:
+                cands.append(w[:-3])  # stopped -> stop
+            stem = stem_of(cands)
+            if stem:
+                return f"{stem} {_suffix_ed(stem)}"
+        if w.endswith("ing"):
+            cands = [w[:-3], w[:-3] + "e"]
+            if len(w) > 5 and w[-4] == w[-5]:
+                cands.append(w[:-4])  # running -> run
+            stem = stem_of(cands)
+            if stem:
+                return f"{stem} \u026a \u014b"
+        return None
+
+    def prepare(self, text: str) -> tuple[str, dict[str, str], list[str]]:
+        """Stage 2: resolve every word of normalised ``text``.
+
+        Returns ``(spoken text, extra entries used, unresolved words)``. Uppercase
+        acronyms the lexicon lacks (``MRT``) become spaced letters (``M R T``); OOV
+        inflections are generated; ``used`` holds every manual or generated entry the
+        text relies on (basis of the clip's cache key); ``unresolved`` lists words
+        still unknown, which sherpa-onnx would silently skip.
+        """
+        used: dict[str, str] = {}
+        unresolved: list[str] = []
+
+        def resolve(part: str) -> str:
+            low = part.lower()
+            if not low:
+                return part
+            if low in self.manual:
+                used[low] = self.manual[low]
+                return part
+            if low in self.base:
+                return part
+            if part.isalpha() and part.isupper() and len(part) >= 2:
+                letters = list(part)
+                for letter in letters:
+                    if not self.phones(letter.lower()):
+                        unresolved.append(letter)
+                return " ".join(letters)
+            phones = self.generated.get(low) or self.inflect(low)
+            if phones:
+                self.generated[low] = phones
+                used[low] = phones
+                return part
+            unresolved.append(low)
+            return part
+
+        def chunk(match: "re.Match[str]") -> str:
+            return "-".join(resolve(p) for p in match.group(0).split("-"))
+
+        spoken = re.sub(rf"[^\s{_PUNCT}]+", chunk, text)
+        return spoken, used, unresolved
+
+    def write_extra(self, path: Path) -> None:
+        """Write manual + generated entries as a sherpa-onnx lexicon file (no comments)."""
+        merged = {**self.generated, **self.manual}
+        path.write_text("".join(f"{w} {p}\n" for w, p in sorted(merged.items())), encoding="utf-8")
+
+
+def lex_signature(used: dict[str, str]) -> str:
+    """Short stable fingerprint of the extra entries a clip uses ('' if none)."""
+    if not used:
+        return ""
+    blob = "\n".join(f"{w} {p}" for w, p in sorted(used.items()))
+    return hashlib.sha256(blob.encode("utf-8")).hexdigest()[:12]
+
+
+def resolve_english(clips: list[Clip], lex: EnglishLexicon) -> tuple[list[Clip], dict[str, list[str]]]:
+    """Run stage 2 over every English clip.
+
+    Returns ``(clips with final text + lex_sig, {unresolved word: [clip ids]})``.
+    Non-English clips are returned untouched (same objects).
+    """
+    out: list[Clip] = []
+    oov: dict[str, list[str]] = {}
+    for c in clips:
+        if c.kind in ("en", "sys") and c.text:
+            spoken, used, bad = lex.prepare(c.text)
+            for w in bad:
+                oov.setdefault(w, []).append(c.id)
+            c = replace(c, text=spoken, lex_sig=lex_signature(used))
+        out.append(c)
+    return out, oov
 
 
 def item_voice(item_id: str) -> int:
@@ -195,18 +424,18 @@ def enumerate_clips(content_root: Path) -> list[Clip]:
             iid, voice = item["id"], item_voice(item["id"])
             clips.append(Clip(iid, "zh", item["hanzi"], voice, NORMAL_SPEED))
             clips.append(Clip(f"{iid}.slow", "zh-slow", item["hanzi"], voice, SLOW_SPEED))
-            clips.append(Clip(f"{iid}.en", "en", speakable_english(item["english"]), EN_VOICE, NORMAL_SPEED))
+            clips.append(Clip(f"{iid}.en", "en", normalize_english(item["english"]), EN_VOICE, NORMAL_SPEED))
         for dlg in unit.get("dialogues", []):
             did = dlg["id"]
             for n, line in enumerate(dlg.get("lines", []), start=1):
                 voice = DIALOGUE_VOICES[line["speaker"]]
                 clips.append(Clip(f"{did}.l{n}", "zh", line["hanzi"], voice, NORMAL_SPEED))
                 clips.append(Clip(f"{did}.l{n}.slow", "zh-slow", line["hanzi"], voice, SLOW_SPEED))
-                clips.append(Clip(f"{did}.l{n}.en", "en", speakable_english(line["english"]), EN_VOICE, NORMAL_SPEED))
+                clips.append(Clip(f"{did}.l{n}.en", "en", normalize_english(line["english"]), EN_VOICE, NORMAL_SPEED))
             for n, q in enumerate(dlg.get("questions", []), start=1):
-                clips.append(Clip(f"{did}.q{n}.en", "en", speakable_english(q["question"]), EN_VOICE, NORMAL_SPEED))
+                clips.append(Clip(f"{did}.q{n}.en", "en", normalize_english(q["question"]), EN_VOICE, NORMAL_SPEED))
     for cid, text in SYS_PROMPTS.items():
-        clips.append(Clip(cid, "sys", speakable_english(text), EN_VOICE, NORMAL_SPEED))
+        clips.append(Clip(cid, "sys", normalize_english(text), EN_VOICE, NORMAL_SPEED))
     for ms in SILENCE_MS:
         clips.append(Clip(f"sys.silence.{ms}", "sys", "", 0, 1.0, silence_ms=ms))
 
@@ -301,7 +530,7 @@ def write_manifest(root: Path, required: list[Clip], cache: dict) -> int:
 
 # ===== Section: TTS engine =========================================================
 
-def load_tts(model_dir: Path, num_threads: int):
+def load_tts(model_dir: Path, num_threads: int, extra_lexicon: Optional[Path] = None):
     """Create the Kokoro ``OfflineTts`` object (slow: several seconds, ~350 MB model).
 
     WHY one model per process: the sherpa-onnx object is not shared across
@@ -310,17 +539,21 @@ def load_tts(model_dir: Path, num_threads: int):
     WHY the lexicon pair and rule FSTs: Kokoro multi-lang needs both lexicons to
     speak Mandarin and English, and the FSTs expand numbers/dates/phones in hanzi
     text; without them digits are skipped or misread.
+    WHY ``extra_lexicon`` sits between the two: later lexicons override earlier ones
+    (verified), so hand-written/inflected English entries win over the base English
+    ones, and the Mandarin lexicon (hanzi keys) is unaffected.
     """
     import sherpa_onnx
 
     d = str(model_dir)
+    en_lex = f"{d}/lexicon-us-en.txt" + (f",{extra_lexicon}" if extra_lexicon else "")
     kokoro = sherpa_onnx.OfflineTtsKokoroModelConfig(
         model=f"{d}/model.onnx",
         voices=f"{d}/voices.bin",
         tokens=f"{d}/tokens.txt",
         data_dir=f"{d}/espeak-ng-data",
         dict_dir=f"{d}/dict",
-        lexicon=f"{d}/lexicon-us-en.txt,{d}/lexicon-zh.txt",
+        lexicon=f"{en_lex},{d}/lexicon-zh.txt",
     )
     cfg = sherpa_onnx.OfflineTtsConfig(
         model=sherpa_onnx.OfflineTtsModelConfig(kokoro=kokoro, num_threads=num_threads),
@@ -330,26 +563,6 @@ def load_tts(model_dir: Path, num_threads: int):
     if not cfg.validate():
         raise SystemExit(f"error: invalid TTS config; is {model_dir} a complete Kokoro model dir?")
     return sherpa_onnx.OfflineTts(cfg)
-
-
-def english_oov(model_dir: Path, clips: Iterable[Clip]) -> dict[str, list[str]]:
-    """Return ``{word: [clip ids]}`` for English words missing from the Kokoro lexicon.
-
-    WHY: sherpa-onnx skips unknown words silently (only a log line), so a missing
-    word means a clip that is quietly wrong. We surface it as a warning up front.
-    Proper names such as "Xiao" are expected hits; contractions belong in CONTRACTIONS.
-    """
-    lex = model_dir / "lexicon-us-en.txt"
-    if not lex.exists():
-        return {}
-    known = {ln.split(" ", 1)[0] for ln in lex.read_text(encoding="utf-8").splitlines() if ln.strip()}
-    found: dict[str, list[str]] = {}
-    for c in clips:
-        if c.kind in ("en", "sys") and c.text:
-            for w in re.findall(r"[A-Za-z]+(?:['\u2019-][A-Za-z]+)*", c.text):
-                if w.lower() not in known:
-                    found.setdefault(w.lower(), []).append(c.id)
-    return found
 
 
 def synthesize(tts, text: str, voice: int, speed: float):
@@ -442,9 +655,9 @@ def build_clip(tts, clip: Clip, root: Path) -> float:
 _WORKER: dict = {}
 
 
-def _worker_init(model_dir: str, threads: int) -> None:
+def _worker_init(model_dir: str, threads: int, extra_lexicon: str) -> None:
     """Pool initializer: load this worker's private TTS model once."""
-    _WORKER["tts"] = load_tts(Path(model_dir), threads)
+    _WORKER["tts"] = load_tts(Path(model_dir), threads, Path(extra_lexicon))
 
 
 def _worker_run(job: tuple[Clip, str]) -> tuple[str, str, Optional[float], Optional[str], float]:
@@ -474,6 +687,8 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
     p.add_argument("--limit", type=int, help="build at most N clips (after cache filtering)")
     p.add_argument("--jobs", type=int, default=1, help="worker processes, one TTS model each (default 1)")
     p.add_argument("--force", action="store_true", help="rebuild even if the cache says unchanged")
+    p.add_argument("--check-en", action="store_true",
+                   help="only check that every English word is speakable (no OOV); exit 1 if not")
     p.add_argument("--dry-run", action="store_true", help="list clips that would be built and exit")
     p.add_argument("--prune", action="store_true", help="delete mp3 files no longer referenced by the content")
     args = p.parse_args(argv)
@@ -516,7 +731,24 @@ def prune_stale(root: Path, required: Iterable[Clip], cache: dict, do_delete: bo
 def main(argv: Optional[list[str]] = None) -> int:
     """Entry point: enumerate, filter, build, then write cache and manifest."""
     args = parse_args(argv)
-    required = enumerate_clips(args.content_root)
+    lex = EnglishLexicon.load(args.model_dir)
+    required, oov = resolve_english(enumerate_clips(args.content_root), lex)
+    # WHY a hard stop: an OOV word is silently dropped from the audio, which is worse
+    # than no clip. Add the word to tools/lexicon-extra-en.txt or fix the content.
+    for word, ids in sorted(oov.items()):
+        print(f"OOV: English word {word!r} is not speakable (in: {', '.join(ids[:4])}"
+              f"{', ...' if len(ids) > 4 else ''})")
+    if args.check_en:
+        n_en = sum(1 for c in required if c.kind in ("en", "sys") and c.text)
+        print(f"check-en: {n_en} English clips, {len(oov)} unresolved word(s), "
+              f"{len(lex.generated)} inflected + {len(lex.manual)} hand-written extra entries")
+        return 1 if oov else 0
+    if oov:
+        print("error: fix the OOV words above first (tools/lexicon-extra-en.txt); nothing was built")
+        return 1
+    extra_dir = tempfile.TemporaryDirectory(prefix="gen_audio_lex_")
+    extra_lex = Path(extra_dir.name) / "lexicon-extra-en.txt"
+    lex.write_extra(extra_lex)
     cache_path = args.root / "audio" / ".cache.json"
     cache = load_cache(cache_path)
 
@@ -555,8 +787,6 @@ def main(argv: Optional[list[str]] = None) -> int:
                 cache[c.id] = {"hash": c.digest, "dur": dur}
             else:
                 speech.append(c)
-        for word, ids in sorted(english_oov(args.model_dir, speech).items()):
-            print(f"warning: English word {word!r} not in lexicon (skipped by TTS) in: {', '.join(ids[:4])}")
         total, done, t_start, busy = len(todo), len(todo) - len(speech), time.time(), 0.0
         if speech and not (args.model_dir / "model.onnx").exists():
             raise SystemExit(f"error: no Kokoro model at {args.model_dir} (see docs/AUDIO.md, 'How to run')")
@@ -573,7 +803,7 @@ def main(argv: Optional[list[str]] = None) -> int:
 
         try:
             if speech and args.jobs <= 1:
-                tts = load_tts(args.model_dir, os.cpu_count() or 2)
+                tts = load_tts(args.model_dir, os.cpu_count() or 2, extra_lex)
                 for c in speech:
                     t0 = time.time()
                     try:
@@ -588,7 +818,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                 threads = max(1, (os.cpu_count() or 2) // args.jobs)
                 # WHY spawn: forking a process that has imported onnxruntime is fragile.
                 ctx = mp.get_context("spawn")
-                with ctx.Pool(args.jobs, _worker_init, (str(args.model_dir), threads)) as pool:
+                with ctx.Pool(args.jobs, _worker_init, (str(args.model_dir), threads, str(extra_lex))) as pool:
                     jobs = [(c, str(args.root)) for c in speech]
                     for cid, digest, dur, err, secs in pool.imap_unordered(_worker_run, jobs):
                         if err:

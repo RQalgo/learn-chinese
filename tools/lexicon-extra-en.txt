@@ -1,0 +1,14 @@
+# Hand-written extra entries for the Kokoro English lexicon (lexicon-us-en.txt).
+# Format per line: word phone phone ...   (lowercase word; Kokoro/espeak phone symbols,
+# ˈ = primary stress; A=eɪ I=aɪ O=oʊ W=aʊ Y=ɔɪ). Lines starting with "#" are comments:
+# generate_audio.py strips them before handing the entries to sherpa-onnx.
+# These approximate Mandarin names/words with English phones; entries override the base lexicon.
+wang w ˈ ɑ ŋ
+xiao ʃ j ˈ W
+xiaoming ʃ j ˈ W m ˈ ɪ ŋ
+xiaomei ʃ j ˈ W m ˈ A
+daming d ˈ ɑ m ˈ ɪ ŋ
+lin l ˈ ɪ n
+hua h w ˈ ɑ
+doudou d ˈ O d ˈ O
+aircon ˈ ɛ ɹ k ˌ ɑ n
