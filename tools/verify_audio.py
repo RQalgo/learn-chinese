@@ -18,6 +18,13 @@ USAGE
     python3 tools/verify_audio.py --asr-dir models/sherpa-onnx-paraformer-zh-small-2024-03-09
     python3 tools/verify_audio.py --only u01 --threshold 0.25
     python3 tools/verify_audio.py --include-slow      # also check the 0.75x clips
+    python3 tools/verify_audio.py --carrier           # second, fairer test for short clips
+
+    --carrier: the ASR model is unreliable on one or two isolated syllables (it hears a
+    filler or a homophone). For references of at most 4 Han characters the clip is also
+    transcribed as ``0.5 s silence + clip + 0.5 s silence + clip`` and counts as heard
+    when the reference occurs as a substring of that transcript. Both metrics are
+    reported; a short clip is "flagged after carrier" only when it fails both.
 
     Clips are flagged when CER > threshold (default 0.34). For references of 1-2
     characters only CER >= 1.0 (nothing recognised correctly) is flagged, because one
@@ -187,13 +194,30 @@ def read_audio(path: Path):
     return mono, sr
 
 
-def transcribe(recognizer, paths: list[Path], batch: int = 8) -> list[str]:
-    """Transcribe audio files; returns one transcript per path (same order)."""
+CARRIER_MAX_HAN = 4       # --carrier applies to references up to this many characters
+CARRIER_GAP_S = 0.5       # silence before, between and after the two copies
+
+
+def carrier_audio(samples, sr: int):
+    """Build ``silence + clip + silence + clip`` (the clip twice, 0.5 s apart) for the carrier test."""
+    import numpy as np
+
+    gap = np.zeros(int(CARRIER_GAP_S * sr), dtype=np.float32)
+    return np.concatenate([gap, samples, gap, samples, gap])
+
+
+def transcribe(recognizer, paths: list[Path], batch: int = 8, carrier: bool = False) -> list[str]:
+    """Transcribe audio files; returns one transcript per path (same order).
+
+    With ``carrier`` each file is transcribed as ``carrier_audio`` of itself.
+    """
     results: list[str] = []
     for i in range(0, len(paths), batch):
         streams = []
         for p in paths[i:i + batch]:
             samples, sr = read_audio(p)
+            if carrier:
+                samples = carrier_audio(samples, sr)
             s = recognizer.create_stream()
             s.accept_waveform(sr, samples)
             streams.append(s)
@@ -215,6 +239,8 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
     p.add_argument("--only", help="comma-separated unit ids or clip-id prefixes")
     p.add_argument("--threshold", type=float, default=DEFAULT_THRESHOLD, help="flag CER above this (default 0.34)")
     p.add_argument("--include-slow", action="store_true", help="also check the .slow clips")
+    p.add_argument("--carrier", action="store_true",
+                   help=f"also test clips of <= {CARRIER_MAX_HAN} Han characters twice in a row (see module docstring)")
     p.add_argument("--worst", type=int, default=30, help="how many worst clips to print (default 30)")
     args = p.parse_args(argv)
     args.root = args.root.resolve()
@@ -239,17 +265,28 @@ def main(argv: Optional[list[str]] = None) -> int:
     t0 = time.time()
     hyps = transcribe(recognizer, [args.root / c.rel_path for c in clips])
 
+    short = [c for c in clips if args.carrier and len(normalise(c.text)) <= CARRIER_MAX_HAN]
+    car_hyp = dict(zip([c.id for c in short], transcribe(recognizer, [args.root / c.rel_path for c in short],
+                                                        carrier=True)))
     rows = []
     for c, hyp in zip(clips, hyps):
         value = cer(c.text, hyp)
-        rows.append({"id": c.id, "voice": c.voice, "slow": c.kind == "zh-slow", "ref": c.text,
+        ch = car_hyp.get(c.id)
+        rows.append({"carrier_hyp": ch, "carrier_ok": None if ch is None else normalise(c.text) in normalise(ch),
+                     "id": c.id, "voice": c.voice, "slow": c.kind == "zh-slow", "ref": c.text,
                      "ref_norm": normalise(c.text), "hyp": hyp, "hyp_norm": normalise(hyp),
                      "cer": round(value, 3), "flagged": is_flagged(c.text, value, args.threshold)})
+    for r in rows:
+        # WHY: a short clip is only a real suspect if it also fails the carrier test.
+        r["flagged_after_carrier"] = r["flagged"] and r["carrier_ok"] is not True
     flagged = [r for r in rows if r["flagged"]]
     mean = sum(r["cer"] for r in rows) / len(rows)
+    flagged_after = sum(1 for r in rows if r["flagged_after_carrier"])
     report = {
         "asr_model": args.asr_dir.name, "threshold": args.threshold, "short_ref_rule": "len<=2: flag only CER>=1.0",
-        "summary": {"checked": len(rows), "flagged": len(flagged), "mean_cer": round(mean, 4)},
+        "summary": {"checked": len(rows), "flagged": len(flagged), "mean_cer": round(mean, 4),
+                    "carrier_checked": len(short), "carrier_ok": sum(1 for r in rows if r["carrier_ok"]),
+                    "flagged_after_carrier": flagged_after},
         "clips": {r["id"]: r for r in sorted(rows, key=lambda r: r["id"])},
     }
     out = args.root / "audio" / "verify-report.json"
@@ -257,15 +294,21 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     print(f"ASR {args.asr_dir.name}: {len(rows)} clips in {time.time() - t0:.1f}s, "
           f"mean CER {mean:.3f}, flagged {len(flagged)} (threshold {args.threshold})")
-    print(f"{'voice':>5}  {'clips':>5}  {'mean CER':>8}  {'flagged':>7}")
+    if args.carrier:
+        n_ok = sum(1 for r in rows if r["carrier_ok"])
+        print(f"carrier test: {n_ok}/{len(short)} short clips (<= {CARRIER_MAX_HAN} chars) heard correctly in "
+              f"'clip, pause, clip'; flagged after carrier {flagged_after}/{len(flagged)}")
+    print(f"{'voice':>5}  {'clips':>5}  {'mean CER':>8}  {'flagged':>7}" + ("  carrier ok  flagged-after" if args.carrier else ""))
     for v in sorted({r["voice"] for r in rows}):
         sub = [r for r in rows if r["voice"] == v]
         print(f"{v:>5}  {len(sub):>5}  {sum(r['cer'] for r in sub) / len(sub):>8.3f}  "
-              f"{sum(r['flagged'] for r in sub):>7}")
+              f"{sum(r['flagged'] for r in sub):>7}"
+              + (f"  {sum(1 for r in sub if r['carrier_ok'])}/{sum(1 for r in sub if r['carrier_ok'] is not None):<9}"
+                 f"  {sum(1 for r in sub if r['flagged_after_carrier']):>5}" if args.carrier else ""))
     print(f"\nWorst {min(args.worst, len(rows))} clips:")
     print(f"{'clip':<20} {'CER':>5}  {'flag':<4} {'reference':<20} heard")
     for r in sorted(rows, key=lambda r: (-r["cer"], r["id"]))[: args.worst]:
-        print(f"{r['id']:<20} {r['cer']:>5.2f}  {'*' if r['flagged'] else '':<4} {r['ref']:<20} {r['hyp']}")
+        print(f"{r['id']:<20} {r['cer']:>5.2f}  {('*' if r['flagged_after_carrier'] else 'c' if r['flagged'] else '') if args.carrier else ('*' if r['flagged'] else ''):<4} {r['ref']:<20} {r['hyp']}")
     print(f"\nreport: {out}")
     return 0
 

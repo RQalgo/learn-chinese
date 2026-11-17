@@ -6,26 +6,37 @@ stops when the screen locks).
 
 ## Engine
 
-* `sherpa-onnx` (pip) with the **Kokoro multi-lang v1.0** model
-  (`kokoro-multi-lang-v1_0`, Apache-2.0), from
-  `https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/kokoro-multi-lang-v1_0.tar.bz2`.
-* The model is **not** committed (≈ 350 MB). `tools/generate_audio.py --model-dir` points at it.
+`sherpa-onnx` (pip) with **two** Kokoro multi-lang models (both Apache-2.0, not committed,
+about 350 MB each; `tools/generate_audio.py` loads each only when a clip needs it, so a
+`--jobs 2` run may hold both in every worker, about 1 GB in total):
+
+| Model | Used for | Directory option |
+|---|---|---|
+| `kokoro-multi-lang-v1_0` | all English clips (`.en`, `sys.*`) | `--model-dir` / `$AUDIO_MODEL_DIR` |
+| `kokoro-multi-lang-v1_1` | all Mandarin clips (items and dialogue lines, normal and slow) | `--zh-model-dir` / `$AUDIO_ZH_MODEL_DIR` |
+
+Downloads: `https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/kokoro-multi-lang-v1_0.tar.bz2`
+and `.../kokoro-multi-lang-v1_1.tar.bz2` (see **How to run**). WHY two: v1.1-zh pronounces
+Mandarin clearly better than v1.0 (ASR CER below), but its English is no better, so the
+English clips were left exactly as they were.
+
 * ~1 s of CPU per 1 s of audio on 2 cores, so generation is **incremental**: each clip's
-  inputs (text, voice, speed, engine version) are hashed into `audio/.cache.json`;
-  unchanged clips are skipped.
+  inputs (text, voice, speed, engine version, model name, lexicon fingerprint) are hashed
+  into `audio/.cache.json`; unchanged clips are skipped. Mandarin clips hash the v1.1
+  model name, English clips still hash the v1.0 name (so they never rebuilt on the switch).
 
 ## Voices (Kokoro speaker IDs)
 
 | Use | Speaker IDs |
 |---|---|
-| Mandarin items | rotate over the chosen Mandarin voices, picked deterministically from a hash of the item ID so an item always has the same voice |
-| Dialogue speaker A / B | one female, one male Mandarin voice |
-| English | one clear US English voice (`af_heart`, id 3) |
+| Mandarin items | rotate over `ZH_VOICES = [30, 4, 63, 75]` (F, F, M, M; v1.1 ids), picked deterministically from a hash of the item ID so an item always has the same voice |
+| Dialogue speaker A / B | `DIALOGUE_VOICES = {"A": 4, "B": 75}` (female, male) |
+| English (v1.0) | one clear US English voice (`af_heart`, id 3) |
 
-Kokoro v1.0 Mandarin voices are ids 45–52 (`zf_xiaobei`, `zf_xiaoni`, `zf_xiaoxiao`,
-`zf_xiaoyi`, `zm_yunjian`, `zm_yunxi`, `zm_yunxia`, `zm_yunyang`). The final choice is
-recorded in `tools/generate_audio.py` (`ZH_VOICES`, `DIALOGUE_VOICES`) after an ASR
-intelligibility check (see **Voice evaluation** below).
+Kokoro v1.1 speakers: 0-2 English, **3-57 female Mandarin, 58-102 male Mandarin** (24 kHz).
+The four voices were screened with the ASR round trip (see **Verification**); none of them
+is clearly worse than the others on comparable clips (table below), so none was swapped.
+The former v1.0 voices (ids 45-52) are no longer used.
 
 ## Speeds
 
@@ -90,6 +101,47 @@ entries (hand-written or inflected) its own words use. Clips without such a word
 old key, so only affected clips rebuild when normalisation rules or an extra entry change;
 Chinese clips are never affected and `PIPELINE_VERSION` was not bumped.
 
+## Mandarin lexicon: neutral tones and 不/一 (`tools/zh_lexicon.py`)
+
+Problem: `lexicon-zh.txt` of every Kokoro model lacks many common neutral-tone words
+(谢谢, 东西, 朋友, 喜欢, 先生, 妈妈 ...), which were therefore spoken with full tones, and the
+不/一 tone depends on the word being known. The content already has the correct reading
+(docs/CONTENT.md: neutral tone unmarked, written 不/一 sandhi tones), so the tool derives
+extra entries from it at every run.
+
+* **Lexicon format** (v1.1): `word` followed by, per syllable, an initial token, a final
+  token and a tone digit (1-4, 5 = neutral): `你好 ㄋ ㄧ 2 ㄏ ㄠ 3`, `孩子 ㄏ ㄞ 2 ㄗ ㄭ 5`,
+  erhua adds `R` before the digit (`哪儿 ㄋ ㄚ R 3`). Tones are post-sandhi (你好 is 2 3).
+  The pinyin -> tokens table is learned from the model's single-character entries with
+  pypinyin (408 syllables), never hard-coded.
+* **Alignment**: each item/dialogue line's hanzi is aligned with its pinyin (one syllable
+  per Han character, `r` = 儿, apostrophes, capitals and punctuation handled; lines that do
+  not align are reported).
+* **Units that get an entry** (see the module docstring): multi-syllable pinyin words with a
+  neutral syllable or a sandhi 不/一; a standalone `bú`/`yí`/`yì` together with the next word
+  (`不去`, `一个`; a one-character entry would change every 不/一); a standalone neutral
+  syllable the lexicon does not know as neutral, with its neighbours (`对不对`). An entry is
+  written only if the base lexicon lacks the word or its tones differ from ours; third-tone
+  sandhi differences are ignored (we write citation tones).
+* **Segmentation**: sherpa-onnx >= 1.12.15 ignores `dict_dir` for Kokoro (it logs this) and
+  cuts the text by **longest match over the merged lexicons**, so a new entry is
+  automatically a token and no jieba change is needed (verified: adding the entries to a
+  jieba user dictionary changed no waveform). A longer base word can swallow a unit
+  (`等一下` hides `一下`; its base tones are right, so nothing to do) or contradict our
+  tones (`早上好` has a non-neutral 上): `repair_tokens` simulates the cut and adds an entry
+  for such a whole token with our tones.
+* **Precedence**: the extra file is the **last** file of the `lexicon=` list; later files
+  override earlier ones (verified, as for English). The file is regenerated into a temp
+  directory at each run (49 entries for the current content).
+* **Cache**: a Mandarin clip's key contains a fingerprint of the entries its own line relies
+  on, so editing the pinyin of one word rebuilds only the clips that use it.
+* **Proof it takes effect** (voices 30 / 63; before -> after; second-syllable energy relative to
+  the first, and F0 in Hz): 谢谢 0.70 -> 0.62, F0 212 -> 183 / 0.70 -> 0.49, 107 -> 88;
+  东西 0.43 -> 0.32 (F0 124 -> 95, voice 63); 妈妈 0.67 -> 0.48; 先生 0.63 -> 0.44. Ablating
+  each of the 48 entries of the first version (one at a time, audio compared sample by
+  sample) changed the audio for 47; the remaining one (一下 inside 等一下) is the longer-word
+  case above.
+
 ## Verification
 
 `tools/verify_audio.py` transcribes every Mandarin clip with a sherpa-onnx Mandarin
@@ -98,7 +150,10 @@ stripped). Output: `audio/verify-report.json` and a summary table. Clips with CE
 are listed for a human (or re-generation with another voice). ASR is not perfect on
 1–2 character words, so short words are judged leniently.
 
-## Voice evaluation
+## Voice evaluation (historical: Kokoro v1.0 voices)
+
+This section records the original v1.0 voice choice (`ZH_VOICES = [47, 48, 50, 52]`), which has been
+replaced by the v1.1 voices above; `tools/eval_voices.py` still evaluates v1.0 voices 45-52.
 
 `tools/eval_voices.py` makes every Mandarin voice (45-52) speak the same 15 sentences
 (single words, greetings, numbers, prices, times, questions), runs them through the
@@ -141,11 +196,12 @@ Re-run after a model or pipeline change:
 Dependencies (Python 3.10+, ffmpeg and ffprobe on `PATH`):
 
 ```bash
-pip install sherpa-onnx soundfile numpy scipy opencc-python-reimplemented
+pip install sherpa-onnx soundfile numpy scipy opencc-python-reimplemented pypinyin
 mkdir -p models && cd models
 BASE=https://github.com/k2-fsa/sherpa-onnx/releases/download
 # TTS (about 350 MB unpacked, NOT committed; `models/` is git-ignored)
-curl -SL $BASE/tts-models/kokoro-multi-lang-v1_0.tar.bz2 | tar xj
+curl -SL $BASE/tts-models/kokoro-multi-lang-v1_0.tar.bz2 | tar xj   # English clips
+curl -SL $BASE/tts-models/kokoro-multi-lang-v1_1.tar.bz2 | tar xj   # Mandarin clips
 # ASR for verification (about 80 MB download)
 curl -SL $BASE/asr-models/sherpa-onnx-paraformer-zh-small-2024-03-09.tar.bz2 | tar xj
 cd ..
@@ -163,7 +219,8 @@ python3 tools/generate_audio.py --prune                        # delete mp3 file
 python3 tools/generate_audio.py --root /tmp/r --content-root tests/fixtures/content   # fixture test
 ```
 
-`--model-dir` (or `$AUDIO_MODEL_DIR`) defaults to `models/kokoro-multi-lang-v1_0`. Commit
+`--model-dir` (or `$AUDIO_MODEL_DIR`, English) defaults to `models/kokoro-multi-lang-v1_0`;
+`--zh-model-dir` (or `$AUDIO_ZH_MODEL_DIR`, Mandarin) to `models/kokoro-multi-lang-v1_1`. Commit
 `audio/**/*.mp3`, `audio/manifest.json` and `audio/.cache.json` together.
 
 How it behaves:
@@ -190,6 +247,9 @@ python3 tools/verify_audio.py --include-slow       # also the 0.75x clips
 python3 tools/verify_audio.py --only u05 --threshold 0.25
 ```
 
+Add `--carrier` for the second test of short clips (<= 4 Han characters): the clip is repeated
+as `0.5 s silence + clip + 0.5 s silence + clip` and counts as heard if the reference occurs
+in the transcript; "flagged after carrier" = flagged standalone AND failed the carrier test.
 Writes `audio/verify-report.json` (per clip: reference, transcript, CER, flag) and prints a
 per-voice summary and the 30 worst clips. A clip is flagged when CER > 0.34 (for 1-2
 character texts only CER >= 1.0). Before comparing, punctuation is dropped, text is
@@ -198,3 +258,32 @@ clip is a prompt to listen to it: typical ASR false alarms are a filler particle
 after the clip (`谢谢 -> 谢谢啊`); real problems are wrong characters. To fix a real one,
 change the item text slightly (add a measure word, use a longer phrase) or, for a single
 item, rewrite the wording; there is no per-item voice override.
+
+### Results: v1.0 vs v1.1-zh + content lexicon (2026-11-17)
+
+All 911 normal-speed Mandarin clips, ASR `sherpa-onnx-paraformer-zh-small-2024-03-09`,
+`python3 tools/verify_audio.py --carrier`:
+
+| | v1.0 (old voices) | v1.1-zh (voices 30, 4, 63, 75) |
+|---|---|---|
+| mean CER | 0.248 | **0.233** |
+| flagged (CER > 0.34; 1-2 chars: CER >= 1) | 165 / 911 | **122 / 911** |
+| short clips heard in the carrier test | 304 / 528 | **327 / 528** |
+| flagged after carrier | 152 | **114** |
+| clips of >= 3 characters flagged | - | 8 / 569 |
+
+Per voice (v1.1; IDs: 4 and 75 also speak the dialogues, which are long and score well,
+so compare the "items only" column):
+
+| Voice | Clips | Mean CER | Items only | Flagged | Flagged after carrier |
+|---|---|---|---|---|---|
+| 30 (F) | 150 | 0.290 | 0.290 | 25 | 23 |
+| 4 (F) | 302 | 0.216 | 0.398 | 35 | 34 |
+| 63 (M) | 168 | 0.276 | 0.276 | 28 | 27 |
+| 75 (M) | 291 | 0.195 | 0.332 | 34 | 30 |
+
+For references of >= 3 characters the voices are within noise (0.036 / 0.049 / 0.037 / 0.033).
+The remaining flags are almost all single syllables (`走 -> though`, `猫 -> no`): the ASR
+model answers isolated one-syllable clips with an English word or a homophone, and the
+carrier does not cure that. Real candidates to listen to: `星期一`, `星期几？`, `星期天`
+(always misheard; the same word is fine inside sentences), `发烧吗？`, `下大雨`.
