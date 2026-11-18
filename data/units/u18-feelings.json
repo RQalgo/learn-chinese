@@ -200,8 +200,8 @@
     {
       "id": "u18-s04",
       "type": "sentence",
-      "hanzi": "明天要开会，我有点儿紧张。",
-      "pinyin": "Míngtiān yào kāihuì, wǒ yǒudiǎnr jǐnzhāng.",
+      "hanzi": "明天要开会，我有点紧张。",
+      "pinyin": "Míngtiān yào kāihuì, wǒ yǒudiǎn jǐnzhāng.",
       "english": "I have a meeting tomorrow and I'm a bit nervous."
     },
     {
@@ -302,8 +302,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "我觉得有点儿无聊，太长了。",
-          "pinyin": "Wǒ juéde yǒudiǎnr wúliáo, tài cháng le.",
+          "hanzi": "我觉得有点无聊，太长了。",
+          "pinyin": "Wǒ juéde yǒudiǎn wúliáo, tài cháng le.",
           "english": "I thought it was a bit boring, too long."
         },
         {

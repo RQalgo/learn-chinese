@@ -134,8 +134,8 @@
     {
       "id": "u08-p04",
       "type": "phrase",
-      "hanzi": "便宜点儿",
-      "pinyin": "piányi diǎnr",
+      "hanzi": "便宜点",
+      "pinyin": "piányi diǎn",
       "english": "a bit cheaper"
     },
     {
@@ -196,8 +196,8 @@
     {
       "id": "u08-s04",
       "type": "sentence",
-      "hanzi": "便宜点儿，好吗？",
-      "pinyin": "Piányi diǎnr, hǎo ma?",
+      "hanzi": "便宜点，好吗？",
+      "pinyin": "Piányi diǎn, hǎo ma?",
       "english": "Cheaper, okay?"
     },
     {
@@ -234,8 +234,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "太贵了！便宜点儿，好吗？",
-          "pinyin": "Tài guì le! Piányi diǎnr, hǎo ma?",
+          "hanzi": "太贵了！便宜点，好吗？",
+          "pinyin": "Tài guì le! Piányi diǎn, hǎo ma?",
           "english": "Too expensive! Cheaper, okay?"
         },
         {

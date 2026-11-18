@@ -158,8 +158,8 @@
     {
       "id": "u24-p08",
       "type": "phrase",
-      "hanzi": "一会儿见",
-      "pinyin": "yíhuìr jiàn",
+      "hanzi": "一会见",
+      "pinyin": "yíhuì jiàn",
       "english": "see you in a bit",
       "alt": [
         "see you later"
@@ -257,8 +257,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "那我快点儿去，一会儿见！",
-          "pinyin": "Nà wǒ kuài diǎnr qù, yíhuìr jiàn!",
+          "hanzi": "那我快点去，一会见！",
+          "pinyin": "Nà wǒ kuài diǎn qù, yíhuì jiàn!",
           "english": "Then I'll hurry. See you in a bit!"
         }
       ],
@@ -309,8 +309,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "没什么，就是有点儿咳嗽。",
-          "pinyin": "Méi shénme, jiùshì yǒudiǎnr késou.",
+          "hanzi": "没什么，就是有点咳嗽。",
+          "pinyin": "Méi shénme, jiùshì yǒudiǎn késou.",
           "english": "Nothing much, just a bit of a cough."
         },
         {
@@ -321,8 +321,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "好啊。去哪儿吃？你选吧。",
-          "pinyin": "Hǎo a. Qù nǎr chī? Nǐ xuǎn ba.",
+          "hanzi": "好啊。去哪里吃？你选吧。",
+          "pinyin": "Hǎo a. Qù nǎlǐ chī? Nǐ xuǎn ba.",
           "english": "Sure. Where shall we eat? You choose."
         },
         {

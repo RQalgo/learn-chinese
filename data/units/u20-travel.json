@@ -169,8 +169,8 @@
     {
       "id": "u20-s01",
       "type": "sentence",
-      "hanzi": "我的护照在哪儿？",
-      "pinyin": "Wǒ de hùzhào zài nǎr?",
+      "hanzi": "我的护照在哪里？",
+      "pinyin": "Wǒ de hùzhào zài nǎlǐ?",
       "english": "Where is my passport?"
     },
     {
@@ -292,8 +292,8 @@
       "lines": [
         {
           "speaker": "A",
-          "hanzi": "今年你想去哪儿旅游？",
-          "pinyin": "Jīnnián nǐ xiǎng qù nǎr lǚyóu?",
+          "hanzi": "今年你想去哪里旅游？",
+          "pinyin": "Jīnnián nǐ xiǎng qù nǎlǐ lǚyóu?",
           "english": "Where do you want to travel this year?"
         },
         {

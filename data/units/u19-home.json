@@ -92,8 +92,8 @@
     {
       "id": "u19-p01",
       "type": "phrase",
-      "hanzi": "住在这儿",
-      "pinyin": "zhù zài zhèr",
+      "hanzi": "住在这里",
+      "pinyin": "zhù zài zhèlǐ",
       "english": "to live here"
     },
     {
@@ -229,8 +229,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "厨房在哪儿？我想喝水。",
-          "pinyin": "Chúfáng zài nǎr? Wǒ xiǎng hē shuǐ.",
+          "hanzi": "厨房在哪里？我想喝水。",
+          "pinyin": "Chúfáng zài nǎlǐ? Wǒ xiǎng hē shuǐ.",
           "english": "Where is the kitchen? I want some water."
         },
         {
@@ -293,8 +293,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "那今天晚上你睡哪儿？",
-          "pinyin": "Nà jīntiān wǎnshang nǐ shuì nǎr?",
+          "hanzi": "那今天晚上你睡哪里？",
+          "pinyin": "Nà jīntiān wǎnshang nǐ shuì nǎlǐ?",
           "english": "Then where will you sleep tonight?"
         },
         {
@@ -305,8 +305,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "好，那你早点儿睡吧。晚安！",
-          "pinyin": "Hǎo, nà nǐ zǎo diǎnr shuì ba. Wǎn'ān!",
+          "hanzi": "好，那你早点睡吧。晚安！",
+          "pinyin": "Hǎo, nà nǐ zǎo diǎn shuì ba. Wǎn'ān!",
           "english": "OK, then go to bed early. Good night!"
         }
       ],
