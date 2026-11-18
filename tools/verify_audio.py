@@ -17,7 +17,7 @@ HOW IT FITS
 USAGE
     python3 tools/verify_audio.py --asr-dir models/sherpa-onnx-paraformer-zh-small-2024-03-09
     python3 tools/verify_audio.py --only u01 --threshold 0.25
-    python3 tools/verify_audio.py --include-slow      # also check the 0.75x clips
+    python3 tools/verify_audio.py --include-slow      # also check the slow clips
     python3 tools/verify_audio.py --carrier           # second, fairer test for short clips
 
     --carrier: the ASR model is unreliable on one or two isolated syllables (it hears a

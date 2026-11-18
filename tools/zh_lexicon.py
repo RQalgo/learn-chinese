@@ -249,6 +249,92 @@ def _erhua_positions(syls: Iterable[Syl]) -> list[tuple[Syl, int]]:
     return out
 
 
+# ===== Section: Word chunks for slow audio ===========================================
+
+def generic_syllables() -> set[str]:
+    """Toneless pinyin syllables (ü as v) from pypinyin alone: an engine-agnostic ``valid`` set.
+
+    WHY: ``learn_syllable_table`` needs Kokoro's lexicon, but the slow-audio chunker (below) is part
+    of the shared pipeline and must work for any Mandarin engine. Interjection-only strings
+    (``m``, ``ng``, ``hm``, ``hng``, ``ê``) are dropped: as "syllables" they only make cuts ambiguous.
+    """
+    from pypinyin import Style, pinyin
+
+    out: set[str] = set()
+    for cp in range(0x4E00, 0x9FA6):
+        for reading in pinyin(chr(cp), style=Style.NORMAL, heteronym=True):
+            for syl in reading:
+                syl = syl.replace("ü", "v")
+                if syl.isascii() and syl.isalpha():
+                    out.add(syl)
+    return out - {"m", "ng", "hm", "hng", "e\u0302"}
+
+
+def _is_sandhi_bu_yi(word: PyWord) -> bool:
+    """True for a standalone 不/一 written with a sandhi tone (bú, yí, yì)."""
+    return word.han in BASE_TONE and word.syls[0].tone != BASE_TONE[word.han]
+
+
+def plan_chunks(hanzi: str, pinyin: str, valid: set[str]) -> Optional[list[tuple[str, bool]]]:
+    """Cut a content line into chunks at pinyin word boundaries: ``[(hanzi chunk, clause_end)]``.
+
+    Used by the slow audio (docs/AUDIO.md "Slow clips"): every pinyin word is synthesised on
+    its own, so a learner hears each word distinctly. A chunk keeps the punctuation that follows
+    its words (so a final ``？`` still shapes the intonation); ``clause_end`` is True when the
+    chunk ends in punctuation (a longer pause follows). Returns None if hanzi and pinyin do not align.
+
+    WHY some boundaries are NOT cut (the model would otherwise read the pieces wrongly in isolation):
+      * after a sandhi 不/一 (``bú shì``: 不 alone would be read bù, see the lexicon entries above);
+      * before a standalone neutral syllable (``de``, ``ma``, ``le``): it belongs to the word before;
+      * between two third tones (``nǐ hǎo``): the third-tone sandhi (2-3) happens only in context.
+    Single-word items therefore normally come back as one chunk.
+    """
+    words = align_line(hanzi, pinyin, valid)
+    if not words:
+        return None
+    han_at = [i for i, ch in enumerate(hanzi) if _HAN.match(ch)]
+    chunks: list[list] = []          # [text, clause_end, syllables]
+    pos = 0
+    for k, w in enumerate(words):
+        first = han_at[pos]
+        pos += len(w.han)
+        stop = han_at[pos] if pos < len(han_at) else len(hanzi)
+        text = hanzi[(0 if k == 0 else first):stop]
+        if k:
+            prev = words[k - 1]
+            glue = not prev.end and (
+                _is_sandhi_bu_yi(prev)
+                or (len(w.syls) == 1 and w.syls[0].tone == NEUTRAL and not w.syls[0].erhua)
+                or (prev.syls[-1].tone == 3 and w.syls[0].tone == 3))
+            if glue:
+                chunks[-1][0] += text
+                chunks[-1][1] = w.end
+                chunks[-1][2] += len(w.syls)
+                continue
+        chunks.append([text, w.end, len(w.syls)])
+    # WHY a minimum of two syllables inside a clause: Kokoro (like the ASR check) is unreliable on a
+    # lone syllable synthesised by itself (``请``, ``进``, ``我`` come out garbled or as another word),
+    # so a one-syllable chunk joins its neighbour in the same clause (forward, else backward).
+    # One-syllable chunks that are a whole clause (``Yī, èr, sān``) stay alone.
+    merged: list[list] = []
+    i = 0
+    while i < len(chunks):
+        text, end, n = chunks[i]
+        if n < 2 and not end and i + 1 < len(chunks):
+            nxt = chunks[i + 1]
+            chunks[i + 1] = [text + nxt[0], nxt[1], n + nxt[2]]
+        elif n < 2 and merged and not merged[-1][1]:
+            merged[-1] = [merged[-1][0] + text, end, merged[-1][2] + n]
+        else:
+            merged.append([text, end, n])
+        i += 1
+    if len(merged) > 1 and all(n < 2 for _, _, n in merged):
+        # WHY: a list of single syllables (``Yī, èr, sān, sì, wǔ``): lone-syllable synthesis fails
+        # (measured), and the commas already give the engine its pauses, so synthesise it whole.
+        return [(hanzi, merged[-1][1])]
+    return [(t, e) for t, e, _ in merged]
+
+
 # ===== Section: Units and entries ====================================================
 
 @dataclass(frozen=True)

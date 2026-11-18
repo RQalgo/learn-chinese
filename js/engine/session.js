@@ -272,13 +272,13 @@ export function requeue(plan, index, step, rng) {
 /** Default per-clip estimate (seconds) when no manifest duration is known. */
 const EST_CLIP_SEC = 1.2;
 
-/** Duration estimator: manifest map first, silences parsed from their id, else 1.2 s (slow clips x1.5). */
+/** Duration estimator: manifest map first, silences parsed from their id, else 1.2 s (slow clips x1.8, they are 1.45-2x the normal clip). */
 function makeDur(durations) {
   return (id) => {
     if (durations && durations[id] != null) return durations[id];
     const m = /^sys\.silence\.(\d+)$/.exec(id);
     if (m) return Number(m[1]) / 1000;
-    return id.endsWith(".slow") ? EST_CLIP_SEC * 1.5 : EST_CLIP_SEC;
+    return id.endsWith(".slow") ? EST_CLIP_SEC * 1.8 : EST_CLIP_SEC;
   };
 }
 

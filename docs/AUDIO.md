@@ -79,7 +79,38 @@ The former v1.0 voices (ids 45-52) are no longer used.
 ## Speeds
 
 * normal: speed 1.0 for Mandarin and English.
-* slow (`.slow` clips): Mandarin at speed 0.75.
+* slow (`.slow` clips): see **Slow clips** below (engine speed 1.0, per-word chunks, time-stretch).
+
+## Slow clips
+
+Problem: the first recipe (engine speed 0.75) made `.slow` clips only 1.2-1.4x as long as the
+normal ones (u01-w01: 0.77 s vs 0.95 s), which is not audibly slower, especially for short words.
+Now a slow clip is built by the shared pipeline (`plan_slow` / `build_slow_clip` in
+`tools/generate_audio.py`, so any `ZhEngine` gets it) as follows:
+
+1. **Chunks.** The line is cut at its pinyin word boundaries (`zh_lexicon.plan_chunks`; hanzi and
+   pinyin are aligned there). Each chunk keeps the punctuation after it, is synthesised separately
+   at engine speed `SLOW_SPEED = 1.0`, trimmed, and joined with a 180 ms gap (350 ms after a chunk
+   that ends in punctuation). Boundaries that are NOT cut: after a sandhi 不/一 (`bú shì`), before a
+   standalone neutral syllable (`de`, `ma`, `le`), between two third tones (`nǐ hǎo`), and a
+   one-syllable chunk joins its neighbour in the same clause (lone syllables synthesise badly); a line
+   made only of single syllables (`Yī, èr, sān`) is one chunk. So neutral-tone words and the units of
+   the content lexicon (zh_lexicon) are never split (checked over all content: 0 of 421 units cut),
+   and the extra lexicon applies to every chunk. Most single words are one chunk.
+2. **Stretch.** If the joined clip is shorter than `target x normal clip x 1.03`, the chunks (not the
+   gaps) are time-stretched with ffmpeg `rubberband` (formant preserving; `atempo` in passes of >= 0.7 if
+   the filter is missing). Targets, on the final MP3 durations: **1.6x** for words and phrases
+   (`-wNN`, `-pNN`), **1.45x** for sentences and dialogue lines. The MP3 is measured afterwards and
+   stretched a bit more (max 3 rounds, else the clip FAILS) if it is still short. The normal clip's
+   duration comes from `.cache.json` (when its entry is up to date) or is measured.
+3. **Cache key.** `SLOW_STRATEGY` ("slow-v2"), the chunk plan, the target ratio and the normal clip's
+   key are hashed into `.slow` clips only; bump `SLOW_STRATEGY` to rebuild just the slow clips.
+
+Why engine speed 1.0 and not 0.7 (the first idea): ASR round trips of isolated chunks showed that Kokoro v1.1
+below about 0.85 prepends a spurious syllable to short chunks (`老师` -> `你老实的`, `来` -> `直来`, `对不起` ->
+`团对不齐`; clean at 1.0), and chunked sentences scored mean CER 0.82 at 0.7, 0.69 at 0.75, 0.36 at 0.85 and
+0.23-0.17 at 1.0 (10 sentences; whole lines at 1.0 + rubberband: 0.02). Slowness therefore comes from
+the gaps and the stretch, not from the engine.
 
 ## Output format
 
@@ -122,7 +153,7 @@ word not in the lexicon (log line `OOV word skipped`), so "twenty minutes" was s
 
 `tools/lexicon-extra-en.txt` holds hand-written entries (same format) for Mandarin names
 and Singlish that no rule can derive: `Wang`, `Xiao`, `Xiaoming`, `Xiaomei`, `Daming`, `Lin`,
-`Hua`, `Doudou`, `aircon`, spelt with English phones (e.g. Xiao ~ "shyow"). `#` comment
+`Hua`, `Doudou`, `aircon`, `kaya`, spelt with English phones (e.g. Xiao ~ "shyow"). `#` comment
 lines are allowed; the tool strips them. At run time the extra entries plus the inflected
 ones are written to a temporary lexicon passed to sherpa-onnx as
 `lexicon-us-en.txt,<extra>,lexicon-zh.txt`. Verified: later files override earlier ones, so
@@ -291,7 +322,7 @@ Verify:
 
 ```bash
 python3 tools/verify_audio.py                      # normal-speed Mandarin clips
-python3 tools/verify_audio.py --include-slow       # also the 0.75x clips
+python3 tools/verify_audio.py --include-slow       # also the slow clips
 python3 tools/verify_audio.py --only u05 --threshold 0.25
 ```
 

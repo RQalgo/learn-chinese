@@ -155,14 +155,18 @@ Clip IDs (the app only ever refers to clip IDs, never to file paths):
 | Clip ID | Content | Voice |
 |---|---|---|
 | `<itemId>` | item hanzi, normal speed | Mandarin voice chosen per item (rotating) |
-| `<itemId>.slow` | item hanzi, slow | same voice |
+| `<itemId>.slow` | item hanzi, slow: word-by-word with gaps, at least 1.6x as long as the normal clip (1.45x for sentences) | same voice |
 | `<itemId>.en` | item `english` | English voice |
 | `<dialogueId>.l<N>` | dialogue line N (1-based), normal speed | voice by speaker A/B |
-| `<dialogueId>.l<N>.slow` | same, slow | voice by speaker |
+| `<dialogueId>.l<N>.slow` | same, slow (at least 1.45x the normal clip) | voice by speaker |
 | `<dialogueId>.l<N>.en` | English of line N | English voice |
 | `<dialogueId>.q<N>.en` | dialogue question N read in English | English voice |
 | `sys.silence.<ms>` | silence: 500, 1000, 1500, 2000, 3000 (1500 is used by the commute playlist, §7.4) | — |
 | `sys.<name>` | fixed English prompts (see `docs/AUDIO.md`) | English voice |
+
+UI contract: every ▶ button plays the NORMAL clip once and every 🐢 button the SLOW clip once. Only the
+automatic playback of a new word in the quiz intro (and the lock-screen play key there) is "normal, then slow".
+How slow clips are built: `docs/AUDIO.md`, "Slow clips".
 
 If a clip is missing from the manifest, `player.js` falls back to
 `speechSynthesis` (zh-CN or en-US) so new content still works before audio is
@@ -301,7 +305,7 @@ learner with many due items (checked in `tests/engine/fill.test.mjs` against the
 
 Each segment = `{ kind: "new"|"review"|"dialogue"|"prompt", refId, clips: [clipId…] }`.
 Between the two passes of a dialogue the playlist inserts `sys.again`. Duration is estimated
-from the manifest `dur` values (optional `durations` map), else 1.2 s per clip (slow ×1.5) plus
+from the manifest `dur` values (optional `durations` map), else 1.2 s per clip (slow ×1.8) plus
 silences; a dialogue is included only if it fits in 35 % of the target.
 Completing a `new` segment calls `introduce`; review segments update `seen`/`lastSeen` only
 (we cannot know if the listener understood). Listening seconds go to `daily.listenSec`.
