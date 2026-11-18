@@ -26,16 +26,20 @@ Key concepts
     * Flow (per colour scheme): home -> lesson 1 (fresh progress, intros) ->
       summary -> home XP -> reload persistence -> seed progress -> lessons that
       cover every question type + dialogue -> units -> unit detail (play) ->
-      stats chart -> settings (accent control present, Singapore disabled because
-      audio-sg/ has no clips; pinyin "after" really hides pinyin) -> commute
+      stats chart -> settings (accent control enabled and defaulting to Singapore with the
+      real audio-sg/ set; switching to Mainland and back changes the audio src and the
+      displayed pinyin, 谢谢 xièxiè vs xièxie, without a reload; pinyin "after" really
+      hides pinyin) -> commute
       (segments advance, skip, stop) -> commute to the end -> export / import /
       reset.
-    * Accent switch (Mainland vs Singapore audio): a second, throwaway site is built
-      in a temp folder (symlinks to the repo plus a 3-clip audio-sg/ copied from
-      Mainland clips) and served on another port. There the test checks that the
-      accent control is enabled and defaults to Singapore, that the clip table and
-      the audio request switch between audio-sg/ and audio/ without a reload, and
-      that clips missing from audio-sg/ fall back to the Mainland file.
+    * Partial Singapore set: a second, throwaway site is built in a temp folder
+      (symlinks to the repo plus a 3-clip audio-sg/ copied from Mainland clips) and
+      served on another port. There the test checks that the clip table and the audio
+      request switch between audio-sg/ and audio/ without a reload, and that clips
+      missing from audio-sg/ fall back to the Mainland file.
+    * No Singapore set: a third scratch site has no audio-sg/ at all; the test checks
+      that Singapore is disabled ("coming soon"), Mainland audio and Mainland pinyin
+      are used although the stored accent stays "sg".
 """
 import argparse
 import re
@@ -57,8 +61,8 @@ import generate_audio as ga  # noqa: E402  (voice of every clip id, to check qui
 VOICE_OF = {c.id: c.voice for c in ga.enumerate_clips(__import__("pathlib").Path(ROOT)) if c.kind in ("zh", "zh-slow")}
 SHOTS = "/tmp/shots"
 CHROME = "/usr/bin/google-chrome"
-# audio-sg/manifest.json: the Singapore set is not generated yet, so the repo has none.
-ALLOWED_404 = ("audio/manifest.json", "audio-sg/manifest.json")
+# audio-sg/manifest.json: 404 only on the scratch site that has no Singapore set.
+ALLOWED_404 = ()   # the repo has both manifests; only Run(..., allowed_404=...) for the no-Singapore scratch site
 
 STATE_JS = """() => {
   const q = (s) => document.querySelector(s);
@@ -79,10 +83,14 @@ STATE_JS = """() => {
 def load_content():
     """pinyin -> {english}, english-of-question -> correct answer text."""
     py2en, dq = {}, {}
+    sg_path = os.path.join(ROOT, "data", "pinyin-sg.json")
+    sg_py = json.load(open(sg_path, encoding="utf-8")) if os.path.exists(sg_path) else {}
     for f in sorted(glob.glob(os.path.join(ROOT, "data", "units", "*.json"))):
         d = json.load(open(f, encoding="utf-8"))
         for it in d.get("items", []):
             py2en.setdefault(it["pinyin"], set()).add(it["english"])
+            if it["id"] in sg_py:   # the pinyin shown with the Singapore accent
+                py2en.setdefault(sg_py[it["id"]], set()).add(it["english"])
         for dl in d.get("dialogues", []):
             for q in dl.get("questions", []):
                 dq[q["question"]] = q["answer"]
@@ -119,7 +127,8 @@ def check(cond, msg):
 # One full run for one colour scheme
 # ----------------------------------------------------------------------------
 class Run:
-    def __init__(self, browser, base, scheme, py2en, dq):
+    def __init__(self, browser, base, scheme, py2en, dq, allowed_404=ALLOWED_404):
+        self.allowed_404 = allowed_404
         self.scheme, self.base, self.py2en, self.dq = scheme, base, py2en, dq
         self.errors, self.bad_responses = [], []
         self.ctx = browser.new_context(viewport={"width": 412, "height": 915}, is_mobile=True, has_touch=True,
@@ -143,7 +152,7 @@ class Run:
             self.errors.append(f"console.error: {m.text}")
 
     def _on_response(self, r):
-        if r.status >= 400 and not any(r.url.endswith(a) for a in ALLOWED_404):
+        if r.status >= 400 and not any(r.url.endswith(a) for a in self.allowed_404):
             self.bad_responses.append(f"{r.status} {r.url}")
 
     # --- helpers ---
@@ -358,6 +367,22 @@ def main():
                 run.ctx.close()
                 sproc.terminate()
                 shutil.rmtree(scratch, ignore_errors=True)
+            for scheme in args.schemes.split(",")[:1]:
+                print(f"\n=== no Singapore set (scratch site), colour scheme: {scheme} ===")
+                scratch, _, _ = make_scratch_site(with_sg=False)
+                sproc, sport = start_server(scratch)
+                run = Run(browser, f"http://127.0.0.1:{sport}", scheme, py2en, dq, allowed_404=("audio-sg/manifest.json",))
+                try:
+                    no_sg_flow(run)
+                except Exception as e:
+                    failures.append(f"[{scheme} no-sg] {type(e).__name__}: {e}")
+                if run.errors:
+                    failures.append(f"[{scheme} no-sg] browser errors: {run.errors}")
+                if run.bad_responses:
+                    failures.append(f"[{scheme} no-sg] bad HTTP responses: {run.bad_responses}")
+                run.ctx.close()
+                sproc.terminate()
+                shutil.rmtree(scratch, ignore_errors=True)
             browser.close()
     finally:
         proc.terminate()
@@ -372,9 +397,10 @@ def main():
 # ----------------------------------------------------------------------------
 # Accent switch against a scratch site with a tiny Singapore set
 # ----------------------------------------------------------------------------
-def make_scratch_site():
+def make_scratch_site(with_sg=True):
     """Temp site = symlinks to every repo entry + audio-sg/ with 3 clips copied from Mainland.
 
+    ``with_sg=False``: no audio-sg/ at all (the "Singapore set not generated" case).
     Returns (directory, covered_ids, uncovered_id). Nothing under the repo is written.
     """
     tmp = tempfile.mkdtemp(prefix="ting-accent-")
@@ -382,6 +408,8 @@ def make_scratch_site():
         if name in (".git", "audio-sg"):
             continue
         os.symlink(os.path.join(ROOT, name), os.path.join(tmp, name))
+    if not with_sg:
+        return tmp, [], ""
     cn = json.load(open(os.path.join(ROOT, "audio", "manifest.json"), encoding="utf-8"))["clips"]
     zh = [i for i in cn if cn[i]["src"].startswith("audio/zh")]
     slow = [i for i in cn if cn[i]["src"].startswith("audio/zh-slow")]
@@ -395,6 +423,66 @@ def make_scratch_site():
     with open(os.path.join(tmp, "audio-sg", "manifest.json"), "w", encoding="utf-8") as f:
         json.dump({"version": 1, "generatedAt": "test", "clips": clips}, f)
     return tmp, covered, zh[2]
+
+
+PY_ROW_JS = """(hz) => { for (const li of document.querySelectorAll('li.item'))
+  if (li.querySelector('.hanzi').textContent === hz) return li.querySelector('.pinyin').textContent; return null; }"""
+STAT_JS = """async () => {
+  const { store } = await import(location.origin + "/js/ui/store.js");
+  return { accent: store.accent, sgAvailable: store.sgAvailable, src: store.clips["u01-w02"].src };
+}"""
+
+
+def requested_mp3(p, clip_id):
+    """Play a clip through the real player and return the mp3 URL the browser requested."""
+    with p.expect_request(lambda q: q.url.split("?")[0].endswith(".mp3") and "/audio" in q.url, timeout=5000) as ri:
+        p.evaluate("""async (id) => { const m = await import(location.origin + "/js/audio/player.js"); m.playClip(id); }""", clip_id)
+    p.evaluate("""async () => { const m = await import(location.origin + "/js/audio/player.js"); m.stop(); }""")
+    return ri.value.url
+
+
+def real_set_accent_flow(r: Run):
+    """With the real audio-sg/ set: Singapore -> Mainland -> Singapore changes audio src AND pinyin, no reload."""
+    p = r.page
+    r.goto("#/settings")
+    p.wait_for_selector("#accent-setting")
+    p.evaluate("window.__noReload = 1")
+
+    def look(label, want_accent, want_dir, want_py, want_line):
+        r.goto("#/unit/u01")
+        p.wait_for_selector("li.item")
+        s = p.evaluate(STAT_JS)
+        check(s["accent"] == want_accent and s["src"].startswith(want_dir), f"{label}: effective accent {want_accent}, 谢谢 clip from {want_dir}")
+        check("/" + want_dir in requested_mp3(p, "u01-w02"), f"{label}: the player requests a {want_dir} file")
+        check(p.evaluate(PY_ROW_JS, "谢谢") == want_py, f"{label}: unit page shows {want_py} for 谢谢")
+        check(want_line in p.evaluate("document.querySelector('.transcript').textContent"), f"{label}: dialogue transcript shows '{want_line}'")
+
+    look("Singapore (default)", "sg", "audio-sg/", "xièxiè", "xièxiè")
+    r.goto("#/settings")
+    p.get_by_role("radio", name="Mainland").click()
+    look("Mainland", "cn", "audio/", "xièxie", "xièxie")
+    r.goto("#/settings")
+    p.get_by_role("radio", name="Singapore").click()
+    look("Singapore again", "sg", "audio-sg/", "xièxiè", "xièxiè")
+    check(p.evaluate("window.__noReload") == 1, "accent and pinyin switched without reloading the page")
+    # accent-dependent pinyin in a lesson (intro/question/feedback use the same helper)
+    r.shot("unit-pinyin-sg")
+
+
+def no_sg_flow(r: Run):
+    """Scratch site WITHOUT audio-sg/: Singapore is disabled, Mainland audio and pinyin are used."""
+    p = r.page
+    r.goto("#/settings")
+    p.wait_for_selector("#accent-setting")
+    check(p.get_by_role("radio", name="Singapore").is_disabled() and p.get_by_role("radio", name="Mainland").get_attribute("aria-checked") == "true",
+          "no Singapore clips: Singapore disabled, Mainland active")
+    check("coming soon" in p.locator("#accent-desc").inner_text(), "accent note says Singapore voices are coming soon")
+    check(r.progress()["settings"]["accent"] == "sg", "stored accent keeps the 'sg' default (only the effective accent is cn)")
+    r.goto("#/unit/u01")
+    p.wait_for_selector("li.item")
+    s = p.evaluate(STAT_JS)
+    check(s["accent"] == "cn" and not s["sgAvailable"] and s["src"].startswith("audio/"), "no Singapore set: Mainland audio in effect")
+    check(p.evaluate(PY_ROW_JS, "谢谢") == "xièxie", "no Singapore set: Mainland pinyin (xièxie) is shown although pinyin-sg.json exists")
 
 
 def accent_flow(r: Run, covered, uncovered):
@@ -566,14 +654,16 @@ def flow(r: Run):
     # --- settings: pinyin 'after' really hides pinyin before answering ---
     r.goto("#/settings")
     p.wait_for_selector(".segmented")
-    # accent control: no audio-sg/ clips in the repo, so Singapore is disabled and Mainland is in effect
+    # accent control with the real Singapore set in the repo: enabled and the default
     check(p.locator("#accent-setting").count() == 1 and p.locator("#accent-setting [role=radiogroup]").get_attribute("aria-label") == "Mandarin accent",
           "settings shows the Mandarin accent control")
-    check(p.get_by_role("radio", name="Singapore").is_disabled() and p.get_by_role("radio", name="Mainland").get_attribute("aria-checked") == "true",
-          "no Singapore clips: Singapore disabled, Mainland active")
-    check("coming soon" in p.locator("#accent-desc").inner_text(), "accent note says Singapore voices are coming soon")
-    check(r.progress()["settings"]["accent"] == "sg",
-          "stored accent keeps the 'sg' default (only the effective accent is cn)")
+    check(p.get_by_role("radio", name="Singapore").is_enabled() and p.get_by_role("radio", name="Singapore").get_attribute("aria-checked") == "true",
+          "Singapore clips exist: the Singapore option is enabled and the default")
+    check("coming soon" not in p.locator("#accent-desc").inner_text(), "no 'coming soon' note with the real Singapore set")
+    check(r.progress()["settings"]["accent"] == "sg", "stored accent is the 'sg' default")
+    real_set_accent_flow(r)
+    r.goto("#/settings")
+    p.wait_for_selector(".segmented")
     p.get_by_role("radio", name="After answering").click()
     check(r.progress()["settings"]["pinyin"] == "after", "pinyin setting saved")
     r.shot("settings")

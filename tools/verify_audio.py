@@ -19,6 +19,8 @@ USAGE
     python3 tools/verify_audio.py --only u01 --threshold 0.25
     python3 tools/verify_audio.py --include-slow      # also check the slow clips
     python3 tools/verify_audio.py --carrier           # second, fairer test for short clips
+    python3 tools/verify_audio.py --accent sg         # the Singapore set (audio-sg/), report in audio-sg/
+    python3 tools/verify_audio.py --out /tmp/r.json   # write the report elsewhere (e.g. to compare two sets)
 
     --carrier: the ASR model is unreliable on one or two isolated syllables (it hears a
     filler or a homophone). For references of at most 4 Han characters the clip is also
@@ -241,6 +243,9 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
     p.add_argument("--include-slow", action="store_true", help="also check the .slow clips")
     p.add_argument("--carrier", action="store_true",
                    help=f"also test clips of <= {CARRIER_MAX_HAN} Han characters twice in a row (see module docstring)")
+    p.add_argument("--accent", choices=sorted(ga.ACCENT_DIRS), default="cn",
+                   help="which audio set: cn = audio/ (default), sg = audio-sg/ (the report goes to audio-sg/ too)")
+    p.add_argument("--out", type=Path, default=None, help="report path (default: <set>/verify-report.json)")
     p.add_argument("--worst", type=int, default=30, help="how many worst clips to print (default 30)")
     args = p.parse_args(argv)
     args.root = args.root.resolve()
@@ -256,7 +261,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     """Entry point: transcribe, score, write the report, print the summary."""
     args = parse_args(argv)
     kinds = {"zh", "zh-slow"} if args.include_slow else {"zh"}
-    clips = [c for c in ga.select_clips(ga.enumerate_clips(args.content_root), args.only)
+    clips = [c for c in ga.select_clips(ga.enumerate_clips(args.content_root, args.accent), args.only)
              if c.kind in kinds and (args.root / c.rel_path).exists()]
     if not clips:
         print("no generated Mandarin clips found to verify (run generate_audio.py first)")
@@ -283,13 +288,13 @@ def main(argv: Optional[list[str]] = None) -> int:
     mean = sum(r["cer"] for r in rows) / len(rows)
     flagged_after = sum(1 for r in rows if r["flagged_after_carrier"])
     report = {
-        "asr_model": args.asr_dir.name, "threshold": args.threshold, "short_ref_rule": "len<=2: flag only CER>=1.0",
+        "asr_model": args.asr_dir.name, "accent": args.accent, "threshold": args.threshold, "short_ref_rule": "len<=2: flag only CER>=1.0",
         "summary": {"checked": len(rows), "flagged": len(flagged), "mean_cer": round(mean, 4),
                     "carrier_checked": len(short), "carrier_ok": sum(1 for r in rows if r["carrier_ok"]),
                     "flagged_after_carrier": flagged_after},
         "clips": {r["id"]: r for r in sorted(rows, key=lambda r: r["id"])},
     }
-    out = args.root / "audio" / "verify-report.json"
+    out = args.out or args.root / ga.ACCENT_DIRS[args.accent] / "verify-report.json"
     out.write_text(json.dumps(report, indent=1, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8")
 
     print(f"ASR {args.asr_dir.name}: {len(rows)} clips in {time.time() - t0:.1f}s, "

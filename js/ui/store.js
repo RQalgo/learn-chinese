@@ -27,28 +27,29 @@
  *
  * Public API
  *   APP_VERSION, store, initStore(), onClipsChange(), commit(), setProgress(),
- *   updateSettings(), getSetting(), newRng(), pinyinMode()
+ *   updateSettings(), getSetting(), newRng(), pinyinMode(), itemPinyin(), linePinyin()
  */
 
 import { loadProgress, saveProgress } from "../state/storage.js";
 import { checkUnlocks } from "../state/progress.js";
 import { effectiveClips } from "../data/clips.js";
+import { pinyinFor, lineKey } from "../data/pinyinSg.js";
 import { makeRng } from "../engine/rng.js";
 import { setSfxEnabled } from "../audio/sfx.js";
 
 // ===== Section: State =====
 
 /** App version shown in Settings. Keep in step with VERSION in sw.js when releasing. */
-export const APP_VERSION = "1.2.0";
+export const APP_VERSION = "1.3.0";
 
 /**
  * @type {{curriculum: Object|null, clips: Object, durations: Object<string,number>,
  *         audioAvailable: boolean, accent: "sg"|"cn", sgAvailable: boolean,
- *         manifests: {cn: Object|null, sg: Object|null}, progress: Object|null}}
+ *         manifests: {cn: Object|null, sg: Object|null}, pinyinSg: Object<string,string>, progress: Object|null}}
  */
 export const store = {
   curriculum: null, clips: {}, durations: {}, audioAvailable: false,
-  accent: "cn", sgAvailable: false, manifests: { cn: null, sg: null }, progress: null,
+  accent: "cn", sgAvailable: false, manifests: { cn: null, sg: null }, pinyinSg: {}, progress: null,
 };
 
 /** Subscribers called after the effective clip table changed. @type {Set<() => void>} */
@@ -88,11 +89,12 @@ export function onClipsChange(cb) { clipListeners.add(cb); return () => clipList
 
 /**
  * Initialise the store from the loader result and saved progress.
- * @param {{curriculum: Object, manifests: {cn: Object|null, sg: Object|null}}} content
+ * @param {{curriculum: Object, manifests: {cn: Object|null, sg: Object|null}, pinyinSg?: Object<string,string>}} content
  */
-export function initStore({ curriculum, manifests }) {
+export function initStore({ curriculum, manifests, pinyinSg }) {
   store.curriculum = curriculum;
   store.manifests = manifests;
+  store.pinyinSg = pinyinSg || {};
   let p = loadProgress(undefined, Date.now());
   // WHY: repair `unlocked` against the real curriculum (first unit always open,
   // units whose predecessor reached 70 % open) in case content changed.
@@ -147,6 +149,28 @@ export function getSetting(key) {
 export function pinyinMode() {
   const v = store.progress.settings.pinyin;
   return v === "after" || v === "never" ? v : "always";
+}
+
+/**
+ * Pinyin to display for an item: the Singapore reading (full tones) when the Singapore accent is in
+ * effect and `data/pinyin-sg.json` has one, else the content pinyin. Reads the accent at call time,
+ * so a screen drawn after an accent switch shows the right text without a reload.
+ * @param {{id: string, pinyin: string}} item
+ * @returns {string}
+ */
+export function itemPinyin(item) {
+  return pinyinFor(item.id, item.pinyin, store.pinyinSg, store.accent);
+}
+
+/**
+ * Pinyin to display for a dialogue line (see itemPinyin).
+ * @param {string} dialogueId
+ * @param {number} index 0-based position of the line in the dialogue.
+ * @param {{pinyin: string}} line
+ * @returns {string}
+ */
+export function linePinyin(dialogueId, index, line) {
+  return pinyinFor(lineKey(dialogueId, index + 1), line.pinyin, store.pinyinSg, store.accent);
 }
 
 /**

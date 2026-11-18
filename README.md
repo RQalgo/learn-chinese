@@ -8,6 +8,7 @@ with earphones in. No speaking, no writing — just listening and understanding.
   English explanations, then a "what does this mean?" self-test.
 * **Progress** — XP, levels, daily goal, streak, unit stars and a stats page.
 * 24 topic units from greetings to everyday conversations.
+* **Singapore-style or Mainland pronunciation** — Singapore-style voices (full tones, e.g. xièxiè) by default, switchable in Settings, with matching pinyin.
 
 Live app: https://rqalgo.github.io/learn-chinese/
 

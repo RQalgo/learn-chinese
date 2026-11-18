@@ -509,6 +509,26 @@ def enumerate_clips(content_root: Path, accent: str = "cn", engine: Optional[typ
     return clips
 
 
+def check_sg_pinyin(clips: list[Clip], content_root: Path) -> None:
+    """Fail when ``data/pinyin-sg.json`` (what the app shows) differs from the Singapore reading being spoken.
+
+    WHY: both come from ``zh_lexicon.convert_line`` (tools/build_sg_pinyin.py writes the file), so a
+    mismatch only means the content changed since the file was generated. Skipped when the content
+    root has no such file (test fixtures).
+    """
+    path = content_root / "data" / "pinyin-sg.json"
+    if not path.exists():
+        print(f"note: {path} not found; Singapore pinyin for display was not checked")
+        return
+    import build_sg_pinyin
+    expected = build_sg_pinyin.build(content_root)
+    have = load_json(path)
+    if have != expected:
+        diff = sorted(k for k in set(have) | set(expected) if have.get(k) != expected.get(k))
+        raise SystemExit(f"error: data/pinyin-sg.json is stale ({len(diff)} differing key(s), e.g. {diff[:3]}); "
+                         "run python3 tools/build_sg_pinyin.py")
+
+
 def select_clips(clips: list[Clip], only: Optional[str]) -> list[Clip]:
     """Filter by ``--only``: comma-separated unit ids or clip-id prefixes.
 
@@ -684,10 +704,10 @@ class ZhEngine:
         """Raise SystemExit when ``model_dir`` cannot be used (called before building)."""
 
     @classmethod
-    def prepare(cls, clips: list[Clip], model_dir: Path, workdir: Path) -> tuple[list[Clip], str]:
+    def prepare(cls, clips: list[Clip], model_dir: Path, workdir: Path, accent: str = "cn") -> tuple[list[Clip], str]:
         """Engine-specific text preparation. Returns ``(clips, extra_lexicon_path_or_"")``.
 
-        Default: nothing to do. May return clips with ``lex_sig`` set (cache key part) and write
+        ``accent`` is the set being built (``"sg"``: Singapore tone mode, docs/AUDIO.md). Default: nothing to do. May return clips with ``lex_sig`` set (cache key part) and write
         helper files into ``workdir`` for the workers (path passed back as the second value).
         """
         return clips, ""
@@ -716,13 +736,26 @@ class KokoroZhEngine(ZhEngine):
             raise SystemExit(f"error: no Kokoro model at {model_dir} (see docs/AUDIO.md, 'How to run')")
 
     @classmethod
-    def prepare(cls, clips: list[Clip], model_dir: Path, workdir: Path) -> tuple[list[Clip], str]:
-        """Content-driven lexicon (neutral tones, 不/一); needs only the model's text files."""
+    def prepare(cls, clips: list[Clip], model_dir: Path, workdir: Path, accent: str = "cn") -> tuple[list[Clip], str]:
+        """Content-driven lexicon (neutral tones, 不/一); needs only the model's text files.
+
+        ``accent="sg"`` builds the Singapore reading (full tones instead of neutral tones, except the
+        keep-neutral list in tools/zh_lexicon.py); its entries and rules are part of each clip's key.
+        """
         if not (model_dir / "lexicon-zh.txt").exists():
             raise SystemExit(f"error: no Kokoro v1.1 model at {model_dir} (--zh-model-dir; see docs/AUDIO.md)")
-        zh_lex = ZhLexicon.build(model_dir, zh_lexicon.content_lines(clips))
+        zh_lex = ZhLexicon.build(model_dir, zh_lexicon.content_lines(clips), sg=accent == "sg")
         for msg in zh_lex.problems:
             print(f"zh-lexicon: {msg}")
+        if accent == "sg":
+            # WHY: the app shows data/pinyin-sg.json, built with the engine-independent syllable set;
+            # the lexicon above used the model's. They must read every line the same way.
+            generic = zh_lexicon.generic_syllables()
+            for key, text in sorted(zh_lex.sg_text.items()):
+                hanzi, _, pinyin = key.partition("\t")
+                conv = zh_lexicon.convert_line(hanzi, pinyin, generic, True)
+                if conv is None or conv[1] != text:
+                    raise SystemExit(f"error: Singapore pinyin of {hanzi!r} differs between the lexicon and the display tool")
         extra = zh_lex.write_file(workdir)
         out = [replace(c, lex_sig=zh_lex.signature(c.text, c.pinyin)) if c.kind in ZH_KINDS else c for c in clips]
         print(f"zh-lexicon: {zh_lex.stats['entries']} entries ({zh_lex.stats['repaired']} repairs) "
@@ -1130,7 +1163,9 @@ def main(argv: Optional[list[str]] = None) -> int:
         raise SystemExit("error: --check-en checks English clips, which only exist with --accent cn")
     # WHY: the Singapore set has no English/sys clips, so it never loads the English lexicon or model.
     # Mandarin: engine-specific preparation (Kokoro: content-driven lexicon for neutral tones, 不/一).
-    required, zh_extra = engine.prepare(required, args.zh_model_dir, Path(extra_dir.name))
+    required, zh_extra = engine.prepare(required, args.zh_model_dir, Path(extra_dir.name), accent)
+    if accent == "sg":
+        check_sg_pinyin(required, args.content_root)
     cache_path = args.root / audio_dir / ".cache.json"
     cache = load_cache(cache_path)
     required = plan_slow(required, cache)

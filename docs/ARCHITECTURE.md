@@ -42,8 +42,9 @@ css/app.css                All styles (mobile-first, light/dark via prefers-colo
 js/
   main.js                  Boot: load data, load progress, start router
   router.js                Hash router (#/home, #/units, #/unit/u01, #/quiz, #/listen, #/stats, #/settings)
-  data/loader.js           Fetches units index, unit files, both audio manifests → Curriculum object + raw manifests
+  data/loader.js           Fetches units index, unit files, both audio manifests, pinyin-sg.json → Curriculum object + raw manifests
   data/clips.js            PURE effectiveClips(cn, sg, accent): the clip table for the chosen Mandarin accent
+  data/pinyinSg.js         PURE pinyinFor(key, contentPinyin, map, accent): the pinyin to display (Singapore full tones or content)
   engine/                  PURE logic. No DOM, no fetch, no Date.now() — time and randomness are passed in.
     srs.js                 Spaced-repetition card state (Leitner boxes)
     questions.js           Builds one question (options, distractors) from an item
@@ -63,6 +64,7 @@ js/
 data/
   units.json               Ordered index of units
   units/uNN-slug.json      One file per unit (items + dialogues)
+  pinyin-sg.json           GENERATED (tools/build_sg_pinyin.py): pinyin with Singapore full tones, only where it differs (§5.1)
 audio/                     Mainland set (+ all English and sys.* clips)
   manifest.json            clipId → { src, dur }
   zh/ zh-slow/ en/ sys/    Generated MP3 files (committed)
@@ -71,7 +73,9 @@ audio-sg/                  Singapore set: Mandarin clips only (may be absent or 
   zh/ zh-slow/             Generated MP3 files (committed)
 tools/                     Python authoring tools (not shipped to the browser, but harmless if served)
   validate_content.py      Schema + pinyin cross-check (pypinyin) + duplicate checks
-  generate_audio.py        Builds all clips listed by the content; incremental
+  generate_audio.py        Builds all clips listed by the content; incremental (--accent cn|sg)
+  zh_lexicon.py            Content-driven Mandarin lexicon; Singapore tone mode (full tones instead of neutral)
+  build_sg_pinyin.py       Writes data/pinyin-sg.json with the same tone logic as the Singapore audio
   verify_audio.py          ASR round-trip check → report
   requirements.txt
 tests/
@@ -215,6 +219,28 @@ builds the table the rest of the app uses:
 `store.clips` / `store.durations` are this effective table, `store.accent` the accent really
 in use, `store.sgAvailable` whether Singapore can be offered. Every consumer (player, commute
 planner `durations`, "Download audio for offline") reads `store.*`, never a manifest directly.
+
+**What the Singapore set is.** Same voices and clip ids as Mainland, rendered with a Singapore *tone
+mode*: syllables that are neutral in Mainland Mandarin get their full tone (谢谢 xièxiè, 东西 dōngxī,
+朋友 péngyǒu), except grammatical particles and suffixes (docs/AUDIO.md, "Singapore set"). Rhythm and
+melody are not changed.
+
+**Pinyin follows the accent (`data/pinyin-sg.json`).** The content files keep the Mainland pinyin
+(`xièxie`). `data/pinyin-sg.json` is generated from them by `tools/build_sg_pinyin.py` with the same
+function that drives the audio (so text and sound cannot diverge) and has the form
+
+```json
+{ "u01-w02": "xièxiè", "u01-d01.l3": "Wǒ hěn hǎo, xièxiè. Nǐ ne?" }
+```
+
+keys are an item id or `<dialogueId>.l<N>` (N 1-based, like the clip id); only entries that differ
+from the content pinyin are listed. `loader.js` loads it (a 404 gives `{}`), `store.pinyinSg` holds it,
+and every screen that shows pinyin for an item or dialogue line (quiz intro / question / pinyin
+options / feedback and transcript, unit page, commute now-playing and summary chips, Media Session
+titles) calls `itemPinyin(item)` / `linePinyin(dialogueId, index, line)` from `ui/store.js`, which use the
+Singapore text exactly when `store.accent` is `"sg"` (the effective accent, so with no Singapore clips
+the Mainland pinyin is shown). Switching accent in Settings therefore changes audio and pinyin on the next
+screen, no reload. The service worker precaches the file best-effort and serves it network-first.
 
 ## 6. Progress state (localStorage key `tingProgress.v1`)
 

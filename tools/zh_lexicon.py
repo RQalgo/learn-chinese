@@ -125,6 +125,7 @@ class Syl:
     letters: str
     tone: int
     erhua: bool = False
+    sg_full: bool = False   # Singapore mode: a neutral syllable that was given its full citation tone
 
 
 @dataclass(frozen=True)
@@ -335,6 +336,190 @@ def plan_chunks(hanzi: str, pinyin: str, valid: set[str]) -> Optional[list[tuple
     return [(t, e) for t, e, _ in merged]
 
 
+# ===== Section: Singapore tone mode ===================================================
+
+# WHY this list: Singapore Mandarin (华语) is spoken with FULL tones where Mainland Mandarin
+# uses a neutral (light) tone: 谢谢 xièxiè, 东西 dōngxī, 朋友 péngyǒu, 先生 xiānshēng,
+# 衣服 yīfú, 知道 zhīdào, 时候 shíhòu, 妈妈 māmā. Only GRAMMATICAL particles and suffixes stay
+# light there too, so these keep the neutral tone and every other neutral syllable gets its
+# citation tone. The list is applied to the CHARACTER of a neutral syllable:
+#   的 地 得  structural particles          了 着 过   aspect particles
+#   吗 呢 吧 啊 啦 哦 嘛 呀 哇 咯   sentence-final particles
+#   们 plural suffix                         么 in 什么 / 怎么 / 这么 / 那么 / 多么 (the whole family)
+#   子 noun suffix (孩子 桌子 儿子)           头 noun suffix after another character (里头 石头)
+#   个 after 这 / 那 / 哪 (这个 哪个: unstressed measure word; elsewhere 个 is written gè)
+#   不 / 一 written as their own pinyin word between two syllables: A-不-A, A-一-A and potential
+#      complements (是不是 好不好 看一看 睡不着): a grammatical infix, weak like a particle
+# Everything else (including 不 inside the words 对不起 and 差不多) gets the full tone.
+# NOT merged: zh/ch/sh stay as they are, and nothing about rhythm or melody is touched.
+SG_KEEP_NEUTRAL_CHARS = frozenset("的地得了着过吗呢吧啊啦哦嘛呀哇咯们么子")
+SG_KEEP_AFTER = {"个": frozenset("这那哪")}       # character -> characters it must follow
+SG_KEEP_SUFFIX = frozenset("头")                  # neutral only when not the first character of its word
+SG_KEEP_MIDDLE = frozenset("不一")                # neutral only as a one-syllable word between two syllables
+# WHY: pypinyin knows 匙 only as chí and as the neutral shi of 钥匙, so no full tone can be derived.
+SG_TONE_OVERRIDES = {("匙", "shi"): 2}
+SG_VERSION = "sg-tones-v1"                        # bump to rebuild every Singapore clip after a rule change
+
+
+def sg_rules_fingerprint() -> str:
+    """Short hash of the Singapore rules (version + keep-neutral list): part of every SG clip key."""
+    parts = [SG_VERSION, json.dumps(sorted(SG_TONE_OVERRIDES.items()), ensure_ascii=False), "".join(sorted(SG_KEEP_NEUTRAL_CHARS)), json.dumps({k: "".join(sorted(v)) for k, v in sorted(SG_KEEP_AFTER.items())}, ensure_ascii=False),
+             "".join(sorted(SG_KEEP_SUFFIX)), "".join(sorted(SG_KEEP_MIDDLE))]
+    return hashlib.sha256("|".join(parts).encode("utf-8")).hexdigest()[:12]
+
+
+def _letters_v(reading: str) -> str:
+    """Toneless pypinyin TONE3 reading (``xi1``, ``lü4``) -> our letters (``xi``, ``lv``) and tone."""
+    return reading.rstrip("012345").replace("ü", "v")
+
+
+_CITATION_CACHE: dict[tuple[str, str, str], Optional[int]] = {}
+
+
+def citation_tone(ch: str, letters: str, word: str) -> Optional[int]:
+    """Full tone (1-4) of ``ch`` spoken as ``letters``, taking polyphones from the word context.
+
+    First the reading pypinyin gives for the whole word (``东西`` -> xi1, ``衣服`` -> fu2); if
+    that is neutral or does not match, the first non-neutral reading of the character with the
+    same letters (pypinyin lists them by frequency). None when the character has no such
+    reading (the caller then keeps the syllable neutral and reports it).
+    """
+    key = (ch, letters, word)
+    if key in _CITATION_CACHE:
+        return _CITATION_CACHE[key]
+    from pypinyin import Style, pinyin
+
+    tone: Optional[int] = None
+    if len(word) > 1 and ch in word:
+        ctx = pinyin(word, style=Style.TONE3, heteronym=False, neutral_tone_with_five=True)
+        if len(ctx) == len(word):
+            r = ctx[word.index(ch)][0]
+            if _letters_v(r) == letters and r[-1] in "1234":
+                tone = int(r[-1])
+    if tone is None:
+        for r in pinyin(ch, style=Style.TONE3, heteronym=True, neutral_tone_with_five=True)[0]:
+            if _letters_v(r) == letters and r[-1] in "1234":
+                tone = int(r[-1])
+                break
+    _CITATION_CACHE[key] = tone
+    return tone
+
+
+def _keeps_neutral(ch: str, k: int, han: str, prev_han: str, letters_prev: Optional[str],
+                   letters_next: Optional[str]) -> bool:
+    """Does the neutral syllable ``ch`` (index ``k`` of its word ``han``) stay neutral in Singapore mode?"""
+    if ch in SG_KEEP_NEUTRAL_CHARS:
+        return True
+    if ch in SG_KEEP_AFTER:
+        before = han[k - 1] if k > 0 else prev_han
+        return before in SG_KEEP_AFTER[ch]
+    if ch in SG_KEEP_SUFFIX:
+        return k > 0
+    if ch in SG_KEEP_MIDDLE:
+        return len(han) == 1 and letters_prev is not None and letters_next is not None
+    return False
+
+
+def sg_adjust(words: list[PyWord], problems: Optional[list[str]] = None) -> list[PyWord]:
+    """The Singapore reading of a line: every neutral syllable not in the keep-neutral list gets its full tone.
+
+    ``words`` is the content's (Mainland) alignment; the result has the same words and syllables,
+    with ``Syl.sg_full`` set on the changed ones. Characters without a known full tone stay
+    neutral and are reported in ``problems``.
+    """
+    flat: list[tuple[int, int]] = [(wi, k) for wi, w in enumerate(words) for k in range(len(w.syls))]
+    out: list[list[Syl]] = [list(w.syls) for w in words]
+    for pos, (wi, k) in enumerate(flat):
+        w, s = words[wi], words[wi].syls[k]
+        if s.tone != NEUTRAL or s.erhua:
+            continue
+        # neighbouring syllable letters, not across a clause break (punctuation)
+        prev = next_ = None
+        if pos > 0:
+            pwi, pk = flat[pos - 1]
+            if not (pk == len(words[pwi].syls) - 1 and words[pwi].end):
+                prev = words[pwi].syls[pk].letters
+        if pos + 1 < len(flat):
+            if not (k == len(w.syls) - 1 and w.end):
+                nwi, nk = flat[pos + 1]
+                next_ = words[nwi].syls[nk].letters
+        prev_han = words[wi - 1].han[-1] if wi > 0 and k == 0 and not words[wi - 1].end else ""
+        ch = w.han[k]
+        if _keeps_neutral(ch, k, w.han, prev_han, prev, next_):
+            continue
+        if ch in SG_KEEP_MIDDLE:
+            tone = BASE_TONE[ch] if ch == "不" else 1
+        else:
+            tone = SG_TONE_OVERRIDES.get((ch, s.letters)) or citation_tone(ch, s.letters, w.han)
+        if tone is None:
+            if problems is not None:
+                problems.append(f"no full tone for {ch!r} ({s.letters}) in {w.han!r}; kept neutral")
+            continue
+        out[wi][k] = Syl(s.letters, tone, s.erhua, True)
+    return [PyWord(w.han, tuple(o), w.end) for w, o in zip(words, out)]
+
+
+_VOWELS = "aeiouv"
+_TONE_MARKS = "\u0304\u0301\u030c\u0300"   # combining macron, acute, caron, grave
+
+
+def mark_syllable(letters: str, tone: int, erhua: bool = False) -> str:
+    """Toneless letters (ü as v) + tone -> pinyin with a tone mark (placement rules a > e > ou > last vowel)."""
+    base = letters
+    if tone in (1, 2, 3, 4):
+        if "a" in base:
+            i = base.index("a")
+        elif "e" in base:
+            i = base.index("e")
+        elif "ou" in base:
+            i = base.index("o")
+        else:
+            i = max(base.rfind(v) for v in _VOWELS)
+        base = base[:i] + unicodedata.normalize("NFC", ("ü" if base[i] == "v" else base[i]) + _TONE_MARKS[tone - 1]) + base[i + 1:]
+    return unicodedata.normalize("NFC", base.replace("v", "ü")) + ("r" if erhua else "")
+
+
+def render_word(syls: Iterable[Syl], capital: bool = False, breaks: Iterable[int] = ()) -> str:
+    """Pinyin text of one word; an apostrophe goes before the syllable indices in ``breaks``."""
+    breaks = set(breaks)
+    text = "".join(("'" if k in breaks else "") + mark_syllable(s.letters, s.tone, s.erhua) for k, s in enumerate(syls))
+    return text[:1].upper() + text[1:] if capital else text
+
+
+def convert_line(hanzi: str, pinyin: str, valid: set[str], sg: bool,
+                 problems: Optional[list[str]] = None) -> Optional[tuple[list[PyWord], str]]:
+    """Align a line and render its pinyin again: ``(words, text)``, or None if it does not align.
+
+    With ``sg=False`` the text must equal the input (checked over all content by the tests);
+    with ``sg=True`` neutral syllables outside the keep-neutral list carry their full tones.
+    WHY one function for audio and display: the Singapore lexicon entries and
+    ``data/pinyin-sg.json`` both come from here, so the audio and the pinyin on screen cannot diverge.
+    """
+    words = align_line(hanzi, pinyin, valid)
+    if words is None:
+        return None
+    if sg:
+        words = sg_adjust(words, problems)
+    tokens, wi = [], 0
+    for token in pinyin.split():
+        core = token.strip(_PIECE_PUNCT)
+        lead = token[: len(token) - len(token.lstrip(_PIECE_PUNCT))]
+        trail = token[len(token.rstrip(_PIECE_PUNCT)):] if core else ""
+        if not core or not any(c.isalpha() for c in core):
+            tokens.append(token)
+            continue
+        w = words[wi]
+        wi += 1
+        # WHY copy the apostrophes: the content writes them only where they disambiguate (nǚ'ér).
+        breaks, n = [], 0
+        for part in core.split("'")[:-1]:
+            plain, tones = _plain_and_tones(part)
+            n += len(segment_word(plain, tones, valid) or [])
+            breaks.append(n)
+        tokens.append(lead + render_word(w.syls, core[0].isupper(), breaks) + trail)
+    return words, " ".join(tokens)
+
+
 # ===== Section: Units and entries ====================================================
 
 @dataclass(frozen=True)
@@ -363,7 +548,7 @@ def candidate_units(words: list[PyWord], lexicon: dict[str, list[str]]) -> list[
 
     for wi, w in enumerate(words):
         n = len(w.syls)
-        has_neutral = any(s.tone == NEUTRAL for s in w.syls)
+        has_neutral = any(s.tone == NEUTRAL or s.sg_full for s in w.syls)   # sg_full: neutral in the content, full tone in Singapore mode
         sandhi = [k for k, s in enumerate(w.syls) if sandhi_char(w.han, han_index(w, k), s)]
         if n >= 2 and (has_neutral or sandhi):
             if sandhi and sandhi[-1] == n - 1 and not w.end and wi + 1 < len(words):
@@ -413,9 +598,12 @@ def unit_phones(unit: Unit, table: dict[str, list[str]], base: Optional[list[str
             return None
         tone = s.tone
         if tone == 3:
-            if use_base:
+            nxt3 = k + 1 < len(unit.syls) and unit.syls[k + 1].tone == 3
+            if use_base and not (nxt3 and base_tones[k + 1] == NEUTRAL):
                 tone = 2 if base_tones[k] == 2 else 3
-            elif k + 1 < len(unit.syls) and unit.syls[k + 1].tone == 3:
+            elif nxt3:
+                # WHY: without a base entry, or when its second syllable is neutral and ours is a
+                # Singapore full third tone (姐姐 jiějiě), the 3-3 sandhi is written into the entry.
                 tone = 2
         toks += table[s.letters] + (["R"] if s.erhua else []) + [str(tone)]
     return " ".join(toks)
@@ -463,7 +651,7 @@ def line_expectations(words: list[PyWord]) -> list[Optional[tuple[int, bool]]]:
         k = 0
         for s in w.syls:
             ch = w.han[k]
-            out.append((s.tone, s.tone == NEUTRAL or (ch in BASE_TONE and s.tone != BASE_TONE[ch])))
+            out.append((s.tone, s.tone == NEUTRAL or s.sg_full or (ch in BASE_TONE and s.tone != BASE_TONE[ch])))
             k += 1
             if s.erhua:
                 out.append(None)
@@ -471,12 +659,17 @@ def line_expectations(words: list[PyWord]) -> list[Optional[tuple[int, bool]]]:
     return out
 
 
-def repair_tokens(hanzi: str, words: list[PyWord], merged: dict[str, list[str]]) -> dict[str, str]:
+def repair_tokens(hanzi: str, words: list[PyWord], merged: dict[str, list[str]], sg: bool = False) -> dict[str, str]:
     """Entries needed so that every ``must_match`` syllable of this line is spoken with our tone.
 
     Segments the line with ``merged`` (base + our entries); for a token whose tone at a
     ``must_match`` position differs from ours, returns an entry for that whole token (other
     syllables keep the lexicon's tones). Tokens containing erhua are left alone.
+
+    Singapore mode (``sg``) also checks every token the base lexicon knows with a NEUTRAL syllable
+    where our reading is a full tone, whether or not the content's own pinyin had a neutral
+    syllable there: the base lexicon has neutral words (先生, 学生, ...) that must be overridden
+    when they occur in the content. A full third tone before another third tone is written 2 (sandhi).
     """
     expect = line_expectations(words)
     fixes: dict[str, str] = {}
@@ -487,18 +680,30 @@ def repair_tokens(hanzi: str, words: list[PyWord], merged: dict[str, list[str]])
         if entry is not None and len(group_tones(entry)) == n and "R" not in entry:
             tones = group_tones(entry)
             want = expect[pos:pos + n]
-            wrong = all(w is not None for w in want) and any(
-                w[1] and w[0] != t for w, t in zip(want, tones))
-            if wrong:
-                new, k = [], 0
-                for t in entry:
-                    if t.isdigit():
-                        tone, must = want[k]
-                        new.append(str(tone if must else t))
-                        k += 1
-                    else:
-                        new.append(t)
-                fixes[tok] = " ".join(new)
+            if all(w is not None for w in want):
+                def must(k: int) -> bool:
+                    return want[k][1] or (sg and tones[k] == NEUTRAL and want[k][0] != NEUTRAL)
+
+                def sandhi_ok(k: int) -> bool:
+                    # base stores post-sandhi tones: our citation 3 before another 3 is a 2 there
+                    nxt = want[k + 1][0] if k + 1 < n else (expect[pos + n][0] if pos + n < len(expect) and expect[pos + n] else 0)
+                    return want[k][0] == 3 and tones[k] == 2 and nxt == 3
+
+                if any(must(k) and want[k][0] != tones[k] and not sandhi_ok(k) for k in range(n)):
+                    new, k = [], 0
+                    for t in entry:
+                        if t.isdigit():
+                            tone = want[k][0]
+                            if must(k):
+                                if tone == 3 and k + 1 < n and want[k + 1][0] == 3:
+                                    tone = 2
+                                new.append(str(tone))
+                            else:
+                                new.append(t)
+                            k += 1
+                        else:
+                            new.append(t)
+                    fixes[tok] = " ".join(new)
         pos += n
     return fixes
 
@@ -518,18 +723,37 @@ class ZhLexicon:
         self.line_units: dict[str, list[str]] = {}
         self.problems: list[str] = []
         self.stats: collections.Counter = collections.Counter()
+        self.sg = False                       # Singapore tone mode (see "Singapore tone mode")
+        self.sg_text: dict[str, str] = {}     # line key -> pinyin with Singapore tones (sg mode only)
 
     @classmethod
-    def build(cls, zh_model_dir: Path, lines: Iterable[tuple[str, str]]) -> "ZhLexicon":
-        """Build from ``(hanzi, pinyin)`` pairs of all content lines (duplicates are fine)."""
+    def build(cls, zh_model_dir: Path, lines: Iterable[tuple[str, str]], sg: bool = False) -> "ZhLexicon":
+        """Build from ``(hanzi, pinyin)`` pairs of all content lines (duplicates are fine).
+
+        ``sg=True`` is the Singapore tone mode: every neutral syllable outside the keep-neutral list
+        (``SG_KEEP_NEUTRAL_CHARS`` ...) is read with its full tone, and base-lexicon words that have a
+        neutral syllable there are overridden. The result is a lexicon of the Singapore reading only.
+        """
         lines = sorted(set(lines))
         lexicon = read_lexicon(zh_model_dir / "lexicon-zh.txt")
         table = learn_syllable_table(lexicon)
         self = cls()
+        self.sg = sg
         valid = set(table)
+
+        def align(hanzi: str, pinyin: str) -> Optional[list[PyWord]]:
+            """The line's words in the reading being built (Mainland content tones, or Singapore)."""
+            if not sg:
+                return align_line(hanzi, pinyin, valid)
+            conv = convert_line(hanzi, pinyin, valid, True, self.problems)
+            if conv is None:
+                return None
+            self.sg_text[hanzi + "\t" + pinyin] = conv[1]
+            return conv[0]
+
         candidates: dict[str, collections.Counter] = collections.defaultdict(collections.Counter)
         for hanzi, pinyin in lines:
-            words = align_line(hanzi, pinyin, valid)
+            words = align(hanzi, pinyin)
             self.stats["lines"] += 1
             if words is None:
                 self.stats["unaligned"] += 1
@@ -558,10 +782,10 @@ class ZhLexicon:
         for _round in range(2):
             fixes: dict[str, collections.Counter] = collections.defaultdict(collections.Counter)
             for hanzi, pinyin in lines:
-                words = align_line(hanzi, pinyin, valid)
+                words = align(hanzi, pinyin)
                 if words is None:
                     continue
-                for tok, phones in repair_tokens(hanzi, words, merged).items():
+                for tok, phones in repair_tokens(hanzi, words, merged, sg).items():
                     fixes[tok][phones] += 1
                     self.line_units.setdefault(hanzi + "\t" + pinyin, []).append(tok)
             for tok, counter in sorted(fixes.items()):
@@ -576,10 +800,16 @@ class ZhLexicon:
         return self
 
     def signature(self, hanzi: str, pinyin: str) -> str:
-        """Short fingerprint of the entries one clip relies on ('' if none)."""
+        """Short fingerprint of the entries one clip relies on ('' if none).
+
+        Singapore mode: never empty, it also hashes the rules (``sg_rules_fingerprint``: version +
+        keep-neutral list), so every Singapore clip is rebuilt when the tone rules change.
+        """
         parts = []
         for han in sorted(set(self.line_units.get(hanzi + "\t" + pinyin, []))):
             parts.append(f"{han} {self.entries.get(han, '=')}")
+        if self.sg:
+            parts.insert(0, "sg " + sg_rules_fingerprint())
         if not parts:
             return ""
         return hashlib.sha256("\n".join(parts).encode("utf-8")).hexdigest()[:12]
