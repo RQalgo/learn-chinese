@@ -164,8 +164,8 @@
     {
       "id": "u24-p08",
       "type": "phrase",
-      "hanzi": "一会见",
-      "pinyin": "yíhuì jiàn",
+      "hanzi": "待会见",
+      "pinyin": "dāihuì jiàn",
       "english": "see you in a bit",
       "alt": [
         "see you later"
@@ -263,8 +263,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "那我快点去，一会见！",
-          "pinyin": "Nà wǒ kuài diǎn qù, yíhuì jiàn!",
+          "hanzi": "那我快点去，待会见！",
+          "pinyin": "Nà wǒ kuài diǎn qù, dāihuì jiàn!",
           "english": "Then I'll hurry. See you in a bit!"
         }
       ],
