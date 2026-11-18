@@ -23,7 +23,7 @@
  */
 
 import { h, clear, icon, stars, statusBar, confirmModal, toast, STATUS_LABEL } from "./dom.js";
-import { store, setProgress } from "./store.js";
+import { store, setProgress, itemPinyin, linePinyin } from "./store.js";
 import { playClip, playSequence, stop } from "../audio/player.js";
 import { downloadClips, offlineSupported } from "../audio/offline.js";
 import { unitStats, unlockUnit } from "../state/progress.js";
@@ -38,7 +38,7 @@ function itemRow(item) {
   const st = status(store.progress.cards[item.id] || { introduced: false, box: 0 });
   return h("li", { class: "item" },
     h("button", { type: "button", class: "icon-btn accent", "aria-label": `Play ${item.english}`, onclick: () => playClip(item.id) }, icon("play", 22)),
-    h("div", null, h("div", { class: "pinyin" }, item.pinyin), h("div", { class: "en" }, item.english), h("div", { class: "hanzi" }, item.hanzi)),
+    h("div", null, h("div", { class: "pinyin" }, itemPinyin(item)), h("div", { class: "en" }, item.english), h("div", { class: "hanzi" }, item.hanzi)),
     h("span", { class: `dot ${st}`, role: "img", "aria-label": STATUS_LABEL[st] }));
 }
 
@@ -50,9 +50,9 @@ function dialogueBlock(d) {
       h("button", { type: "button", class: "icon-btn accent", "aria-label": `Play conversation: ${d.title}`, onclick: () => playSequence(clips) }, icon("play", 22)),
       h("div", null, h("b", null, d.title), h("div", { class: "muted", style: { fontSize: ".85rem" } }, `${(d.lines || []).length} lines`))),
     h("details", null, h("summary", null, "Show transcript"),
-      h("ol", { class: "transcript" }, (d.lines || []).map((l) =>
+      h("ol", { class: "transcript" }, (d.lines || []).map((l, i) =>
         h("li", null, h("span", { class: "who" }, l.speaker),
-          h("div", null, h("div", { class: "py" }, l.pinyin), h("div", { class: "en" }, l.english), h("div", { class: "hz hanzi" }, l.hanzi)))))));
+          h("div", null, h("div", { class: "py" }, linePinyin(d.id, i, l)), h("div", { class: "en" }, l.english), h("div", { class: "hz hanzi" }, l.hanzi)))))));
 }
 
 // ===== Section: Screen =====

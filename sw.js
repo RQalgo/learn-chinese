@@ -30,7 +30,7 @@
 // ===== Section: Config =====
 
 /** Bump to force clients to re-download the app shell. */
-const VERSION = "3";
+const VERSION = "4";
 const SHELL_CACHE = `ting-shell-v${VERSION}`;
 const AUDIO_CACHE = "ting-audio-v1";
 
@@ -44,6 +44,7 @@ const SHELL_FILES = [
   "js/router.js",
   "js/data/loader.js",
   "js/data/clips.js",
+  "js/data/pinyinSg.js",
   "js/audio/player.js",
   "js/audio/sfx.js",
   "js/audio/offline.js",
@@ -71,8 +72,11 @@ const SHELL_FILES = [
   "data/units.json",
 ];
 
-/** Optional audio manifests (Mainland set, Singapore set), precached when they exist. */
-const AUDIO_MANIFESTS = ["audio/manifest.json", "audio-sg/manifest.json"];
+/**
+ * Optional JSON, precached when it exists: the audio manifests (Mainland set, Singapore set) and
+ * data/pinyin-sg.json (Singapore pinyin for display). All end in .json, so they stay network-first.
+ */
+const AUDIO_MANIFESTS = ["audio/manifest.json", "audio-sg/manifest.json", "data/pinyin-sg.json"];
 
 // ===== Section: Install / activate =====
 
@@ -85,8 +89,9 @@ self.addEventListener("install", (event) => {
       const index = await (await cache.match("data/units.json")).json();
       await Promise.all((index.units || []).map((u) => cache.add(u.file).catch(() => {})));
     } catch { /* lessons will be cached on first use instead */ }
-    // WHY best effort: both audio manifests are optional (audio-sg/ 404s until generated), so
-    // they must not go through addAll; with them cached the app starts offline with its voices.
+    // WHY best effort: the audio manifests and pinyin-sg.json are optional (audio-sg/ 404s until
+    // generated), so they must not go through addAll; with them cached the app starts offline with
+    // its voices and the matching pinyin.
     await Promise.all(AUDIO_MANIFESTS.map((u) => cache.add(u).catch(() => {})));
     await self.skipWaiting();
   })());

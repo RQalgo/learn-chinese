@@ -18,15 +18,18 @@
  *     they may be partial. A missing one is `null`; the player then falls back
  *     to speechSynthesis per missing clip. The Singapore manifest
  *     (`audio-sg/manifest.json`) usually 404s until that set is generated.
+ *   - `data/pinyin-sg.json` (Singapore pinyin for display, data/pinyinSg.js) is optional
+ *     too: a 404 gives `{}` and the content pinyin is shown.
  *   - A single failing unit file does not abort boot: that unit is passed on
  *     as missing and the curriculum marks it `available: false`.
  *     A failing units.json is fatal (nothing to show).
  *
  * Public API
- *   loadContent() -> Promise<{curriculum, manifests: {cn, sg}, failedUnits}>
+ *   loadContent() -> Promise<{curriculum, manifests: {cn, sg}, pinyinSg, failedUnits}>
  */
 
 import { buildCurriculum } from "../engine/curriculum.js";
+import { normalizePinyinSg } from "./pinyinSg.js";
 
 // ===== Section: Fetch helpers =====
 
@@ -46,7 +49,7 @@ async function getJson(url) {
 /**
  * Load everything the app needs.
  * @returns {Promise<{curriculum: import("../engine/curriculum.js").Curriculum,
- *   manifests: {cn: Object|null, sg: Object|null}, failedUnits: string[]}>}
+ *   manifests: {cn: Object|null, sg: Object|null}, pinyinSg: Object<string, string>, failedUnits: string[]}>}
  * @throws {Error} When units.json (or every unit file) cannot be loaded.
  */
 export async function loadContent() {
@@ -55,13 +58,14 @@ export async function loadContent() {
 
   // WHY: all unit files and the audio manifests are independent, so fetch them concurrently
   // (matters on a slow mobile connection).
-  const [unitResults, cnManifest, sgManifest] = await Promise.all([
+  const [unitResults, cnManifest, sgManifest, pinyinSg] = await Promise.all([
     Promise.all(units.map(async (u) => {
       try { return { id: u.id, file: await getJson(u.file) }; }
       catch (e) { console.warn("unit failed to load:", u.id, e.message); return { id: u.id, file: null }; }
     })),
     getJson("audio/manifest.json").catch(() => null),
     getJson("audio-sg/manifest.json").catch(() => null),
+    getJson("data/pinyin-sg.json").then(normalizePinyinSg).catch(() => ({})),
   ]);
 
   const unitFiles = {};
@@ -69,5 +73,5 @@ export async function loadContent() {
   for (const r of unitResults) { if (r.file) unitFiles[r.id] = r.file; else failedUnits.push(r.id); }
   if (units.length && !Object.keys(unitFiles).length) throw new Error("None of the lesson files could be loaded.");
 
-  return { curriculum: buildCurriculum(index, unitFiles), manifests: { cn: cnManifest, sg: sgManifest }, failedUnits };
+  return { curriculum: buildCurriculum(index, unitFiles), manifests: { cn: cnManifest, sg: sgManifest }, pinyinSg, failedUnits };
 }

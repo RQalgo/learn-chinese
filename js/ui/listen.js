@@ -29,7 +29,7 @@
  */
 
 import { h, put, clear, icon, segmented, confirmModal, fmtTime, fmtMinutes } from "./dom.js";
-import { store, commit, newRng, pinyinMode } from "./store.js";
+import { store, commit, newRng, pinyinMode, itemPinyin, linePinyin } from "./store.js";
 import { navigate } from "../router.js";
 import { planListenSession } from "../engine/session.js";
 import { applyListen, finishSession } from "../state/progress.js";
@@ -146,8 +146,9 @@ export function render(root, ctx) {
     function showItem(seg) {
       const it = curriculum.items.get(seg.refId);
       const isNew = seg.kind === "new";
-      const pyEl = h("div", { class: `prompt-pinyin pinyin${it.pinyin.length > 22 ? " long" : ""}`, hidden: !isNew && mode !== "always" });
-      pyEl.textContent = mode === "never" ? "" : it.pinyin;
+      const py = itemPinyin(it);
+      const pyEl = h("div", { class: `prompt-pinyin pinyin${py.length > 22 ? " long" : ""}`, hidden: !isNew && mode !== "always" });
+      pyEl.textContent = mode === "never" ? "" : py;
       const enEl = h("div", { class: `prompt-en${isNew ? "" : " hidden"}` }, it.english);
       const hzEl = h("div", { class: `fb-hz hanzi${isNew ? "" : " hidden"}`, style: { visibility: isNew ? "visible" : "hidden" } }, it.hanzi);
       const hint = h("p", { class: "muted" }, isNew ? "" : "Think of the meaning…");
@@ -158,18 +159,19 @@ export function render(root, ctx) {
       const album = `听 Tīng · ${curriculum.unitOf(it.id)?.title || ""}`;
       view.album = album;
       // Lock screen: new items show everything; review hides the answer until it is spoken.
-      setMediaMetadata(isNew ? { title: it.pinyin, artist: it.english, album } : { title: "Review: what does this mean?", artist: "", album });
+      setMediaMetadata(isNew ? { title: py, artist: it.english, album } : { title: "Review: what does this mean?", artist: "", album });
     }
 
     function showDialogue(seg) {
       const d = curriculum.dialogues.get(seg.refId);
-      const lis = (d.lines || []).map((l) => {
-        const py = h("div", { class: "py pinyin" }, l.pinyin);
+      const lis = (d.lines || []).map((l, i) => {
+        const pyText = linePinyin(d.id, i, l);
+        const py = h("div", { class: "py pinyin" }, pyText);
         const en = h("div", { class: "en", style: { visibility: "hidden" } }, l.english);
         const hz = h("div", { class: "hz hanzi", style: { visibility: "hidden" } }, l.hanzi);
         if (mode !== "always") py.style.visibility = "hidden";
         const li = h("li", { hidden: true }, h("span", { class: "who" }, l.speaker), h("div", null, mode === "never" ? null : py, en, hz));
-        return { li, py, en, hz, line: l };
+        return { li, py, en, hz, line: l, pyText };
       });
       put(clear(nowEl), h("span", { class: "section-label" }, "Conversation"), h("div", { class: "prompt-label" }, d.title),
         h("ol", { class: "transcript" }, lis.map((x) => x.li)));
@@ -192,7 +194,7 @@ export function render(root, ctx) {
         view.hzEl.style.visibility = "visible";
         view.pyEl.hidden = mode === "never";
         view.hint.textContent = "";
-        setMediaMetadata({ title: view.it.pinyin, artist: view.it.english, album: view.album });
+        setMediaMetadata({ title: itemPinyin(view.it), artist: view.it.english, album: view.album });
       } else if (view.kind === "dialogue") {
         const m = /\.l(\d+)(\.en)?$/.exec(clipId);
         if (!m) return;
@@ -206,7 +208,7 @@ export function render(root, ctx) {
         if (m[2]) {
           x.en.style.visibility = "visible"; x.hz.style.visibility = "visible"; x.py.style.visibility = "visible";
         }
-        setMediaMetadata({ title: x.line.pinyin, artist: x.line.english, album: `听 Tīng · ${view.d.title}` });
+        setMediaMetadata({ title: x.pyText, artist: x.line.english, album: `听 Tīng · ${view.d.title}` });
       }
     }
 
@@ -279,7 +281,7 @@ export function render(root, ctx) {
         h("div", { class: "stat" }, h("b", null, `+${session.xp}`), h("span", null, "XP earned")),
         h("div", { class: "stat" }, h("b", null, session.introduced.length), h("span", null, "New words")),
         h("div", { class: "stat" }, h("b", null, session.reviewed + session.dialoguesHeard), h("span", null, "Reviewed"))),
-      session.introduced.length ? h("div", { class: "chips" }, session.introduced.map((it) => h("span", { class: "chip" }, h("span", { class: "pinyin" }, it.pinyin), ` ${it.english}`))) : null,
+      session.introduced.length ? h("div", { class: "chips" }, session.introduced.map((it) => h("span", { class: "chip" }, h("span", { class: "pinyin" }, itemPinyin(it)), ` ${it.english}`))) : null,
       ev.length ? h("ul", { class: "event-list" }, [...new Set(ev)].map((l) => h("li", null, l))) : null,
       h("div", { class: "actions" },
         h("a", { class: "btn primary block", href: testHref, id: "test-yourself" }, "Test yourself"),

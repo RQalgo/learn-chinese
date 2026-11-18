@@ -38,7 +38,7 @@
  */
 
 import { h, put, clear, icon, confirmModal } from "./dom.js";
-import { store, commit, newRng, getSetting, pinyinMode } from "./store.js";
+import { store, commit, newRng, getSetting, pinyinMode, itemPinyin, linePinyin } from "./store.js";
 import { navigate } from "../router.js";
 import { planQuizSession, requeue } from "../engine/session.js";
 import { makeQuestion, makeDialogueQuestion } from "../engine/questions.js";
@@ -237,10 +237,10 @@ export function render(root, ctx) {
     // the big play button = normal once, the turtle = slow once (they used to play slow+normal,
     // which sounded like "says it twice" and made the turtle redundant).
     const playIntro = () => playSequence([item.id, `${item.id}.slow`]);
-    setReplay(playIntro, { title: item.pinyin, artist: item.english, album: `听 Tīng · ${curriculum.unitOf(item.id)?.title || ""}` });
+    setReplay(playIntro, { title: itemPinyin(item), artist: item.english, album: `听 Tīng · ${curriculum.unitOf(item.id)?.title || ""}` });
     put(topEl, 
       h("span", { class: "badge" }, "New"),
-      mode === "never" ? h("div", { class: "intro-hanzi big hanzi" }, item.hanzi) : h("div", { class: "intro-pinyin pinyin" }, item.pinyin),
+      mode === "never" ? h("div", { class: "intro-hanzi big hanzi" }, item.hanzi) : h("div", { class: "intro-pinyin pinyin" }, itemPinyin(item)),
       h("div", { class: "intro-en" }, item.english),
       item.hint ? h("p", { class: "intro-hint" }, item.hint) : null,
       mode === "never" ? null : h("div", { class: "intro-hanzi hanzi" }, item.hanzi),
@@ -262,6 +262,8 @@ export function render(root, ctx) {
     let answered = false;
 
     /** Score an item answer and show feedback. */
+    /** Option text: a pinyin option (meaning-audio) shows the accent in effect; the engine's label is the Mainland pinyin. */
+    const optLabel = (o) => (q.qtype === "meaning-audio" && o.itemId ? itemPinyin(curriculum.items.get(o.itemId)) : o.label);
     const answer = (chosen, extra = {}) => {
       if (answered) return;
       answered = true;
@@ -271,14 +273,14 @@ export function render(root, ctx) {
       record(res, correct);
       if (!correct) plan = requeue(plan, idx, step, rng);
       showFeedback({
-        correct, xp: res.xpGained, english: item.english, pinyin: item.pinyin, hanzi: item.hanzi, hint: item.hint,
-        note: extra.note !== undefined ? extra.note : (!correct && q.options[chosen] ? `You chose: ${q.options[chosen].label}` : ""),
+        correct, xp: res.xpGained, english: item.english, pinyin: itemPinyin(item), hanzi: item.hanzi, hint: item.hint,
+        note: extra.note !== undefined ? extra.note : (!correct && q.options[chosen] ? `You chose: ${optLabel(q.options[chosen])}` : ""),
         replay: () => playClip(item.id), onNext: next,
       });
       updateBar();
     };
 
-    const meta = { title: item.pinyin, artist: item.english, album: `听 Tīng · ${curriculum.unitOf(item.id)?.title || ""}` };
+    const meta = { title: itemPinyin(item), artist: item.english, album: `听 Tīng · ${curriculum.unitOf(item.id)?.title || ""}` };
     const showPyNow = pinyinMode() === "always";
 
     if (q.qtype === "meaning-audio") {
@@ -290,7 +292,7 @@ export function render(root, ctx) {
           rows.forEach((r, j) => r.classList.toggle("selected", j === i));
           check.disabled = false;
           playClip(o.clip);
-        } }, icon("play", 22), showPyNow ? h("span", { class: "pinyin" }, o.label) : `Option ${"ABC"[i]}`));
+        } }, icon("play", 22), showPyNow ? h("span", { class: "pinyin" }, optLabel(o)) : `Option ${"ABC"[i]}`));
       setReplay(() => {}, { title: "Which one means…", artist: q.prompt.text, album: "听 Tīng" });
       put(topEl, h("div", { class: "prompt-label" }, "Which one means…"), h("div", { class: "prompt-en" }, q.prompt.text),
         h("div", { class: "prompt-label" }, "Tap a row to listen, then check."));
@@ -307,7 +309,7 @@ export function render(root, ctx) {
 
     if (q.qtype === "true-false") {
       put(topEl, playControl(play, slowHint),
-        showPyNow ? pinyinLine(item.pinyin) : null,
+        showPyNow ? pinyinLine(itemPinyin(item)) : null,
         h("p", { class: "statement" }, "Does it mean: ", h("b", null, q.prompt.text), "?"));
       const shown = curriculum.items.get(q.shownItemId);
       const note = q.isTrue ? "" : `It doesn't mean “${shown.english}”.`;
@@ -320,7 +322,7 @@ export function render(root, ctx) {
 
     // listen-meaning
     put(topEl, playControl(play, slowHint),
-      showPyNow ? pinyinLine(item.pinyin) : null,
+      showPyNow ? pinyinLine(itemPinyin(item)) : null,
       h("div", { class: "prompt-label" }, "What does it mean?"));
     put(bottomEl, ...optionButtons(q.options, (i) => answer(i)));
     play();
@@ -334,9 +336,9 @@ export function render(root, ctx) {
     let qi = 0;
 
     /** Transcript (pinyin + English + small hanzi) for the feedback panel. */
-    const transcript = () => h("ol", { class: "transcript fb-transcript" }, (dlg.lines || []).map((l) =>
+    const transcript = () => h("ol", { class: "transcript fb-transcript" }, (dlg.lines || []).map((l, i) =>
       h("li", null, h("span", { class: "who" }, l.speaker),
-        h("div", null, pinyinMode() !== "never" ? h("div", { class: "py pinyin" }, l.pinyin) : null,
+        h("div", null, pinyinMode() !== "never" ? h("div", { class: "py pinyin" }, linePinyin(dlg.id, i, l)) : null,
           h("div", { class: "en" }, l.english), h("div", { class: "hz hanzi" }, l.hanzi)))));
 
     function showQuestion() {
@@ -399,7 +401,7 @@ export function render(root, ctx) {
         h("div", { class: "stat" }, h("b", null, acc == null ? "—" : `${acc}%`), h("span", null, "Accuracy")),
         h("div", { class: "stat" }, h("b", null, S.best), h("span", null, "Best combo")),
         h("div", { class: "stat" }, h("b", null, S.newItems.length), h("span", null, "New words"))),
-      S.newItems.length ? h("div", { class: "chips", "aria-label": "New words" }, S.newItems.map((it) => h("span", { class: "chip" }, h("span", { class: "pinyin" }, it.pinyin), ` ${it.english}`))) : null,
+      S.newItems.length ? h("div", { class: "chips", "aria-label": "New words" }, S.newItems.map((it) => h("span", { class: "chip" }, h("span", { class: "pinyin" }, itemPinyin(it)), ` ${it.english}`))) : null,
       ev.length ? h("ul", { class: "event-list" }, ev.map((l) => h("li", null, l))) : null,
       h("div", { class: "actions" },
         h("button", { type: "button", class: "btn primary block", id: "another", onclick: start }, "Another lesson"),

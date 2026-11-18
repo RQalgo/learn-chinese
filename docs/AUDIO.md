@@ -58,10 +58,91 @@ class ZhEngine:
 Everything after `synth` (trim, loudness to a fixed RMS, padding, 24 kHz mono 40 kbps MP3,
 manifest) is shared, so engines end up equally loud and in the same format. The engine's
 `cache_id()` (`name:model_id`) is part of the clip hash; Kokoro keeps the bare model name so
-all existing keys are unchanged (`--accent cn` reports 0 clips to build). The Singapore engine
-(a CosyVoice-based model) is meant to be one more `ZhEngine` subclass plus a `ZH_ENGINES` entry;
-nothing else in the pipeline changes. Note that `--accent sg --zh-engine kokoro` just
-re-renders the Mainland voices into `audio-sg/` (useful for testing the plumbing only).
+all existing keys are unchanged (`--accent cn` reports 0 clips to build). A real Singapore-accented
+voice model is not available, so the Singapore set is built with the same Kokoro voices in a
+**Singapore tone mode** (next section); a future Singapore model would be one more `ZhEngine`
+subclass plus a `ZH_ENGINES` entry, and nothing else in the pipeline changes. `ZhEngine.prepare`
+receives the accent, which is how an engine switches its text preparation to the Singapore reading.
+
+## Singapore set (`--accent sg`): Singapore tone mode
+
+What it does. Singapore Mandarin (华语) is spoken with **full tones where Mainland Mandarin uses a
+neutral (light) tone**: 谢谢 xièxiè, 东西 dōngxī, 朋友 péngyǒu, 喜欢 xǐhuān, 先生 xiānshēng,
+衣服 yīfú, 时候 shíhòu, 漂亮 piàoliàng, 妈妈 māmā. The Singapore set reproduces exactly that, with the
+same Kokoro v1.1 voices, the same slow-clip strategy, alts, loudness and encoding as the Mainland set
+(same voice per item, so `u01-w02` is the same speaker in both sets).
+
+What it does NOT do: it does not change rhythm, melody or voice quality (the engine cannot, and no
+voice-conversion tricks are used); it does not merge zh/ch/sh into z/c/s; there is no erhua anywhere
+in the content. It is a tone-pattern difference only, which is the most audible and most systematic one.
+
+How (`tools/zh_lexicon.py`, `ZhLexicon.build(..., sg=True)`, section "Singapore tone mode"):
+
+1. Each line's content pinyin is aligned with its hanzi as for Mainland (above). `sg_adjust` then gives every
+   neutral syllable its **citation tone**, unless it is on the keep-neutral list. The tone comes from
+   pypinyin in the context of the word (`citation_tone`: the word's own reading first, so polyphones
+   follow the word: 东西 xī, 衣服 fú, 地方 fāng, 钥匙 yàoshí via `SG_TONE_OVERRIDES`), never a per-word table.
+2. Units that changed (multi-syllable words that had a neutral syllable) get a lexicon entry with the full
+   tones, written even if the base lexicon lacks the word, so the reading is pinned (third-tone sandhi is
+   written into the entry: 姐姐 is spoken 2-3). Sandhi 不/一 entries are the same as for Mainland.
+3. **Base-lexicon words are overridden too.** `repair_tokens(..., sg=True)` segments every line with the
+   merged lexicon exactly as sherpa-onnx does and, for each token the BASE lexicon knows with a neutral
+   syllable where our reading is a full tone (休息, 便宜, 地方, 衣服, 舒服, 意思, 漂亮, 多少, 对不起 ...), adds an
+   entry for that token. This scan covers all words of the content, not only those whose pinyin we
+   changed (10 repairs against 1 for Mainland; 74 entries against 48).
+4. The extra lexicon is the last file of the `lexicon=` list, as for Mainland.
+5. **Cache key.** Every Singapore Mandarin clip's key contains `sg <fingerprint of the rules>` (version +
+   keep-neutral list + overrides) plus the entries its own line relies on, so a rule change rebuilds the
+   whole set and an entry change only the clips that use it. Bump `SG_VERSION` after changing a rule.
+
+**Keep-neutral list** (`SG_KEEP_NEUTRAL_CHARS`, `SG_KEEP_AFTER`, `SG_KEEP_SUFFIX`, `SG_KEEP_MIDDLE`;
+WHY: these are grammatical particles and suffixes that stay light in Singapore speech too):
+
+| Kept neutral | Characters |
+|---|---|
+| structural / aspect particles | 的 地 得 了 着 过 |
+| sentence-final particles | 吗 呢 吧 啊 啦 哦 嘛 呀 哇 咯 |
+| plural suffix | 们 |
+| 么 (the 什么 / 怎么 / 这么 / 那么 family) | 么 |
+| noun suffixes | 子 (孩子 桌子 儿子), 头 when not the first character (石头 里头) |
+| unstressed measure word | 个 after 这 / 那 / 哪 (这个, 哪个; elsewhere the content writes gè, and a neutral 个 after a number is given gè) |
+| infix 不 / 一 | 不 / 一 written as their own pinyin word between two syllables: A-不-A, A-一-A, potential complements (是不是, 看一看, 睡不着). 不 INSIDE a word (对不起, 差不多) gets bù. |
+
+Everything else that is neutral in the content (including 先生, 学生, 东西, 朋友, 喜欢, 衣服, 时候, 漂亮, 妈妈,
+上 in 晚上, 面 in 前面) is spoken with its full tone. Content words that are not in the lessons (e.g. 知道)
+are unaffected by this file; the rule would apply to them as soon as they are added.
+
+**Display pinyin.** `tools/build_sg_pinyin.py` writes `data/pinyin-sg.json`
+(`{"<itemId or dialogueId.lN>": "xièxiè", ...}`, only entries that differ from the content), using the same
+function (`zh_lexicon.convert_line`) as the audio, so the text on screen is the reading that is spoken.
+`generate_audio.py --accent sg` refuses to build when the file is stale and checks that the lexicon and the
+display tool read every line identically. Regenerate after any change to the content pinyin or the rules:
+
+```bash
+python3 tools/build_sg_pinyin.py            # write data/pinyin-sg.json
+python3 tools/build_sg_pinyin.py --check    # exit 1 if missing or stale
+```
+
+**Proof it takes effect** (`tools/check_sg_tones.py`): Kokoro is not deterministic (two renders of one text
+differ in length by about 0.3 %), so each word is rendered 6 times per lexicon and the second syllable is
+compared by median F0 and relative energy (a difference of more than 3 pooled standard deviations counts).
+Results (voices 30 / 63): 谢谢, 东西, 朋友, 先生, 衣服, 妈妈, 喜欢, 漂亮 differ between the Mainland and
+Singapore renders (谢谢: 2nd syllable F0 +5.2 / +5.8 semitones, energy 0.58 -> 0.70 / 0.43 -> 0.66), whereas 孩子,
+我的, 好吗 do not.
+
+**Run:**
+
+```bash
+python3 tools/build_sg_pinyin.py
+python3 tools/generate_audio.py --accent sg --zh-engine kokoro --jobs 2 \
+    --model-dir models/kokoro-multi-lang-v1_0 --zh-model-dir models/kokoro-multi-lang-v1_1
+python3 tools/verify_audio.py --accent sg --carrier      # ASR check, report in audio-sg/
+```
+
+The Singapore set holds Mandarin only: item normal + slow + `.alt1-.alt3` and dialogue line normal + slow
+(3,694 clips for the current 624 items). The Mainland set (`audio/`) is not touched by it.
+The ASR model is trained on Mainland speech, so expect a slightly higher CER for the Singapore set
+(results below, in "Results: Singapore set").
 
 ## Voices (Kokoro speaker IDs)
 
@@ -302,11 +383,12 @@ python3 tools/generate_audio.py --prune                        # delete mp3 file
 python3 tools/generate_audio.py --root /tmp/r --content-root tests/fixtures/content   # fixture test
 ```
 
-Singapore set (Mandarin only; needs only `--zh-model-dir`, or the model dir of the chosen engine):
+Singapore set (Mandarin only; needs only `--zh-model-dir`; see "Singapore set" above for what it does):
 
 ```bash
-python3 tools/generate_audio.py --accent sg --zh-engine <engine> --dry-run   # what would be built
-python3 tools/generate_audio.py --accent sg --zh-engine <engine> --jobs 2    # build/update audio-sg/
+python3 tools/build_sg_pinyin.py                                              # data/pinyin-sg.json first
+python3 tools/generate_audio.py --accent sg --zh-engine kokoro --dry-run      # what would be built
+python3 tools/generate_audio.py --accent sg --zh-engine kokoro --jobs 2       # build/update audio-sg/
 ```
 
 Commit `audio-sg/**/*.mp3`, `audio-sg/manifest.json` and `audio-sg/.cache.json` together
@@ -380,3 +462,20 @@ The remaining flags are almost all single syllables (`走 -> though`, `猫 -> no
 model answers isolated one-syllable clips with an English word or a homophone, and the
 carrier does not cure that. Real candidates to listen to: `星期一`, `星期几？`, `星期天`
 (always misheard; the same word is fine inside sentences), `发烧吗？`, `下大雨`.
+
+### Results: Singapore set vs Mainland set (2026-11-18)
+
+All 2,783 normal-speed Mandarin clips (items, alts, dialogue lines) of each set, same ASR
+(`sherpa-onnx-paraformer-zh-small-2024-03-09`, `tools/verify_audio.py --accent sg|cn --carrier`).
+The ASR is trained on Mainland speech, yet the Singapore set scores no worse:
+
+| Voice | Mainland mean CER | Singapore mean CER | Mainland flagged | Singapore flagged |
+|---|---|---|---|---|
+| 4 (F) | 0.247 | 0.253 | 113 | 115 |
+| 30 (F) | 0.296 | 0.298 | 114 | 120 |
+| 63 (M) | 0.336 | 0.337 | 127 | 127 |
+| 75 (M) | 0.342 | 0.317 | 146 | 143 |
+| all | 0.304 | 0.299 | 500 | 505 |
+
+Slow clips (duration slow / normal, from the manifests): words and phrases 1.61-1.72 (target 1.6), sentences
+and dialogue lines min 1.46, mean 1.49 (target 1.45), in both sets; 0 below target.
