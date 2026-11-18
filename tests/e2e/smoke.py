@@ -54,7 +54,7 @@ from playwright.sync_api import sync_playwright
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 import generate_audio as ga  # noqa: E402  (voice of every clip id, to check quiz voices differ from learning voices)
-VOICE_OF = {c.id: c.voice for c in ga.enumerate_clips(ROOT) if c.kind in ("zh", "zh-slow")}
+VOICE_OF = {c.id: c.voice for c in ga.enumerate_clips(__import__("pathlib").Path(ROOT)) if c.kind in ("zh", "zh-slow")}
 SHOTS = "/tmp/shots"
 CHROME = "/usr/bin/google-chrome"
 # audio-sg/manifest.json: the Singapore set is not generated yet, so the repo has none.
