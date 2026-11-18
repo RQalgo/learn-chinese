@@ -163,8 +163,8 @@
     {
       "id": "u17-p08",
       "type": "phrase",
-      "hanzi": "好点儿了",
-      "pinyin": "hǎo diǎnr le",
+      "hanzi": "好点了",
+      "pinyin": "hǎo diǎn le",
       "english": "feeling better",
       "alt": [
         "a bit better"
@@ -180,8 +180,8 @@
     {
       "id": "u17-s02",
       "type": "sentence",
-      "hanzi": "你哪儿不舒服？",
-      "pinyin": "Nǐ nǎr bù shūfu?",
+      "hanzi": "你哪里不舒服？",
+      "pinyin": "Nǐ nǎlǐ bù shūfu?",
       "english": "Where do you feel unwell?"
     },
     {
@@ -220,8 +220,8 @@
       "lines": [
         {
           "speaker": "A",
-          "hanzi": "你好，你哪儿不舒服？",
-          "pinyin": "Nǐ hǎo, nǐ nǎr bù shūfu?",
+          "hanzi": "你好，你哪里不舒服？",
+          "pinyin": "Nǐ hǎo, nǐ nǎlǐ bù shūfu?",
           "english": "Hello, where do you feel unwell?"
         },
         {
@@ -238,8 +238,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "昨天晚上发烧了，今天好点儿了。",
-          "pinyin": "Zuótiān wǎnshang fāshāo le, jīntiān hǎo diǎnr le.",
+          "hanzi": "昨天晚上发烧了，今天好点了。",
+          "pinyin": "Zuótiān wǎnshang fāshāo le, jīntiān hǎo diǎn le.",
           "english": "I had a fever last night; I'm a bit better today."
         },
         {
@@ -314,8 +314,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "好，你多休息，别想工作了。",
-          "pinyin": "Hǎo, nǐ duō xiūxi, bié xiǎng gōngzuò le.",
+          "hanzi": "好，你多休息，别想工作啦。",
+          "pinyin": "Hǎo, nǐ duō xiūxi, bié xiǎng gōngzuò la.",
           "english": "OK, rest more and don't think about work."
         },
         {

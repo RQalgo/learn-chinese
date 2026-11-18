@@ -96,9 +96,10 @@
     {
       "id": "u16-p02",
       "type": "phrase",
-      "hanzi": "没问题",
-      "pinyin": "méi wèntí",
-      "english": "no problem"
+      "hanzi": "没问题啦",
+      "pinyin": "méi wèntí la",
+      "english": "no problem",
+      "hint": "啦 la makes it relaxed; very common in Singapore."
     },
     {
       "id": "u16-p03",
@@ -222,8 +223,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "没问题，星期六见！",
-          "pinyin": "Méi wèntí, xīngqīliù jiàn!",
+          "hanzi": "没问题啦，星期六见！",
+          "pinyin": "Méi wèntí la, xīngqīliù jiàn!",
           "english": "No problem, see you Saturday!"
         }
       ],
@@ -274,8 +275,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "对不起，我今天要开会。",
-          "pinyin": "Duìbuqǐ, wǒ jīntiān yào kāihuì.",
+          "hanzi": "对不起啊，我今天要开会。",
+          "pinyin": "Duìbuqǐ a, wǒ jīntiān yào kāihuì.",
           "english": "Sorry, I have a meeting today."
         },
         {

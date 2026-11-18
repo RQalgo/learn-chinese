@@ -8,8 +8,10 @@ How the lessons in `data/` are written. Schema: see `docs/ARCHITECTURE.md` §4.
 * Learns by **listening only**, on a phone, during 5–10 minute commutes.
 * Sees pinyin on screen; does not need to learn characters.
 
-Everyday Singapore settings (MRT, hawker centre, kopi, HDB) are welcome where natural,
-but the language is **standard Mandarin (普通话)** throughout.
+Everyday Singapore settings (MRT, hawker centre, kopi, HDB) are welcome where natural.
+The language is **Singapore Mandarin (华语)**: standard grammar and pronunciation, but
+Singapore vocabulary, no erhua and local sentence-final particles, so the learner
+understands what people around them actually say. See "Singapore usage" below.
 
 ## Unit plan (24 units)
 
@@ -25,9 +27,9 @@ but the language is **standard Mandarin (普通话)** throughout.
 | 8 | u08-shopping | Shopping & money | 块/元/毛, 多少钱, 贵/便宜, 买/卖 |
 | 9 | u09-time-dates | Time & dates | days of week, months, today/tomorrow, 点/分/半 |
 | 10 | u10-daily-routine | Daily routine | get up, go to work, eat, sleep, 早上/晚上 |
-| 11 | u11-transport | Getting around | MRT 地铁, bus, taxi, 坐/开/走, 怎么去 |
-| 12 | u12-places | Places in the city | bank, hospital, school, toilet, 在哪儿, 左/右/前/后 |
-| 13 | u13-weather | Weather | hot, cold, rain, sunny, 天气怎么样, 有点儿 |
+| 11 | u11-transport | Getting around | MRT 地铁, 巴士, 德士, 坐/开/走, 怎么去 |
+| 12 | u12-places | Places in the city | bank, hospital, school, toilet, 在哪里, 左/右/前/后 |
+| 13 | u13-weather | Weather | hot, cold, rain, sunny, 天气怎么样, 有点 |
 | 14 | u14-hobbies | Hobbies & free time | 喜欢, sports, music, films, 周末 |
 | 15 | u15-work | Work & office | jobs, 公司, 开会, busy, 上班/下班 |
 | 16 | u16-plans | Making plans | invitations, 一起, 有空吗, 可以, 打电话 |
@@ -57,13 +59,36 @@ but the language is **standard Mandarin (普通话)** throughout.
 * Sentences: units 1–8 ≤ 10 characters; units 9–16 ≤ 14; units 17–24 ≤ 18.
 * Dialogue lines follow the same limits.
 
+## Singapore usage
+
+The app teaches what a learner in Singapore will hear. Rules:
+
+* **No erhua (儿化).** Singapore speakers do not add 儿: write 哪里 `nǎlǐ`, 这里 `zhèlǐ`,
+  那里 `nàlǐ`, 有点 `yǒudiǎn`, 一点 `yìdiǎn`, 一会 `yíhuì`, 便宜点 `piányi diǎn`, 玩 `wán`.
+  Words where 儿 is a real syllable (儿子 `érzi`, 女儿 `nǚ'ér`) stay.
+* **Singapore vocabulary** where everyday usage clearly differs from the mainland: 德士
+  `déshì` (taxi, 搭德士), 巴士 `bāshì` (bus), 巴刹 `bāshā` (wet market), 冷气 `lěngqì`
+  (aircon), 早餐 `zǎocān` (breakfast), 新元 `xīnyuán` (Singapore dollar), 块 for spoken
+  dollars (prices like 十八块五), 华语 `Huáyǔ` / 讲华语 for Mandarin, 组屋, 小贩中心.
+  Put the **mainland word in `hint`** (e.g. `In China: 出租车 chūzūchē`) so the learner can
+  still understand it. Only change a word when you are confident it is what Singaporeans
+  commonly say; otherwise keep the standard word (e.g. 买单, 怎么样, 冰箱 are kept; mention
+  alternatives such as 怎样 or 几时 in `hint`).
+* **Sentence-final particles** make dialogue sound local: 啦 `la`, 哦 `o`, 啊 `a`, 嘛 `ma`
+  (and 吗 for questions). Use them **sparingly, in dialogue lines and a few phrases only**
+  (at most about 1 line in 3), never in a way that changes what a comprehension question
+  asks about. Particles are neutral tone and written without a mark in pinyin.
+  Avoid 咯 `lo` in hanzi: the TTS voice may read it as `gē`/`kǎ`.
+* The no-Latin-letters rule still applies: never write "lah", "OK" or "MRT" in hanzi.
+  Pinyin stays standard (zh/ch/sh are never written z/c/s).
+
 ## Pinyin rules
 
 * Tone marks (ā á ǎ à), never tone numbers. ü written as ü (lǜ, nǚ).
 * Separate **words** with spaces, not syllables: `péngyou`, `xièxie`, `Zhōngguó`, `wǒ shì Xīnjiāpōrén`.
 * Neutral tone has no mark: `ma`, `de`, `le`, `men`, `zi`, second syllable of `xièxie`, `bàba`.
 * Write the **spoken (sandhi) tone for 不 and 一**, as textbooks do: `bú shì`, `bú yào`,
-  `yí gè`, `yì diǎnr`… but write **third-tone sandhi in citation form** (`nǐ hǎo`, not `ní hǎo`).
+  `yí gè`, `yì diǎn`… but write **third-tone sandhi in citation form** (`nǐ hǎo`, not `ní hǎo`).
 * Sentences start with a capital letter and keep the hanzi's final punctuation
   (`?` `!` `.` — use ASCII in pinyin, full-width in hanzi: `？` `！` `。` `，`).
 * Proper nouns capitalised: `Wáng Xiǎomíng`, `Xīnjiāpō`.

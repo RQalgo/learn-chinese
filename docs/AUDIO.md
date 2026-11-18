@@ -167,7 +167,7 @@ word not in the lexicon (log line `OOV word skipped`), so "twenty minutes" was s
 
 `tools/lexicon-extra-en.txt` holds hand-written entries (same format) for Mandarin names
 and Singlish that no rule can derive: `Wang`, `Xiao`, `Xiaoming`, `Xiaomei`, `Daming`, `Lin`,
-`Hua`, `Doudou`, `aircon`, spelt with English phones (e.g. Xiao ~ "shyow"). `#` comment
+`Hua`, `Doudou`, `aircon`, `kaya`, spelt with English phones (e.g. Xiao ~ "shyow"). `#` comment
 lines are allowed; the tool strips them. At run time the extra entries plus the inflected
 ones are written to a temporary lexicon passed to sherpa-onnx as
 `lexicon-us-en.txt,<extra>,lexicon-zh.txt`. Verified: later files override earlier ones, so

@@ -177,9 +177,10 @@
     {
       "id": "u23-s03",
       "type": "sentence",
-      "hanzi": "地铁比公共汽车快。",
-      "pinyin": "Dìtiě bǐ gōnggòng qìchē kuài.",
-      "english": "The MRT is faster than the bus."
+      "hanzi": "地铁比巴士快。",
+      "pinyin": "Dìtiě bǐ bāshì kuài.",
+      "english": "The MRT is faster than the bus.",
+      "hint": "In China: 公共汽车 gōnggòng qìchē"
     },
     {
       "id": "u23-s04",
@@ -216,8 +217,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "都可以。你想吃什么？",
-          "pinyin": "Dōu kěyǐ. Nǐ xiǎng chī shénme?",
+          "hanzi": "都可以啦。你想吃什么？",
+          "pinyin": "Dōu kěyǐ la. Nǐ xiǎng chī shénme?",
           "english": "Either is fine. What do you want?"
         },
         {
@@ -234,8 +235,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "比旁边那家贵一点儿，不过更好吃。",
-          "pinyin": "Bǐ pángbiān nà jiā guì yìdiǎnr, búguò gèng hǎochī.",
+          "hanzi": "比旁边那家贵一点，不过更好吃。",
+          "pinyin": "Bǐ pángbiān nà jiā guì yìdiǎn, búguò gèng hǎochī.",
           "english": "A bit pricier than the one next door, but even tastier."
         },
         {
@@ -280,20 +281,20 @@
       "lines": [
         {
           "speaker": "A",
-          "hanzi": "去机场，我们坐地铁还是坐出租车？",
-          "pinyin": "Qù jīchǎng, wǒmen zuò dìtiě háishi zuò chūzūchē?",
+          "hanzi": "去机场，我们坐地铁还是搭德士？",
+          "pinyin": "Qù jīchǎng, wǒmen zuò dìtiě háishi dā déshì?",
           "english": "To the airport, shall we take the MRT or a taxi?"
         },
         {
           "speaker": "B",
-          "hanzi": "出租车比地铁快，不过贵很多。",
-          "pinyin": "Chūzūchē bǐ dìtiě kuài, búguò guì hěn duō.",
+          "hanzi": "德士比地铁快，不过贵很多。",
+          "pinyin": "Déshì bǐ dìtiě kuài, búguò guì hěn duō.",
           "english": "A taxi is faster than the MRT, but much more expensive."
         },
         {
           "speaker": "A",
-          "hanzi": "这儿到机场远吗？",
-          "pinyin": "Zhèr dào jīchǎng yuǎn ma?",
+          "hanzi": "这里到机场远吗？",
+          "pinyin": "Zhèlǐ dào jīchǎng yuǎn ma?",
           "english": "Is it far from here to the airport?"
         },
         {
@@ -304,8 +305,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "出租车呢？",
-          "pinyin": "Chūzūchē ne?",
+          "hanzi": "德士呢？",
+          "pinyin": "Déshì ne?",
           "english": "And by taxi?"
         },
         {
@@ -316,14 +317,14 @@
         },
         {
           "speaker": "A",
-          "hanzi": "那我们坐地铁吧，便宜一点儿。",
-          "pinyin": "Nà wǒmen zuò dìtiě ba, piányi yìdiǎnr.",
+          "hanzi": "那我们坐地铁吧，便宜一点。",
+          "pinyin": "Nà wǒmen zuò dìtiě ba, piányi yìdiǎn.",
           "english": "Then let's take the MRT. It's a bit cheaper."
         },
         {
           "speaker": "B",
-          "hanzi": "好，我同意。",
-          "pinyin": "Hǎo, wǒ tóngyì.",
+          "hanzi": "好啊，我同意。",
+          "pinyin": "Hǎo a, wǒ tóngyì.",
           "english": "OK, I agree."
         }
       ],

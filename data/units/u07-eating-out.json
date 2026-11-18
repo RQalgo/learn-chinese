@@ -112,7 +112,8 @@
       "english": "takeaway",
       "alt": [
         "to take away"
-      ]
+      ],
+      "hint": "Say this at a hawker stall to take your food away."
     },
     {
       "id": "u07-p03",
@@ -141,9 +142,10 @@
     {
       "id": "u07-p06",
       "type": "phrase",
-      "hanzi": "不好吃",
-      "pinyin": "bù hǎochī",
-      "english": "not tasty"
+      "hanzi": "小贩中心",
+      "pinyin": "xiǎofàn zhōngxīn",
+      "english": "hawker centre",
+      "hint": "Singapore's open-air food courts, full of cheap local stalls."
     },
     {
       "id": "u07-p07",
@@ -233,8 +235,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "好的，请等一下。",
-          "pinyin": "Hǎo de, qǐng děng yíxià.",
+          "hanzi": "好的，请等一下哦。",
+          "pinyin": "Hǎo de, qǐng děng yíxià o.",
           "english": "Okay, please wait a moment."
         }
       ],

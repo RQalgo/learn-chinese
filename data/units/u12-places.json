@@ -54,9 +54,13 @@
     {
       "id": "u12-w08",
       "type": "word",
-      "hanzi": "商店",
-      "pinyin": "shāngdiàn",
-      "english": "shop"
+      "hanzi": "巴刹",
+      "pinyin": "bāshā",
+      "english": "wet market",
+      "alt": [
+        "market"
+      ],
+      "hint": "From Malay \"pasar\". In China: 菜市场 càishìchǎng"
     },
     {
       "id": "u12-w09",
@@ -82,15 +86,15 @@
     {
       "id": "u12-w12",
       "type": "word",
-      "hanzi": "这儿",
-      "pinyin": "zhèr",
+      "hanzi": "这里",
+      "pinyin": "zhèlǐ",
       "english": "here"
     },
     {
       "id": "u12-p01",
       "type": "phrase",
-      "hanzi": "在哪儿？",
-      "pinyin": "zài nǎr?",
+      "hanzi": "在哪里？",
+      "pinyin": "zài nǎlǐ?",
       "english": "where is it?"
     },
     {
@@ -146,8 +150,8 @@
     {
       "id": "u12-s01",
       "type": "sentence",
-      "hanzi": "厕所在哪儿？",
-      "pinyin": "Cèsuǒ zài nǎr?",
+      "hanzi": "厕所在哪里？",
+      "pinyin": "Cèsuǒ zài nǎlǐ?",
       "english": "Where is the toilet?"
     },
     {
@@ -193,8 +197,8 @@
       "lines": [
         {
           "speaker": "A",
-          "hanzi": "请问，洗手间在哪儿？",
-          "pinyin": "Qǐngwèn, xǐshǒujiān zài nǎr?",
+          "hanzi": "请问，洗手间在哪里？",
+          "pinyin": "Qǐngwèn, xǐshǒujiān zài nǎlǐ?",
           "english": "Excuse me, where is the restroom?"
         },
         {
@@ -205,8 +209,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "银行在哪儿？",
-          "pinyin": "Yínháng zài nǎr?",
+          "hanzi": "银行在哪里？",
+          "pinyin": "Yínháng zài nǎlǐ?",
           "english": "Where is the bank?"
         },
         {
@@ -223,8 +227,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "不远，就在前面。",
-          "pinyin": "Bù yuǎn, jiù zài qiánmian.",
+          "hanzi": "不远，就在前面哦。",
+          "pinyin": "Bù yuǎn, jiù zài qiánmian o.",
           "english": "Not far, it's just ahead."
         }
       ],
@@ -257,8 +261,8 @@
       "lines": [
         {
           "speaker": "A",
-          "hanzi": "你家在哪儿？",
-          "pinyin": "Nǐ jiā zài nǎr?",
+          "hanzi": "你家在哪里？",
+          "pinyin": "Nǐ jiā zài nǎlǐ?",
           "english": "Where is your home?"
         },
         {
