@@ -82,12 +82,13 @@
     {
       "id": "u19-w12",
       "type": "word",
-      "hanzi": "空调",
-      "pinyin": "kōngtiáo",
+      "hanzi": "冷气",
+      "pinyin": "lěngqì",
       "english": "air conditioner",
       "alt": [
         "aircon"
-      ]
+      ],
+      "hint": "In China: 空调 kōngtiáo"
     },
     {
       "id": "u19-p01",
@@ -121,8 +122,8 @@
     {
       "id": "u19-p05",
       "type": "phrase",
-      "hanzi": "开空调",
-      "pinyin": "kāi kōngtiáo",
+      "hanzi": "开冷气",
+      "pinyin": "kāi lěngqì",
       "english": "turn on the aircon",
       "alt": [
         "turn on the air conditioner"
@@ -187,8 +188,8 @@
     {
       "id": "u19-s06",
       "type": "sentence",
-      "hanzi": "太热了，请开一下空调。",
-      "pinyin": "Tài rè le, qǐng kāi yíxià kōngtiáo.",
+      "hanzi": "太热了，请开一下冷气。",
+      "pinyin": "Tài rè le, qǐng kāi yíxià lěngqì.",
       "english": "It's too hot. Please turn on the aircon."
     }
   ],
@@ -269,14 +270,14 @@
       "lines": [
         {
           "speaker": "A",
-          "hanzi": "你的卧室太热了，怎么不开空调？",
-          "pinyin": "Nǐ de wòshì tài rè le, zěnme bù kāi kōngtiáo?",
+          "hanzi": "你的卧室太热了，怎么不开冷气？",
+          "pinyin": "Nǐ de wòshì tài rè le, zěnme bù kāi lěngqì?",
           "english": "Your bedroom is too hot. Why don't you turn on the aircon?"
         },
         {
           "speaker": "B",
-          "hanzi": "空调坏了。",
-          "pinyin": "Kōngtiáo huài le.",
+          "hanzi": "冷气坏了。",
+          "pinyin": "Lěngqì huài le.",
           "english": "The aircon is broken."
         },
         {
@@ -299,8 +300,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "我睡客厅，客厅的空调是好的。",
-          "pinyin": "Wǒ shuì kètīng, kètīng de kōngtiáo shì hǎo de.",
+          "hanzi": "我睡客厅，客厅的冷气是好的。",
+          "pinyin": "Wǒ shuì kètīng, kètīng de lěngqì shì hǎo de.",
           "english": "I'll sleep in the living room. Its aircon works."
         },
         {

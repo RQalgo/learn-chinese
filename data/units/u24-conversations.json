@@ -105,19 +105,25 @@
     {
       "id": "u24-p01",
       "type": "phrase",
-      "hanzi": "没问题",
-      "pinyin": "méi wèntí",
-      "english": "no problem"
+      "hanzi": "不要紧",
+      "pinyin": "bú yàojǐn",
+      "english": "never mind",
+      "alt": [
+        "it's alright",
+        "it doesn't matter"
+      ],
+      "hint": "Very common in Singapore. In China: 没关系 (also used here)."
     },
     {
       "id": "u24-p02",
       "type": "phrase",
-      "hanzi": "等一下",
-      "pinyin": "děng yíxià",
-      "english": "wait a moment",
+      "hanzi": "对啊",
+      "pinyin": "duì a",
+      "english": "yes, exactly",
       "alt": [
-        "hold on"
-      ]
+        "that's right"
+      ],
+      "hint": "啊 a adds warmth; a very common reply in Singapore."
     },
     {
       "id": "u24-p03",
@@ -227,8 +233,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "真的吗？那你吃早饭了吗？",
-          "pinyin": "Zhēn de ma? Nà nǐ chī zǎofàn le ma?",
+          "hanzi": "真的吗？那你吃早餐了吗？",
+          "pinyin": "Zhēn de ma? Nà nǐ chī zǎocān le ma?",
           "english": "Really? Have you had breakfast then?"
         },
         {

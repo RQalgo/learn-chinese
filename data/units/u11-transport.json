@@ -21,14 +21,16 @@
       "type": "word",
       "hanzi": "巴士",
       "pinyin": "bāshì",
-      "english": "bus"
+      "english": "bus",
+      "hint": "In China: 公交车 gōngjiāochē"
     },
     {
       "id": "u11-w04",
       "type": "word",
-      "hanzi": "出租车",
-      "pinyin": "chūzūchē",
-      "english": "taxi"
+      "hanzi": "德士",
+      "pinyin": "déshì",
+      "english": "taxi",
+      "hint": "In China: 出租车 chūzūchē"
     },
     {
       "id": "u11-w05",
@@ -110,10 +112,10 @@
     {
       "id": "u11-p04",
       "type": "phrase",
-      "hanzi": "打车",
-      "pinyin": "dǎchē",
+      "hanzi": "搭德士",
+      "pinyin": "dā déshì",
       "english": "to take a taxi",
-      "hint": "Literally 'hit a car' — means to hail a taxi."
+      "hint": "In China: 打车 dǎchē"
     },
     {
       "id": "u11-p05",
@@ -174,8 +176,8 @@
     {
       "id": "u11-s05",
       "type": "sentence",
-      "hanzi": "太远了，我们打车吧。",
-      "pinyin": "Tài yuǎn le, wǒmen dǎchē ba.",
+      "hanzi": "太远了，我们搭德士吧。",
+      "pinyin": "Tài yuǎn le, wǒmen dā déshì ba.",
       "english": "It's too far, let's take a taxi."
     },
     {
@@ -281,14 +283,14 @@
         },
         {
           "speaker": "A",
-          "hanzi": "太久了，我们打车吧。",
-          "pinyin": "Tài jiǔ le, wǒmen dǎchē ba.",
+          "hanzi": "太久了，我们搭德士吧。",
+          "pinyin": "Tài jiǔ le, wǒmen dā déshì ba.",
           "english": "Too long, let's take a taxi."
         },
         {
           "speaker": "B",
-          "hanzi": "好，打车要二十分钟。",
-          "pinyin": "Hǎo, dǎchē yào èrshí fēnzhōng.",
+          "hanzi": "好，搭德士要二十分钟。",
+          "pinyin": "Hǎo, dā déshì yào èrshí fēnzhōng.",
           "english": "Okay, a taxi takes twenty minutes."
         }
       ],

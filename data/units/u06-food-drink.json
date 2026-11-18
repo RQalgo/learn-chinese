@@ -41,7 +41,8 @@
       "english": "coffee",
       "alt": [
         "kopi"
-      ]
+      ],
+      "hint": "Local \"kopi\" is strong coffee with condensed milk."
     },
     {
       "id": "u06-w06",
@@ -119,23 +120,26 @@
     {
       "id": "u06-p03",
       "type": "phrase",
-      "hanzi": "吃面条",
-      "pinyin": "chī miàntiáo",
-      "english": "to eat noodles"
+      "hanzi": "咖椰吐司",
+      "pinyin": "kāyē tǔsī",
+      "english": "kaya toast",
+      "hint": "Toast with coconut-egg jam, a classic Singapore breakfast."
     },
     {
       "id": "u06-p04",
       "type": "phrase",
-      "hanzi": "喝咖啡",
-      "pinyin": "hē kāfēi",
-      "english": "to drink coffee"
+      "hanzi": "吃榴莲",
+      "pinyin": "chī liúlián",
+      "english": "to eat durian",
+      "hint": "The \"king of fruits\" - people love it or hate it."
     },
     {
       "id": "u06-p05",
       "type": "phrase",
-      "hanzi": "早饭",
-      "pinyin": "zǎofàn",
-      "english": "breakfast"
+      "hanzi": "早餐",
+      "pinyin": "zǎocān",
+      "english": "breakfast",
+      "hint": "In China: 早饭 zǎofàn (also heard here)"
     },
     {
       "id": "u06-p06",

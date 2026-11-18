@@ -177,9 +177,10 @@
     {
       "id": "u23-s03",
       "type": "sentence",
-      "hanzi": "地铁比公共汽车快。",
-      "pinyin": "Dìtiě bǐ gōnggòng qìchē kuài.",
-      "english": "The MRT is faster than the bus."
+      "hanzi": "地铁比巴士快。",
+      "pinyin": "Dìtiě bǐ bāshì kuài.",
+      "english": "The MRT is faster than the bus.",
+      "hint": "In China: 公共汽车 gōnggòng qìchē"
     },
     {
       "id": "u23-s04",
@@ -280,14 +281,14 @@
       "lines": [
         {
           "speaker": "A",
-          "hanzi": "去机场，我们坐地铁还是坐出租车？",
-          "pinyin": "Qù jīchǎng, wǒmen zuò dìtiě háishi zuò chūzūchē?",
+          "hanzi": "去机场，我们坐地铁还是搭德士？",
+          "pinyin": "Qù jīchǎng, wǒmen zuò dìtiě háishi dā déshì?",
           "english": "To the airport, shall we take the MRT or a taxi?"
         },
         {
           "speaker": "B",
-          "hanzi": "出租车比地铁快，不过贵很多。",
-          "pinyin": "Chūzūchē bǐ dìtiě kuài, búguò guì hěn duō.",
+          "hanzi": "德士比地铁快，不过贵很多。",
+          "pinyin": "Déshì bǐ dìtiě kuài, búguò guì hěn duō.",
           "english": "A taxi is faster than the MRT, but much more expensive."
         },
         {
@@ -304,8 +305,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "出租车呢？",
-          "pinyin": "Chūzūchē ne?",
+          "hanzi": "德士呢？",
+          "pinyin": "Déshì ne?",
           "english": "And by taxi?"
         },
         {

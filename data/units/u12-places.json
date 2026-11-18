@@ -54,9 +54,13 @@
     {
       "id": "u12-w08",
       "type": "word",
-      "hanzi": "商店",
-      "pinyin": "shāngdiàn",
-      "english": "shop"
+      "hanzi": "巴刹",
+      "pinyin": "bāshā",
+      "english": "wet market",
+      "alt": [
+        "market"
+      ],
+      "hint": "From Malay \"pasar\". In China: 菜市场 càishìchǎng"
     },
     {
       "id": "u12-w09",

@@ -150,7 +150,8 @@
       "english": "how is it?",
       "alt": [
         "how about it?"
-      ]
+      ],
+      "hint": "Also 怎样 zěnyàng, very common in Singapore."
     },
     {
       "id": "u18-p06",
@@ -207,9 +208,10 @@
     {
       "id": "u18-s05",
       "type": "sentence",
-      "hanzi": "我觉得中文很有意思。",
-      "pinyin": "Wǒ juéde Zhōngwén hěn yǒu yìsi.",
-      "english": "I think Chinese is very interesting."
+      "hanzi": "我觉得讲华语很有意思。",
+      "pinyin": "Wǒ juéde jiǎng Huáyǔ hěn yǒu yìsi.",
+      "english": "I think speaking Mandarin is very interesting.",
+      "hint": "In China: 说中文 shuō Zhōngwén"
     },
     {
       "id": "u18-s06",
