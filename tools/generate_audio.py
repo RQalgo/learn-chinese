@@ -19,7 +19,7 @@ CLIP IDS AND FILE NAMES (ARCHITECTURE section 5)
     "." replaced by "_" plus ".mp3", in a folder chosen by the clip kind:
 
         u01-w01            -> audio/zh/u01-w01.mp3          (Mandarin, normal)
-        u01-w01.slow       -> audio/zh-slow/u01-w01_slow.mp3 (Mandarin, speed 0.75)
+        u01-w01.slow       -> audio/zh-slow/u01-w01_slow.mp3 (Mandarin, word chunks stretched)
         u01-w01.en         -> audio/en/u01-w01_en.mp3
         u01-d01.l2         -> audio/zh/u01-d01_l2.mp3
         u01-d01.l2.slow    -> audio/zh-slow/u01-d01_l2_slow.mp3
@@ -109,8 +109,21 @@ ZH_MODEL_NAME = "kokoro-multi-lang-v1_1"     # Mandarin clips (zh, zh-slow)
 ZH_VOICES = [30, 4, 63, 75]  # F, F, M, M (v1.1 ids)
 DIALOGUE_VOICES = {"A": 4, "B": 75}  # A = female, B = male (v1.1 ids)
 EN_VOICE = 3  # af_heart, US English
-SLOW_SPEED = 0.75
 NORMAL_SPEED = 1.0
+# Slow clips (docs/AUDIO.md "Slow clips"): the old recipe (engine speed 0.75) gave only 1.2-1.4x the
+# normal duration, not audibly slower. A slow clip is now built from per-word chunks joined with gaps
+# and time-stretched until it is clearly longer than the normal clip.
+# WHY engine speed 1.0 and not lower: Kokoro v1.1 below ~0.85 prepends a spurious syllable to short
+# chunks (measured by ASR: chunks "老师" -> "你老实的" at 0.7, "来" -> "直来"; clean at 1.0), while a
+# stretch with rubberband keeps the voice and tones (whole lines: CER 0.02 stretched vs 0.07 at 0.75).
+SLOW_SPEED = 1.0
+SLOW_STRATEGY = "slow-v2"        # part of every .slow cache key: bump to rebuild ONLY slow clips
+SLOW_GAP_MS = 180                # silence between two word chunks
+SLOW_CLAUSE_GAP_MS = 350         # ... when the first chunk ends in punctuation
+SLOW_MIN_RATIO_SHORT = 1.6       # slow/normal duration for words and phrases
+SLOW_MIN_RATIO_LONG = 1.45       # ... for sentences and dialogue lines
+SLOW_RATIO_MARGIN = 1.03         # aim 3 % above the minimum
+SLOW_TRIM_THRESHOLD = 0.003      # ~ -50 dBFS: chunk edges below this are cut before joining
 
 # --- Audio format ---
 SAMPLE_RATE = 24000
@@ -172,6 +185,10 @@ class Clip:
     pinyin: str = ""   # Mandarin clips only: source of the content-driven lexicon (not hashed itself)
     audio_dir: str = "audio"     # output folder of the accent set: audio | audio-sg
     engine_id: str = ""          # Mandarin clips: ZhEngine.cache_id ("" = legacy Kokoro v1.1)
+    slow_plan: tuple = ()        # .slow clips: ((chunk text, gap after in ms), ...), see plan_slow
+    slow_target: float = 0.0     # .slow clips: minimum duration ratio to the normal clip
+    ref: Optional["Clip"] = None  # .slow clips: the normal clip the ratio refers to
+    ref_dur: float = 0.0         # .slow clips: that clip's duration when known (cache), else 0
 
     @property
     def rel_path(self) -> str:
@@ -195,6 +212,11 @@ class Clip:
         parts = [self.text, self.voice, self.speed, self.silence_ms, PIPELINE_VERSION, model]
         if self.lex_sig:
             parts.append(self.lex_sig)
+        if self.slow_plan:
+            # WHY: the strategy, the chunking, the ratio and the normal clip it is measured
+            # against all shape a .slow clip; normal and English keys never see this branch.
+            parts.append([SLOW_STRATEGY, [list(p) for p in self.slow_plan], self.slow_target,
+                          self.ref.digest if self.ref else ""])
         payload = json.dumps(parts, ensure_ascii=False)
         return hashlib.sha256(payload.encode("utf-8")).hexdigest()[:16]
 
@@ -493,6 +515,44 @@ def select_clips(clips: list[Clip], only: Optional[str]) -> list[Clip]:
     return [c for c in clips if c.id.startswith(prefixes)]
 
 
+# ===== Section: Slow clips (plan) ==================================================
+
+def slow_target_ratio(clip_id: str) -> float:
+    """Minimum slow/normal duration ratio: words and phrases (``-wNN``/``-pNN``) vs sentences and dialogue lines."""
+    return SLOW_MIN_RATIO_SHORT if re.search(r"-[wp]\d+\.slow$", clip_id) else SLOW_MIN_RATIO_LONG
+
+
+def plan_slow(clips: list[Clip], cache: Optional[dict] = None) -> list[Clip]:
+    """Attach the slow-synthesis plan to every ``zh-slow`` clip (other clips are returned untouched).
+
+    For each slow clip: ``slow_plan`` = the line cut at pinyin word boundaries (zh_lexicon.plan_chunks,
+    with gaps of SLOW_GAP_MS or SLOW_CLAUSE_GAP_MS after punctuation; one chunk when the line does not
+    align), ``slow_target`` = the minimum duration ratio, ``ref`` = the normal clip, and ``ref_dur`` =
+    that clip's duration if ``cache`` holds an up-to-date entry for it (else the builder measures it).
+    WHY engine-agnostic: chunking only needs the pinyin and pypinyin's syllable list, never the
+    engine's model, so a future Mandarin engine gets the same slow clips for free.
+    """
+    valid = zh_lexicon.generic_syllables()
+    by_id = {c.id: c for c in clips}
+    out: list[Clip] = []
+    for c in clips:
+        if c.kind != "zh-slow":
+            out.append(c)
+            continue
+        ref = by_id.get(c.id[: -len(".slow")])
+        chunks = zh_lexicon.plan_chunks(c.text, c.pinyin, valid) if c.pinyin else None
+        if not chunks:
+            chunks = [(c.text, False)]
+        plan = tuple(
+            (text, (SLOW_CLAUSE_GAP_MS if clause_end else SLOW_GAP_MS) if i < len(chunks) - 1 else 0)
+            for i, (text, clause_end) in enumerate(chunks))
+        entry = (cache or {}).get(ref.id) if ref else None
+        known = bool(entry and ref and entry.get("hash") == ref.digest and "dur" in entry)
+        out.append(replace(c, slow_plan=plan, slow_target=slow_target_ratio(c.id), ref=ref,
+                           ref_dur=float(entry["dur"]) if known else 0.0))
+    return out
+
+
 # ===== Section: Cache and manifest ================================================
 
 def load_cache(path: Path) -> dict:
@@ -779,11 +839,116 @@ def encode_silence(ms: int, out_path: Path) -> None:
                 "-b:a", MP3_BITRATE, str(out_path)])
 
 
+# ===== Section: Slow clips (synthesis) ==============================================
+
+_RUBBERBAND: Optional[bool] = None
+
+
+def have_rubberband() -> bool:
+    """True if this ffmpeg has the ``rubberband`` filter (better stretching than ``atempo``); cached."""
+    global _RUBBERBAND
+    if _RUBBERBAND is None:
+        out = subprocess.run(["ffmpeg", "-hide_banner", "-filters"], capture_output=True, text=True).stdout
+        _RUBBERBAND = " rubberband " in out
+    return _RUBBERBAND
+
+
+def atempo_chain(tempo: float) -> str:
+    """ffmpeg ``atempo`` filter chain for ``tempo`` < 1, every pass >= 0.7 (quality degrades below that)."""
+    parts = []
+    while tempo < 0.7:
+        parts.append("atempo=0.7")
+        tempo /= 0.7
+    parts.append(f"atempo={tempo:.5f}")
+    return ",".join(parts)
+
+
+def time_stretch(samples, sample_rate: int, stretch: float):
+    """Make ``samples`` ``stretch`` times longer (>1) without changing the pitch; returns float32 samples.
+
+    ``rubberband`` (formant-preserving, so the voice keeps its timbre and the tones their contour)
+    when ffmpeg has it, else ``atempo`` in passes of >= 0.7. A ``stretch`` of ~1 returns the input.
+    """
+    import numpy as np
+    import soundfile as sf
+
+    if stretch <= 1.005:
+        return samples
+    flt = (f"rubberband=tempo={1 / stretch:.5f}:pitch=1:formant=preserved:transients=smooth"
+           if have_rubberband() else atempo_chain(1 / stretch))
+    with tempfile.TemporaryDirectory(prefix="gen_audio_") as tmp:
+        src, dst = Path(tmp) / "in.wav", Path(tmp) / "out.wav"
+        sf.write(str(src), samples, sample_rate, subtype="FLOAT")
+        run_ffmpeg(["-i", str(src), "-af", flt, "-c:a", "pcm_f32le", str(dst)])
+        data, _ = sf.read(str(dst), dtype="float32")
+    return np.asarray(data, dtype=np.float32)
+
+
+def trim_samples(samples, sample_rate: int):
+    """Cut leading/trailing near-silence (below SLOW_TRIM_THRESHOLD) from a chunk, keeping 15 ms each side.
+
+    WHY: engines pad every utterance with a variable amount of silence; left in, it would make
+    the gaps between word chunks unpredictable.
+    """
+    import numpy as np
+
+    loud = np.flatnonzero(np.abs(samples) > SLOW_TRIM_THRESHOLD)
+    if loud.size == 0:
+        return samples
+    keep = int(0.015 * sample_rate)
+    return samples[max(loud[0] - keep, 0): loud[-1] + keep + 1]
+
+
+def build_slow_clip(tts: "TtsSet", clip: Clip, out: Path) -> float:
+    """Build one ``.slow`` clip: chunk synthesis at SLOW_SPEED (engine speed) + gaps, stretched to the target ratio.
+
+    1. every chunk of ``clip.slow_plan`` is synthesised separately (the engine's lexicon applies to each
+       chunk; plan_chunks keeps neutral-tone and sandhi words whole), trimmed, and joined with the planned gaps;
+    2. the normal clip's duration ``ref`` is taken from the cache or measured by building it into a temp file;
+    3. if the joined clip is shorter than ``slow_target * ref * SLOW_RATIO_MARGIN`` the *chunks* (not the gaps)
+       are time-stretched; the MP3 is then measured and, if rounding left it short of ``slow_target``,
+       stretched a little more (at most 3 rounds, then RuntimeError so the clip is reported as failed).
+    Returns the duration of the final MP3.
+    """
+    import numpy as np
+
+    engine = tts.zh_engine()
+    chunks, gaps, sr = [], [], 0
+    for text, gap in clip.slow_plan:
+        samples, sr = engine.synth(text, clip.voice, clip.speed)
+        chunks.append(trim_samples(samples, sr))
+        gaps.append(gap)
+    ref = clip.ref_dur
+    if not ref:
+        with tempfile.TemporaryDirectory(prefix="gen_audio_ref_") as tmp:
+            samples, rsr = engine.synth(clip.ref.text, clip.ref.voice, clip.ref.speed)
+            encode_speech(samples, rsr, Path(tmp) / "ref.mp3")
+            ref = round(audio_duration(Path(tmp) / "ref.mp3"), 2)
+    speech = sum(len(c) for c in chunks) / sr
+    gap_sec = sum(gaps) / 1000
+    goal = clip.slow_target * ref * SLOW_RATIO_MARGIN          # final MP3 duration to aim at
+    stretch = max(1.0, (goal - 2 * PAD_SECONDS - gap_sec) / speech)
+    for _round in range(3):
+        parts = []
+        for i, chunk in enumerate(chunks):
+            parts.append(time_stretch(chunk, sr, stretch))
+            if gaps[i]:
+                parts.append(np.zeros(int(gaps[i] / 1000 * sr), dtype=np.float32))
+        encode_speech(np.concatenate(parts), sr, out)
+        dur = audio_duration(out)
+        if dur >= clip.slow_target * ref + 0.01:
+            return dur
+        stretch *= 1 + (clip.slow_target * ref * SLOW_RATIO_MARGIN - dur) / speech + 0.01
+    raise RuntimeError(f"slow clip only {dur:.2f}s for a {ref:.2f}s normal clip (target x{clip.slow_target})")
+
+
 def build_clip(tts: Optional["TtsSet"], clip: Clip, root: Path) -> float:
     """Generate one clip file under ``root``; return its duration in seconds (``tts`` may be None for silence)."""
     out = root / clip.rel_path
     if clip.silence_ms:
         encode_silence(clip.silence_ms, out)
+    elif clip.slow_plan:
+        build_slow_clip(tts, clip, out)
     else:
         samples, sr = tts.synth(clip)
         encode_speech(samples, sr, out)
@@ -816,13 +981,18 @@ class TtsSet:
         self._en = None
         self._zh: Optional[ZhEngine] = None
 
+    def zh_engine(self) -> ZhEngine:
+        """The Mandarin engine of this worker (created on first use)."""
+        if self._zh is None:
+            p = self.paths
+            self._zh = ZH_ENGINES[p.zh_engine](p.zh_dir, p.zh_extra, p.threads)
+        return self._zh
+
     def synth(self, clip: Clip):
         """Synthesize ``clip``: the Mandarin engine for zh/zh-slow, English Kokoro v1.0 otherwise."""
         p = self.paths
         if clip.kind in ZH_KINDS:
-            if self._zh is None:
-                self._zh = ZH_ENGINES[p.zh_engine](p.zh_dir, p.zh_extra, p.threads)
-            return self._zh.synth(clip.text, clip.voice, clip.speed)
+            return self.zh_engine().synth(clip.text, clip.voice, clip.speed)
         if self._en is None:
             self._en = load_tts(Path(p.en_dir), p.threads, Path(p.en_extra))
         return synthesize(self._en, clip.text, clip.voice, clip.speed)
@@ -947,6 +1117,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     required, zh_extra = engine.prepare(required, args.zh_model_dir, Path(extra_dir.name))
     cache_path = args.root / audio_dir / ".cache.json"
     cache = load_cache(cache_path)
+    required = plan_slow(required, cache)
 
     def up_to_date(c: Clip) -> bool:
         entry = cache.get(c.id)

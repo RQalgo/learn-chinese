@@ -130,7 +130,7 @@ export function describeClip(id) {
     zh = it?.hanzi || ""; eng = it?.english || "";
   }
   if (en || (!zh && eng)) return { text: eng, lang: "en-US", rate: 1 };
-  // WHY: 0.7 for slow clips (matching the intent of the 0.75-speed recordings).
+  // WHY: 0.7 for slow clips (the slow clips are 1.45-1.6x or more as long as the normal ones).
   return { text: zh, lang: "zh-CN", rate: slow ? 0.7 : 0.95 };
 }
 

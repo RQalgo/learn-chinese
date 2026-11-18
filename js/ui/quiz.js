@@ -158,7 +158,7 @@ export function render(root, ctx) {
   /** Big round play button with ripple + optional slow button. */
   function playControl(onPlay, onSlow) {
     const wrap = h("div", { class: "play-wrap" },
-      h("button", { type: "button", class: "play-btn", "aria-label": "Play again", onclick: onPlay }, icon("play", 48)));
+      h("button", { type: "button", class: "play-btn", "aria-label": "Play at normal speed", title: "Normal speed", onclick: onPlay }, icon("play", 48)));
     cleanups.push(onPlayingChange((p) => wrap.classList.toggle("playing", p)));
     return h("div", { class: "row" }, wrap,
       onSlow ? h("button", { type: "button", class: "icon-btn big", "aria-label": "Play slowly", title: "Slow", onclick: onSlow }, "🐢") : null);
@@ -229,23 +229,26 @@ export function render(root, ctx) {
   function introStep(step) {
     const item = curriculum.items.get(step.itemId);
     const mode = pinyinMode();
-    const playBoth = () => playSequence([`${item.id}.slow`, item.id]);
-    setReplay(playBoth, { title: item.pinyin, artist: item.english, album: `听 Tīng · ${curriculum.unitOf(item.id)?.title || ""}` });
+    // WHY: the AUTOMATIC playback (and the lock-screen play key) is "normal, then slow", like a
+    // teacher saying the word and then repeating it slowly. The buttons are strictly one clip each:
+    // the big play button = normal once, the turtle = slow once (they used to play slow+normal,
+    // which sounded like "says it twice" and made the turtle redundant).
+    const playIntro = () => playSequence([item.id, `${item.id}.slow`]);
+    setReplay(playIntro, { title: item.pinyin, artist: item.english, album: `听 Tīng · ${curriculum.unitOf(item.id)?.title || ""}` });
     put(topEl, 
       h("span", { class: "badge" }, "New"),
       mode === "never" ? h("div", { class: "intro-hanzi big hanzi" }, item.hanzi) : h("div", { class: "intro-pinyin pinyin" }, item.pinyin),
       h("div", { class: "intro-en" }, item.english),
       item.hint ? h("p", { class: "intro-hint" }, item.hint) : null,
       mode === "never" ? null : h("div", { class: "intro-hanzi hanzi" }, item.hanzi),
-      playControl(playBoth, () => playClip(item.id, { slow: true })));
+      playControl(() => playClip(item.id), () => playClip(item.id, { slow: true })));
     put(bottomEl, h("button", { type: "button", class: "btn primary block", id: "got-it", onclick: () => {
       const res = commit(applyIntro(store.progress, { itemId: item.id, now: Date.now(), curriculum }));
       S.touched = true; S.xp += res.xpGained; S.events.push(...res.events);
       if (!S.newItems.includes(item)) S.newItems.push(item);
       next();
     } }, "Got it"));
-    // WHY: the intro plays slow then normal automatically, like a teacher saying the word twice.
-    playBoth();
+    playIntro();
   }
 
   // ===== Section: Step — item questions =====

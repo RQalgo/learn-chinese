@@ -121,6 +121,11 @@ class Run:
         self.errors, self.bad_responses = [], []
         self.ctx = browser.new_context(viewport={"width": 412, "height": 915}, is_mobile=True, has_touch=True,
                                        device_scale_factor=1, color_scheme=scheme, accept_downloads=True)
+        # WHY: record every clip the player starts (HTMLMediaElement.play) so tests can assert WHICH clip
+        # a button plays (normal vs slow); the player sets `src` right before `play()`.
+        self.ctx.add_init_script("""window.__played = [];
+          const __play = HTMLMediaElement.prototype.play;
+          HTMLMediaElement.prototype.play = function () { window.__played.push(this.src); return __play.apply(this, arguments); };""")
         self.page = self.ctx.new_page()
         p = self.page
         p.on("console", self._on_console)
@@ -228,6 +233,26 @@ class Run:
             p.locator(".stage-bottom .opt").nth(idx).click()
         return expect
 
+    def played(self):
+        """Clip URLs the player started so far (see the init script in __init__)."""
+        return self.page.evaluate("window.__played.slice()")
+
+    def check_intro_buttons(self):
+        """The big play button plays the NORMAL clip once, the turtle the SLOW clip once (fix/slow-playback)."""
+        if getattr(self, "_intro_checked", False):
+            return
+        self._intro_checked = True
+        p = self.page
+        p.evaluate("window.__played.length = 0")
+        p.locator(".play-btn").click()
+        got = self.played()
+        check(len(got) == 1 and "/audio/zh/" in got[0] and "/audio/zh-slow/" not in got[0],
+              f"intro play button plays the normal clip once ({got})")
+        p.evaluate("window.__played.length = 0")
+        p.locator("button[aria-label='Play slowly']").click()
+        got = self.played()
+        check(len(got) == 1 and "/audio/zh-slow/" in got[0], f"intro turtle button plays the slow clip once ({got})")
+
     def run_session(self, label, wrong_every=4, max_steps=80):
         """Play every step until the summary. Returns step counts by type."""
         p = self.page
@@ -242,6 +267,7 @@ class Run:
             assert not re.search(r"\b(null|undefined|NaN)\b", text), f"{label}: stray null/undefined/NaN on screen: {text[:200]!r}"
             if s == "intro":
                 self.shot("quiz-intro")
+                self.check_intro_buttons()
                 p.locator("#got-it").click()
                 continue
             n_q += 1

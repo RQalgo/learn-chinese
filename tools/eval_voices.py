@@ -55,7 +55,7 @@ def main() -> int:
 
     tts = ga.load_tts(args.model_dir, 2)
     asr = va.load_asr(args.asr_dir)
-    speeds = [("normal", ga.NORMAL_SPEED)] + ([("slow", ga.SLOW_SPEED)] if args.slow else [])
+    speeds = [("normal", ga.NORMAL_SPEED)] + ([("slow", 0.75)] if args.slow else [])
     raw = []
     with tempfile.TemporaryDirectory(prefix="eval_voices_") as tmp:
         for vid in VOICES:
