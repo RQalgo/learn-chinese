@@ -156,9 +156,10 @@
     {
       "id": "u18-p06",
       "type": "phrase",
-      "hanzi": "太好了",
-      "pinyin": "tài hǎo le",
-      "english": "that's great!"
+      "hanzi": "太好啦",
+      "pinyin": "tài hǎo la",
+      "english": "that's great!",
+      "hint": "Casual Singapore variant of 太好了."
     },
     {
       "id": "u18-p07",
@@ -252,8 +253,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "别难过，明天会好的。",
-          "pinyin": "Bié nánguò, míngtiān huì hǎo de.",
+          "hanzi": "别难过啦，明天会好的。",
+          "pinyin": "Bié nánguò la, míngtiān huì hǎo de.",
           "english": "Don't be sad. Tomorrow will be better."
         },
         {

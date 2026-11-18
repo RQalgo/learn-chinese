@@ -217,8 +217,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "都可以。你想吃什么？",
-          "pinyin": "Dōu kěyǐ. Nǐ xiǎng chī shénme?",
+          "hanzi": "都可以啦。你想吃什么？",
+          "pinyin": "Dōu kěyǐ la. Nǐ xiǎng chī shénme?",
           "english": "Either is fine. What do you want?"
         },
         {
@@ -323,8 +323,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "好，我同意。",
-          "pinyin": "Hǎo, wǒ tóngyì.",
+          "hanzi": "好啊，我同意。",
+          "pinyin": "Hǎo a, wǒ tóngyì.",
           "english": "OK, I agree."
         }
       ],

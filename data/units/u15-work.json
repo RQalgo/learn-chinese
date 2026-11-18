@@ -228,8 +228,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "我每天四点下班。",
-          "pinyin": "Wǒ měitiān sì diǎn xiàbān.",
+          "hanzi": "我每天四点下班哦。",
+          "pinyin": "Wǒ měitiān sì diǎn xiàbān o.",
           "english": "I finish at four every day."
         }
       ],
@@ -292,8 +292,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "开会以后就下班。",
-          "pinyin": "Kāihuì yǐhòu jiù xiàbān.",
+          "hanzi": "开会以后就下班啦。",
+          "pinyin": "Kāihuì yǐhòu jiù xiàbān la.",
           "english": "I'll leave right after the meeting."
         }
       ],
