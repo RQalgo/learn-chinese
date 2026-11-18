@@ -260,12 +260,12 @@ class Run:
         p.evaluate("window.__played.length = 0")
         p.locator(".play-btn").click()
         got = self.played()
-        check(len(got) == 1 and "/audio/zh/" in got[0] and "/audio/zh-slow/" not in got[0],
+        check(len(got) == 1 and re.search(r"/audio(-sg)?/zh/", got[0]) and "zh-slow/" not in got[0],
               f"intro play button plays the normal clip once ({got})")
         p.evaluate("window.__played.length = 0")
         p.locator("button[aria-label='Play slowly']").click()
         got = self.played()
-        check(len(got) == 1 and "/audio/zh-slow/" in got[0], f"intro turtle button plays the slow clip once ({got})")
+        check(len(got) == 1 and re.search(r"/audio(-sg)?/zh-slow/", got[0]), f"intro turtle button plays the slow clip once ({got})")
 
     def check_question_voice(self, qtype):
         """The prompt of a quiz question is an `.alt` clip in a voice other than the item's learning voice;
@@ -276,14 +276,14 @@ class Run:
         done.add(qtype)
         p = self.page
         got = self.played()
-        m = re.search(r"/audio/zh/([\w-]+)_alt(\d)\.mp3", got[-1] if got else "")
+        m = re.search(r"/audio(?:-sg)?/zh/([\w-]+)_alt(\d)\.mp3", got[-1] if got else "")
         check(m is not None, f"{qtype}: the question prompt plays an .alt clip ({got[-1:] })")
         item, alt = m.group(1), f"{m.group(1)}.alt{m.group(2)}"
         check(VOICE_OF[alt] != VOICE_OF[item], f"{qtype}: quiz voice {VOICE_OF[alt]} differs from the learning voice {VOICE_OF[item]}")
         p.evaluate("window.__played.length = 0")
         p.locator("button[aria-label='Play slowly']").click()
         got = self.played()
-        check(len(got) == 1 and f"/audio/zh-slow/{item}_slow.mp3" in got[0], f"{qtype}: the turtle plays the primary slow clip ({got})")
+        check(len(got) == 1 and re.search(rf"/audio(-sg)?/zh-slow/{item}_slow.mp3", got[0]), f"{qtype}: the turtle plays the primary slow clip ({got})")
         p.evaluate("window.__played.length = 0")
         p.locator(".play-btn").click()
         again = self.played()
@@ -448,12 +448,12 @@ def real_set_accent_flow(r: Run):
     p.wait_for_selector("#accent-setting")
     p.evaluate("window.__noReload = 1")
 
-    def look(label, want_accent, want_dir, want_py, want_line):
+    def look(label, want_accent, want_dir, want_py, want_line, clip="u01-w02"):
         r.goto("#/unit/u01")
         p.wait_for_selector("li.item")
         s = p.evaluate(STAT_JS)
         check(s["accent"] == want_accent and s["src"].startswith(want_dir), f"{label}: effective accent {want_accent}, 谢谢 clip from {want_dir}")
-        check("/" + want_dir in requested_mp3(p, "u01-w02"), f"{label}: the player requests a {want_dir} file")
+        check("/" + want_dir in requested_mp3(p, clip), f"{label}: the player requests a {want_dir} file")
         check(p.evaluate(PY_ROW_JS, "谢谢") == want_py, f"{label}: unit page shows {want_py} for 谢谢")
         check(want_line in p.evaluate("document.querySelector('.transcript').textContent"), f"{label}: dialogue transcript shows '{want_line}'")
 
@@ -463,7 +463,7 @@ def real_set_accent_flow(r: Run):
     look("Mainland", "cn", "audio/", "xièxie", "xièxie")
     r.goto("#/settings")
     p.get_by_role("radio", name="Singapore").click()
-    look("Singapore again", "sg", "audio-sg/", "xièxiè", "xièxiè")
+    look("Singapore again", "sg", "audio-sg/", "xièxiè", "xièxiè", clip="u01-w03")   # WHY another clip: the service worker answers a repeat play from its audio cache
     check(p.evaluate("window.__noReload") == 1, "accent and pinyin switched without reloading the page")
     # accent-dependent pinyin in a lesson (intro/question/feedback use the same helper)
     r.shot("unit-pinyin-sg")

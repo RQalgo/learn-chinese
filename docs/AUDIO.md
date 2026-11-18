@@ -462,3 +462,20 @@ The remaining flags are almost all single syllables (`走 -> though`, `猫 -> no
 model answers isolated one-syllable clips with an English word or a homophone, and the
 carrier does not cure that. Real candidates to listen to: `星期一`, `星期几？`, `星期天`
 (always misheard; the same word is fine inside sentences), `发烧吗？`, `下大雨`.
+
+### Results: Singapore set vs Mainland set (2026-11-18)
+
+All 2,783 normal-speed Mandarin clips (items, alts, dialogue lines) of each set, same ASR
+(`sherpa-onnx-paraformer-zh-small-2024-03-09`, `tools/verify_audio.py --accent sg|cn --carrier`).
+The ASR is trained on Mainland speech, yet the Singapore set scores no worse:
+
+| Voice | Mainland mean CER | Singapore mean CER | Mainland flagged | Singapore flagged |
+|---|---|---|---|---|
+| 4 (F) | 0.247 | 0.253 | 113 | 115 |
+| 30 (F) | 0.296 | 0.298 | 114 | 120 |
+| 63 (M) | 0.336 | 0.337 | 127 | 127 |
+| 75 (M) | 0.342 | 0.317 | 146 | 143 |
+| all | 0.304 | 0.299 | 500 | 505 |
+
+Slow clips (duration slow / normal, from the manifests): words and phrases 1.61-1.72 (target 1.6), sentences
+and dialogue lines min 1.46, mean 1.49 (target 1.45), in both sets; 0 below target.
