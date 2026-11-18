@@ -117,16 +117,16 @@
    "src": "audio/zh-slow/u01-d02_l1_slow.mp3?v=8bb7b2590c"
   },
   "u01-d02.l2": {
-   "dur": 2.37,
-   "src": "audio/zh/u01-d02_l2.mp3?v=9317093297"
+   "dur": 2.72,
+   "src": "audio/zh/u01-d02_l2.mp3?v=cb99356192"
   },
   "u01-d02.l2.en": {
    "dur": 2.23,
    "src": "audio/en/u01-d02_l2_en.mp3?v=7eb2d83c1c"
   },
   "u01-d02.l2.slow": {
-   "dur": 3.49,
-   "src": "audio/zh-slow/u01-d02_l2_slow.mp3?v=184e43592e"
+   "dur": 4.0,
+   "src": "audio/zh-slow/u01-d02_l2_slow.mp3?v=17e04da87f"
   },
   "u01-d02.l3": {
    "dur": 1.18,
@@ -509,16 +509,16 @@
    "src": "audio/zh-slow/u02-d01_l3_slow.mp3?v=8daff7de62"
   },
   "u02-d01.l4": {
-   "dur": 1.12,
-   "src": "audio/zh/u02-d01_l4.mp3?v=793ba6448f"
+   "dur": 1.32,
+   "src": "audio/zh/u02-d01_l4.mp3?v=3c9a57a63c"
   },
   "u02-d01.l4.en": {
    "dur": 1.14,
    "src": "audio/en/u02-d01_l4_en.mp3?v=b66cebbdfb"
   },
   "u02-d01.l4.slow": {
-   "dur": 1.69,
-   "src": "audio/zh-slow/u02-d01_l4_slow.mp3?v=04687f8fff"
+   "dur": 1.99,
+   "src": "audio/zh-slow/u02-d01_l4_slow.mp3?v=bd3f7b752e"
   },
   "u02-d01.l5": {
    "dur": 1.4,
@@ -933,16 +933,16 @@
    "src": "audio/zh-slow/u03-d01_l2_slow.mp3?v=5e41af90e8"
   },
   "u03-d01.l3": {
-   "dur": 2.81,
-   "src": "audio/zh/u03-d01_l3.mp3?v=20bc109942"
+   "dur": 2.94,
+   "src": "audio/zh/u03-d01_l3.mp3?v=6f45d22c1b"
   },
   "u03-d01.l3.en": {
    "dur": 1.72,
    "src": "audio/en/u03-d01_l3_en.mp3?v=11438272ba"
   },
   "u03-d01.l3.slow": {
-   "dur": 4.15,
-   "src": "audio/zh-slow/u03-d01_l3_slow.mp3?v=3c179ebb37"
+   "dur": 4.31,
+   "src": "audio/zh-slow/u03-d01_l3_slow.mp3?v=454e2160c8"
   },
   "u03-d01.l4": {
    "dur": 1.57,
@@ -977,16 +977,16 @@
    "src": "audio/en/u03-d01_q2_en.mp3?v=bc908268a8"
   },
   "u03-d02.l1": {
-   "dur": 1.19,
-   "src": "audio/zh/u03-d02_l1.mp3?v=9b4a97a9e9"
+   "dur": 1.37,
+   "src": "audio/zh/u03-d02_l1.mp3?v=7b1435205e"
   },
   "u03-d02.l1.en": {
    "dur": 0.93,
    "src": "audio/en/u03-d02_l1_en.mp3?v=4c92a7907c"
   },
   "u03-d02.l1.slow": {
-   "dur": 1.83,
-   "src": "audio/zh-slow/u03-d02_l1_slow.mp3?v=13dd4e7527"
+   "dur": 2.09,
+   "src": "audio/zh-slow/u03-d02_l1_slow.mp3?v=14f4f1b002"
   },
   "u03-d02.l2": {
    "dur": 2.76,
@@ -1177,16 +1177,16 @@
    "src": "audio/zh-slow/u03-s04_slow.mp3?v=14070272a1"
   },
   "u03-s05": {
-   "dur": 1.37,
-   "src": "audio/zh/u03-s05.mp3?v=cce8858a6b"
+   "dur": 1.47,
+   "src": "audio/zh/u03-s05.mp3?v=67d59736ac"
   },
   "u03-s05.en": {
    "dur": 1.11,
    "src": "audio/en/u03-s05_en.mp3?v=a04e54f8a6"
   },
   "u03-s05.slow": {
-   "dur": 2.08,
-   "src": "audio/zh-slow/u03-s05_slow.mp3?v=f3a868c549"
+   "dur": 2.16,
+   "src": "audio/zh-slow/u03-s05_slow.mp3?v=9cd919c1e7"
   },
   "u03-s06": {
    "dur": 1.74,
@@ -1309,16 +1309,16 @@
    "src": "audio/zh-slow/u03-w09_slow.mp3?v=cd2ddcb6d8"
   },
   "u03-w10": {
-   "dur": 0.59,
-   "src": "audio/zh/u03-w10.mp3?v=979b219d55"
+   "dur": 0.71,
+   "src": "audio/zh/u03-w10.mp3?v=cacbeba68d"
   },
   "u03-w10.en": {
    "dur": 0.6,
    "src": "audio/en/u03-w10_en.mp3?v=aba65dafdf"
   },
   "u03-w10.slow": {
-   "dur": 1.04,
-   "src": "audio/zh-slow/u03-w10_slow.mp3?v=08d7999307"
+   "dur": 1.22,
+   "src": "audio/zh-slow/u03-w10_slow.mp3?v=ea0a866d7f"
   },
   "u03-w11": {
    "dur": 0.74,
@@ -1357,16 +1357,16 @@
    "src": "audio/zh-slow/u04-d01_l1_slow.mp3?v=0dadb04f7a"
   },
   "u04-d01.l2": {
-   "dur": 1.82,
-   "src": "audio/zh/u04-d01_l2.mp3?v=10d43c53c6"
+   "dur": 2.0,
+   "src": "audio/zh/u04-d01_l2.mp3?v=83bcac6b40"
   },
   "u04-d01.l2.en": {
    "dur": 2.02,
    "src": "audio/en/u04-d01_l2_en.mp3?v=c754b1cd92"
   },
   "u04-d01.l2.slow": {
-   "dur": 2.87,
-   "src": "audio/zh-slow/u04-d01_l2_slow.mp3?v=eec73259ee"
+   "dur": 3.05,
+   "src": "audio/zh-slow/u04-d01_l2_slow.mp3?v=f0a5ee4367"
   },
   "u04-d01.l3": {
    "dur": 1.37,
@@ -1861,16 +1861,16 @@
    "src": "audio/zh-slow/u05-d02_l2_slow.mp3?v=8f6ad9f390"
   },
   "u05-d02.l3": {
-   "dur": 1.41,
-   "src": "audio/zh/u05-d02_l3.mp3?v=e9363f7a10"
+   "dur": 1.53,
+   "src": "audio/zh/u05-d02_l3.mp3?v=f6900838f2"
   },
   "u05-d02.l3.en": {
    "dur": 1.03,
    "src": "audio/en/u05-d02_l3_en.mp3?v=3a1b874797"
   },
   "u05-d02.l3.slow": {
-   "dur": 2.06,
-   "src": "audio/zh-slow/u05-d02_l3_slow.mp3?v=fd87fa6eb1"
+   "dur": 2.24,
+   "src": "audio/zh-slow/u05-d02_l3_slow.mp3?v=9a989260d4"
   },
   "u05-d02.l4": {
    "dur": 1.66,
@@ -2253,16 +2253,16 @@
    "src": "audio/zh-slow/u06-d01_l3_slow.mp3?v=44446b6aec"
   },
   "u06-d01.l4": {
-   "dur": 1.53,
-   "src": "audio/zh/u06-d01_l4.mp3?v=ecc06831d1"
+   "dur": 1.84,
+   "src": "audio/zh/u06-d01_l4.mp3?v=d8181d5a63"
   },
   "u06-d01.l4.en": {
    "dur": 1.17,
    "src": "audio/en/u06-d01_l4_en.mp3?v=9c4a77d08f"
   },
   "u06-d01.l4.slow": {
-   "dur": 2.25,
-   "src": "audio/zh-slow/u06-d01_l4_slow.mp3?v=74f414f25b"
+   "dur": 2.72,
+   "src": "audio/zh-slow/u06-d01_l4_slow.mp3?v=2381dcbda7"
   },
   "u06-d01.q1.en": {
    "dur": 1.29,
@@ -2365,40 +2365,40 @@
    "src": "audio/zh-slow/u06-p02_slow.mp3?v=65071e392a"
   },
   "u06-p03": {
-   "dur": 1.09,
-   "src": "audio/zh/u06-p03.mp3?v=faa4d7887b"
+   "dur": 1.34,
+   "src": "audio/zh/u06-p03.mp3?v=cf77351c7c"
   },
   "u06-p03.en": {
-   "dur": 1.1,
-   "src": "audio/en/u06-p03_en.mp3?v=6d377135d4"
+   "dur": 0.95,
+   "src": "audio/en/u06-p03_en.mp3?v=cb51b0f655"
   },
   "u06-p03.slow": {
-   "dur": 1.85,
-   "src": "audio/zh-slow/u06-p03_slow.mp3?v=23707aa043"
+   "dur": 2.24,
+   "src": "audio/zh-slow/u06-p03_slow.mp3?v=bc6f35701e"
   },
   "u06-p04": {
-   "dur": 1.17,
-   "src": "audio/zh/u06-p04.mp3?v=385369fcfa"
+   "dur": 1.15,
+   "src": "audio/zh/u06-p04.mp3?v=e19df60b5e"
   },
   "u06-p04.en": {
-   "dur": 1.14,
-   "src": "audio/en/u06-p04_en.mp3?v=bf455691d1"
+   "dur": 1.02,
+   "src": "audio/en/u06-p04_en.mp3?v=89d50cbe22"
   },
   "u06-p04.slow": {
-   "dur": 1.98,
-   "src": "audio/zh-slow/u06-p04_slow.mp3?v=d389f7211d"
+   "dur": 1.92,
+   "src": "audio/zh-slow/u06-p04_slow.mp3?v=50f3db26f8"
   },
   "u06-p05": {
    "dur": 0.78,
-   "src": "audio/zh/u06-p05.mp3?v=f2c71894d5"
+   "src": "audio/zh/u06-p05.mp3?v=33afe9bdc1"
   },
   "u06-p05.en": {
    "dur": 0.87,
    "src": "audio/en/u06-p05_en.mp3?v=7be77a3755"
   },
   "u06-p05.slow": {
-   "dur": 1.31,
-   "src": "audio/zh-slow/u06-p05_slow.mp3?v=dbc98b2b33"
+   "dur": 1.34,
+   "src": "audio/zh-slow/u06-p05_slow.mp3?v=cec3dbf3c7"
   },
   "u06-p06": {
    "dur": 0.86,
@@ -2701,16 +2701,16 @@
    "src": "audio/zh-slow/u07-d01_l4_slow.mp3?v=f53ffaa897"
   },
   "u07-d01.l5": {
-   "dur": 1.81,
-   "src": "audio/zh/u07-d01_l5.mp3?v=7396b54f18"
+   "dur": 1.91,
+   "src": "audio/zh/u07-d01_l5.mp3?v=0d0ae198d4"
   },
   "u07-d01.l5.en": {
    "dur": 1.66,
    "src": "audio/en/u07-d01_l5_en.mp3?v=d70e19c98f"
   },
   "u07-d01.l5.slow": {
-   "dur": 2.73,
-   "src": "audio/zh-slow/u07-d01_l5_slow.mp3?v=eb12540ed1"
+   "dur": 2.88,
+   "src": "audio/zh-slow/u07-d01_l5_slow.mp3?v=dbae488b25"
   },
   "u07-d01.q1.en": {
    "dur": 1.5,
@@ -2837,16 +2837,16 @@
    "src": "audio/zh-slow/u07-p05_slow.mp3?v=eb7020db5f"
   },
   "u07-p06": {
-   "dur": 1.05,
-   "src": "audio/zh/u07-p06.mp3?v=4fe70b9be9"
+   "dur": 1.39,
+   "src": "audio/zh/u07-p06.mp3?v=00e5318738"
   },
   "u07-p06.en": {
-   "dur": 1.01,
-   "src": "audio/en/u07-p06_en.mp3?v=6e8c3fa334"
+   "dur": 1.06,
+   "src": "audio/en/u07-p06_en.mp3?v=dc80366049"
   },
   "u07-p06.slow": {
-   "dur": 1.8,
-   "src": "audio/zh-slow/u07-p06_slow.mp3?v=1c46d436d7"
+   "dur": 2.33,
+   "src": "audio/zh-slow/u07-p06_slow.mp3?v=76660ee958"
   },
   "u07-p07": {
    "dur": 1.03,
@@ -3113,16 +3113,16 @@
    "src": "audio/zh-slow/u08-d01_l2_slow.mp3?v=15b7e166f8"
   },
   "u08-d01.l3": {
-   "dur": 2.73,
-   "src": "audio/zh/u08-d01_l3.mp3?v=1a6daa83b1"
+   "dur": 2.88,
+   "src": "audio/zh/u08-d01_l3.mp3?v=f49db4137f"
   },
   "u08-d01.l3.en": {
    "dur": 1.89,
    "src": "audio/en/u08-d01_l3_en.mp3?v=717c07b6bc"
   },
   "u08-d01.l3.slow": {
-   "dur": 4.01,
-   "src": "audio/zh-slow/u08-d01_l3_slow.mp3?v=1d70d34e1c"
+   "dur": 4.24,
+   "src": "audio/zh-slow/u08-d01_l3_slow.mp3?v=50897b6d8c"
   },
   "u08-d01.l4": {
    "dur": 1.95,
@@ -3261,16 +3261,16 @@
    "src": "audio/zh-slow/u08-p03_slow.mp3?v=ebbcaee7a6"
   },
   "u08-p04": {
-   "dur": 1.27,
-   "src": "audio/zh/u08-p04.mp3?v=cd5b156c45"
+   "dur": 1.09,
+   "src": "audio/zh/u08-p04.mp3?v=7401f645d7"
   },
   "u08-p04.en": {
    "dur": 1.03,
    "src": "audio/en/u08-p04_en.mp3?v=f7d32d67bd"
   },
   "u08-p04.slow": {
-   "dur": 2.15,
-   "src": "audio/zh-slow/u08-p04_slow.mp3?v=861f82c203"
+   "dur": 1.76,
+   "src": "audio/zh-slow/u08-p04_slow.mp3?v=feb990afc0"
   },
   "u08-p05": {
    "dur": 0.72,
@@ -3285,16 +3285,16 @@
    "src": "audio/zh-slow/u08-p05_slow.mp3?v=fc183e7f2b"
   },
   "u08-p06": {
-   "dur": 0.86,
-   "src": "audio/zh/u08-p06.mp3?v=3bf71dc018"
+   "dur": 0.83,
+   "src": "audio/zh/u08-p06.mp3?v=22a7c7f15f"
   },
   "u08-p06.en": {
-   "dur": 1.07,
-   "src": "audio/en/u08-p06_en.mp3?v=fa783c399a"
+   "dur": 1.09,
+   "src": "audio/en/u08-p06_en.mp3?v=42d5ff810f"
   },
   "u08-p06.slow": {
-   "dur": 1.47,
-   "src": "audio/zh-slow/u08-p06_slow.mp3?v=61855cc699"
+   "dur": 1.43,
+   "src": "audio/zh-slow/u08-p06_slow.mp3?v=071b202f51"
   },
   "u08-p07": {
    "dur": 1.03,
@@ -3357,16 +3357,16 @@
    "src": "audio/zh-slow/u08-s03_slow.mp3?v=d8d686ceaa"
   },
   "u08-s04": {
-   "dur": 1.81,
-   "src": "audio/zh/u08-s04.mp3?v=b74e0734e3"
+   "dur": 1.54,
+   "src": "audio/zh/u08-s04.mp3?v=3bbcc5f686"
   },
   "u08-s04.en": {
    "dur": 1.12,
    "src": "audio/en/u08-s04_en.mp3?v=d04e8984a8"
   },
   "u08-s04.slow": {
-   "dur": 2.65,
-   "src": "audio/zh-slow/u08-s04_slow.mp3?v=da6ec61a6a"
+   "dur": 2.26,
+   "src": "audio/zh-slow/u08-s04_slow.mp3?v=13db0e618a"
   },
   "u08-s05": {
    "dur": 1.61,
@@ -3381,16 +3381,16 @@
    "src": "audio/zh-slow/u08-s05_slow.mp3?v=9ee7372662"
   },
   "u08-s06": {
-   "dur": 2.06,
-   "src": "audio/zh/u08-s06.mp3?v=ddf670d6d6"
+   "dur": 1.92,
+   "src": "audio/zh/u08-s06.mp3?v=2dacf1bdfc"
   },
   "u08-s06.en": {
    "dur": 2.02,
    "src": "audio/en/u08-s06_en.mp3?v=3a9fa44d05"
   },
   "u08-s06.slow": {
-   "dur": 3.0,
-   "src": "audio/zh-slow/u08-s06_slow.mp3?v=f8a29cebc4"
+   "dur": 2.8,
+   "src": "audio/zh-slow/u08-s06_slow.mp3?v=cb41578a2f"
   },
   "u08-w01": {
    "dur": 0.66,
@@ -3653,16 +3653,16 @@
    "src": "audio/zh-slow/u09-d02_l4_slow.mp3?v=2aefc0fe4c"
   },
   "u09-d02.l5": {
-   "dur": 1.62,
-   "src": "audio/zh/u09-d02_l5.mp3?v=955d924e44"
+   "dur": 1.81,
+   "src": "audio/zh/u09-d02_l5.mp3?v=17dcbc50a9"
   },
   "u09-d02.l5.en": {
    "dur": 1.5,
    "src": "audio/en/u09-d02_l5_en.mp3?v=65f1156af0"
   },
   "u09-d02.l5.slow": {
-   "dur": 2.38,
-   "src": "audio/zh-slow/u09-d02_l5_slow.mp3?v=cb8e865a32"
+   "dur": 2.67,
+   "src": "audio/zh-slow/u09-d02_l5_slow.mp3?v=8223facc3d"
   },
   "u09-d02.l6": {
    "dur": 2.53,
@@ -4021,16 +4021,16 @@
    "src": "audio/zh-slow/u10-d01_l2_slow.mp3?v=900cae1123"
   },
   "u10-d01.l3": {
-   "dur": 2.14,
-   "src": "audio/zh/u10-d01_l3.mp3?v=6ad6a6687a"
+   "dur": 2.71,
+   "src": "audio/zh/u10-d01_l3.mp3?v=e4c56a6648"
   },
   "u10-d01.l3.en": {
    "dur": 1.93,
    "src": "audio/en/u10-d01_l3_en.mp3?v=da2fab6fe3"
   },
   "u10-d01.l3.slow": {
-   "dur": 3.13,
-   "src": "audio/zh-slow/u10-d01_l3_slow.mp3?v=9287fec5fd"
+   "dur": 4.04,
+   "src": "audio/zh-slow/u10-d01_l3_slow.mp3?v=86abad04d5"
   },
   "u10-d01.l4": {
    "dur": 2.45,
@@ -4045,16 +4045,16 @@
    "src": "audio/zh-slow/u10-d01_l4_slow.mp3?v=57a9b9e776"
   },
   "u10-d01.l5": {
-   "dur": 3.32,
-   "src": "audio/zh/u10-d01_l5.mp3?v=19f4ed6ddc"
+   "dur": 3.36,
+   "src": "audio/zh/u10-d01_l5.mp3?v=8f07583dd2"
   },
   "u10-d01.l5.en": {
    "dur": 2.79,
    "src": "audio/en/u10-d01_l5_en.mp3?v=7d14878699"
   },
   "u10-d01.l5.slow": {
-   "dur": 4.91,
-   "src": "audio/zh-slow/u10-d01_l5_slow.mp3?v=73d7388715"
+   "dur": 4.98,
+   "src": "audio/zh-slow/u10-d01_l5_slow.mp3?v=d38594b82b"
   },
   "u10-d01.q1.en": {
    "dur": 1.47,
@@ -4157,16 +4157,16 @@
    "src": "audio/zh-slow/u10-p01_slow.mp3?v=466ba8f7ec"
   },
   "u10-p02": {
-   "dur": 1.11,
-   "src": "audio/zh/u10-p02.mp3?v=10ea8f4728"
+   "dur": 1.13,
+   "src": "audio/zh/u10-p02.mp3?v=5ad195845b"
   },
   "u10-p02.en": {
    "dur": 1.19,
    "src": "audio/en/u10-p02_en.mp3?v=7da6a3e811"
   },
   "u10-p02.slow": {
-   "dur": 1.89,
-   "src": "audio/zh-slow/u10-p02_slow.mp3?v=efc5500531"
+   "dur": 1.93,
+   "src": "audio/zh-slow/u10-p02_slow.mp3?v=21611b3d13"
   },
   "u10-p03": {
    "dur": 0.81,
@@ -4397,16 +4397,16 @@
    "src": "audio/zh-slow/u10-w07_slow.mp3?v=673923f5ff"
   },
   "u10-w08": {
-   "dur": 0.76,
-   "src": "audio/zh/u10-w08.mp3?v=bd06dd790a"
+   "dur": 0.83,
+   "src": "audio/zh/u10-w08.mp3?v=76931882a4"
   },
   "u10-w08.en": {
    "dur": 0.87,
    "src": "audio/en/u10-w08_en.mp3?v=cc9c3f15cf"
   },
   "u10-w08.slow": {
-   "dur": 1.3,
-   "src": "audio/zh-slow/u10-w08_slow.mp3?v=7384f93ce1"
+   "dur": 1.45,
+   "src": "audio/zh-slow/u10-w08_slow.mp3?v=c4370bd58b"
   },
   "u10-w09": {
    "dur": 0.85,
@@ -4493,16 +4493,16 @@
    "src": "audio/zh-slow/u11-d01_l3_slow.mp3?v=3889717b8c"
   },
   "u11-d01.l4": {
-   "dur": 2.0,
-   "src": "audio/zh/u11-d01_l4.mp3?v=cbc6f950b2"
+   "dur": 2.12,
+   "src": "audio/zh/u11-d01_l4.mp3?v=b249a713ba"
   },
   "u11-d01.l4.en": {
    "dur": 1.91,
    "src": "audio/en/u11-d01_l4_en.mp3?v=120ba0f31b"
   },
   "u11-d01.l4.slow": {
-   "dur": 3.01,
-   "src": "audio/zh-slow/u11-d01_l4_slow.mp3?v=a03fba36bb"
+   "dur": 3.09,
+   "src": "audio/zh-slow/u11-d01_l4_slow.mp3?v=46e7ee7b73"
   },
   "u11-d01.l5": {
    "dur": 0.84,
@@ -4585,28 +4585,28 @@
    "src": "audio/zh-slow/u11-d02_l4_slow.mp3?v=90f5d39e73"
   },
   "u11-d02.l5": {
-   "dur": 2.15,
-   "src": "audio/zh/u11-d02_l5.mp3?v=688c8eabd1"
+   "dur": 2.39,
+   "src": "audio/zh/u11-d02_l5.mp3?v=858149a795"
   },
   "u11-d02.l5.en": {
    "dur": 1.77,
    "src": "audio/en/u11-d02_l5_en.mp3?v=0b5abf2380"
   },
   "u11-d02.l5.slow": {
-   "dur": 3.16,
-   "src": "audio/zh-slow/u11-d02_l5_slow.mp3?v=05943f00eb"
+   "dur": 3.52,
+   "src": "audio/zh-slow/u11-d02_l5_slow.mp3?v=f782d8f299"
   },
   "u11-d02.l6": {
-   "dur": 2.22,
-   "src": "audio/zh/u11-d02_l6.mp3?v=e349e05853"
+   "dur": 2.49,
+   "src": "audio/zh/u11-d02_l6.mp3?v=28a1ccb804"
   },
   "u11-d02.l6.en": {
    "dur": 2.2,
    "src": "audio/en/u11-d02_l6_en.mp3?v=590f0ecc10"
   },
   "u11-d02.l6.slow": {
-   "dur": 3.54,
-   "src": "audio/zh-slow/u11-d02_l6_slow.mp3?v=17f93e4370"
+   "dur": 3.87,
+   "src": "audio/zh-slow/u11-d02_l6_slow.mp3?v=e7473ddff4"
   },
   "u11-d02.q1.en": {
    "dur": 1.57,
@@ -4653,16 +4653,16 @@
    "src": "audio/zh-slow/u11-p03_slow.mp3?v=3670e482e2"
   },
   "u11-p04": {
-   "dur": 0.78,
-   "src": "audio/zh/u11-p04.mp3?v=2d3390be28"
+   "dur": 1.11,
+   "src": "audio/zh/u11-p04.mp3?v=3725c380a0"
   },
   "u11-p04.en": {
    "dur": 1.21,
    "src": "audio/en/u11-p04_en.mp3?v=7fa75cfc95"
   },
   "u11-p04.slow": {
-   "dur": 1.33,
-   "src": "audio/zh-slow/u11-p04_slow.mp3?v=af9db65b8b"
+   "dur": 1.88,
+   "src": "audio/zh-slow/u11-p04_slow.mp3?v=c49f90ebc1"
   },
   "u11-p05": {
    "dur": 0.72,
@@ -4761,16 +4761,16 @@
    "src": "audio/zh-slow/u11-s04_slow.mp3?v=f90ab24886"
   },
   "u11-s05": {
-   "dur": 1.98,
-   "src": "audio/zh/u11-s05.mp3?v=3844d8255e"
+   "dur": 2.34,
+   "src": "audio/zh/u11-s05.mp3?v=69b61e389e"
   },
   "u11-s05.en": {
    "dur": 1.85,
    "src": "audio/en/u11-s05_en.mp3?v=39653f85c3"
   },
   "u11-s05.slow": {
-   "dur": 2.9,
-   "src": "audio/zh-slow/u11-s05_slow.mp3?v=098f7a7b8f"
+   "dur": 3.46,
+   "src": "audio/zh-slow/u11-s05_slow.mp3?v=949fe1b00c"
   },
   "u11-s06": {
    "dur": 3.09,
@@ -4821,16 +4821,16 @@
    "src": "audio/zh-slow/u11-w03_slow.mp3?v=3062bc86a8"
   },
   "u11-w04": {
-   "dur": 1.12,
-   "src": "audio/zh/u11-w04.mp3?v=f1d8b99f89"
+   "dur": 0.87,
+   "src": "audio/zh/u11-w04.mp3?v=1be488f04a"
   },
   "u11-w04.en": {
    "dur": 0.8,
    "src": "audio/en/u11-w04_en.mp3?v=b8f8f3a1f1"
   },
   "u11-w04.slow": {
-   "dur": 1.92,
-   "src": "audio/zh-slow/u11-w04_slow.mp3?v=39b0101532"
+   "dur": 1.48,
+   "src": "audio/zh-slow/u11-w04_slow.mp3?v=415389b09f"
   },
   "u11-w05": {
    "dur": 0.65,
@@ -4929,16 +4929,16 @@
    "src": "audio/zh-slow/u11-w12_slow.mp3?v=58998307e2"
   },
   "u12-d01.l1": {
-   "dur": 2.12,
-   "src": "audio/zh/u12-d01_l1.mp3?v=5e01f19e66"
+   "dur": 2.33,
+   "src": "audio/zh/u12-d01_l1.mp3?v=8cc1809a84"
   },
   "u12-d01.l1.en": {
    "dur": 1.99,
    "src": "audio/en/u12-d01_l1_en.mp3?v=0bb25272d6"
   },
   "u12-d01.l1.slow": {
-   "dur": 3.12,
-   "src": "audio/zh-slow/u12-d01_l1_slow.mp3?v=a48ae23c26"
+   "dur": 3.41,
+   "src": "audio/zh-slow/u12-d01_l1_slow.mp3?v=9840111385"
   },
   "u12-d01.l2": {
    "dur": 1.8,
@@ -4953,16 +4953,16 @@
    "src": "audio/zh-slow/u12-d01_l2_slow.mp3?v=4a9b0dd27e"
   },
   "u12-d01.l3": {
-   "dur": 1.51,
-   "src": "audio/zh/u12-d01_l3.mp3?v=a06712dba7"
+   "dur": 1.63,
+   "src": "audio/zh/u12-d01_l3.mp3?v=edf96b527d"
   },
   "u12-d01.l3.en": {
    "dur": 1.14,
    "src": "audio/en/u12-d01_l3_en.mp3?v=de676ae163"
   },
   "u12-d01.l3.slow": {
-   "dur": 2.22,
-   "src": "audio/zh-slow/u12-d01_l3_slow.mp3?v=2f35dd3736"
+   "dur": 2.49,
+   "src": "audio/zh-slow/u12-d01_l3_slow.mp3?v=6502060b4d"
   },
   "u12-d01.l4": {
    "dur": 2.25,
@@ -4989,16 +4989,16 @@
    "src": "audio/zh-slow/u12-d01_l5_slow.mp3?v=9bb5631a47"
   },
   "u12-d01.l6": {
-   "dur": 1.77,
-   "src": "audio/zh/u12-d01_l6.mp3?v=11145486a1"
+   "dur": 1.97,
+   "src": "audio/zh/u12-d01_l6.mp3?v=40aed510e7"
   },
   "u12-d01.l6.en": {
    "dur": 1.7,
    "src": "audio/en/u12-d01_l6_en.mp3?v=a6bb7ff183"
   },
   "u12-d01.l6.slow": {
-   "dur": 2.58,
-   "src": "audio/zh-slow/u12-d01_l6_slow.mp3?v=1daa8c8c96"
+   "dur": 2.87,
+   "src": "audio/zh-slow/u12-d01_l6_slow.mp3?v=7a733c976c"
   },
   "u12-d01.q1.en": {
    "dur": 1.32,
@@ -5009,16 +5009,16 @@
    "src": "audio/en/u12-d01_q2_en.mp3?v=b539ce96d6"
   },
   "u12-d02.l1": {
-   "dur": 1.39,
-   "src": "audio/zh/u12-d02_l1.mp3?v=1efaaa7bf7"
+   "dur": 1.51,
+   "src": "audio/zh/u12-d02_l1.mp3?v=4d7f82c904"
   },
   "u12-d02.l1.en": {
    "dur": 1.09,
    "src": "audio/en/u12-d02_l1_en.mp3?v=b8b81bd115"
   },
   "u12-d02.l1.slow": {
-   "dur": 2.04,
-   "src": "audio/zh-slow/u12-d02_l1_slow.mp3?v=2f04f5755b"
+   "dur": 2.2,
+   "src": "audio/zh-slow/u12-d02_l1_slow.mp3?v=92d72b701f"
   },
   "u12-d02.l2": {
    "dur": 2.01,
@@ -5089,16 +5089,16 @@
    "src": "audio/en/u12-d02_q2_en.mp3?v=989b735865"
   },
   "u12-p01": {
-   "dur": 0.85,
-   "src": "audio/zh/u12-p01.mp3?v=9db71f2b28"
+   "dur": 1.01,
+   "src": "audio/zh/u12-p01.mp3?v=bf68d74854"
   },
   "u12-p01.en": {
    "dur": 0.87,
    "src": "audio/en/u12-p01_en.mp3?v=e2a7d80d58"
   },
   "u12-p01.slow": {
-   "dur": 1.46,
-   "src": "audio/zh-slow/u12-p01_slow.mp3?v=6c325da1cf"
+   "dur": 1.84,
+   "src": "audio/zh-slow/u12-p01_slow.mp3?v=cb643bfa9d"
   },
   "u12-p02": {
    "dur": 1.19,
@@ -5185,16 +5185,16 @@
    "src": "audio/zh-slow/u12-p08_slow.mp3?v=edc2afd744"
   },
   "u12-s01": {
-   "dur": 1.54,
-   "src": "audio/zh/u12-s01.mp3?v=f974b94b3a"
+   "dur": 1.62,
+   "src": "audio/zh/u12-s01.mp3?v=aec66fbefb"
   },
   "u12-s01.en": {
    "dur": 1.28,
    "src": "audio/en/u12-s01_en.mp3?v=66441d3175"
   },
   "u12-s01.slow": {
-   "dur": 2.35,
-   "src": "audio/zh-slow/u12-s01_slow.mp3?v=3520afebac"
+   "dur": 2.37,
+   "src": "audio/zh-slow/u12-s01_slow.mp3?v=7314067f17"
   },
   "u12-s02": {
    "dur": 1.71,
@@ -5341,16 +5341,16 @@
    "src": "audio/zh-slow/u12-w07_slow.mp3?v=37e8d1f639"
   },
   "u12-w08": {
-   "dur": 0.79,
-   "src": "audio/zh/u12-w08.mp3?v=62e42213ef"
+   "dur": 0.69,
+   "src": "audio/zh/u12-w08.mp3?v=3daf860124"
   },
   "u12-w08.en": {
-   "dur": 0.68,
-   "src": "audio/en/u12-w08_en.mp3?v=b8632a6790"
+   "dur": 0.97,
+   "src": "audio/en/u12-w08_en.mp3?v=771abba2a2"
   },
   "u12-w08.slow": {
-   "dur": 1.35,
-   "src": "audio/zh-slow/u12-w08_slow.mp3?v=56f57b5621"
+   "dur": 1.2,
+   "src": "audio/zh-slow/u12-w08_slow.mp3?v=38f9d5b969"
   },
   "u12-w09": {
    "dur": 0.77,
@@ -5389,16 +5389,16 @@
    "src": "audio/zh-slow/u12-w11_slow.mp3?v=a8abbaf968"
   },
   "u12-w12": {
-   "dur": 0.61,
-   "src": "audio/zh/u12-w12.mp3?v=364b61ec74"
+   "dur": 0.71,
+   "src": "audio/zh/u12-w12.mp3?v=3a0f909731"
   },
   "u12-w12.en": {
    "dur": 0.65,
    "src": "audio/en/u12-w12_en.mp3?v=feeb323345"
   },
   "u12-w12.slow": {
-   "dur": 1.04,
-   "src": "audio/zh-slow/u12-w12_slow.mp3?v=ec78b64d17"
+   "dur": 1.22,
+   "src": "audio/zh-slow/u12-w12_slow.mp3?v=13cd5a4eeb"
   },
   "u13-d01.l1": {
    "dur": 2.0,
@@ -5413,16 +5413,16 @@
    "src": "audio/zh-slow/u13-d01_l1_slow.mp3?v=5813fe8ec1"
   },
   "u13-d01.l2": {
-   "dur": 1.79,
-   "src": "audio/zh/u13-d01_l2.mp3?v=f6bf63f327"
+   "dur": 1.95,
+   "src": "audio/zh/u13-d01_l2.mp3?v=10ef4028d3"
   },
   "u13-d01.l2.en": {
    "dur": 2.06,
    "src": "audio/en/u13-d01_l2_en.mp3?v=bfec7e7c4f"
   },
   "u13-d01.l2.slow": {
-   "dur": 2.7,
-   "src": "audio/zh-slow/u13-d01_l2_slow.mp3?v=4d5f27d38c"
+   "dur": 2.85,
+   "src": "audio/zh-slow/u13-d01_l2_slow.mp3?v=d482b3e6c9"
   },
   "u13-d01.l3": {
    "dur": 1.12,
@@ -5505,16 +5505,16 @@
    "src": "audio/zh-slow/u13-d02_l2_slow.mp3?v=281285a0a8"
   },
   "u13-d02.l3": {
-   "dur": 2.59,
-   "src": "audio/zh/u13-d02_l3.mp3?v=8fe50b8849"
+   "dur": 2.5,
+   "src": "audio/zh/u13-d02_l3.mp3?v=5d54c9c1af"
   },
   "u13-d02.l3.en": {
    "dur": 2.09,
    "src": "audio/en/u13-d02_l3_en.mp3?v=24cc0cd955"
   },
   "u13-d02.l3.slow": {
-   "dur": 3.9,
-   "src": "audio/zh-slow/u13-d02_l3_slow.mp3?v=adddbd680d"
+   "dur": 3.66,
+   "src": "audio/zh-slow/u13-d02_l3_slow.mp3?v=974f0589ec"
   },
   "u13-d02.l4": {
    "dur": 1.11,
@@ -5529,16 +5529,16 @@
    "src": "audio/zh-slow/u13-d02_l4_slow.mp3?v=a057dbc4f5"
   },
   "u13-d02.l5": {
-   "dur": 1.98,
-   "src": "audio/zh/u13-d02_l5.mp3?v=a38a0b8350"
+   "dur": 2.15,
+   "src": "audio/zh/u13-d02_l5.mp3?v=105cbaf17e"
   },
   "u13-d02.l5.en": {
    "dur": 1.59,
    "src": "audio/en/u13-d02_l5_en.mp3?v=f8133ab167"
   },
   "u13-d02.l5.slow": {
-   "dur": 2.9,
-   "src": "audio/zh-slow/u13-d02_l5_slow.mp3?v=8950283448"
+   "dur": 3.14,
+   "src": "audio/zh-slow/u13-d02_l5_slow.mp3?v=dfe8899ca0"
   },
   "u13-d02.l6": {
    "dur": 2.22,
@@ -5573,28 +5573,28 @@
    "src": "audio/zh-slow/u13-p01_slow.mp3?v=4ecfca2d91"
   },
   "u13-p02": {
-   "dur": 1.37,
-   "src": "audio/zh/u13-p02.mp3?v=b75ea622ba"
+   "dur": 1.2,
+   "src": "audio/zh/u13-p02.mp3?v=812a772d09"
   },
   "u13-p02.en": {
    "dur": 0.9,
    "src": "audio/en/u13-p02_en.mp3?v=8d8fd93dc0"
   },
   "u13-p02.slow": {
-   "dur": 2.34,
-   "src": "audio/zh-slow/u13-p02_slow.mp3?v=25f721c757"
+   "dur": 2.05,
+   "src": "audio/zh-slow/u13-p02_slow.mp3?v=832f4e9987"
   },
   "u13-p03": {
-   "dur": 1.3,
-   "src": "audio/zh/u13-p03.mp3?v=29a2e7759d"
+   "dur": 1.01,
+   "src": "audio/zh/u13-p03.mp3?v=e573401479"
   },
   "u13-p03.en": {
    "dur": 0.96,
    "src": "audio/en/u13-p03_en.mp3?v=0387f2773a"
   },
   "u13-p03.slow": {
-   "dur": 2.1,
-   "src": "audio/zh-slow/u13-p03_slow.mp3?v=458c074605"
+   "dur": 1.71,
+   "src": "audio/zh-slow/u13-p03_slow.mp3?v=350abaae2f"
   },
   "u13-p04": {
    "dur": 1.16,
@@ -5705,16 +5705,16 @@
    "src": "audio/zh-slow/u13-s04_slow.mp3?v=3d95b17844"
   },
   "u13-s05": {
-   "dur": 3.29,
-   "src": "audio/zh/u13-s05.mp3?v=b231c9cd0b"
+   "dur": 3.12,
+   "src": "audio/zh/u13-s05.mp3?v=b93a8e36b8"
   },
   "u13-s05.en": {
    "dur": 2.6,
    "src": "audio/en/u13-s05_en.mp3?v=338a7ad61e"
   },
   "u13-s05.slow": {
-   "dur": 4.86,
-   "src": "audio/zh-slow/u13-s05_slow.mp3?v=9a624d0919"
+   "dur": 4.61,
+   "src": "audio/zh-slow/u13-s05_slow.mp3?v=8c7778361e"
   },
   "u13-s06": {
    "dur": 2.85,
@@ -5909,16 +5909,16 @@
    "src": "audio/zh-slow/u14-d01_l3_slow.mp3?v=62f4da67ac"
   },
   "u14-d01.l4": {
-   "dur": 2.09,
-   "src": "audio/zh/u14-d01_l4.mp3?v=7c84a09252"
+   "dur": 2.19,
+   "src": "audio/zh/u14-d01_l4.mp3?v=ecddaa82e7"
   },
   "u14-d01.l4.en": {
    "dur": 1.6,
    "src": "audio/en/u14-d01_l4_en.mp3?v=193d2df68e"
   },
   "u14-d01.l4.slow": {
-   "dur": 3.08,
-   "src": "audio/zh-slow/u14-d01_l4_slow.mp3?v=39db92c72d"
+   "dur": 3.24,
+   "src": "audio/zh-slow/u14-d01_l4_slow.mp3?v=170ce52f39"
   },
   "u14-d01.l5": {
    "dur": 2.28,
@@ -5977,16 +5977,16 @@
    "src": "audio/zh-slow/u14-d02_l3_slow.mp3?v=1deeb530db"
   },
   "u14-d02.l4": {
-   "dur": 2.6,
-   "src": "audio/zh/u14-d02_l4.mp3?v=0fe8afda09"
+   "dur": 2.43,
+   "src": "audio/zh/u14-d02_l4.mp3?v=64eb5a7d1f"
   },
   "u14-d02.l4.en": {
-   "dur": 2.24,
-   "src": "audio/en/u14-d02_l4_en.mp3?v=da4f38d207"
+   "dur": 2.36,
+   "src": "audio/en/u14-d02_l4_en.mp3?v=e6cba63ae2"
   },
   "u14-d02.l4.slow": {
-   "dur": 3.83,
-   "src": "audio/zh-slow/u14-d02_l4_slow.mp3?v=b7a85b7943"
+   "dur": 3.59,
+   "src": "audio/zh-slow/u14-d02_l4_slow.mp3?v=6956d449ac"
   },
   "u14-d02.l5": {
    "dur": 3.53,
@@ -6321,16 +6321,16 @@
    "src": "audio/zh-slow/u14-w12_slow.mp3?v=40dcd24039"
   },
   "u15-d01.l1": {
-   "dur": 1.59,
-   "src": "audio/zh/u15-d01_l1.mp3?v=1cbac5b3b9"
+   "dur": 1.73,
+   "src": "audio/zh/u15-d01_l1.mp3?v=773b1fd201"
   },
   "u15-d01.l1.en": {
    "dur": 1.01,
    "src": "audio/en/u15-d01_l1_en.mp3?v=5256a2cdd3"
   },
   "u15-d01.l1.slow": {
-   "dur": 2.33,
-   "src": "audio/zh-slow/u15-d01_l1_slow.mp3?v=c84b388122"
+   "dur": 2.53,
+   "src": "audio/zh-slow/u15-d01_l1_slow.mp3?v=1ad5ba8034"
   },
   "u15-d01.l2": {
    "dur": 2.14,
@@ -6393,16 +6393,16 @@
    "src": "audio/zh-slow/u15-d01_l6_slow.mp3?v=b20a99e10c"
   },
   "u15-d01.l7": {
-   "dur": 2.09,
-   "src": "audio/zh/u15-d01_l7.mp3?v=6b72c5ede7"
+   "dur": 2.23,
+   "src": "audio/zh/u15-d01_l7.mp3?v=83ffb767b2"
   },
   "u15-d01.l7.en": {
    "dur": 1.71,
    "src": "audio/en/u15-d01_l7_en.mp3?v=cf7e54d669"
   },
   "u15-d01.l7.slow": {
-   "dur": 3.09,
-   "src": "audio/zh-slow/u15-d01_l7_slow.mp3?v=c19dc01ad9"
+   "dur": 3.29,
+   "src": "audio/zh-slow/u15-d01_l7_slow.mp3?v=8fd6013ba8"
   },
   "u15-d01.q1.en": {
    "dur": 1.24,
@@ -6473,16 +6473,16 @@
    "src": "audio/zh-slow/u15-d02_l5_slow.mp3?v=33f58e0a38"
   },
   "u15-d02.l6": {
-   "dur": 2.09,
-   "src": "audio/zh/u15-d02_l6.mp3?v=fd96058d49"
+   "dur": 2.17,
+   "src": "audio/zh/u15-d02_l6.mp3?v=d3f3240b6d"
   },
   "u15-d02.l6.en": {
    "dur": 1.72,
    "src": "audio/en/u15-d02_l6_en.mp3?v=9d25756048"
   },
   "u15-d02.l6.slow": {
-   "dur": 3.09,
-   "src": "audio/zh-slow/u15-d02_l6_slow.mp3?v=9e4b1ae2b9"
+   "dur": 3.18,
+   "src": "audio/zh-slow/u15-d02_l6_slow.mp3?v=aa77d5e5f9"
   },
   "u15-d02.q1.en": {
    "dur": 1.33,
@@ -6865,16 +6865,16 @@
    "src": "audio/zh-slow/u16-d01_l5_slow.mp3?v=6925a4ac2a"
   },
   "u16-d01.l6": {
-   "dur": 2.07,
-   "src": "audio/zh/u16-d01_l6.mp3?v=ac6f3f6349"
+   "dur": 2.27,
+   "src": "audio/zh/u16-d01_l6.mp3?v=32d855b7d0"
   },
   "u16-d01.l6.en": {
    "dur": 1.78,
    "src": "audio/en/u16-d01_l6_en.mp3?v=6518b7e855"
   },
   "u16-d01.l6.slow": {
-   "dur": 3.06,
-   "src": "audio/zh-slow/u16-d01_l6_slow.mp3?v=647027d3fc"
+   "dur": 3.36,
+   "src": "audio/zh-slow/u16-d01_l6_slow.mp3?v=0730709850"
   },
   "u16-d01.q1.en": {
    "dur": 1.46,
@@ -6921,16 +6921,16 @@
    "src": "audio/zh-slow/u16-d02_l3_slow.mp3?v=808fe856eb"
   },
   "u16-d02.l4": {
-   "dur": 2.39,
-   "src": "audio/zh/u16-d02_l4.mp3?v=5afdbadd51"
+   "dur": 2.52,
+   "src": "audio/zh/u16-d02_l4.mp3?v=dba4fd525a"
   },
   "u16-d02.l4.en": {
    "dur": 1.76,
    "src": "audio/en/u16-d02_l4_en.mp3?v=50c672e6e2"
   },
   "u16-d02.l4.slow": {
-   "dur": 3.53,
-   "src": "audio/zh-slow/u16-d02_l4_slow.mp3?v=db9942927d"
+   "dur": 3.71,
+   "src": "audio/zh-slow/u16-d02_l4_slow.mp3?v=5e47e92fd3"
   },
   "u16-d02.l5": {
    "dur": 1.32,
@@ -6989,16 +6989,16 @@
    "src": "audio/zh-slow/u16-p01_slow.mp3?v=cdd80fdbe0"
   },
   "u16-p02": {
-   "dur": 1.13,
-   "src": "audio/zh/u16-p02.mp3?v=8b611a2c75"
+   "dur": 1.24,
+   "src": "audio/zh/u16-p02.mp3?v=fb4c3855fc"
   },
   "u16-p02.en": {
    "dur": 0.98,
    "src": "audio/en/u16-p02_en.mp3?v=27be09db7a"
   },
   "u16-p02.slow": {
-   "dur": 1.92,
-   "src": "audio/zh-slow/u16-p02_slow.mp3?v=010fa3bea2"
+   "dur": 2.09,
+   "src": "audio/zh-slow/u16-p02_slow.mp3?v=724b296875"
   },
   "u16-p03": {
    "dur": 1.03,
@@ -7289,16 +7289,16 @@
    "src": "audio/zh-slow/u16-w12_slow.mp3?v=efd7db6ee6"
   },
   "u17-d01.l1": {
-   "dur": 2.03,
-   "src": "audio/zh/u17-d01_l1.mp3?v=37be956bf1"
+   "dur": 2.19,
+   "src": "audio/zh/u17-d01_l1.mp3?v=211b25e916"
   },
   "u17-d01.l1.en": {
    "dur": 1.73,
    "src": "audio/en/u17-d01_l1_en.mp3?v=25439c99e2"
   },
   "u17-d01.l1.slow": {
-   "dur": 3.0,
-   "src": "audio/zh-slow/u17-d01_l1_slow.mp3?v=51a7692dc7"
+   "dur": 3.26,
+   "src": "audio/zh-slow/u17-d01_l1_slow.mp3?v=0966e9d069"
   },
   "u17-d01.l2": {
    "dur": 2.68,
@@ -7325,16 +7325,16 @@
    "src": "audio/zh-slow/u17-d01_l3_slow.mp3?v=50906310cf"
   },
   "u17-d01.l4": {
-   "dur": 3.71,
-   "src": "audio/zh/u17-d01_l4.mp3?v=dd255762c3"
+   "dur": 3.5,
+   "src": "audio/zh/u17-d01_l4.mp3?v=4fb37522f7"
   },
   "u17-d01.l4.en": {
    "dur": 2.96,
    "src": "audio/en/u17-d01_l4_en.mp3?v=4f7b612131"
   },
   "u17-d01.l4.slow": {
-   "dur": 5.44,
-   "src": "audio/zh-slow/u17-d01_l4_slow.mp3?v=5de8fceb28"
+   "dur": 5.18,
+   "src": "audio/zh-slow/u17-d01_l4_slow.mp3?v=0c3ead7db1"
   },
   "u17-d01.l5": {
    "dur": 4.61,
@@ -7430,15 +7430,15 @@
   },
   "u17-d02.l5": {
    "dur": 3.14,
-   "src": "audio/zh/u17-d02_l5.mp3?v=4c9dd00228"
+   "src": "audio/zh/u17-d02_l5.mp3?v=4ccd60b763"
   },
   "u17-d02.l5.en": {
    "dur": 2.4,
    "src": "audio/en/u17-d02_l5_en.mp3?v=af9911c838"
   },
   "u17-d02.l5.slow": {
-   "dur": 4.73,
-   "src": "audio/zh-slow/u17-d02_l5_slow.mp3?v=34b27a84dc"
+   "dur": 4.7,
+   "src": "audio/zh-slow/u17-d02_l5_slow.mp3?v=9c4d635aa2"
   },
   "u17-d02.l6": {
    "dur": 2.78,
@@ -7569,16 +7569,16 @@
    "src": "audio/zh-slow/u17-p07_slow.mp3?v=84218a4625"
   },
   "u17-p08": {
-   "dur": 1.22,
-   "src": "audio/zh/u17-p08.mp3?v=a55acf6cee"
+   "dur": 1.04,
+   "src": "audio/zh/u17-p08.mp3?v=b16cf1d36a"
   },
   "u17-p08.en": {
    "dur": 0.99,
    "src": "audio/en/u17-p08_en.mp3?v=dda9eb7c7c"
   },
   "u17-p08.slow": {
-   "dur": 2.12,
-   "src": "audio/zh-slow/u17-p08_slow.mp3?v=cb71b34718"
+   "dur": 1.78,
+   "src": "audio/zh-slow/u17-p08_slow.mp3?v=f1948a5ee5"
   },
   "u17-s01": {
    "dur": 1.62,
@@ -7593,16 +7593,16 @@
    "src": "audio/zh-slow/u17-s01_slow.mp3?v=46d451a87e"
   },
   "u17-s02": {
-   "dur": 1.65,
-   "src": "audio/zh/u17-s02.mp3?v=ce57fd0dd9"
+   "dur": 1.73,
+   "src": "audio/zh/u17-s02.mp3?v=96122d946e"
   },
   "u17-s02.en": {
    "dur": 1.37,
    "src": "audio/en/u17-s02_en.mp3?v=e5a0621d57"
   },
   "u17-s02.slow": {
-   "dur": 2.43,
-   "src": "audio/zh-slow/u17-s02_slow.mp3?v=0ed39e9b60"
+   "dur": 2.55,
+   "src": "audio/zh-slow/u17-s02_slow.mp3?v=ac61c879d1"
   },
   "u17-s03": {
    "dur": 2.16,
@@ -7845,8 +7845,8 @@
    "src": "audio/zh-slow/u18-d01_l4_slow.mp3?v=f4801d309c"
   },
   "u18-d01.l5": {
-   "dur": 2.34,
-   "src": "audio/zh/u18-d01_l5.mp3?v=6ebf7606f6"
+   "dur": 2.36,
+   "src": "audio/zh/u18-d01_l5.mp3?v=f393aaa8dd"
   },
   "u18-d01.l5.en": {
    "dur": 2.04,
@@ -7854,7 +7854,7 @@
   },
   "u18-d01.l5.slow": {
    "dur": 3.47,
-   "src": "audio/zh-slow/u18-d01_l5_slow.mp3?v=fdb9314f54"
+   "src": "audio/zh-slow/u18-d01_l5_slow.mp3?v=c25aa999bf"
   },
   "u18-d01.l6": {
    "dur": 2.23,
@@ -7901,16 +7901,16 @@
    "src": "audio/zh-slow/u18-d02_l1_slow.mp3?v=5db9e95649"
   },
   "u18-d02.l2": {
-   "dur": 3.13,
-   "src": "audio/zh/u18-d02_l2.mp3?v=65e7372ff7"
+   "dur": 2.97,
+   "src": "audio/zh/u18-d02_l2.mp3?v=6149a424f7"
   },
   "u18-d02.l2.en": {
    "dur": 2.47,
    "src": "audio/en/u18-d02_l2_en.mp3?v=f5e127ddf7"
   },
   "u18-d02.l2.slow": {
-   "dur": 4.63,
-   "src": "audio/zh-slow/u18-d02_l2_slow.mp3?v=8b99f5924e"
+   "dur": 4.36,
+   "src": "audio/zh-slow/u18-d02_l2_slow.mp3?v=a46e852363"
   },
   "u18-d02.l3": {
    "dur": 2.4,
@@ -8053,16 +8053,16 @@
    "src": "audio/zh-slow/u18-p05_slow.mp3?v=df687be021"
   },
   "u18-p06": {
-   "dur": 1.15,
-   "src": "audio/zh/u18-p06.mp3?v=a07e7f3ff8"
+   "dur": 1.14,
+   "src": "audio/zh/u18-p06.mp3?v=d6a3aba476"
   },
   "u18-p06.en": {
    "dur": 1.03,
    "src": "audio/en/u18-p06_en.mp3?v=e064b26667"
   },
   "u18-p06.slow": {
-   "dur": 1.97,
-   "src": "audio/zh-slow/u18-p06_slow.mp3?v=f756c50e32"
+   "dur": 1.94,
+   "src": "audio/zh-slow/u18-p06_slow.mp3?v=b00331afcb"
   },
   "u18-p07": {
    "dur": 1.02,
@@ -8125,28 +8125,28 @@
    "src": "audio/zh-slow/u18-s03_slow.mp3?v=8f4bc1c786"
   },
   "u18-s04": {
-   "dur": 3.36,
-   "src": "audio/zh/u18-s04.mp3?v=04866b7d1f"
+   "dur": 3.15,
+   "src": "audio/zh/u18-s04.mp3?v=b802ac2706"
   },
   "u18-s04.en": {
    "dur": 2.45,
    "src": "audio/en/u18-s04_en.mp3?v=04bc11ea78"
   },
   "u18-s04.slow": {
-   "dur": 4.96,
-   "src": "audio/zh-slow/u18-s04_slow.mp3?v=0717e5cf8c"
+   "dur": 4.64,
+   "src": "audio/zh-slow/u18-s04_slow.mp3?v=9882a2e1aa"
   },
   "u18-s05": {
-   "dur": 2.41,
-   "src": "audio/zh/u18-s05.mp3?v=84f0201c78"
+   "dur": 2.43,
+   "src": "audio/zh/u18-s05.mp3?v=9cea59f1db"
   },
   "u18-s05.en": {
-   "dur": 2.05,
-   "src": "audio/en/u18-s05_en.mp3?v=81dbeaf966"
+   "dur": 2.58,
+   "src": "audio/en/u18-s05_en.mp3?v=9c785e92bc"
   },
   "u18-s05.slow": {
-   "dur": 3.55,
-   "src": "audio/zh-slow/u18-s05_slow.mp3?v=f6cdb561df"
+   "dur": 3.56,
+   "src": "audio/zh-slow/u18-s05_slow.mp3?v=7faf7d0f7c"
   },
   "u18-s06": {
    "dur": 2.68,
@@ -8353,28 +8353,28 @@
    "src": "audio/zh-slow/u19-d01_l4_slow.mp3?v=6ab1b0f336"
   },
   "u19-d01.l5": {
-   "dur": 1.96,
-   "src": "audio/zh/u19-d01_l5.mp3?v=01b6006f08"
+   "dur": 2.03,
+   "src": "audio/zh/u19-d01_l5.mp3?v=3d5fde3d34"
   },
   "u19-d01.l5.en": {
    "dur": 1.69,
    "src": "audio/en/u19-d01_l5_en.mp3?v=450c4f725b"
   },
   "u19-d01.l5.slow": {
-   "dur": 2.86,
-   "src": "audio/zh-slow/u19-d01_l5_slow.mp3?v=06324a1dff"
+   "dur": 2.97,
+   "src": "audio/zh-slow/u19-d01_l5_slow.mp3?v=bcc99786e4"
   },
   "u19-d01.l6": {
-   "dur": 2.95,
-   "src": "audio/zh/u19-d01_l6.mp3?v=bede2e2c1f"
+   "dur": 3.01,
+   "src": "audio/zh/u19-d01_l6.mp3?v=fe3ef37563"
   },
   "u19-d01.l6.en": {
    "dur": 2.38,
    "src": "audio/en/u19-d01_l6_en.mp3?v=4095299dc1"
   },
   "u19-d01.l6.slow": {
-   "dur": 4.31,
-   "src": "audio/zh-slow/u19-d01_l6_slow.mp3?v=2a9f5b0461"
+   "dur": 4.41,
+   "src": "audio/zh-slow/u19-d01_l6_slow.mp3?v=7062e24504"
   },
   "u19-d01.l7": {
    "dur": 2.31,
@@ -8397,28 +8397,28 @@
    "src": "audio/en/u19-d01_q2_en.mp3?v=d1836a88a9"
   },
   "u19-d02.l1": {
-   "dur": 3.56,
-   "src": "audio/zh/u19-d02_l1.mp3?v=c4f133af29"
+   "dur": 3.47,
+   "src": "audio/zh/u19-d02_l1.mp3?v=9a189d489e"
   },
   "u19-d02.l1.en": {
    "dur": 2.99,
    "src": "audio/en/u19-d02_l1_en.mp3?v=2c000e9219"
   },
   "u19-d02.l1.slow": {
-   "dur": 5.28,
-   "src": "audio/zh-slow/u19-d02_l1_slow.mp3?v=c7908e1274"
+   "dur": 5.14,
+   "src": "audio/zh-slow/u19-d02_l1_slow.mp3?v=831687ac58"
   },
   "u19-d02.l2": {
-   "dur": 1.35,
-   "src": "audio/zh/u19-d02_l2.mp3?v=640df16f88"
+   "dur": 1.49,
+   "src": "audio/zh/u19-d02_l2.mp3?v=de3db1ecb2"
   },
   "u19-d02.l2.en": {
    "dur": 1.47,
    "src": "audio/en/u19-d02_l2_en.mp3?v=36eda647dd"
   },
   "u19-d02.l2.slow": {
-   "dur": 1.98,
-   "src": "audio/zh-slow/u19-d02_l2_slow.mp3?v=2ed91cc7ce"
+   "dur": 2.2,
+   "src": "audio/zh-slow/u19-d02_l2_slow.mp3?v=3a95c914c0"
   },
   "u19-d02.l3": {
    "dur": 1.73,
@@ -8445,40 +8445,40 @@
    "src": "audio/zh-slow/u19-d02_l4_slow.mp3?v=6bd78d6971"
   },
   "u19-d02.l5": {
-   "dur": 2.35,
-   "src": "audio/zh/u19-d02_l5.mp3?v=944660029d"
+   "dur": 2.49,
+   "src": "audio/zh/u19-d02_l5.mp3?v=2bb45acd55"
   },
   "u19-d02.l5.en": {
    "dur": 1.66,
    "src": "audio/en/u19-d02_l5_en.mp3?v=e5bb79ca07"
   },
   "u19-d02.l5.slow": {
-   "dur": 3.46,
-   "src": "audio/zh-slow/u19-d02_l5_slow.mp3?v=13be4e82f7"
+   "dur": 3.68,
+   "src": "audio/zh-slow/u19-d02_l5_slow.mp3?v=54fe55e7df"
   },
   "u19-d02.l6": {
-   "dur": 2.99,
-   "src": "audio/zh/u19-d02_l6.mp3?v=9631d6d807"
+   "dur": 2.94,
+   "src": "audio/zh/u19-d02_l6.mp3?v=0f3a5333b0"
   },
   "u19-d02.l6.en": {
    "dur": 2.85,
    "src": "audio/en/u19-d02_l6_en.mp3?v=a9c121ac4f"
   },
   "u19-d02.l6.slow": {
-   "dur": 4.76,
-   "src": "audio/zh-slow/u19-d02_l6_slow.mp3?v=ee7346542a"
+   "dur": 4.74,
+   "src": "audio/zh-slow/u19-d02_l6_slow.mp3?v=bd0750f82b"
   },
   "u19-d02.l7": {
-   "dur": 2.94,
-   "src": "audio/zh/u19-d02_l7.mp3?v=8e59d4a82a"
+   "dur": 2.73,
+   "src": "audio/zh/u19-d02_l7.mp3?v=cad67639db"
   },
   "u19-d02.l7.en": {
    "dur": 2.65,
    "src": "audio/en/u19-d02_l7_en.mp3?v=842070b172"
   },
   "u19-d02.l7.slow": {
-   "dur": 4.42,
-   "src": "audio/zh-slow/u19-d02_l7_slow.mp3?v=f16b924f37"
+   "dur": 4.1,
+   "src": "audio/zh-slow/u19-d02_l7_slow.mp3?v=50eba0e106"
   },
   "u19-d02.q1.en": {
    "dur": 1.53,
@@ -8489,16 +8489,16 @@
    "src": "audio/en/u19-d02_q2_en.mp3?v=722769b193"
   },
   "u19-p01": {
-   "dur": 1.01,
-   "src": "audio/zh/u19-p01.mp3?v=ee2ac0e190"
+   "dur": 1.29,
+   "src": "audio/zh/u19-p01.mp3?v=37f0d2be7f"
   },
   "u19-p01.en": {
    "dur": 0.96,
    "src": "audio/en/u19-p01_en.mp3?v=7b5b1342f4"
   },
   "u19-p01.slow": {
-   "dur": 1.72,
-   "src": "audio/zh-slow/u19-p01_slow.mp3?v=fc39f2c0c4"
+   "dur": 2.16,
+   "src": "audio/zh-slow/u19-p01_slow.mp3?v=fe69bb1058"
   },
   "u19-p02": {
    "dur": 0.8,
@@ -8537,16 +8537,16 @@
    "src": "audio/zh-slow/u19-p04_slow.mp3?v=ca86c1995c"
   },
   "u19-p05": {
-   "dur": 1.16,
-   "src": "audio/zh/u19-p05.mp3?v=6d1a245135"
+   "dur": 1.06,
+   "src": "audio/zh/u19-p05.mp3?v=13f79279e9"
   },
   "u19-p05.en": {
    "dur": 1.26,
    "src": "audio/en/u19-p05_en.mp3?v=c9f0f3f189"
   },
   "u19-p05.slow": {
-   "dur": 2.01,
-   "src": "audio/zh-slow/u19-p05_slow.mp3?v=b997b895df"
+   "dur": 1.79,
+   "src": "audio/zh-slow/u19-p05_slow.mp3?v=64b029e7fb"
   },
   "u19-p06": {
    "dur": 0.74,
@@ -8645,16 +8645,16 @@
    "src": "audio/zh-slow/u19-s05_slow.mp3?v=3d84f6daf7"
   },
   "u19-s06": {
-   "dur": 2.69,
-   "src": "audio/zh/u19-s06.mp3?v=a75c23a915"
+   "dur": 2.52,
+   "src": "audio/zh/u19-s06.mp3?v=4d94f0bf62"
   },
   "u19-s06.en": {
    "dur": 2.21,
    "src": "audio/en/u19-s06_en.mp3?v=63c1c0131d"
   },
   "u19-s06.slow": {
-   "dur": 3.96,
-   "src": "audio/zh-slow/u19-s06_slow.mp3?v=bc2aad5b79"
+   "dur": 3.78,
+   "src": "audio/zh-slow/u19-s06_slow.mp3?v=e48c662d1a"
   },
   "u19-w01": {
    "dur": 0.8,
@@ -8789,16 +8789,16 @@
    "src": "audio/zh-slow/u19-w11_slow.mp3?v=a4a933d8ea"
   },
   "u19-w12": {
-   "dur": 0.88,
-   "src": "audio/zh/u19-w12.mp3?v=d721b423a3"
+   "dur": 0.85,
+   "src": "audio/zh/u19-w12.mp3?v=13b1f993ce"
   },
   "u19-w12.en": {
    "dur": 1.02,
    "src": "audio/en/u19-w12_en.mp3?v=dade807a7d"
   },
   "u19-w12.slow": {
-   "dur": 1.5,
-   "src": "audio/zh-slow/u19-w12_slow.mp3?v=64af696082"
+   "dur": 1.47,
+   "src": "audio/zh-slow/u19-w12_slow.mp3?v=c45299d11c"
   },
   "u20-d01.l1": {
    "dur": 1.92,
@@ -8861,16 +8861,16 @@
    "src": "audio/zh-slow/u20-d01_l5_slow.mp3?v=971f8b011d"
   },
   "u20-d01.l6": {
-   "dur": 2.09,
-   "src": "audio/zh/u20-d01_l6.mp3?v=48d3559b7e"
+   "dur": 2.14,
+   "src": "audio/zh/u20-d01_l6.mp3?v=8e7b5fb6e3"
   },
   "u20-d01.l6.en": {
    "dur": 2.0,
    "src": "audio/en/u20-d01_l6_en.mp3?v=3410e14a14"
   },
   "u20-d01.l6.slow": {
-   "dur": 3.06,
-   "src": "audio/zh-slow/u20-d01_l6_slow.mp3?v=3f6996993f"
+   "dur": 3.14,
+   "src": "audio/zh-slow/u20-d01_l6_slow.mp3?v=483bb1d3d0"
   },
   "u20-d01.l7": {
    "dur": 5.0,
@@ -8905,16 +8905,16 @@
    "src": "audio/en/u20-d01_q2_en.mp3?v=147586cace"
   },
   "u20-d02.l1": {
-   "dur": 2.28,
-   "src": "audio/zh/u20-d02_l1.mp3?v=cf43c112ae"
+   "dur": 2.59,
+   "src": "audio/zh/u20-d02_l1.mp3?v=20c09c0f0a"
   },
   "u20-d02.l1.en": {
    "dur": 1.66,
    "src": "audio/en/u20-d02_l1_en.mp3?v=b6f7fb60fc"
   },
   "u20-d02.l1.slow": {
-   "dur": 3.32,
-   "src": "audio/zh-slow/u20-d02_l1_slow.mp3?v=65a0419a16"
+   "dur": 3.79,
+   "src": "audio/zh-slow/u20-d02_l1_slow.mp3?v=56673b349c"
   },
   "u20-d02.l2": {
    "dur": 3.26,
@@ -8965,16 +8965,16 @@
    "src": "audio/zh-slow/u20-d02_l5_slow.mp3?v=2a0b855565"
   },
   "u20-d02.l6": {
-   "dur": 1.85,
-   "src": "audio/zh/u20-d02_l6.mp3?v=2af11ca05d"
+   "dur": 2.02,
+   "src": "audio/zh/u20-d02_l6.mp3?v=52f393c352"
   },
   "u20-d02.l6.en": {
    "dur": 1.79,
    "src": "audio/en/u20-d02_l6_en.mp3?v=1a43831592"
   },
   "u20-d02.l6.slow": {
-   "dur": 2.71,
-   "src": "audio/zh-slow/u20-d02_l6_slow.mp3?v=73f909186a"
+   "dur": 2.98,
+   "src": "audio/zh-slow/u20-d02_l6_slow.mp3?v=212a880aad"
   },
   "u20-d02.l7": {
    "dur": 1.47,
@@ -9105,16 +9105,16 @@
    "src": "audio/zh-slow/u20-p08_slow.mp3?v=6b6669e358"
   },
   "u20-s01": {
-   "dur": 1.79,
-   "src": "audio/zh/u20-s01.mp3?v=41091bf2db"
+   "dur": 1.96,
+   "src": "audio/zh/u20-s01.mp3?v=9cf6c83f50"
   },
   "u20-s01.en": {
    "dur": 1.34,
    "src": "audio/en/u20-s01_en.mp3?v=a4994a4198"
   },
   "u20-s01.slow": {
-   "dur": 2.62,
-   "src": "audio/zh-slow/u20-s01_slow.mp3?v=b59eb8f859"
+   "dur": 2.86,
+   "src": "audio/zh-slow/u20-s01_slow.mp3?v=5e772f10e1"
   },
   "u20-s02": {
    "dur": 1.91,
@@ -9357,16 +9357,16 @@
    "src": "audio/zh-slow/u21-d01_l3_slow.mp3?v=04b2d42dea"
   },
   "u21-d01.l4": {
-   "dur": 3.88,
-   "src": "audio/zh/u21-d01_l4.mp3?v=f87fca6130"
+   "dur": 3.77,
+   "src": "audio/zh/u21-d01_l4.mp3?v=0cef13f8f5"
   },
   "u21-d01.l4.en": {
    "dur": 3.16,
    "src": "audio/en/u21-d01_l4_en.mp3?v=d06041a622"
   },
   "u21-d01.l4.slow": {
-   "dur": 5.71,
-   "src": "audio/zh-slow/u21-d01_l4_slow.mp3?v=8a04ed47f2"
+   "dur": 5.56,
+   "src": "audio/zh-slow/u21-d01_l4_slow.mp3?v=16fee0abfb"
   },
   "u21-d01.l5": {
    "dur": 2.04,
@@ -9405,16 +9405,16 @@
    "src": "audio/zh-slow/u21-d01_l7_slow.mp3?v=619a511e1b"
   },
   "u21-d01.l8": {
-   "dur": 3.33,
-   "src": "audio/zh/u21-d01_l8.mp3?v=a72449f757"
+   "dur": 3.18,
+   "src": "audio/zh/u21-d01_l8.mp3?v=da550057b9"
   },
   "u21-d01.l8.en": {
    "dur": 2.92,
    "src": "audio/en/u21-d01_l8_en.mp3?v=ddb849f362"
   },
   "u21-d01.l8.slow": {
-   "dur": 4.95,
-   "src": "audio/zh-slow/u21-d01_l8_slow.mp3?v=33d86ef580"
+   "dur": 4.73,
+   "src": "audio/zh-slow/u21-d01_l8_slow.mp3?v=1430e57d59"
   },
   "u21-d01.q1.en": {
    "dur": 1.75,
@@ -9437,16 +9437,16 @@
    "src": "audio/zh-slow/u21-d02_l1_slow.mp3?v=d78c4c9339"
   },
   "u21-d02.l2": {
-   "dur": 2.75,
-   "src": "audio/zh/u21-d02_l2.mp3?v=c3fb46a296"
+   "dur": 2.85,
+   "src": "audio/zh/u21-d02_l2.mp3?v=942419e957"
   },
   "u21-d02.l2.en": {
    "dur": 2.37,
    "src": "audio/en/u21-d02_l2_en.mp3?v=c3b6c81428"
   },
   "u21-d02.l2.slow": {
-   "dur": 4.05,
-   "src": "audio/zh-slow/u21-d02_l2_slow.mp3?v=99f5e219ad"
+   "dur": 4.2,
+   "src": "audio/zh-slow/u21-d02_l2_slow.mp3?v=02a8206ab1"
   },
   "u21-d02.l3": {
    "dur": 3.62,
@@ -9485,16 +9485,16 @@
    "src": "audio/zh-slow/u21-d02_l5_slow.mp3?v=a8aefee644"
   },
   "u21-d02.l6": {
-   "dur": 2.74,
-   "src": "audio/zh/u21-d02_l6.mp3?v=ea82c2e3d6"
+   "dur": 2.82,
+   "src": "audio/zh/u21-d02_l6.mp3?v=b6151a66d6"
   },
   "u21-d02.l6.en": {
    "dur": 2.03,
    "src": "audio/en/u21-d02_l6_en.mp3?v=7d5b3aa8a4"
   },
   "u21-d02.l6.slow": {
-   "dur": 4.04,
-   "src": "audio/zh-slow/u21-d02_l6_slow.mp3?v=e2047ca6d0"
+   "dur": 4.14,
+   "src": "audio/zh-slow/u21-d02_l6_slow.mp3?v=45681937e5"
   },
   "u21-d02.l7": {
    "dur": 3.34,
@@ -9649,16 +9649,16 @@
    "src": "audio/zh-slow/u21-s02_slow.mp3?v=fade9d8111"
   },
   "u21-s03": {
-   "dur": 2.23,
-   "src": "audio/zh/u21-s03.mp3?v=c0bf6ede40"
+   "dur": 2.08,
+   "src": "audio/zh/u21-s03.mp3?v=a5b5eb4a9a"
   },
   "u21-s03.en": {
    "dur": 1.56,
    "src": "audio/en/u21-s03_en.mp3?v=ab1f14c48b"
   },
   "u21-s03.slow": {
-   "dur": 3.28,
-   "src": "audio/zh-slow/u21-s03_slow.mp3?v=c9575fde74"
+   "dur": 3.06,
+   "src": "audio/zh-slow/u21-s03_slow.mp3?v=bf8839004c"
   },
   "u21-s04": {
    "dur": 2.76,
@@ -9685,16 +9685,16 @@
    "src": "audio/zh-slow/u21-s05_slow.mp3?v=1d27e668a7"
   },
   "u21-s06": {
-   "dur": 3.75,
-   "src": "audio/zh/u21-s06.mp3?v=11f95069c4"
+   "dur": 3.68,
+   "src": "audio/zh/u21-s06.mp3?v=0f25bc0e1b"
   },
   "u21-s06.en": {
    "dur": 2.61,
    "src": "audio/en/u21-s06_en.mp3?v=1f6252a616"
   },
   "u21-s06.slow": {
-   "dur": 5.46,
-   "src": "audio/zh-slow/u21-s06_slow.mp3?v=3f52d5ed6b"
+   "dur": 5.36,
+   "src": "audio/zh-slow/u21-s06_slow.mp3?v=54510ff150"
   },
   "u21-w01": {
    "dur": 0.86,
@@ -9877,16 +9877,16 @@
    "src": "audio/zh-slow/u22-d01_l3_slow.mp3?v=5d62b01842"
   },
   "u22-d01.l4": {
-   "dur": 1.95,
-   "src": "audio/zh/u22-d01_l4.mp3?v=a39c755aa4"
+   "dur": 2.1,
+   "src": "audio/zh/u22-d01_l4.mp3?v=130c11551b"
   },
   "u22-d01.l4.en": {
    "dur": 1.35,
    "src": "audio/en/u22-d01_l4_en.mp3?v=c60e57ff29"
   },
   "u22-d01.l4.slow": {
-   "dur": 2.86,
-   "src": "audio/zh-slow/u22-d01_l4_slow.mp3?v=f5de04af62"
+   "dur": 3.1,
+   "src": "audio/zh-slow/u22-d01_l4_slow.mp3?v=7c7b839436"
   },
   "u22-d01.l5": {
    "dur": 1.98,
@@ -9981,16 +9981,16 @@
    "src": "audio/zh-slow/u22-d02_l4_slow.mp3?v=67e7503e64"
   },
   "u22-d02.l5": {
-   "dur": 1.89,
-   "src": "audio/zh/u22-d02_l5.mp3?v=902882a78e"
+   "dur": 2.02,
+   "src": "audio/zh/u22-d02_l5.mp3?v=27ee24ef91"
   },
   "u22-d02.l5.en": {
    "dur": 1.83,
    "src": "audio/en/u22-d02_l5_en.mp3?v=64f0bdccb7"
   },
   "u22-d02.l5.slow": {
-   "dur": 2.77,
-   "src": "audio/zh-slow/u22-d02_l5_slow.mp3?v=ea6b735e8c"
+   "dur": 2.97,
+   "src": "audio/zh-slow/u22-d02_l5_slow.mp3?v=ddbc376511"
   },
   "u22-d02.l6": {
    "dur": 1.64,
@@ -10349,16 +10349,16 @@
    "src": "audio/zh-slow/u23-d01_l1_slow.mp3?v=261c0cc26f"
   },
   "u23-d01.l2": {
-   "dur": 2.0,
-   "src": "audio/zh/u23-d01_l2.mp3?v=465dd00a29"
+   "dur": 2.55,
+   "src": "audio/zh/u23-d01_l2.mp3?v=d9de6dc979"
   },
   "u23-d01.l2.en": {
    "dur": 1.92,
    "src": "audio/en/u23-d01_l2_en.mp3?v=ad5cacb439"
   },
   "u23-d01.l2.slow": {
-   "dur": 2.97,
-   "src": "audio/zh-slow/u23-d01_l2_slow.mp3?v=413b18e9b8"
+   "dur": 3.79,
+   "src": "audio/zh-slow/u23-d01_l2_slow.mp3?v=097d3b8d2e"
   },
   "u23-d01.l3": {
    "dur": 3.95,
@@ -10385,16 +10385,16 @@
    "src": "audio/zh-slow/u23-d01_l4_slow.mp3?v=f9435b687d"
   },
   "u23-d01.l5": {
-   "dur": 3.92,
-   "src": "audio/zh/u23-d01_l5.mp3?v=2685d00114"
+   "dur": 3.85,
+   "src": "audio/zh/u23-d01_l5.mp3?v=81c6e6e340"
   },
   "u23-d01.l5.en": {
    "dur": 3.21,
    "src": "audio/en/u23-d01_l5_en.mp3?v=bc56e5c59d"
   },
   "u23-d01.l5.slow": {
-   "dur": 5.81,
-   "src": "audio/zh-slow/u23-d01_l5_slow.mp3?v=b514f05467"
+   "dur": 5.71,
+   "src": "audio/zh-slow/u23-d01_l5_slow.mp3?v=473ad64b81"
   },
   "u23-d01.l6": {
    "dur": 2.34,
@@ -10429,40 +10429,40 @@
    "src": "audio/en/u23-d01_q2_en.mp3?v=9ef2bc7f2c"
   },
   "u23-d02.l1": {
-   "dur": 3.46,
-   "src": "audio/zh/u23-d02_l1.mp3?v=f5d69018ba"
+   "dur": 3.12,
+   "src": "audio/zh/u23-d02_l1.mp3?v=9acabdf148"
   },
   "u23-d02.l1.en": {
    "dur": 2.93,
    "src": "audio/en/u23-d02_l1_en.mp3?v=1054aee157"
   },
   "u23-d02.l1.slow": {
-   "dur": 5.43,
-   "src": "audio/zh-slow/u23-d02_l1_slow.mp3?v=ba9bff3db3"
+   "dur": 5.16,
+   "src": "audio/zh-slow/u23-d02_l1_slow.mp3?v=244f1f1438"
   },
   "u23-d02.l2": {
-   "dur": 3.58,
-   "src": "audio/zh/u23-d02_l2.mp3?v=f22f8726b4"
+   "dur": 3.32,
+   "src": "audio/zh/u23-d02_l2.mp3?v=2c7d3420cb"
   },
   "u23-d02.l2.en": {
    "dur": 3.56,
    "src": "audio/en/u23-d02_l2_en.mp3?v=1f23e0dff9"
   },
   "u23-d02.l2.slow": {
-   "dur": 5.27,
-   "src": "audio/zh-slow/u23-d02_l2_slow.mp3?v=b1829876d8"
+   "dur": 4.86,
+   "src": "audio/zh-slow/u23-d02_l2_slow.mp3?v=8604c199fe"
   },
   "u23-d02.l3": {
-   "dur": 1.92,
-   "src": "audio/zh/u23-d02_l3.mp3?v=89cc3cb867"
+   "dur": 2.01,
+   "src": "audio/zh/u23-d02_l3.mp3?v=d1ce09345b"
   },
   "u23-d02.l3.en": {
    "dur": 1.87,
    "src": "audio/en/u23-d02_l3_en.mp3?v=e234e16d24"
   },
   "u23-d02.l3.slow": {
-   "dur": 2.91,
-   "src": "audio/zh-slow/u23-d02_l3_slow.mp3?v=60f6e6118e"
+   "dur": 2.93,
+   "src": "audio/zh-slow/u23-d02_l3_slow.mp3?v=f08f198f96"
   },
   "u23-d02.l4": {
    "dur": 2.6,
@@ -10477,16 +10477,16 @@
    "src": "audio/zh-slow/u23-d02_l4_slow.mp3?v=5c490cb5ea"
   },
   "u23-d02.l5": {
-   "dur": 1.38,
-   "src": "audio/zh/u23-d02_l5.mp3?v=d27cdfeab4"
+   "dur": 1.1,
+   "src": "audio/zh/u23-d02_l5.mp3?v=cfc36b237c"
   },
   "u23-d02.l5.en": {
    "dur": 1.18,
    "src": "audio/en/u23-d02_l5_en.mp3?v=258c9d29f0"
   },
   "u23-d02.l5.slow": {
-   "dur": 2.02,
-   "src": "audio/zh-slow/u23-d02_l5_slow.mp3?v=7508b71e1d"
+   "dur": 1.68,
+   "src": "audio/zh-slow/u23-d02_l5_slow.mp3?v=4822dd86e8"
   },
   "u23-d02.l6": {
    "dur": 3.75,
@@ -10501,28 +10501,28 @@
    "src": "audio/zh-slow/u23-d02_l6_slow.mp3?v=9646fbec0b"
   },
   "u23-d02.l7": {
-   "dur": 3.2,
-   "src": "audio/zh/u23-d02_l7.mp3?v=d1e7856dd7"
+   "dur": 3.15,
+   "src": "audio/zh/u23-d02_l7.mp3?v=6c54fd57ed"
   },
   "u23-d02.l7.en": {
    "dur": 2.93,
    "src": "audio/en/u23-d02_l7_en.mp3?v=6dadfec893"
   },
   "u23-d02.l7.slow": {
-   "dur": 4.74,
-   "src": "audio/zh-slow/u23-d02_l7_slow.mp3?v=c354eec49c"
+   "dur": 4.67,
+   "src": "audio/zh-slow/u23-d02_l7_slow.mp3?v=b984c52251"
   },
   "u23-d02.l8": {
-   "dur": 1.39,
-   "src": "audio/zh/u23-d02_l8.mp3?v=1aabd4abfb"
+   "dur": 1.53,
+   "src": "audio/zh/u23-d02_l8.mp3?v=d4a70cec37"
   },
   "u23-d02.l8.en": {
    "dur": 1.18,
    "src": "audio/en/u23-d02_l8_en.mp3?v=8f51357991"
   },
   "u23-d02.l8.slow": {
-   "dur": 2.1,
-   "src": "audio/zh-slow/u23-d02_l8_slow.mp3?v=a3b9b73431"
+   "dur": 2.31,
+   "src": "audio/zh-slow/u23-d02_l8_slow.mp3?v=4671d110dc"
   },
   "u23-d02.q1.en": {
    "dur": 2.19,
@@ -10653,16 +10653,16 @@
    "src": "audio/zh-slow/u23-s02_slow.mp3?v=ed9435a231"
   },
   "u23-s03": {
-   "dur": 2.36,
-   "src": "audio/zh/u23-s03.mp3?v=f2c359e3ae"
+   "dur": 1.94,
+   "src": "audio/zh/u23-s03.mp3?v=98619dceaa"
   },
   "u23-s03.en": {
    "dur": 2.27,
    "src": "audio/en/u23-s03_en.mp3?v=4494decdcc"
   },
   "u23-s03.slow": {
-   "dur": 3.5,
-   "src": "audio/zh-slow/u23-s03_slow.mp3?v=158721a235"
+   "dur": 2.87,
+   "src": "audio/zh-slow/u23-s03_slow.mp3?v=a5d19699ac"
   },
   "u23-s04": {
    "dur": 2.01,
@@ -10869,16 +10869,16 @@
    "src": "audio/zh-slow/u24-d01_l2_slow.mp3?v=4837525385"
   },
   "u24-d01.l3": {
-   "dur": 2.27,
-   "src": "audio/zh/u24-d01_l3.mp3?v=e7bf65d3dc"
+   "dur": 2.31,
+   "src": "audio/zh/u24-d01_l3.mp3?v=d989a0d100"
   },
   "u24-d01.l3.en": {
    "dur": 1.95,
    "src": "audio/en/u24-d01_l3_en.mp3?v=077e3c7cc8"
   },
   "u24-d01.l3.slow": {
-   "dur": 3.51,
-   "src": "audio/zh-slow/u24-d01_l3_slow.mp3?v=dc9a022e0b"
+   "dur": 3.5,
+   "src": "audio/zh-slow/u24-d01_l3_slow.mp3?v=1677332bd3"
   },
   "u24-d01.l4": {
    "dur": 3.37,
@@ -10917,28 +10917,28 @@
    "src": "audio/zh-slow/u24-d01_l6_slow.mp3?v=09daab52bf"
   },
   "u24-d01.l7": {
-   "dur": 2.7,
-   "src": "audio/zh/u24-d01_l7.mp3?v=7724266b74"
+   "dur": 3.36,
+   "src": "audio/zh/u24-d01_l7.mp3?v=41f0297087"
   },
   "u24-d01.l7.en": {
    "dur": 2.1,
    "src": "audio/en/u24-d01_l7_en.mp3?v=ac482fed8a"
   },
   "u24-d01.l7.slow": {
-   "dur": 4.0,
-   "src": "audio/zh-slow/u24-d01_l7_slow.mp3?v=59fda2ab79"
+   "dur": 4.99,
+   "src": "audio/zh-slow/u24-d01_l7_slow.mp3?v=af1356707c"
   },
   "u24-d01.l8": {
-   "dur": 2.79,
-   "src": "audio/zh/u24-d01_l8.mp3?v=797a9ccc6f"
+   "dur": 2.57,
+   "src": "audio/zh/u24-d01_l8.mp3?v=872f502aba"
   },
   "u24-d01.l8.en": {
    "dur": 1.85,
    "src": "audio/en/u24-d01_l8_en.mp3?v=861fc63508"
   },
   "u24-d01.l8.slow": {
-   "dur": 4.1,
-   "src": "audio/zh-slow/u24-d01_l8_slow.mp3?v=70c6383286"
+   "dur": 3.76,
+   "src": "audio/zh-slow/u24-d01_l8_slow.mp3?v=1e093e2345"
   },
   "u24-d01.q1.en": {
    "dur": 1.17,
@@ -10985,40 +10985,40 @@
    "src": "audio/zh-slow/u24-d02_l3_slow.mp3?v=65dee29aa6"
   },
   "u24-d02.l4": {
-   "dur": 2.54,
-   "src": "audio/zh/u24-d02_l4.mp3?v=d8c82437e4"
+   "dur": 2.35,
+   "src": "audio/zh/u24-d02_l4.mp3?v=f751dd42b3"
   },
   "u24-d02.l4.en": {
    "dur": 2.06,
    "src": "audio/en/u24-d02_l4_en.mp3?v=d706f58bb7"
   },
   "u24-d02.l4.slow": {
-   "dur": 3.74,
-   "src": "audio/zh-slow/u24-d02_l4_slow.mp3?v=39e67d63e4"
+   "dur": 3.64,
+   "src": "audio/zh-slow/u24-d02_l4_slow.mp3?v=1149c7b565"
   },
   "u24-d02.l5": {
-   "dur": 4.27,
-   "src": "audio/zh/u24-d02_l5.mp3?v=982b6f81d2"
+   "dur": 4.47,
+   "src": "audio/zh/u24-d02_l5.mp3?v=c52347f690"
   },
   "u24-d02.l5.en": {
    "dur": 3.25,
    "src": "audio/en/u24-d02_l5_en.mp3?v=83f9564312"
   },
   "u24-d02.l5.slow": {
-   "dur": 6.43,
-   "src": "audio/zh-slow/u24-d02_l5_slow.mp3?v=9d6892415c"
+   "dur": 6.71,
+   "src": "audio/zh-slow/u24-d02_l5_slow.mp3?v=8865a587fd"
   },
   "u24-d02.l6": {
-   "dur": 2.58,
-   "src": "audio/zh/u24-d02_l6.mp3?v=4f39a9824a"
+   "dur": 2.71,
+   "src": "audio/zh/u24-d02_l6.mp3?v=1c5530821a"
   },
   "u24-d02.l6.en": {
    "dur": 2.24,
    "src": "audio/en/u24-d02_l6_en.mp3?v=0a0591e1b2"
   },
   "u24-d02.l6.slow": {
-   "dur": 3.8,
-   "src": "audio/zh-slow/u24-d02_l6_slow.mp3?v=efbeb5b69b"
+   "dur": 4.0,
+   "src": "audio/zh-slow/u24-d02_l6_slow.mp3?v=85576b6772"
   },
   "u24-d02.l7": {
    "dur": 3.54,
@@ -11053,28 +11053,28 @@
    "src": "audio/en/u24-d02_q2_en.mp3?v=2887fbfe4f"
   },
   "u24-p01": {
-   "dur": 1.13,
-   "src": "audio/zh/u24-p01.mp3?v=bc51d00d32"
+   "dur": 0.96,
+   "src": "audio/zh/u24-p01.mp3?v=816ed70baa"
   },
   "u24-p01.en": {
-   "dur": 0.98,
-   "src": "audio/en/u24-p01_en.mp3?v=28a309c4b4"
+   "dur": 1.01,
+   "src": "audio/en/u24-p01_en.mp3?v=615028a6fb"
   },
   "u24-p01.slow": {
-   "dur": 1.94,
-   "src": "audio/zh-slow/u24-p01_slow.mp3?v=50ee34998d"
+   "dur": 1.65,
+   "src": "audio/zh-slow/u24-p01_slow.mp3?v=0ca205faa9"
   },
   "u24-p02": {
-   "dur": 0.92,
-   "src": "audio/zh/u24-p02.mp3?v=08a8ad7272"
+   "dur": 0.68,
+   "src": "audio/zh/u24-p02.mp3?v=c37ce2e945"
   },
   "u24-p02.en": {
-   "dur": 1.02,
-   "src": "audio/en/u24-p02_en.mp3?v=47ac8c73ff"
+   "dur": 1.12,
+   "src": "audio/en/u24-p02_en.mp3?v=788a0b327b"
   },
   "u24-p02.slow": {
-   "dur": 1.57,
-   "src": "audio/zh-slow/u24-p02_slow.mp3?v=16ddd6b451"
+   "dur": 1.24,
+   "src": "audio/zh-slow/u24-p02_slow.mp3?v=8487a9081c"
   },
   "u24-p03": {
    "dur": 1.01,
@@ -11137,16 +11137,16 @@
    "src": "audio/zh-slow/u24-p07_slow.mp3?v=dc915a5427"
   },
   "u24-p08": {
-   "dur": 1.16,
-   "src": "audio/zh/u24-p08.mp3?v=43ed32d0ee"
+   "dur": 1.13,
+   "src": "audio/zh/u24-p08.mp3?v=b0de51ac12"
   },
   "u24-p08.en": {
    "dur": 1.11,
    "src": "audio/en/u24-p08_en.mp3?v=260fd4a946"
   },
   "u24-p08.slow": {
-   "dur": 1.98,
-   "src": "audio/zh-slow/u24-p08_slow.mp3?v=eb1eeee545"
+   "dur": 1.94,
+   "src": "audio/zh-slow/u24-p08_slow.mp3?v=6a271aef68"
   },
   "u24-s01": {
    "dur": 2.95,
@@ -11365,6 +11365,6 @@
    "src": "audio/zh-slow/u24-w12_slow.mp3?v=5efa18b14d"
   }
  },
- "generatedAt": "2026-11-18T00:29:04Z",
+ "generatedAt": "2026-11-18T01:07:20Z",
  "version": 1
 }

@@ -117,16 +117,16 @@
    "hash": "cfe9c598c46db8dc"
   },
   "u01-d02.l2": {
-   "dur": 2.37,
-   "hash": "941d9c5623dd109e"
+   "dur": 2.72,
+   "hash": "7bd0ab9ffbfe81b8"
   },
   "u01-d02.l2.en": {
    "dur": 2.23,
    "hash": "5ffb7a2435e67238"
   },
   "u01-d02.l2.slow": {
-   "dur": 3.49,
-   "hash": "076b8f3f18251f85"
+   "dur": 4.0,
+   "hash": "2596f747278e2f8f"
   },
   "u01-d02.l3": {
    "dur": 1.18,
@@ -509,16 +509,16 @@
    "hash": "e0c1187380a626eb"
   },
   "u02-d01.l4": {
-   "dur": 1.12,
-   "hash": "aebbefd24154eeb1"
+   "dur": 1.32,
+   "hash": "31479376060d98f7"
   },
   "u02-d01.l4.en": {
    "dur": 1.14,
    "hash": "49af818a5ec23fca"
   },
   "u02-d01.l4.slow": {
-   "dur": 1.69,
-   "hash": "3bfd0e6148b5ab69"
+   "dur": 1.99,
+   "hash": "690b7a2d3851b8e8"
   },
   "u02-d01.l5": {
    "dur": 1.4,
@@ -933,16 +933,16 @@
    "hash": "220a6a73f427356f"
   },
   "u03-d01.l3": {
-   "dur": 2.81,
-   "hash": "ecd5ddb4ca12da7d"
+   "dur": 2.94,
+   "hash": "c8a85ebf719aace7"
   },
   "u03-d01.l3.en": {
    "dur": 1.72,
    "hash": "02f780a16e92eb29"
   },
   "u03-d01.l3.slow": {
-   "dur": 4.15,
-   "hash": "a0fbdda6ada592be"
+   "dur": 4.31,
+   "hash": "436fb82d9e657640"
   },
   "u03-d01.l4": {
    "dur": 1.57,
@@ -977,16 +977,16 @@
    "hash": "c9fec6d556a3be47"
   },
   "u03-d02.l1": {
-   "dur": 1.19,
-   "hash": "803cd423e97340fc"
+   "dur": 1.37,
+   "hash": "76eb297b653e240c"
   },
   "u03-d02.l1.en": {
    "dur": 0.93,
    "hash": "b765399389a2de60"
   },
   "u03-d02.l1.slow": {
-   "dur": 1.83,
-   "hash": "a2ca3eb36919f70a"
+   "dur": 2.09,
+   "hash": "9e6d3a3901c3944e"
   },
   "u03-d02.l2": {
    "dur": 2.76,
@@ -1177,16 +1177,16 @@
    "hash": "33746d23fe4f630d"
   },
   "u03-s05": {
-   "dur": 1.37,
-   "hash": "0cac8d884882322e"
+   "dur": 1.47,
+   "hash": "29400ad810c115fb"
   },
   "u03-s05.en": {
    "dur": 1.11,
    "hash": "0b43117c97a91d2c"
   },
   "u03-s05.slow": {
-   "dur": 2.08,
-   "hash": "e32c57d357bafc11"
+   "dur": 2.16,
+   "hash": "96db3cc731eec450"
   },
   "u03-s06": {
    "dur": 1.74,
@@ -1309,16 +1309,16 @@
    "hash": "e778514a1d7511c5"
   },
   "u03-w10": {
-   "dur": 0.59,
-   "hash": "8c966381838b6f3e"
+   "dur": 0.71,
+   "hash": "7f6c8c515e86a679"
   },
   "u03-w10.en": {
    "dur": 0.6,
    "hash": "0589ea939631c779"
   },
   "u03-w10.slow": {
-   "dur": 1.04,
-   "hash": "bebbc99c0d1d1ee2"
+   "dur": 1.22,
+   "hash": "a210d6204e925bfb"
   },
   "u03-w11": {
    "dur": 0.74,
@@ -1357,16 +1357,16 @@
    "hash": "c505b9ba833cd871"
   },
   "u04-d01.l2": {
-   "dur": 1.82,
-   "hash": "4b2f123daa8f0f6f"
+   "dur": 2.0,
+   "hash": "a902c249bacddfe1"
   },
   "u04-d01.l2.en": {
    "dur": 2.02,
    "hash": "e763f54ac35520b4"
   },
   "u04-d01.l2.slow": {
-   "dur": 2.87,
-   "hash": "e428cdcf198999cb"
+   "dur": 3.05,
+   "hash": "d31568b2c336d556"
   },
   "u04-d01.l3": {
    "dur": 1.37,
@@ -1861,16 +1861,16 @@
    "hash": "fcba01515992c0eb"
   },
   "u05-d02.l3": {
-   "dur": 1.41,
-   "hash": "7daa6cd045ed0766"
+   "dur": 1.53,
+   "hash": "fc2c36c22cc161e1"
   },
   "u05-d02.l3.en": {
    "dur": 1.03,
    "hash": "1844bd6e019407d4"
   },
   "u05-d02.l3.slow": {
-   "dur": 2.06,
-   "hash": "4553fb3ad415db6a"
+   "dur": 2.24,
+   "hash": "2024b08c7f2e4a35"
   },
   "u05-d02.l4": {
    "dur": 1.66,
@@ -2253,16 +2253,16 @@
    "hash": "32ea240af8369f06"
   },
   "u06-d01.l4": {
-   "dur": 1.53,
-   "hash": "46918b0f208633c7"
+   "dur": 1.84,
+   "hash": "6f4b59e479e16771"
   },
   "u06-d01.l4.en": {
    "dur": 1.17,
    "hash": "c7c3f3d4689aa39b"
   },
   "u06-d01.l4.slow": {
-   "dur": 2.25,
-   "hash": "432d314bc38d75bd"
+   "dur": 2.72,
+   "hash": "84d370bd9f7419c0"
   },
   "u06-d01.q1.en": {
    "dur": 1.29,
@@ -2365,40 +2365,40 @@
    "hash": "d502798364f7cdc9"
   },
   "u06-p03": {
-   "dur": 1.09,
-   "hash": "cdce4bfe687301f2"
+   "dur": 1.34,
+   "hash": "9a0f4f49cc2f8672"
   },
   "u06-p03.en": {
-   "dur": 1.1,
-   "hash": "ec223e92c1216376"
+   "dur": 0.95,
+   "hash": "54f2b551dae2ea65"
   },
   "u06-p03.slow": {
-   "dur": 1.85,
-   "hash": "7dc062a97db6c6d3"
+   "dur": 2.24,
+   "hash": "39eefec89f50fbb3"
   },
   "u06-p04": {
-   "dur": 1.17,
-   "hash": "b930fbd9b5ddb384"
+   "dur": 1.15,
+   "hash": "7b6efce72535fece"
   },
   "u06-p04.en": {
-   "dur": 1.14,
-   "hash": "ed76f5e1d3e2392c"
+   "dur": 1.02,
+   "hash": "fa558cbc37084ccc"
   },
   "u06-p04.slow": {
-   "dur": 1.98,
-   "hash": "082ef3fc8baee19b"
+   "dur": 1.92,
+   "hash": "61dfbf0831a9880c"
   },
   "u06-p05": {
    "dur": 0.78,
-   "hash": "5bdaa4caaab1c517"
+   "hash": "26db7beda03d31ba"
   },
   "u06-p05.en": {
    "dur": 0.87,
    "hash": "521edf11a349789d"
   },
   "u06-p05.slow": {
-   "dur": 1.31,
-   "hash": "816798a61f8f8d5b"
+   "dur": 1.34,
+   "hash": "5ac5b7680d9ee90f"
   },
   "u06-p06": {
    "dur": 0.86,
@@ -2701,16 +2701,16 @@
    "hash": "8f76e78aa1052bd9"
   },
   "u07-d01.l5": {
-   "dur": 1.81,
-   "hash": "7082d3dfae513d1a"
+   "dur": 1.91,
+   "hash": "3fcc641f876b8966"
   },
   "u07-d01.l5.en": {
    "dur": 1.66,
    "hash": "9a4c89f118a256b5"
   },
   "u07-d01.l5.slow": {
-   "dur": 2.73,
-   "hash": "8bb815b740ba444a"
+   "dur": 2.88,
+   "hash": "c901689331550c9c"
   },
   "u07-d01.q1.en": {
    "dur": 1.5,
@@ -2837,16 +2837,16 @@
    "hash": "caafd7b1a08fb731"
   },
   "u07-p06": {
-   "dur": 1.05,
-   "hash": "38e1535edf7b9db4"
+   "dur": 1.39,
+   "hash": "3812fc2900055402"
   },
   "u07-p06.en": {
-   "dur": 1.01,
-   "hash": "4d987e71e87dfe83"
+   "dur": 1.06,
+   "hash": "3147e08e353814ed"
   },
   "u07-p06.slow": {
-   "dur": 1.8,
-   "hash": "433866c50baa817f"
+   "dur": 2.33,
+   "hash": "31ba72be8df156d2"
   },
   "u07-p07": {
    "dur": 1.03,
@@ -3113,16 +3113,16 @@
    "hash": "0caa524623a15f31"
   },
   "u08-d01.l3": {
-   "dur": 2.73,
-   "hash": "b00a00edcdd62a4d"
+   "dur": 2.88,
+   "hash": "04c9e9dd06bfb976"
   },
   "u08-d01.l3.en": {
    "dur": 1.89,
    "hash": "fa5afa2351d80af1"
   },
   "u08-d01.l3.slow": {
-   "dur": 4.01,
-   "hash": "cd24bd2b11962cc0"
+   "dur": 4.24,
+   "hash": "111881e781bb60d9"
   },
   "u08-d01.l4": {
    "dur": 1.95,
@@ -3261,16 +3261,16 @@
    "hash": "75f199eee0e87c6a"
   },
   "u08-p04": {
-   "dur": 1.27,
-   "hash": "42ad7973f9968a6e"
+   "dur": 1.09,
+   "hash": "43035596ab9041bd"
   },
   "u08-p04.en": {
    "dur": 1.03,
    "hash": "ee704bbafd3c9566"
   },
   "u08-p04.slow": {
-   "dur": 2.15,
-   "hash": "599bb29cb2835a9b"
+   "dur": 1.76,
+   "hash": "4f3e8dd55fef11cc"
   },
   "u08-p05": {
    "dur": 0.72,
@@ -3285,16 +3285,16 @@
    "hash": "c5e050feb950d4fe"
   },
   "u08-p06": {
-   "dur": 0.86,
-   "hash": "028392214480d0d5"
+   "dur": 0.83,
+   "hash": "4f3240f50a32bede"
   },
   "u08-p06.en": {
-   "dur": 1.07,
-   "hash": "799533cb5d4969bf"
+   "dur": 1.09,
+   "hash": "d7f5338d1405293a"
   },
   "u08-p06.slow": {
-   "dur": 1.47,
-   "hash": "45ada77146e29ae7"
+   "dur": 1.43,
+   "hash": "dd77b6bf1b74d2f4"
   },
   "u08-p07": {
    "dur": 1.03,
@@ -3357,16 +3357,16 @@
    "hash": "e687edd7793c16bf"
   },
   "u08-s04": {
-   "dur": 1.81,
-   "hash": "72b3093629453783"
+   "dur": 1.54,
+   "hash": "006e80c342013ff9"
   },
   "u08-s04.en": {
    "dur": 1.12,
    "hash": "5ee0cabc690f5865"
   },
   "u08-s04.slow": {
-   "dur": 2.65,
-   "hash": "4db74b0af49fea2a"
+   "dur": 2.26,
+   "hash": "4dca05f77079759f"
   },
   "u08-s05": {
    "dur": 1.61,
@@ -3381,16 +3381,16 @@
    "hash": "dd2ddaaa4601778b"
   },
   "u08-s06": {
-   "dur": 2.06,
-   "hash": "7f15a1ecf9a88273"
+   "dur": 1.92,
+   "hash": "98fe4be7b68becb5"
   },
   "u08-s06.en": {
    "dur": 2.02,
    "hash": "c86c0835dd84540d"
   },
   "u08-s06.slow": {
-   "dur": 3.0,
-   "hash": "d31d224664054125"
+   "dur": 2.8,
+   "hash": "c2105ded79405752"
   },
   "u08-w01": {
    "dur": 0.66,
@@ -3653,16 +3653,16 @@
    "hash": "bfa9f8c7b301cacb"
   },
   "u09-d02.l5": {
-   "dur": 1.62,
-   "hash": "504ae23300334fcc"
+   "dur": 1.81,
+   "hash": "2847986760a7a7d6"
   },
   "u09-d02.l5.en": {
    "dur": 1.5,
    "hash": "990548ddbd929393"
   },
   "u09-d02.l5.slow": {
-   "dur": 2.38,
-   "hash": "b866b8affb5a37a7"
+   "dur": 2.67,
+   "hash": "6fca323e47b2433b"
   },
   "u09-d02.l6": {
    "dur": 2.53,
@@ -4021,16 +4021,16 @@
    "hash": "c752ff0e8f48b698"
   },
   "u10-d01.l3": {
-   "dur": 2.14,
-   "hash": "ebbcf15e8602604a"
+   "dur": 2.71,
+   "hash": "1ee28a6093c8a5c6"
   },
   "u10-d01.l3.en": {
    "dur": 1.93,
    "hash": "e7b3d5115318010a"
   },
   "u10-d01.l3.slow": {
-   "dur": 3.13,
-   "hash": "3c6156eacbe275ed"
+   "dur": 4.04,
+   "hash": "e50453ae3ba0bc07"
   },
   "u10-d01.l4": {
    "dur": 2.45,
@@ -4045,16 +4045,16 @@
    "hash": "73d1fe133aabc442"
   },
   "u10-d01.l5": {
-   "dur": 3.32,
-   "hash": "7cbc47bdb65bffb7"
+   "dur": 3.36,
+   "hash": "4b73a2a8a6a379ac"
   },
   "u10-d01.l5.en": {
    "dur": 2.79,
    "hash": "ae8883b978d92b11"
   },
   "u10-d01.l5.slow": {
-   "dur": 4.91,
-   "hash": "145baa204654f982"
+   "dur": 4.98,
+   "hash": "e304945febbdf9b4"
   },
   "u10-d01.q1.en": {
    "dur": 1.47,
@@ -4157,16 +4157,16 @@
    "hash": "9aba51f3136d3d15"
   },
   "u10-p02": {
-   "dur": 1.11,
-   "hash": "fa50ea3570caa716"
+   "dur": 1.13,
+   "hash": "e9cd34721ce3aa70"
   },
   "u10-p02.en": {
    "dur": 1.19,
    "hash": "f0798748c0bed095"
   },
   "u10-p02.slow": {
-   "dur": 1.89,
-   "hash": "3e9bb1b64e8ff90e"
+   "dur": 1.93,
+   "hash": "4cad6edecd1882f8"
   },
   "u10-p03": {
    "dur": 0.81,
@@ -4397,16 +4397,16 @@
    "hash": "8c2ea07a46249605"
   },
   "u10-w08": {
-   "dur": 0.76,
-   "hash": "95f00e17487344d7"
+   "dur": 0.83,
+   "hash": "1a53e820869feb41"
   },
   "u10-w08.en": {
    "dur": 0.87,
    "hash": "521edf11a349789d"
   },
   "u10-w08.slow": {
-   "dur": 1.3,
-   "hash": "2094e500d2223ba4"
+   "dur": 1.45,
+   "hash": "d3f17012fcf84190"
   },
   "u10-w09": {
    "dur": 0.85,
@@ -4493,16 +4493,16 @@
    "hash": "822b124d98fa42bd"
   },
   "u11-d01.l4": {
-   "dur": 2.0,
-   "hash": "25fd6f3b8b120226"
+   "dur": 2.12,
+   "hash": "e29ab5b49bcdb684"
   },
   "u11-d01.l4.en": {
    "dur": 1.91,
    "hash": "b113083ad8c80553"
   },
   "u11-d01.l4.slow": {
-   "dur": 3.01,
-   "hash": "297fc57b763d7e21"
+   "dur": 3.09,
+   "hash": "bd884a815d50d3c2"
   },
   "u11-d01.l5": {
    "dur": 0.84,
@@ -4585,28 +4585,28 @@
    "hash": "ed0fdb7a1b832fb5"
   },
   "u11-d02.l5": {
-   "dur": 2.15,
-   "hash": "e6bdea449d3b27da"
+   "dur": 2.39,
+   "hash": "8eca35ef3a559d9b"
   },
   "u11-d02.l5.en": {
    "dur": 1.77,
    "hash": "bdf6241e79f3720f"
   },
   "u11-d02.l5.slow": {
-   "dur": 3.16,
-   "hash": "53ce04d2bd918338"
+   "dur": 3.52,
+   "hash": "8618b7d013cb7f9a"
   },
   "u11-d02.l6": {
-   "dur": 2.22,
-   "hash": "b912b20695905346"
+   "dur": 2.49,
+   "hash": "89903d68cef257f9"
   },
   "u11-d02.l6.en": {
    "dur": 2.2,
    "hash": "efd0ee8bbb76a887"
   },
   "u11-d02.l6.slow": {
-   "dur": 3.54,
-   "hash": "57532d83256413b3"
+   "dur": 3.87,
+   "hash": "9a755d45464daf13"
   },
   "u11-d02.q1.en": {
    "dur": 1.57,
@@ -4653,16 +4653,16 @@
    "hash": "323ceef0b3bda419"
   },
   "u11-p04": {
-   "dur": 0.78,
-   "hash": "0b553d4c162051a2"
+   "dur": 1.11,
+   "hash": "2fea64ac8653b5c1"
   },
   "u11-p04.en": {
    "dur": 1.21,
    "hash": "a8654cb20b1d116d"
   },
   "u11-p04.slow": {
-   "dur": 1.33,
-   "hash": "c24200a2853633d5"
+   "dur": 1.88,
+   "hash": "945971333eb45529"
   },
   "u11-p05": {
    "dur": 0.72,
@@ -4761,16 +4761,16 @@
    "hash": "5f28dc4a9983f791"
   },
   "u11-s05": {
-   "dur": 1.98,
-   "hash": "2e5fe7f759d7569b"
+   "dur": 2.34,
+   "hash": "c9b844c111710aa7"
   },
   "u11-s05.en": {
    "dur": 1.85,
    "hash": "95359f08fe6b70be"
   },
   "u11-s05.slow": {
-   "dur": 2.9,
-   "hash": "86ea01a7ebf26a74"
+   "dur": 3.46,
+   "hash": "779bf7b01ab81e7e"
   },
   "u11-s06": {
    "dur": 3.09,
@@ -4821,16 +4821,16 @@
    "hash": "065c04209c23ba3c"
   },
   "u11-w04": {
-   "dur": 1.12,
-   "hash": "5380128ae2b5c89a"
+   "dur": 0.87,
+   "hash": "d030a801355e8c36"
   },
   "u11-w04.en": {
    "dur": 0.8,
    "hash": "f071c638827aa27e"
   },
   "u11-w04.slow": {
-   "dur": 1.92,
-   "hash": "d814737da3bde177"
+   "dur": 1.48,
+   "hash": "2d80b591865b3331"
   },
   "u11-w05": {
    "dur": 0.65,
@@ -4929,16 +4929,16 @@
    "hash": "0b90087d02971a60"
   },
   "u12-d01.l1": {
-   "dur": 2.12,
-   "hash": "f902b20f411ef24b"
+   "dur": 2.33,
+   "hash": "fc896a85d64811e7"
   },
   "u12-d01.l1.en": {
    "dur": 1.99,
    "hash": "75523463b9b91aeb"
   },
   "u12-d01.l1.slow": {
-   "dur": 3.12,
-   "hash": "dbf510c041780141"
+   "dur": 3.41,
+   "hash": "130081c45cfe6941"
   },
   "u12-d01.l2": {
    "dur": 1.8,
@@ -4953,16 +4953,16 @@
    "hash": "e9b1553e7f10e244"
   },
   "u12-d01.l3": {
-   "dur": 1.51,
-   "hash": "1af452e746215f57"
+   "dur": 1.63,
+   "hash": "4589bd4ba10a52db"
   },
   "u12-d01.l3.en": {
    "dur": 1.14,
    "hash": "8d1c9be73d8fc753"
   },
   "u12-d01.l3.slow": {
-   "dur": 2.22,
-   "hash": "f57c17bc438183d1"
+   "dur": 2.49,
+   "hash": "d479052e6133611b"
   },
   "u12-d01.l4": {
    "dur": 2.25,
@@ -4989,16 +4989,16 @@
    "hash": "6e5ba933943d081b"
   },
   "u12-d01.l6": {
-   "dur": 1.77,
-   "hash": "0a267263be8b7c94"
+   "dur": 1.97,
+   "hash": "f616244abd4d9b01"
   },
   "u12-d01.l6.en": {
    "dur": 1.7,
    "hash": "edb3decaf80060fe"
   },
   "u12-d01.l6.slow": {
-   "dur": 2.58,
-   "hash": "d28f4588ab0d87ce"
+   "dur": 2.87,
+   "hash": "0f0f8977cc8a4e0a"
   },
   "u12-d01.q1.en": {
    "dur": 1.32,
@@ -5009,16 +5009,16 @@
    "hash": "1f7105b08a812182"
   },
   "u12-d02.l1": {
-   "dur": 1.39,
-   "hash": "348ae386a90c27ba"
+   "dur": 1.51,
+   "hash": "3040b62563640fb0"
   },
   "u12-d02.l1.en": {
    "dur": 1.09,
    "hash": "1e93195cebd9b736"
   },
   "u12-d02.l1.slow": {
-   "dur": 2.04,
-   "hash": "1ba2611c8ef3af22"
+   "dur": 2.2,
+   "hash": "c032fd5dcd59c691"
   },
   "u12-d02.l2": {
    "dur": 2.01,
@@ -5089,16 +5089,16 @@
    "hash": "0340f5a8a4e29c94"
   },
   "u12-p01": {
-   "dur": 0.85,
-   "hash": "e628cd9e5cc4ce71"
+   "dur": 1.01,
+   "hash": "0932d3bee5f59608"
   },
   "u12-p01.en": {
    "dur": 0.87,
    "hash": "ff56feceed3436d6"
   },
   "u12-p01.slow": {
-   "dur": 1.46,
-   "hash": "230ee06aba83806b"
+   "dur": 1.84,
+   "hash": "95a8c4296a6a0791"
   },
   "u12-p02": {
    "dur": 1.19,
@@ -5185,16 +5185,16 @@
    "hash": "78e132559d0607eb"
   },
   "u12-s01": {
-   "dur": 1.54,
-   "hash": "826ae2001fa7f251"
+   "dur": 1.62,
+   "hash": "3b04e15d95a468b3"
   },
   "u12-s01.en": {
    "dur": 1.28,
    "hash": "4cf7d52d71fca613"
   },
   "u12-s01.slow": {
-   "dur": 2.35,
-   "hash": "bafaf594a180b749"
+   "dur": 2.37,
+   "hash": "a29e556d1ab618b4"
   },
   "u12-s02": {
    "dur": 1.71,
@@ -5341,16 +5341,16 @@
    "hash": "8b7cd04ff1429f03"
   },
   "u12-w08": {
-   "dur": 0.79,
-   "hash": "d186c5346ec64aed"
+   "dur": 0.69,
+   "hash": "01c51abb01438c8f"
   },
   "u12-w08.en": {
-   "dur": 0.68,
-   "hash": "566f158fd359a0be"
+   "dur": 0.97,
+   "hash": "22f68072d921f8cf"
   },
   "u12-w08.slow": {
-   "dur": 1.35,
-   "hash": "2559d85bb69eebbc"
+   "dur": 1.2,
+   "hash": "b2e812341beee503"
   },
   "u12-w09": {
    "dur": 0.77,
@@ -5389,16 +5389,16 @@
    "hash": "0838a4da4af0c05d"
   },
   "u12-w12": {
-   "dur": 0.61,
-   "hash": "9bb9d7f6adc62a01"
+   "dur": 0.71,
+   "hash": "8c70c08d28ec7ac3"
   },
   "u12-w12.en": {
    "dur": 0.65,
    "hash": "696e0e9e4371054c"
   },
   "u12-w12.slow": {
-   "dur": 1.04,
-   "hash": "9e0763b5b8eb5a72"
+   "dur": 1.22,
+   "hash": "519dc29a2fb3b74c"
   },
   "u13-d01.l1": {
    "dur": 2.0,
@@ -5413,16 +5413,16 @@
    "hash": "fbac2e791693c9c0"
   },
   "u13-d01.l2": {
-   "dur": 1.79,
-   "hash": "5cc0b57fa568763f"
+   "dur": 1.95,
+   "hash": "5a1795c570bf0695"
   },
   "u13-d01.l2.en": {
    "dur": 2.06,
    "hash": "14de19e8200c403e"
   },
   "u13-d01.l2.slow": {
-   "dur": 2.7,
-   "hash": "59729e1a65786ef8"
+   "dur": 2.85,
+   "hash": "849316c73970b9c6"
   },
   "u13-d01.l3": {
    "dur": 1.12,
@@ -5505,16 +5505,16 @@
    "hash": "8a27682f9a579b3d"
   },
   "u13-d02.l3": {
-   "dur": 2.59,
-   "hash": "5d8ca4f5b7c2b02b"
+   "dur": 2.5,
+   "hash": "e30c1e84b137caa5"
   },
   "u13-d02.l3.en": {
    "dur": 2.09,
    "hash": "a02c40dd1c711957"
   },
   "u13-d02.l3.slow": {
-   "dur": 3.9,
-   "hash": "3f475e4cdb7e9217"
+   "dur": 3.66,
+   "hash": "38a713e64f12c5c0"
   },
   "u13-d02.l4": {
    "dur": 1.11,
@@ -5529,16 +5529,16 @@
    "hash": "f6a73e30f986f5b4"
   },
   "u13-d02.l5": {
-   "dur": 1.98,
-   "hash": "e14a111aec815dbf"
+   "dur": 2.15,
+   "hash": "228115461a564247"
   },
   "u13-d02.l5.en": {
    "dur": 1.59,
    "hash": "e7ede81779fa0ef5"
   },
   "u13-d02.l5.slow": {
-   "dur": 2.9,
-   "hash": "2c81f1f1dc96ce91"
+   "dur": 3.14,
+   "hash": "21afdd183a60a48b"
   },
   "u13-d02.l6": {
    "dur": 2.22,
@@ -5573,28 +5573,28 @@
    "hash": "c4a1a14f2e6e4661"
   },
   "u13-p02": {
-   "dur": 1.37,
-   "hash": "32c4b2217d67e821"
+   "dur": 1.2,
+   "hash": "1c9983d4e15c324c"
   },
   "u13-p02.en": {
    "dur": 0.9,
    "hash": "c38e643bd3e6f1dc"
   },
   "u13-p02.slow": {
-   "dur": 2.34,
-   "hash": "e55544932bb494d3"
+   "dur": 2.05,
+   "hash": "a934f23f1eb78baf"
   },
   "u13-p03": {
-   "dur": 1.3,
-   "hash": "d5e61f66207c6bce"
+   "dur": 1.01,
+   "hash": "db274999f047eaa4"
   },
   "u13-p03.en": {
    "dur": 0.96,
    "hash": "6d6191de7b7a0c9f"
   },
   "u13-p03.slow": {
-   "dur": 2.1,
-   "hash": "19438eb3a05a8fc6"
+   "dur": 1.71,
+   "hash": "e0ab7ca571d3e02f"
   },
   "u13-p04": {
    "dur": 1.16,
@@ -5705,16 +5705,16 @@
    "hash": "6f242ce07b94d398"
   },
   "u13-s05": {
-   "dur": 3.29,
-   "hash": "2bc80e0959618288"
+   "dur": 3.12,
+   "hash": "3542e8d9993d7815"
   },
   "u13-s05.en": {
    "dur": 2.6,
    "hash": "a4f90d96bc77a1e0"
   },
   "u13-s05.slow": {
-   "dur": 4.86,
-   "hash": "c772f979cd59bc72"
+   "dur": 4.61,
+   "hash": "37bdbfac83aba61e"
   },
   "u13-s06": {
    "dur": 2.85,
@@ -5909,16 +5909,16 @@
    "hash": "e60751eb73686487"
   },
   "u14-d01.l4": {
-   "dur": 2.09,
-   "hash": "283776c5f82860f4"
+   "dur": 2.19,
+   "hash": "cc3d7561e2798e93"
   },
   "u14-d01.l4.en": {
    "dur": 1.6,
    "hash": "025d2d2822724905"
   },
   "u14-d01.l4.slow": {
-   "dur": 3.08,
-   "hash": "62a59c64eaf5bc62"
+   "dur": 3.24,
+   "hash": "b92759e35fe0c720"
   },
   "u14-d01.l5": {
    "dur": 2.28,
@@ -5977,16 +5977,16 @@
    "hash": "4758680eacf79463"
   },
   "u14-d02.l4": {
-   "dur": 2.6,
-   "hash": "855c78fb70da7237"
+   "dur": 2.43,
+   "hash": "86bffa730eaa2112"
   },
   "u14-d02.l4.en": {
-   "dur": 2.24,
-   "hash": "27c99a54a162e1ba"
+   "dur": 2.36,
+   "hash": "0d988178c1f6da05"
   },
   "u14-d02.l4.slow": {
-   "dur": 3.83,
-   "hash": "0a949d8f64b5cdc8"
+   "dur": 3.59,
+   "hash": "7727764d89275e31"
   },
   "u14-d02.l5": {
    "dur": 3.53,
@@ -6321,16 +6321,16 @@
    "hash": "ed545187080754f6"
   },
   "u15-d01.l1": {
-   "dur": 1.59,
-   "hash": "f290ae137c82f59f"
+   "dur": 1.73,
+   "hash": "21a1ec6366104620"
   },
   "u15-d01.l1.en": {
    "dur": 1.01,
    "hash": "d8371cfcdd526d87"
   },
   "u15-d01.l1.slow": {
-   "dur": 2.33,
-   "hash": "8e2b09df285a3345"
+   "dur": 2.53,
+   "hash": "f07a578940b309c7"
   },
   "u15-d01.l2": {
    "dur": 2.14,
@@ -6393,16 +6393,16 @@
    "hash": "d7f3e85eb52b6d2d"
   },
   "u15-d01.l7": {
-   "dur": 2.09,
-   "hash": "35eebae00bfd7092"
+   "dur": 2.23,
+   "hash": "e6edba2c47e0a957"
   },
   "u15-d01.l7.en": {
    "dur": 1.71,
    "hash": "40f3c852f4be4b35"
   },
   "u15-d01.l7.slow": {
-   "dur": 3.09,
-   "hash": "ad9100eb74714ac2"
+   "dur": 3.29,
+   "hash": "6d0ed15d5bf987cc"
   },
   "u15-d01.q1.en": {
    "dur": 1.24,
@@ -6473,16 +6473,16 @@
    "hash": "9f5036d7985dbfb8"
   },
   "u15-d02.l6": {
-   "dur": 2.09,
-   "hash": "cc8b3e0251a4cf60"
+   "dur": 2.17,
+   "hash": "6584ef91b4dc25eb"
   },
   "u15-d02.l6.en": {
    "dur": 1.72,
    "hash": "398232c0d61c6ece"
   },
   "u15-d02.l6.slow": {
-   "dur": 3.09,
-   "hash": "2a78c33574721439"
+   "dur": 3.18,
+   "hash": "1c7d28e479220360"
   },
   "u15-d02.q1.en": {
    "dur": 1.33,
@@ -6865,16 +6865,16 @@
    "hash": "9fc4a56f7b29cf8a"
   },
   "u16-d01.l6": {
-   "dur": 2.07,
-   "hash": "7abb18bb4cab16d8"
+   "dur": 2.27,
+   "hash": "6ee7dfcd7167e5eb"
   },
   "u16-d01.l6.en": {
    "dur": 1.78,
    "hash": "260022d4eceb4a51"
   },
   "u16-d01.l6.slow": {
-   "dur": 3.06,
-   "hash": "a351c18b9671c6b4"
+   "dur": 3.36,
+   "hash": "b47dfe6f6fdf8b4b"
   },
   "u16-d01.q1.en": {
    "dur": 1.46,
@@ -6921,16 +6921,16 @@
    "hash": "c41723138c6d3a06"
   },
   "u16-d02.l4": {
-   "dur": 2.39,
-   "hash": "e174a597b51a1cf3"
+   "dur": 2.52,
+   "hash": "2f3ef5f16f18cdb4"
   },
   "u16-d02.l4.en": {
    "dur": 1.76,
    "hash": "abeecb3adba7ff17"
   },
   "u16-d02.l4.slow": {
-   "dur": 3.53,
-   "hash": "7fb394192badda1a"
+   "dur": 3.71,
+   "hash": "0916d0e5f2c2391f"
   },
   "u16-d02.l5": {
    "dur": 1.32,
@@ -6989,16 +6989,16 @@
    "hash": "a0c510809c3bbf21"
   },
   "u16-p02": {
-   "dur": 1.13,
-   "hash": "7ba45e0f096d8291"
+   "dur": 1.24,
+   "hash": "0185e6052326f290"
   },
   "u16-p02.en": {
    "dur": 0.98,
    "hash": "aa90ec628e9781ac"
   },
   "u16-p02.slow": {
-   "dur": 1.92,
-   "hash": "4c5d90ce71528080"
+   "dur": 2.09,
+   "hash": "2f014db00ee9cfd5"
   },
   "u16-p03": {
    "dur": 1.03,
@@ -7289,16 +7289,16 @@
    "hash": "12b4fe0aacf08a7d"
   },
   "u17-d01.l1": {
-   "dur": 2.03,
-   "hash": "7571482c11ad13fe"
+   "dur": 2.19,
+   "hash": "d36c4437d334b786"
   },
   "u17-d01.l1.en": {
    "dur": 1.73,
    "hash": "46fa70fa6ed7657f"
   },
   "u17-d01.l1.slow": {
-   "dur": 3.0,
-   "hash": "972e9647a1132010"
+   "dur": 3.26,
+   "hash": "0eea89cdecb3fde0"
   },
   "u17-d01.l2": {
    "dur": 2.68,
@@ -7325,16 +7325,16 @@
    "hash": "a2677985804e65db"
   },
   "u17-d01.l4": {
-   "dur": 3.71,
-   "hash": "73aa8824dc7ecc5d"
+   "dur": 3.5,
+   "hash": "7b2d6236f448c3ab"
   },
   "u17-d01.l4.en": {
    "dur": 2.96,
    "hash": "93ba1bb596125236"
   },
   "u17-d01.l4.slow": {
-   "dur": 5.44,
-   "hash": "6cbd376ec65df3d2"
+   "dur": 5.18,
+   "hash": "9a5e91ab0ed5be52"
   },
   "u17-d01.l5": {
    "dur": 4.61,
@@ -7430,15 +7430,15 @@
   },
   "u17-d02.l5": {
    "dur": 3.14,
-   "hash": "df0a9194fcb6d15b"
+   "hash": "02c5926d746fdca9"
   },
   "u17-d02.l5.en": {
    "dur": 2.4,
    "hash": "0c4b63033727212b"
   },
   "u17-d02.l5.slow": {
-   "dur": 4.73,
-   "hash": "14fdb0439e6a9687"
+   "dur": 4.7,
+   "hash": "39ce2bd1840838b8"
   },
   "u17-d02.l6": {
    "dur": 2.78,
@@ -7569,16 +7569,16 @@
    "hash": "e76c8d4614b392fb"
   },
   "u17-p08": {
-   "dur": 1.22,
-   "hash": "68c545f1ce50edfd"
+   "dur": 1.04,
+   "hash": "205276aa42899201"
   },
   "u17-p08.en": {
    "dur": 0.99,
    "hash": "89323b61a91bb3a7"
   },
   "u17-p08.slow": {
-   "dur": 2.12,
-   "hash": "f96c4bca48fb499b"
+   "dur": 1.78,
+   "hash": "731a291326645567"
   },
   "u17-s01": {
    "dur": 1.62,
@@ -7593,16 +7593,16 @@
    "hash": "612859fcb363d1d3"
   },
   "u17-s02": {
-   "dur": 1.65,
-   "hash": "75753f852db487c7"
+   "dur": 1.73,
+   "hash": "dbef82d92e2348b3"
   },
   "u17-s02.en": {
    "dur": 1.37,
    "hash": "98cadf5d31b040aa"
   },
   "u17-s02.slow": {
-   "dur": 2.43,
-   "hash": "9fddc82c227b89c7"
+   "dur": 2.55,
+   "hash": "140b44ffbdd0560c"
   },
   "u17-s03": {
    "dur": 2.16,
@@ -7845,8 +7845,8 @@
    "hash": "8199326a10176685"
   },
   "u18-d01.l5": {
-   "dur": 2.34,
-   "hash": "9223a2c8ecbccb3b"
+   "dur": 2.36,
+   "hash": "45c54fda36166d84"
   },
   "u18-d01.l5.en": {
    "dur": 2.04,
@@ -7854,7 +7854,7 @@
   },
   "u18-d01.l5.slow": {
    "dur": 3.47,
-   "hash": "6aca8fb1c5498c58"
+   "hash": "202659c1edae8a2b"
   },
   "u18-d01.l6": {
    "dur": 2.23,
@@ -7901,16 +7901,16 @@
    "hash": "afd73e0e08ac7860"
   },
   "u18-d02.l2": {
-   "dur": 3.13,
-   "hash": "b2dd8d31d749b73e"
+   "dur": 2.97,
+   "hash": "826d01e91d3c80a8"
   },
   "u18-d02.l2.en": {
    "dur": 2.47,
    "hash": "c1fdee0ab6f27785"
   },
   "u18-d02.l2.slow": {
-   "dur": 4.63,
-   "hash": "f91e8c911cce4261"
+   "dur": 4.36,
+   "hash": "b8400716dbe9494e"
   },
   "u18-d02.l3": {
    "dur": 2.4,
@@ -8053,16 +8053,16 @@
    "hash": "4ab13cef24ca1adf"
   },
   "u18-p06": {
-   "dur": 1.15,
-   "hash": "ce3da563271e9b83"
+   "dur": 1.14,
+   "hash": "69e6b3f3a586b86b"
   },
   "u18-p06.en": {
    "dur": 1.03,
    "hash": "e1922d8ec5e6bd01"
   },
   "u18-p06.slow": {
-   "dur": 1.97,
-   "hash": "daaf37ff09afd0da"
+   "dur": 1.94,
+   "hash": "0bd98a67e2275a31"
   },
   "u18-p07": {
    "dur": 1.02,
@@ -8125,28 +8125,28 @@
    "hash": "4725fed8bbc8fd41"
   },
   "u18-s04": {
-   "dur": 3.36,
-   "hash": "ec232c790839f55b"
+   "dur": 3.15,
+   "hash": "0f8d55a9d6c5469c"
   },
   "u18-s04.en": {
    "dur": 2.45,
    "hash": "89eb25ecc4bdfc44"
   },
   "u18-s04.slow": {
-   "dur": 4.96,
-   "hash": "4ab4bf53d4ddf952"
+   "dur": 4.64,
+   "hash": "10c53a577ac92eba"
   },
   "u18-s05": {
-   "dur": 2.41,
-   "hash": "34195e822f978372"
+   "dur": 2.43,
+   "hash": "5820704f8a7683c2"
   },
   "u18-s05.en": {
-   "dur": 2.05,
-   "hash": "71ee788605861d00"
+   "dur": 2.58,
+   "hash": "bbb42652a7757d36"
   },
   "u18-s05.slow": {
-   "dur": 3.55,
-   "hash": "0106e14cad496e0a"
+   "dur": 3.56,
+   "hash": "fab0dd55cb502da9"
   },
   "u18-s06": {
    "dur": 2.68,
@@ -8353,28 +8353,28 @@
    "hash": "ad55d923f1652d37"
   },
   "u19-d01.l5": {
-   "dur": 1.96,
-   "hash": "b3bef6d1bd55210a"
+   "dur": 2.03,
+   "hash": "72f03aadb29d5e24"
   },
   "u19-d01.l5.en": {
    "dur": 1.69,
    "hash": "8a028f5385bb1dbf"
   },
   "u19-d01.l5.slow": {
-   "dur": 2.86,
-   "hash": "4f60d5de984e608e"
+   "dur": 2.97,
+   "hash": "a8c3080b71fce72d"
   },
   "u19-d01.l6": {
-   "dur": 2.95,
-   "hash": "c98a23cdb3d20e8d"
+   "dur": 3.01,
+   "hash": "0bec2de5db5116fc"
   },
   "u19-d01.l6.en": {
    "dur": 2.38,
    "hash": "95553e762dbef653"
   },
   "u19-d01.l6.slow": {
-   "dur": 4.31,
-   "hash": "aa5c7603069b68dc"
+   "dur": 4.41,
+   "hash": "59ec39dbf94cd4aa"
   },
   "u19-d01.l7": {
    "dur": 2.31,
@@ -8397,28 +8397,28 @@
    "hash": "4880a7262c96611c"
   },
   "u19-d02.l1": {
-   "dur": 3.56,
-   "hash": "236b25d2b87a0b41"
+   "dur": 3.47,
+   "hash": "eee46f884089cd62"
   },
   "u19-d02.l1.en": {
    "dur": 2.99,
    "hash": "1cd535c138a002b3"
   },
   "u19-d02.l1.slow": {
-   "dur": 5.28,
-   "hash": "8ef1a550cabd5c5e"
+   "dur": 5.14,
+   "hash": "c993763d1537711d"
   },
   "u19-d02.l2": {
-   "dur": 1.35,
-   "hash": "5c2afaf5a8f9be5d"
+   "dur": 1.49,
+   "hash": "8b14ab19a3c79135"
   },
   "u19-d02.l2.en": {
    "dur": 1.47,
    "hash": "7dbcf516f067c25b"
   },
   "u19-d02.l2.slow": {
-   "dur": 1.98,
-   "hash": "68aa7779fb57df05"
+   "dur": 2.2,
+   "hash": "48c099ee08bd8f4b"
   },
   "u19-d02.l3": {
    "dur": 1.73,
@@ -8445,40 +8445,40 @@
    "hash": "26b73d978a63af6b"
   },
   "u19-d02.l5": {
-   "dur": 2.35,
-   "hash": "8728687b63ec4f0b"
+   "dur": 2.49,
+   "hash": "52bfd151b7e8d065"
   },
   "u19-d02.l5.en": {
    "dur": 1.66,
    "hash": "302b4f6882a2800d"
   },
   "u19-d02.l5.slow": {
-   "dur": 3.46,
-   "hash": "da3734579e223530"
+   "dur": 3.68,
+   "hash": "2268a7749ff30192"
   },
   "u19-d02.l6": {
-   "dur": 2.99,
-   "hash": "6b1225c81f84cdb9"
+   "dur": 2.94,
+   "hash": "9366f05d2cc0139d"
   },
   "u19-d02.l6.en": {
    "dur": 2.85,
    "hash": "c418874d04837d10"
   },
   "u19-d02.l6.slow": {
-   "dur": 4.76,
-   "hash": "0cf531b76f4d35be"
+   "dur": 4.74,
+   "hash": "3fed477e287bd670"
   },
   "u19-d02.l7": {
-   "dur": 2.94,
-   "hash": "e612225e66cc86c6"
+   "dur": 2.73,
+   "hash": "e0e2cc9d53620c78"
   },
   "u19-d02.l7.en": {
    "dur": 2.65,
    "hash": "00cfea741e15d202"
   },
   "u19-d02.l7.slow": {
-   "dur": 4.42,
-   "hash": "4a9114313cf8414d"
+   "dur": 4.1,
+   "hash": "29c3dfd3376acf40"
   },
   "u19-d02.q1.en": {
    "dur": 1.53,
@@ -8489,16 +8489,16 @@
    "hash": "b9fd4c60a293c322"
   },
   "u19-p01": {
-   "dur": 1.01,
-   "hash": "c63717c5e03c5e18"
+   "dur": 1.29,
+   "hash": "fbe41018e0af7ad0"
   },
   "u19-p01.en": {
    "dur": 0.96,
    "hash": "ec3f5c92c897728f"
   },
   "u19-p01.slow": {
-   "dur": 1.72,
-   "hash": "4a1ceb0ce323f44d"
+   "dur": 2.16,
+   "hash": "7a8997afc01ea115"
   },
   "u19-p02": {
    "dur": 0.8,
@@ -8537,16 +8537,16 @@
    "hash": "cb1cf250b9ea63a8"
   },
   "u19-p05": {
-   "dur": 1.16,
-   "hash": "f42ad5dfb09cd0f8"
+   "dur": 1.06,
+   "hash": "caa6a91ee693271a"
   },
   "u19-p05.en": {
    "dur": 1.26,
    "hash": "a65ea6ef83e0ca7b"
   },
   "u19-p05.slow": {
-   "dur": 2.01,
-   "hash": "c40477cc534fadf7"
+   "dur": 1.79,
+   "hash": "abb7fc80834ad632"
   },
   "u19-p06": {
    "dur": 0.74,
@@ -8645,16 +8645,16 @@
    "hash": "4a7e87186db0130a"
   },
   "u19-s06": {
-   "dur": 2.69,
-   "hash": "fbaa0143568884ba"
+   "dur": 2.52,
+   "hash": "50b2cb5286a5b4a0"
   },
   "u19-s06.en": {
    "dur": 2.21,
    "hash": "ece1c52a497a7bbc"
   },
   "u19-s06.slow": {
-   "dur": 3.96,
-   "hash": "4ee3a2b1272cb1b0"
+   "dur": 3.78,
+   "hash": "b12ffc96b6d6870d"
   },
   "u19-w01": {
    "dur": 0.8,
@@ -8789,16 +8789,16 @@
    "hash": "059ec8a74b5ccca3"
   },
   "u19-w12": {
-   "dur": 0.88,
-   "hash": "8f2bef7dc28632cf"
+   "dur": 0.85,
+   "hash": "d380fb520ab9f76a"
   },
   "u19-w12.en": {
    "dur": 1.02,
    "hash": "0022ef16048252a9"
   },
   "u19-w12.slow": {
-   "dur": 1.5,
-   "hash": "28e543e335fff5c8"
+   "dur": 1.47,
+   "hash": "60a667a691bc4005"
   },
   "u20-d01.l1": {
    "dur": 1.92,
@@ -8861,16 +8861,16 @@
    "hash": "5759708303ed00c2"
   },
   "u20-d01.l6": {
-   "dur": 2.09,
-   "hash": "11669f0e678a0920"
+   "dur": 2.14,
+   "hash": "31578321d4d1d253"
   },
   "u20-d01.l6.en": {
    "dur": 2.0,
    "hash": "68e4e0f1238d15f7"
   },
   "u20-d01.l6.slow": {
-   "dur": 3.06,
-   "hash": "561f0bc091d6ae31"
+   "dur": 3.14,
+   "hash": "1e315f6cf25e9e24"
   },
   "u20-d01.l7": {
    "dur": 5.0,
@@ -8905,16 +8905,16 @@
    "hash": "48d7e3d1d68ae022"
   },
   "u20-d02.l1": {
-   "dur": 2.28,
-   "hash": "cbbe6c3f00b91408"
+   "dur": 2.59,
+   "hash": "6bd8e1975b2af8d5"
   },
   "u20-d02.l1.en": {
    "dur": 1.66,
    "hash": "7a59bf7d1010dd17"
   },
   "u20-d02.l1.slow": {
-   "dur": 3.32,
-   "hash": "0b7b82f175ac1525"
+   "dur": 3.79,
+   "hash": "a33d99347d2a36f3"
   },
   "u20-d02.l2": {
    "dur": 3.26,
@@ -8965,16 +8965,16 @@
    "hash": "6f853065dc81a836"
   },
   "u20-d02.l6": {
-   "dur": 1.85,
-   "hash": "40a38343c27a1757"
+   "dur": 2.02,
+   "hash": "38d1334a1c393c86"
   },
   "u20-d02.l6.en": {
    "dur": 1.79,
    "hash": "0eecfd042ab17dea"
   },
   "u20-d02.l6.slow": {
-   "dur": 2.71,
-   "hash": "9b8d2b363c613f6c"
+   "dur": 2.98,
+   "hash": "b3364ff5c982d844"
   },
   "u20-d02.l7": {
    "dur": 1.47,
@@ -9105,16 +9105,16 @@
    "hash": "22846a0fb2a754bc"
   },
   "u20-s01": {
-   "dur": 1.79,
-   "hash": "b07046fe316903f1"
+   "dur": 1.96,
+   "hash": "3b43bbc40108792a"
   },
   "u20-s01.en": {
    "dur": 1.34,
    "hash": "ebadb32279563e18"
   },
   "u20-s01.slow": {
-   "dur": 2.62,
-   "hash": "d260200fa056a982"
+   "dur": 2.86,
+   "hash": "bfde2e30c309668b"
   },
   "u20-s02": {
    "dur": 1.91,
@@ -9357,16 +9357,16 @@
    "hash": "d3e3106b10c96a3b"
   },
   "u21-d01.l4": {
-   "dur": 3.88,
-   "hash": "51748467447eb40b"
+   "dur": 3.77,
+   "hash": "549e03279e01651b"
   },
   "u21-d01.l4.en": {
    "dur": 3.16,
    "hash": "9613d9ddda26994f"
   },
   "u21-d01.l4.slow": {
-   "dur": 5.71,
-   "hash": "9654b573f6842e62"
+   "dur": 5.56,
+   "hash": "476353ed0dd15afc"
   },
   "u21-d01.l5": {
    "dur": 2.04,
@@ -9405,16 +9405,16 @@
    "hash": "eba659ff49e8b787"
   },
   "u21-d01.l8": {
-   "dur": 3.33,
-   "hash": "75da1209a0e440d9"
+   "dur": 3.18,
+   "hash": "260622a0624ee851"
   },
   "u21-d01.l8.en": {
    "dur": 2.92,
    "hash": "6e4e2e6b9e12bd10"
   },
   "u21-d01.l8.slow": {
-   "dur": 4.95,
-   "hash": "b4721f1105d7aca0"
+   "dur": 4.73,
+   "hash": "db1ca78999653438"
   },
   "u21-d01.q1.en": {
    "dur": 1.75,
@@ -9437,16 +9437,16 @@
    "hash": "8aafecef74999ad4"
   },
   "u21-d02.l2": {
-   "dur": 2.75,
-   "hash": "19f0ee3b5f3c4177"
+   "dur": 2.85,
+   "hash": "a6b724db9607611f"
   },
   "u21-d02.l2.en": {
    "dur": 2.37,
    "hash": "7665139bf1aaafb7"
   },
   "u21-d02.l2.slow": {
-   "dur": 4.05,
-   "hash": "707706cd0e45d91b"
+   "dur": 4.2,
+   "hash": "49f48efa824afcdd"
   },
   "u21-d02.l3": {
    "dur": 3.62,
@@ -9485,16 +9485,16 @@
    "hash": "f379309591217e3e"
   },
   "u21-d02.l6": {
-   "dur": 2.74,
-   "hash": "8a26065c46715e17"
+   "dur": 2.82,
+   "hash": "53d58c635da14354"
   },
   "u21-d02.l6.en": {
    "dur": 2.03,
    "hash": "41ba6ebac8110eb1"
   },
   "u21-d02.l6.slow": {
-   "dur": 4.04,
-   "hash": "8dad056031885755"
+   "dur": 4.14,
+   "hash": "9717d07cd1cb919d"
   },
   "u21-d02.l7": {
    "dur": 3.34,
@@ -9649,16 +9649,16 @@
    "hash": "429e2ad69bb8f491"
   },
   "u21-s03": {
-   "dur": 2.23,
-   "hash": "55fc1858a88bf44e"
+   "dur": 2.08,
+   "hash": "44df1bc139fb8f8d"
   },
   "u21-s03.en": {
    "dur": 1.56,
    "hash": "5a8df90280eba291"
   },
   "u21-s03.slow": {
-   "dur": 3.28,
-   "hash": "06d64d37830685e7"
+   "dur": 3.06,
+   "hash": "028db5dd1ac92dd0"
   },
   "u21-s04": {
    "dur": 2.76,
@@ -9685,16 +9685,16 @@
    "hash": "6078849e3ec44cd9"
   },
   "u21-s06": {
-   "dur": 3.75,
-   "hash": "580c702d5b25cfb2"
+   "dur": 3.68,
+   "hash": "86dc770eb3b38dee"
   },
   "u21-s06.en": {
    "dur": 2.61,
    "hash": "3cf3113de64c1798"
   },
   "u21-s06.slow": {
-   "dur": 5.46,
-   "hash": "1a8ee47b685de85d"
+   "dur": 5.36,
+   "hash": "bac53255da0fb8fc"
   },
   "u21-w01": {
    "dur": 0.86,
@@ -9877,16 +9877,16 @@
    "hash": "91ccd3f1dc7ce71b"
   },
   "u22-d01.l4": {
-   "dur": 1.95,
-   "hash": "1fb592b113a00300"
+   "dur": 2.1,
+   "hash": "91c34f598b0e938c"
   },
   "u22-d01.l4.en": {
    "dur": 1.35,
    "hash": "cc0e6cab2f12a0fd"
   },
   "u22-d01.l4.slow": {
-   "dur": 2.86,
-   "hash": "a07a8cb13a27e0c2"
+   "dur": 3.1,
+   "hash": "6a6ec78ea0aca542"
   },
   "u22-d01.l5": {
    "dur": 1.98,
@@ -9981,16 +9981,16 @@
    "hash": "37dd869d2cb7b9af"
   },
   "u22-d02.l5": {
-   "dur": 1.89,
-   "hash": "ddfc26abeaa2b416"
+   "dur": 2.02,
+   "hash": "262dad253ea91e74"
   },
   "u22-d02.l5.en": {
    "dur": 1.83,
    "hash": "c0bd2437ed4599f9"
   },
   "u22-d02.l5.slow": {
-   "dur": 2.77,
-   "hash": "a06b34266048023f"
+   "dur": 2.97,
+   "hash": "5ab56ae080277ca2"
   },
   "u22-d02.l6": {
    "dur": 1.64,
@@ -10349,16 +10349,16 @@
    "hash": "97fd19ce6f2ed1c7"
   },
   "u23-d01.l2": {
-   "dur": 2.0,
-   "hash": "3b829aab2323c017"
+   "dur": 2.55,
+   "hash": "67fe5870d41a0c46"
   },
   "u23-d01.l2.en": {
    "dur": 1.92,
    "hash": "3883a02694c62533"
   },
   "u23-d01.l2.slow": {
-   "dur": 2.97,
-   "hash": "7b15a0d2ae4fbc35"
+   "dur": 3.79,
+   "hash": "7e156aa8be0d61db"
   },
   "u23-d01.l3": {
    "dur": 3.95,
@@ -10385,16 +10385,16 @@
    "hash": "ba081315648d84e2"
   },
   "u23-d01.l5": {
-   "dur": 3.92,
-   "hash": "8068684124c408cb"
+   "dur": 3.85,
+   "hash": "85af047aa4181419"
   },
   "u23-d01.l5.en": {
    "dur": 3.21,
    "hash": "1e242047285a4694"
   },
   "u23-d01.l5.slow": {
-   "dur": 5.81,
-   "hash": "3f4fd35f93bba793"
+   "dur": 5.71,
+   "hash": "bb89908c4472737e"
   },
   "u23-d01.l6": {
    "dur": 2.34,
@@ -10429,40 +10429,40 @@
    "hash": "6f02f97d10f5927e"
   },
   "u23-d02.l1": {
-   "dur": 3.46,
-   "hash": "0cb8f9dca2a73b10"
+   "dur": 3.12,
+   "hash": "e5fe3a55495af8a2"
   },
   "u23-d02.l1.en": {
    "dur": 2.93,
    "hash": "15d5462bd83be1a5"
   },
   "u23-d02.l1.slow": {
-   "dur": 5.43,
-   "hash": "b6f2b788dfc89543"
+   "dur": 5.16,
+   "hash": "feea928ca76176e6"
   },
   "u23-d02.l2": {
-   "dur": 3.58,
-   "hash": "d024339849720ed5"
+   "dur": 3.32,
+   "hash": "f97844039634b7e3"
   },
   "u23-d02.l2.en": {
    "dur": 3.56,
    "hash": "14b2e09299b17393"
   },
   "u23-d02.l2.slow": {
-   "dur": 5.27,
-   "hash": "3d8b4c90427edcc3"
+   "dur": 4.86,
+   "hash": "34fc93c282b260c4"
   },
   "u23-d02.l3": {
-   "dur": 1.92,
-   "hash": "42fe7d7bae58f60c"
+   "dur": 2.01,
+   "hash": "d44a6ba2c2a8e5a5"
   },
   "u23-d02.l3.en": {
    "dur": 1.87,
    "hash": "9b8c1fc17ec3833c"
   },
   "u23-d02.l3.slow": {
-   "dur": 2.91,
-   "hash": "c55a9b8783585ff8"
+   "dur": 2.93,
+   "hash": "946954ec48b70266"
   },
   "u23-d02.l4": {
    "dur": 2.6,
@@ -10477,16 +10477,16 @@
    "hash": "80cbcf6b34059115"
   },
   "u23-d02.l5": {
-   "dur": 1.38,
-   "hash": "7c3508be8f8be616"
+   "dur": 1.1,
+   "hash": "551836e6c4419041"
   },
   "u23-d02.l5.en": {
    "dur": 1.18,
    "hash": "95cc38e70ca2927c"
   },
   "u23-d02.l5.slow": {
-   "dur": 2.02,
-   "hash": "71870d6cbba87c08"
+   "dur": 1.68,
+   "hash": "bd875b8d59ba51a3"
   },
   "u23-d02.l6": {
    "dur": 3.75,
@@ -10501,28 +10501,28 @@
    "hash": "eef5b594f00f6694"
   },
   "u23-d02.l7": {
-   "dur": 3.2,
-   "hash": "59b051537270b62d"
+   "dur": 3.15,
+   "hash": "e42239ee6dbef660"
   },
   "u23-d02.l7.en": {
    "dur": 2.93,
    "hash": "ac9c7449dae210df"
   },
   "u23-d02.l7.slow": {
-   "dur": 4.74,
-   "hash": "f3933c6eec81053d"
+   "dur": 4.67,
+   "hash": "9ec06dfecf65065a"
   },
   "u23-d02.l8": {
-   "dur": 1.39,
-   "hash": "3ca21b4d1b9b56b4"
+   "dur": 1.53,
+   "hash": "aaebd812c3807ba3"
   },
   "u23-d02.l8.en": {
    "dur": 1.18,
    "hash": "99bd701a63200f5e"
   },
   "u23-d02.l8.slow": {
-   "dur": 2.1,
-   "hash": "6a4b55e6f8ff2540"
+   "dur": 2.31,
+   "hash": "c190647c8b08ddf5"
   },
   "u23-d02.q1.en": {
    "dur": 2.19,
@@ -10653,16 +10653,16 @@
    "hash": "bdf2e90ad5e10be5"
   },
   "u23-s03": {
-   "dur": 2.36,
-   "hash": "463f8ae03e3aa2fa"
+   "dur": 1.94,
+   "hash": "239e4604d6543573"
   },
   "u23-s03.en": {
    "dur": 2.27,
    "hash": "5f7d84a283d848db"
   },
   "u23-s03.slow": {
-   "dur": 3.5,
-   "hash": "bb8439c138f81bf6"
+   "dur": 2.87,
+   "hash": "76ba16ed66f4048c"
   },
   "u23-s04": {
    "dur": 2.01,
@@ -10869,16 +10869,16 @@
    "hash": "e409e8e7062384c3"
   },
   "u24-d01.l3": {
-   "dur": 2.27,
-   "hash": "a4d42dac492ae7ff"
+   "dur": 2.31,
+   "hash": "ba3d69612c070a00"
   },
   "u24-d01.l3.en": {
    "dur": 1.95,
    "hash": "6578ca5e56428b85"
   },
   "u24-d01.l3.slow": {
-   "dur": 3.51,
-   "hash": "3f3c9b60369dd293"
+   "dur": 3.5,
+   "hash": "b9924826f9986b81"
   },
   "u24-d01.l4": {
    "dur": 3.37,
@@ -10917,28 +10917,28 @@
    "hash": "1bd9c3fff99be5b3"
   },
   "u24-d01.l7": {
-   "dur": 2.7,
-   "hash": "52619ccd40a2fe13"
+   "dur": 3.36,
+   "hash": "01ea6fa239b1a505"
   },
   "u24-d01.l7.en": {
    "dur": 2.1,
    "hash": "10fc6c983b2a70b7"
   },
   "u24-d01.l7.slow": {
-   "dur": 4.0,
-   "hash": "c4f83f2bbe1a3067"
+   "dur": 4.99,
+   "hash": "a3020713ba3eeb2a"
   },
   "u24-d01.l8": {
-   "dur": 2.79,
-   "hash": "071923ab81bd5a54"
+   "dur": 2.57,
+   "hash": "220fee794e45526b"
   },
   "u24-d01.l8.en": {
    "dur": 1.85,
    "hash": "77d939e53244ddda"
   },
   "u24-d01.l8.slow": {
-   "dur": 4.1,
-   "hash": "b98e4a108912b3e8"
+   "dur": 3.76,
+   "hash": "62bf9674410d31e9"
   },
   "u24-d01.q1.en": {
    "dur": 1.17,
@@ -10985,40 +10985,40 @@
    "hash": "9a709e9951f64d19"
   },
   "u24-d02.l4": {
-   "dur": 2.54,
-   "hash": "b91efcbda98727b1"
+   "dur": 2.35,
+   "hash": "291e4ae5b8048bab"
   },
   "u24-d02.l4.en": {
    "dur": 2.06,
    "hash": "cc6b7d3f0387fe36"
   },
   "u24-d02.l4.slow": {
-   "dur": 3.74,
-   "hash": "84f16c44e9596fea"
+   "dur": 3.64,
+   "hash": "6a099b87426d53da"
   },
   "u24-d02.l5": {
-   "dur": 4.27,
-   "hash": "88e7ab211c0fc6da"
+   "dur": 4.47,
+   "hash": "752cf7da65040cfb"
   },
   "u24-d02.l5.en": {
    "dur": 3.25,
    "hash": "23b46cb5d5d03c18"
   },
   "u24-d02.l5.slow": {
-   "dur": 6.43,
-   "hash": "0c00728c69cd7ecc"
+   "dur": 6.71,
+   "hash": "590979f07170a8aa"
   },
   "u24-d02.l6": {
-   "dur": 2.58,
-   "hash": "349039315be18ac3"
+   "dur": 2.71,
+   "hash": "c78bce998c1232a6"
   },
   "u24-d02.l6.en": {
    "dur": 2.24,
    "hash": "f1cfd63df4ed2984"
   },
   "u24-d02.l6.slow": {
-   "dur": 3.8,
-   "hash": "369d2e09093ec285"
+   "dur": 4.0,
+   "hash": "14cfb7ca918f7297"
   },
   "u24-d02.l7": {
    "dur": 3.54,
@@ -11053,28 +11053,28 @@
    "hash": "a58b9e552a0e5b1a"
   },
   "u24-p01": {
-   "dur": 1.13,
-   "hash": "7ba45e0f096d8291"
+   "dur": 0.96,
+   "hash": "1f0b65abf6376bf5"
   },
   "u24-p01.en": {
-   "dur": 0.98,
-   "hash": "aa90ec628e9781ac"
+   "dur": 1.01,
+   "hash": "d29eac8c9e6bf4ed"
   },
   "u24-p01.slow": {
-   "dur": 1.94,
-   "hash": "4c5d90ce71528080"
+   "dur": 1.65,
+   "hash": "c3efc2aadb32b5cd"
   },
   "u24-p02": {
-   "dur": 0.92,
-   "hash": "12a43b6035fe9864"
+   "dur": 0.68,
+   "hash": "b32e82dfda8de828"
   },
   "u24-p02.en": {
-   "dur": 1.02,
-   "hash": "c22696e86cad9224"
+   "dur": 1.12,
+   "hash": "bbda2842964cc5e8"
   },
   "u24-p02.slow": {
-   "dur": 1.57,
-   "hash": "df700fdd1784d50d"
+   "dur": 1.24,
+   "hash": "fc963234069da7c9"
   },
   "u24-p03": {
    "dur": 1.01,
@@ -11137,16 +11137,16 @@
    "hash": "e08d96fec74fc0b8"
   },
   "u24-p08": {
-   "dur": 1.16,
-   "hash": "39fad711bd45adfa"
+   "dur": 1.13,
+   "hash": "d86ed4aeb2d69dbb"
   },
   "u24-p08.en": {
    "dur": 1.11,
    "hash": "4c79bde69e0bedd8"
   },
   "u24-p08.slow": {
-   "dur": 1.98,
-   "hash": "2a6020fb15a3929b"
+   "dur": 1.94,
+   "hash": "d9d4bd29804a8b1d"
   },
   "u24-s01": {
    "dur": 2.95,
