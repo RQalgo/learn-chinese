@@ -210,8 +210,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "你喜欢看什么电影？",
-          "pinyin": "Nǐ xǐhuan kàn shénme diànyǐng?",
+          "hanzi": "你喜欢看什么电影啊？",
+          "pinyin": "Nǐ xǐhuan kàn shénme diànyǐng a?",
           "english": "What kind of films do you like?"
         },
         {
@@ -268,9 +268,9 @@
         },
         {
           "speaker": "B",
-          "hanzi": "我喜欢中国的歌。你呢？",
-          "pinyin": "Wǒ xǐhuan Zhōngguó de gē. Nǐ ne?",
-          "english": "I like Chinese songs. And you?"
+          "hanzi": "我喜欢华语歌。你呢？",
+          "pinyin": "Wǒ xǐhuan Huáyǔ gē. Nǐ ne?",
+          "english": "I like Mandarin songs. And you?"
         },
         {
           "speaker": "A",

@@ -73,8 +73,8 @@
     {
       "id": "u03-w10",
       "type": "word",
-      "hanzi": "哪儿",
-      "pinyin": "nǎr",
+      "hanzi": "哪里",
+      "pinyin": "nǎlǐ",
       "english": "where",
       "alt": [
         "which place"
@@ -184,8 +184,8 @@
     {
       "id": "u03-s05",
       "type": "sentence",
-      "hanzi": "你从哪儿来？",
-      "pinyin": "Nǐ cóng nǎr lái?",
+      "hanzi": "你从哪里来？",
+      "pinyin": "Nǐ cóng nǎlǐ lái?",
       "english": "Where are you from?"
     },
     {
@@ -215,8 +215,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "我叫王华。你是哪儿人？",
-          "pinyin": "Wǒ jiào Wáng Huá. Nǐ shì nǎr rén?",
+          "hanzi": "我叫王华。你是哪里人？",
+          "pinyin": "Wǒ jiào Wáng Huá. Nǐ shì nǎlǐ rén?",
           "english": "I'm Wang Hua. Where are you from?"
         },
         {
@@ -261,8 +261,8 @@
       "lines": [
         {
           "speaker": "A",
-          "hanzi": "她是谁？",
-          "pinyin": "Tā shì shéi?",
+          "hanzi": "她是谁啊？",
+          "pinyin": "Tā shì shéi a?",
           "english": "Who is she?"
         },
         {

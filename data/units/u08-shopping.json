@@ -18,7 +18,7 @@
       "alt": [
         "yuan (spoken)"
       ],
-      "hint": "Spoken word for a dollar, e.g. 五块."
+      "hint": "Spoken word for a dollar, e.g. 五块. Also used for yuan in China."
     },
     {
       "id": "u08-w03",
@@ -40,7 +40,7 @@
       "alt": [
         "dime"
       ],
-      "hint": "One tenth of a 块."
+      "hint": "One tenth of a 块. In Singapore people often just say 十八块五."
     },
     {
       "id": "u08-w05",
@@ -134,8 +134,8 @@
     {
       "id": "u08-p04",
       "type": "phrase",
-      "hanzi": "便宜点儿",
-      "pinyin": "piányi diǎnr",
+      "hanzi": "便宜点",
+      "pinyin": "piányi diǎn",
       "english": "a bit cheaper"
     },
     {
@@ -151,9 +151,10 @@
     {
       "id": "u08-p06",
       "type": "phrase",
-      "hanzi": "超市",
-      "pinyin": "chāoshì",
-      "english": "supermarket"
+      "hanzi": "新元",
+      "pinyin": "xīnyuán",
+      "english": "Singapore dollar",
+      "hint": "Singapore's currency. In China: 人民币 rénmínbì."
     },
     {
       "id": "u08-p07",
@@ -196,8 +197,8 @@
     {
       "id": "u08-s04",
       "type": "sentence",
-      "hanzi": "便宜点儿，好吗？",
-      "pinyin": "Piányi diǎnr, hǎo ma?",
+      "hanzi": "便宜点，好吗？",
+      "pinyin": "Piányi diǎn, hǎo ma?",
       "english": "Cheaper, okay?"
     },
     {
@@ -210,8 +211,8 @@
     {
       "id": "u08-s06",
       "type": "sentence",
-      "hanzi": "一共十八块五毛。",
-      "pinyin": "Yígòng shíbā kuài wǔ máo.",
+      "hanzi": "一共十八块五。",
+      "pinyin": "Yígòng shíbā kuài wǔ.",
       "english": "That's eighteen dollars fifty in all."
     }
   ],
@@ -234,8 +235,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "太贵了！便宜点儿，好吗？",
-          "pinyin": "Tài guì le! Piányi diǎnr, hǎo ma?",
+          "hanzi": "太贵了啦！便宜点，好吗？",
+          "pinyin": "Tài guì le la! Piányi diǎn, hǎo ma?",
           "english": "Too expensive! Cheaper, okay?"
         },
         {
