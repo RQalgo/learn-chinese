@@ -28,6 +28,9 @@
  *     dialogue has been answered: the exercise tests listening comprehension;
  *     showing the text first would turn it into a reading exercise. (The
  *     transcript is also available on the unit screen.)
+ *   - Voices: the intro uses the item's primary (learning) voice; question prompts and
+ *     meaning-audio options use alternative voices (engine/questions.js); feedback "Replay"
+ *     plays the primary voice again.
  *   - Media Session: play = replay the current prompt, pause = stop.
  *
  * Public API
@@ -254,7 +257,7 @@ export function render(root, ctx) {
   // ===== Section: Step — item questions =====
 
   function questionStep(step) {
-    const q = makeQuestion(step.qtype, step.itemId, curriculum, store.progress, rng);
+    const q = makeQuestion(step.qtype, step.itemId, curriculum, store.progress, rng, store.clips);
     const item = curriculum.items.get(q.itemId);
     let answered = false;
 
@@ -295,11 +298,15 @@ export function render(root, ctx) {
       return;
     }
 
+    // WHY: the question is spoken by an alternative voice (q.prompt.clip = `<id>.altK`, chosen once, so every
+    // replay of this question uses the same voice); the turtle plays the item's PRIMARY slow clip, the voice
+    // it was taught in, which doubles as a hint ("slow and familiar") instead of a second unknown voice.
     const play = () => playClip(q.prompt.clip);
+    const slowHint = () => playClip(item.id, { slow: true });
     setReplay(play, meta);
 
     if (q.qtype === "true-false") {
-      put(topEl, playControl(play, () => playClip(q.prompt.clip, { slow: true })),
+      put(topEl, playControl(play, slowHint),
         showPyNow ? pinyinLine(item.pinyin) : null,
         h("p", { class: "statement" }, "Does it mean: ", h("b", null, q.prompt.text), "?"));
       const shown = curriculum.items.get(q.shownItemId);
@@ -312,7 +319,7 @@ export function render(root, ctx) {
     }
 
     // listen-meaning
-    put(topEl, playControl(play, () => playClip(q.prompt.clip, { slow: true })),
+    put(topEl, playControl(play, slowHint),
       showPyNow ? pinyinLine(item.pinyin) : null,
       h("div", { class: "prompt-label" }, "What does it mean?"));
     put(bottomEl, ...optionButtons(q.options, (i) => answer(i)));

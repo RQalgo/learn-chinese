@@ -176,9 +176,11 @@ test("listen plan structure: new then review then dialogue; segment shapes per Â
   const firstNew = p.segments.find((s) => s.kind === "new");
   assert.deepEqual(firstNew.clips, [`${firstNew.refId}.slow`, "sys.silence.1000", `${firstNew.refId}.en`, "sys.silence.500", firstNew.refId, "sys.silence.1500", firstNew.refId]);
   const firstRev = p.segments.find((s) => s.kind === "review");
-  assert.deepEqual(firstRev.clips.slice(0, 2), ["sys.whatMeans", firstRev.refId]);
+  assert.equal(firstRev.clips[0], "sys.whatMeans");
+  assert.match(firstRev.clips[1], new RegExp(`^${firstRev.refId}\\.alt[123]$`), "self-test prompt is an alt voice");
+  assert.deepEqual(firstRev.clips.slice(2), ["sys.silence.3000", `${firstRev.refId}.en`, "sys.silence.500", firstRev.refId], "final repeat is the primary voice");
   const secondRev = p.segments.filter((s) => s.kind === "review")[1];
-  if (secondRev) assert.equal(secondRev.clips[0], secondRev.refId);
+  if (secondRev) assert.match(secondRev.clips[0], new RegExp(`^${secondRev.refId}\\.alt[123]$`));
   assert.ok(kinds.indexOf("new") < kinds.indexOf("review"));
   assert.ok(kinds.indexOf("review") < kinds.indexOf("dialogue"));
   const intros = p.segments.filter((s) => s.kind === "new").map((s) => s.refId);

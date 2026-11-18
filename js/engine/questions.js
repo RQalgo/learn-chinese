@@ -25,22 +25,29 @@
  *     options are possible, the question degrades (meaning-audio ->
  *     listen-meaning -> true-false with a true statement).
  *
+ *   - Quiz voices: the audio of listen-meaning / true-false prompts and of every
+ *     meaning-audio option is an alternative-voice clip `<id>.altK` (random via rng, never the
+ *     item's primary voice used for learning; falls back to the primary if no alt exists in the
+ *     optional `clips` table, and the player falls back for a missing file). The chosen clip is
+ *     stored in the question, so replays of one question use the same voice.
+ *
  * Public API
  *   QTYPES
  *   chooseQtype(item, card, rng)                                 -> qtype
- *   makeQuestion(qtype, itemId, curriculum, progress, rng)       -> Question
+ *   makeQuestion(qtype, itemId, curriculum, progress, rng, clips?) -> Question
  *   makeDialogueQuestion(questionId, curriculum, rng)            -> Question
  *   pickDistractors(item, curriculum, progress, rng, count, labelOf?) -> Item[]
  */
 
 import { shuffle } from "./rng.js";
+import { pickAltClip } from "./altvoice.js";
 
 // ===== Section: Types =====
 
 /**
  * @typedef {Object} Option
  * @property {string} label        Text shown on the button.
- * @property {string} [clip]       Audio clip played when the option is tapped (meaning-audio).
+ * @property {string} [clip]       Audio clip played when the option is tapped (meaning-audio): an alt-voice clip.
  * @property {string} [itemId]     Item the option stands for (when it maps to one).
  */
 
@@ -173,10 +180,12 @@ function finish(qtype, itemId, prompt, correctOpt, wrongOpts, rng, extra = {}) {
  * @param {import("./curriculum.js").Curriculum} curriculum
  * @param {import("../state/progress.js").Progress|null} progress
  * @param {() => number} rng
+ * @param {Object<string, any>|null} [clips] Effective clip table: only alts present in it are chosen
+ *   (omit to pick among all alts and rely on the player's fallback).
  * @returns {Question}
  * @throws {Error} When the item id is unknown.
  */
-export function makeQuestion(qtype, itemId, curriculum, progress, rng) {
+export function makeQuestion(qtype, itemId, curriculum, progress, rng, clips = null) {
   const item = curriculum.items.get(itemId);
   if (!item) throw new Error(`makeQuestion: unknown item "${itemId}"`);
 
@@ -184,9 +193,10 @@ export function makeQuestion(qtype, itemId, curriculum, progress, rng) {
     // Options are labelled by pinyin; also unique by hanzi via the same label rule.
     const wrong = pickDistractors(item, curriculum, progress, rng, 2, (i) => i.pinyin);
     if (wrong.length >= 1) {
-      const correct = { label: item.pinyin, clip: item.id, itemId: item.id };
+      // WHY a fresh alt per option: three different speakers on one screen is the harder test.
+      const correct = { label: item.pinyin, clip: pickAltClip(item.id, rng, clips), itemId: item.id };
       return finish("meaning-audio", item.id, { text: item.english }, correct,
-        wrong.map((w) => ({ label: w.pinyin, clip: w.id, itemId: w.id })), rng);
+        wrong.map((w) => ({ label: w.pinyin, clip: pickAltClip(w.id, rng, clips), itemId: w.id })), rng);
     }
     qtype = "listen-meaning"; // WHY: tiny pool; degrade rather than fail.
   }
@@ -195,7 +205,7 @@ export function makeQuestion(qtype, itemId, curriculum, progress, rng) {
     const wrong = pickDistractors(item, curriculum, progress, rng, 3);
     if (wrong.length >= 1) {
       const correct = { label: item.english, itemId: item.id };
-      return finish("listen-meaning", item.id, { clip: item.id }, correct,
+      return finish("listen-meaning", item.id, { clip: pickAltClip(item.id, rng, clips) }, correct,
         wrong.map((w) => ({ label: w.english, itemId: w.id })), rng);
     }
     qtype = "true-false"; // no distractor at all: can only state something true
@@ -209,7 +219,7 @@ export function makeQuestion(qtype, itemId, curriculum, progress, rng) {
     const shown = isTrue ? item : wrong[0];
     return {
       qtype: "true-false", itemId: item.id,
-      prompt: { clip: item.id, text: shown.english },
+      prompt: { clip: pickAltClip(item.id, rng, clips), text: shown.english },
       options: [{ label: "✓" }, { label: "✗" }],
       answerIndex: isTrue ? 0 : 1,
       isTrue, shownItemId: shown.id,

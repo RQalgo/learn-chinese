@@ -52,6 +52,9 @@ import time
 from playwright.sync_api import sync_playwright
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+import generate_audio as ga  # noqa: E402  (voice of every clip id, to check quiz voices differ from learning voices)
+VOICE_OF = {c.id: c.voice for c in ga.enumerate_clips(ROOT) if c.kind in ("zh", "zh-slow")}
 SHOTS = "/tmp/shots"
 CHROME = "/usr/bin/google-chrome"
 # audio-sg/manifest.json: the Singapore set is not generated yet, so the repo has none.
@@ -181,6 +184,7 @@ class Run:
         self.seen_types.add(s)
         expect = None
         if s == "listen-meaning":
+            self.check_question_voice(s)
             self.shot("quiz-question")
             pyn = p.locator(".prompt-pinyin")
             labels = [o.inner_text() for o in p.locator(".stage-bottom .opt").all()]
@@ -193,6 +197,7 @@ class Run:
                     idx, expect = (wrong[0], "miss") if want_wrong else (right[0], "ok")
             p.locator(".stage-bottom .opt").nth(idx).click()
         elif s == "true-false":
+            self.check_question_voice(s)
             self.shot("quiz-truefalse")
             pyn = p.locator(".prompt-pinyin")
             shown = p.locator(".statement b").inner_text()
@@ -252,6 +257,28 @@ class Run:
         p.locator("button[aria-label='Play slowly']").click()
         got = self.played()
         check(len(got) == 1 and "/audio/zh-slow/" in got[0], f"intro turtle button plays the slow clip once ({got})")
+
+    def check_question_voice(self, qtype):
+        """The prompt of a quiz question is an `.alt` clip in a voice other than the item's learning voice;
+        the turtle plays the primary slow clip (once per question type per run)."""
+        done = self.__dict__.setdefault("_voice_checked", set())
+        if qtype in done:
+            return
+        done.add(qtype)
+        p = self.page
+        got = self.played()
+        m = re.search(r"/audio/zh/([\w-]+)_alt(\d)\.mp3", got[-1] if got else "")
+        check(m is not None, f"{qtype}: the question prompt plays an .alt clip ({got[-1:] })")
+        item, alt = m.group(1), f"{m.group(1)}.alt{m.group(2)}"
+        check(VOICE_OF[alt] != VOICE_OF[item], f"{qtype}: quiz voice {VOICE_OF[alt]} differs from the learning voice {VOICE_OF[item]}")
+        p.evaluate("window.__played.length = 0")
+        p.locator("button[aria-label='Play slowly']").click()
+        got = self.played()
+        check(len(got) == 1 and f"/audio/zh-slow/{item}_slow.mp3" in got[0], f"{qtype}: the turtle plays the primary slow clip ({got})")
+        p.evaluate("window.__played.length = 0")
+        p.locator(".play-btn").click()
+        again = self.played()
+        check(len(again) == 1 and f"{item}_alt{m.group(2)}.mp3" in again[0], f"{qtype}: replay keeps the same quiz voice")
 
     def run_session(self, label, wrong_every=4, max_steps=80):
         """Play every step until the summary. Returns step counts by type."""
