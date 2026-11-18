@@ -78,7 +78,8 @@
       "type": "word",
       "hanzi": "时间",
       "pinyin": "shíjiān",
-      "english": "time"
+      "english": "time",
+      "hint": "\"When\" is 什么时候, or often 几时 jǐshí in Singapore."
     },
     {
       "id": "u09-w12",
@@ -279,8 +280,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "那还有十天！",
-          "pinyin": "Nà hái yǒu shí tiān!",
+          "hanzi": "那还有十天啦！",
+          "pinyin": "Nà hái yǒu shí tiān la!",
           "english": "Then there are still ten days!"
         },
         {

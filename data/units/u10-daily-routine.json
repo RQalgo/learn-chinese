@@ -54,9 +54,10 @@
     {
       "id": "u10-w08",
       "type": "word",
-      "hanzi": "早饭",
-      "pinyin": "zǎofàn",
-      "english": "breakfast"
+      "hanzi": "早餐",
+      "pinyin": "zǎocān",
+      "english": "breakfast",
+      "hint": "In China: 早饭 zǎofàn (also heard here)"
     },
     {
       "id": "u10-w09",
@@ -96,8 +97,8 @@
     {
       "id": "u10-p02",
       "type": "phrase",
-      "hanzi": "吃早饭",
-      "pinyin": "chī zǎofàn",
+      "hanzi": "吃早餐",
+      "pinyin": "chī zǎocān",
       "english": "to eat breakfast"
     },
     {
@@ -204,8 +205,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "这么早！你吃早饭吗？",
-          "pinyin": "Zhème zǎo! Nǐ chī zǎofàn ma?",
+          "hanzi": "这么早啊！你吃早餐吗？",
+          "pinyin": "Zhème zǎo a! Nǐ chī zǎocān ma?",
           "english": "So early! Do you eat breakfast?"
         },
         {
@@ -216,8 +217,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "我七点才起床，不吃早饭。",
-          "pinyin": "Wǒ qī diǎn cái qǐchuáng, bù chī zǎofàn.",
+          "hanzi": "我七点才起床，不吃早餐。",
+          "pinyin": "Wǒ qī diǎn cái qǐchuáng, bù chī zǎocān.",
           "english": "I don't get up until seven and I skip breakfast."
         }
       ],

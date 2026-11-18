@@ -96,16 +96,16 @@
     {
       "id": "u13-p02",
       "type": "phrase",
-      "hanzi": "有点儿热",
-      "pinyin": "yǒudiǎnr rè",
+      "hanzi": "有点热",
+      "pinyin": "yǒudiǎn rè",
       "english": "a bit hot",
-      "hint": "有点儿 is used for things you find a bit unpleasant."
+      "hint": "有点 is used for things you find a bit unpleasant."
     },
     {
       "id": "u13-p03",
       "type": "phrase",
-      "hanzi": "有点儿冷",
-      "pinyin": "yǒudiǎnr lěng",
+      "hanzi": "有点冷",
+      "pinyin": "yǒudiǎn lěng",
       "english": "a bit cold"
     },
     {
@@ -141,7 +141,8 @@
       "type": "phrase",
       "hanzi": "天气怎么样？",
       "pinyin": "tiānqì zěnmeyàng?",
-      "english": "how's the weather?"
+      "english": "how's the weather?",
+      "hint": "Also 怎样 zěnyàng, very common in Singapore."
     },
     {
       "id": "u13-s01",
@@ -174,8 +175,8 @@
     {
       "id": "u13-s05",
       "type": "sentence",
-      "hanzi": "今天有点儿阴，可能会下雨。",
-      "pinyin": "Jīntiān yǒudiǎnr yīn, kěnéng huì xiàyǔ.",
+      "hanzi": "今天有点阴，可能会下雨。",
+      "pinyin": "Jīntiān yǒudiǎn yīn, kěnéng huì xiàyǔ.",
       "english": "It's a bit overcast today, it might rain."
     },
     {
@@ -199,8 +200,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "很热，三十五度。",
-          "pinyin": "Hěn rè, sānshíwǔ dù.",
+          "hanzi": "很热啊，三十五度。",
+          "pinyin": "Hěn rè a, sānshíwǔ dù.",
           "english": "Very hot, thirty-five degrees."
         },
         {
@@ -269,8 +270,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "现在不下，可是有点儿阴。",
-          "pinyin": "Xiànzài bú xià, kěshì yǒudiǎnr yīn.",
+          "hanzi": "现在不下，可是有点阴。",
+          "pinyin": "Xiànzài bú xià, kěshì yǒudiǎn yīn.",
           "english": "Not now, but it's a bit overcast."
         },
         {
@@ -281,8 +282,8 @@
         },
         {
           "speaker": "A",
-          "hanzi": "明天会下大雨。",
-          "pinyin": "Míngtiān huì xià dà yǔ.",
+          "hanzi": "明天会下大雨哦。",
+          "pinyin": "Míngtiān huì xià dà yǔ o.",
           "english": "It will rain heavily tomorrow."
         },
         {

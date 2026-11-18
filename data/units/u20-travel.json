@@ -169,8 +169,8 @@
     {
       "id": "u20-s01",
       "type": "sentence",
-      "hanzi": "我的护照在哪儿？",
-      "pinyin": "Wǒ de hùzhào zài nǎr?",
+      "hanzi": "我的护照在哪里？",
+      "pinyin": "Wǒ de hùzhào zài nǎlǐ?",
       "english": "Where is my passport?"
     },
     {
@@ -246,8 +246,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "对。早饭几点开始？",
-          "pinyin": "Duì. Zǎofàn jǐ diǎn kāishǐ?",
+          "hanzi": "对。早餐几点开始？",
+          "pinyin": "Duì. Zǎocān jǐ diǎn kāishǐ?",
           "english": "Right. What time does breakfast start?"
         },
         {
@@ -292,8 +292,8 @@
       "lines": [
         {
           "speaker": "A",
-          "hanzi": "今年你想去哪儿旅游？",
-          "pinyin": "Jīnnián nǐ xiǎng qù nǎr lǚyóu?",
+          "hanzi": "今年你想去哪里旅游？",
+          "pinyin": "Jīnnián nǐ xiǎng qù nǎlǐ lǚyóu?",
           "english": "Where do you want to travel this year?"
         },
         {
@@ -322,8 +322,8 @@
         },
         {
           "speaker": "B",
-          "hanzi": "有，我已经办好了。",
-          "pinyin": "Yǒu, wǒ yǐjīng bàn hǎo le.",
+          "hanzi": "有啊，我已经办好了。",
+          "pinyin": "Yǒu a, wǒ yǐjīng bàn hǎo le.",
           "english": "Yes, I've already arranged it."
         },
         {
