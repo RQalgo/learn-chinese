@@ -32,6 +32,7 @@
 import { shuffle, sample } from "./rng.js";
 import { isDue, newCard } from "./srs.js";
 import { chooseQtype } from "./questions.js";
+import { pickAltClip } from "./altvoice.js";
 
 // ===== Section: Types =====
 
@@ -276,6 +277,9 @@ const EST_CLIP_SEC = 1.2;
 function makeDur(durations) {
   return (id) => {
     if (durations && durations[id] != null) return durations[id];
+    // WHY: a quiz-voice clip (`<id>.altK`) lasts about as long as the primary clip of the same item.
+    const alt = /^(.+)\.alt\d+$/.exec(id);
+    if (alt) return durations && durations[alt[1]] != null ? durations[alt[1]] : EST_CLIP_SEC;
     const m = /^sys\.silence\.(\d+)$/.exec(id);
     if (m) return Number(m[1]) / 1000;
     return id.endsWith(".slow") ? EST_CLIP_SEC * 1.8 : EST_CLIP_SEC;
@@ -303,8 +307,11 @@ export function planListenSession({ curriculum, progress, now, rng, minutes = 8,
   const prompt = (id) => ({ kind: "prompt", refId: id, clips: [id] });
   const newSeg = (it) => ({ kind: "new", refId: it.id, clips: [
     `${it.id}.slow`, "sys.silence.1000", `${it.id}.en`, "sys.silence.500", it.id, "sys.silence.1500", it.id] });
+  // WHY: the self-test prompt ("what does this mean?") is spoken by an alternative voice, so it cannot be
+  // solved by recognising the speaker heard when the word was taught; the final repeat after the English
+  // is the primary (learning) voice. `durations` doubles as the table of existing clips: no alt -> primary.
   const reviewSeg = (it, first) => ({ kind: "review", refId: it.id, clips: [
-    ...(first ? ["sys.whatMeans"] : []), it.id, "sys.silence.3000", `${it.id}.en`, "sys.silence.500", it.id] });
+    ...(first ? ["sys.whatMeans"] : []), pickAltClip(it.id, rng, durations || null), "sys.silence.3000", `${it.id}.en`, "sys.silence.500", it.id] });
   const dialogueSeg = (d) => {
     const n = (d.lines || []).length;
     const ids = Array.from({ length: n }, (_, i) => `${d.id}.l${i + 1}`);

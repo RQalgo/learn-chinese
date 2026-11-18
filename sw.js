@@ -30,7 +30,7 @@
 // ===== Section: Config =====
 
 /** Bump to force clients to re-download the app shell. */
-const VERSION = "2";
+const VERSION = "3";
 const SHELL_CACHE = `ting-shell-v${VERSION}`;
 const AUDIO_CACHE = "ting-audio-v1";
 
@@ -52,6 +52,7 @@ const SHELL_FILES = [
   "js/engine/questions.js",
   "js/engine/session.js",
   "js/engine/curriculum.js",
+  "js/engine/altvoice.js",
   "js/state/storage.js",
   "js/state/progress.js",
   "js/ui/dom.js",

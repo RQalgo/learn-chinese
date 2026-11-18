@@ -21,7 +21,7 @@
  *     effective accent is "cn" (Settings shows Singapore as "coming soon").
  *
  * Public API
- *   isMandarinClip(id), manifestClips(manifest), effectiveClips(cn, sg, accent)
+ *   isMandarinClip(id), manifestClips(manifest), effectiveClips(cn, sg, accent), resolveClipId(id, clips)
  */
 
 // ===== Section: Helpers =====
@@ -50,6 +50,22 @@ export function manifestClips(manifest) {
 }
 
 // ===== Section: Public API =====
+
+/**
+ * Where a clip id falls back to when its clip is not in the table: a quiz-voice variant
+ * `<id>.altK` plays the primary `<id>` (old audio set, engine with fewer voices).
+ * WHY here: the single place for the fallback, so questions/planner may name alts optimistically
+ * and the player (audio/player.js) resolves them. Other ids are returned unchanged (the player has
+ * its own speech fallback for those).
+ * @param {string} id
+ * @param {Object<string, {src: string}>} clips The effective clip table.
+ * @returns {string} `id` if it is playable, else the primary id for an `.altK`, else `id`.
+ */
+export function resolveClipId(id, clips) {
+  if (usable(clips && clips[id])) return id;
+  const m = /^(.+)\.alt\d+$/.exec(id);
+  return m ? m[1] : id;
+}
 
 /**
  * Build the clip table for an accent.

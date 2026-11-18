@@ -32,7 +32,8 @@ test("distractors fall back to other types / units when pool is small", () => {
 test("listen-meaning shape", () => {
   const q = makeQuestion("listen-meaning", "u01-w02", cur, fresh(), makeRng(3));
   assert.equal(q.qtype, "listen-meaning"); assert.equal(q.itemId, "u01-w02");
-  assert.deepEqual(q.prompt, { clip: "u01-w02" });
+  assert.match(q.prompt.clip, /^u01-w02\.alt[123]$/, "quiz prompts use an alternative voice");
+  assert.deepEqual(Object.keys(q.prompt), ["clip"]);
   assert.equal(q.options.length, 4);
   assert.equal(q.options[q.answerIndex].label, "goodbye");
   assert.equal(q.options[q.answerIndex].itemId, "u01-w02");
@@ -44,7 +45,8 @@ test("meaning-audio shape: english prompt, 3 clips", () => {
   assert.equal(q.prompt.text, "hello"); assert.equal(q.prompt.clip, undefined);
   assert.equal(q.options.length, 3);
   assert.ok(q.options.every((o) => o.clip && o.label && o.itemId));
-  assert.equal(q.options[q.answerIndex].clip, "u01-w01");
+  assert.match(q.options[q.answerIndex].clip, /^u01-w01\.alt[123]$/);
+  assert.ok(q.options.every((o) => new RegExp(`^${o.itemId}\\.alt[123]$`).test(o.clip)), "every option is an alt-voice clip of its own item");
   assert.equal(new Set(q.options.map((o) => o.clip)).size, 3);
 });
 
@@ -52,7 +54,7 @@ test("true-false shape: both outcomes occur and are consistent", () => {
   const seen = new Set();
   for (let seed = 1; seed <= 40; seed++) {
     const q = makeQuestion("true-false", "u01-w01", cur, fresh(), makeRng(seed));
-    assert.equal(q.prompt.clip, "u01-w01");
+    assert.match(q.prompt.clip, /^u01-w01\.alt[123]$/);
     assert.equal(q.options.length, 2);
     assert.equal(q.answerIndex, q.isTrue ? 0 : 1);
     const shown = cur.items.get(q.shownItemId);

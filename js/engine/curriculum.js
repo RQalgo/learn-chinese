@@ -25,6 +25,8 @@
  *                 itemsOfUnit(unitId), dialoguesOfUnit(unitId),
  *                 clipsForUnit(unitId), allClipIds() }
  */
+import { altClipIds } from "./altvoice.js";
+
 
 // ===== Section: Types =====
 
@@ -178,6 +180,7 @@ export function buildCurriculum(unitsIndex, unitFiles) {
     const out = new Set();
     for (const it of itemsOfUnit(unitId)) {
       out.add(it.id); out.add(`${it.id}.slow`); out.add(`${it.id}.en`);
+      for (const a of altClipIds(it.id)) out.add(a); // quiz voices (ids missing from the clip table are skipped by the download)
     }
     for (const d of dialoguesOfUnit(unitId)) {
       (d.lines || []).forEach((_, i) => {

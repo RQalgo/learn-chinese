@@ -20,6 +20,7 @@ CLIP IDS AND FILE NAMES (ARCHITECTURE section 5)
 
         u01-w01            -> audio/zh/u01-w01.mp3          (Mandarin, normal)
         u01-w01.slow       -> audio/zh-slow/u01-w01_slow.mp3 (Mandarin, word chunks stretched)
+        u01-w01.alt1       -> audio/zh/u01-w01_alt1.mp3     (same text, another voice; .alt1-.alt3)
         u01-w01.en         -> audio/en/u01-w01_en.mp3
         u01-d01.l2         -> audio/zh/u01-d01_l2.mp3
         u01-d01.l2.slow    -> audio/zh-slow/u01-d01_l2_slow.mp3
@@ -110,6 +111,7 @@ ZH_VOICES = [30, 4, 63, 75]  # F, F, M, M (v1.1 ids)
 DIALOGUE_VOICES = {"A": 4, "B": 75}  # A = female, B = male (v1.1 ids)
 EN_VOICE = 3  # af_heart, US English
 NORMAL_SPEED = 1.0
+ALT_MAX = 3   # quiz voice variants per item: <itemId>.alt1 .. .alt3 (ARCHITECTURE section 5)
 # Slow clips (docs/AUDIO.md "Slow clips"): the old recipe (engine speed 0.75) gave only 1.2-1.4x the
 # normal duration, not audibly slower. A slow clip is now built from per-word chunks joined with gaps
 # and time-stretched until it is clearly longer than the normal clip.
@@ -478,6 +480,10 @@ def enumerate_clips(content_root: Path, accent: str = "cn", engine: Optional[typ
             iid, voice = item["id"], item_voice(item["id"], engine.voices)
             clips.append(Clip(iid, "zh", item["hanzi"], voice, NORMAL_SPEED, pinyin=item["pinyin"], audio_dir=adir, engine_id=eid))
             clips.append(Clip(f"{iid}.slow", "zh-slow", item["hanzi"], voice, SLOW_SPEED, pinyin=item["pinyin"], audio_dir=adir, engine_id=eid))
+            # WHY alts: the quiz asks the same words in other voices ("learning" voice != "quiz" voice);
+            # normal speed, items only (dialogue lines keep their A/B speakers), no slow variants.
+            for k, alt_voice in enumerate(engine.alt_voices(voice), start=1):
+                clips.append(Clip(f"{iid}.alt{k}", "zh", item["hanzi"], alt_voice, NORMAL_SPEED, pinyin=item["pinyin"], audio_dir=adir, engine_id=eid))
             clips.append(Clip(f"{iid}.en", "en", normalize_english(item["english"]), EN_VOICE, NORMAL_SPEED))
         for dlg in unit.get("dialogues", []):
             did = dlg["id"]
@@ -642,6 +648,7 @@ class ZhEngine:
     * ``model_id``   -- identity of the model/weights (``"kokoro-multi-lang-v1_1"``).
     * ``voices``     -- voice ids rotated over items (stable per item id, see ``item_voice``).
     * ``dialogue_voices`` -- ``{"A": voice, "B": voice}`` for dialogue speakers.
+    * ``alt_voices(primary)`` -- the voices that speak an item's ``.alt1..`` clips (see below).
 
     Instances are created once per worker process and load their model lazily on the first
     ``synth`` call. Subclasses implement ``synth`` (and ``check_model`` / ``prepare`` when needed).
@@ -662,6 +669,15 @@ class ZhEngine:
     def cache_id(cls) -> str:
         """Engine identity hashed into every clip key (engine name + model)."""
         return f"{cls.name}:{cls.model_id}"
+
+    @classmethod
+    def alt_voices(cls, primary) -> list:
+        """Voices for the quiz-only variants ``<item>.alt1, .alt2, ...`` of an item spoken by ``primary``.
+
+        Default: every OTHER voice of ``voices`` in list order (stable), at most ALT_MAX. An engine with
+        fewer voices simply yields fewer alts (one voice: none); the app falls back to the primary clip.
+        """
+        return [v for v in cls.voices if v != primary][:ALT_MAX]
 
     @classmethod
     def check_model(cls, model_dir: Path) -> None:

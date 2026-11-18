@@ -34,12 +34,14 @@
  *
  * Public API
  *   configurePlayer({clips, curriculum})
- *   playClip(clipId, {slow}) / playSequence(clipIds) -> Promise<"ended"|"fallback"|"cancelled">
+ *   playClip(clipId, {slow}) / (an `.altK` id falls back to the primary clip; {slow} of an alt = primary slow) / playSequence(clipIds) -> Promise<"ended"|"fallback"|"cancelled">
  *   stop(), onPlayingChange(cb), subscribeTime(cb)
  *   setMediaMetadata({title, artist, album}), setMediaHandlers(h), clearMediaSession()
  *   describeClip(clipId) -> {text, lang, rate, silenceMs?}
  *   class Playlist
  */
+
+import { resolveClipId } from "../data/clips.js";
 
 // ===== Section: State =====
 
@@ -115,7 +117,7 @@ export function describeClip(id) {
 
   const slow = id.endsWith(".slow");
   const en = id.endsWith(".en");
-  const base = id.replace(/\.(slow|en)$/, "");
+  const base = id.replace(/\.alt\d+$/, "").replace(/\.(slow|en)$/, "");
   let zh = "", eng = "";
   const m = /^(.+)\.([lq])(\d+)$/.exec(base);
   if (m && curriculum) {
@@ -152,8 +154,11 @@ function haltOutput() {
 function runClip(clipId, opts, run) {
   return new Promise((resolve) => {
     if (run.cancelled) return resolve("cancelled");
-    const id = opts.slow && !clipId.endsWith(".slow") && !clipId.startsWith("sys.") && !clipId.endsWith(".en")
-      ? `${clipId}.slow` : clipId;
+    // WHY: the slow clip exists only in the primary voice, so "slow" of a quiz-voice id (`.altK`) is the
+    // primary's slow clip; a missing alt falls back to the primary clip (data/clips.js, §5).
+    const wantId = opts.slow ? clipId.replace(/\.alt\d+$/, "") : clipId;
+    const id = opts.slow && !wantId.endsWith(".slow") && !wantId.startsWith("sys.") && !wantId.endsWith(".en")
+      ? `${wantId}.slow` : resolveClipId(wantId, clipTable);
     const timers = [];
     const listeners = [];
     let settled = false;
@@ -178,7 +183,7 @@ function runClip(clipId, opts, run) {
       speak(desc, timers, settle);
     };
 
-    const entry = clipTable[id] || (id !== clipId ? clipTable[clipId] : null);
+    const entry = clipTable[id] || (id !== wantId ? clipTable[wantId] : null);
     if (!entry || !entry.src) return fallback();
 
     on(audio, "ended", () => settle("ended"));

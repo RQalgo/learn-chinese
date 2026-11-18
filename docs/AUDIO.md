@@ -81,6 +81,20 @@ The former v1.0 voices (ids 45-52) are no longer used.
 * normal: speed 1.0 for Mandarin and English.
 * slow (`.slow` clips): see **Slow clips** below (engine speed 1.0, per-word chunks, time-stretch).
 
+## Voice variants (quiz voices, `.alt1` .. `.alt3`)
+
+The learning voice of an item (its primary clip and the slow clip) differs from the voices the quiz
+asks it in, so the learner has to recognise the WORD, not the speaker. For every item (word, phrase,
+sentence; not dialogue lines, whose A/B speakers stay as they are) the pipeline also builds
+`<itemId>.alt1`, `.alt2`, `.alt3`: the same hanzi, normal speed, in each of the other voices of the engine
+(`ZhEngine.alt_voices(primary)`; Kokoro: the three voices of `ZH_VOICES` other than the item's own, in list
+order, so for an item whose primary is 63 the alts are 30, 4, 75). They are ordinary `zh` clips
+(`audio/zh/u01-w01_alt1.mp3`), built with the same lexicon, loudness and encoding; an engine with fewer
+voices produces fewer alts, an engine with one voice none (the app then falls back to the primary). No
+slow alts. Existing clips are unaffected (only new ids), the cost is 3 clips per item (1,872 for 624 items).
+How the app uses them: ARCHITECTURE section 5.2. Verify them like any Mandarin clip
+(`tools/verify_audio.py --only u01`; the per-voice table shows the voices of all clips, alts included).
+
 ## Slow clips
 
 Problem: the first recipe (engine speed 0.75) made `.slow` clips only 1.2-1.4x as long as the

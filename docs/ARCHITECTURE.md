@@ -156,6 +156,7 @@ Clip IDs (the app only ever refers to clip IDs, never to file paths):
 |---|---|---|
 | `<itemId>` | item hanzi, normal speed | Mandarin voice chosen per item (rotating) |
 | `<itemId>.slow` | item hanzi, slow: word-by-word with gaps, at least 1.6x as long as the normal clip (1.45x for sentences) | same voice |
+| `<itemId>.alt1` .. `.alt3` | item hanzi, normal speed, in each of the OTHER voices of the engine (quiz voices; words, phrases and sentences, not dialogue lines, no slow alts) | the engine's other voices, stable order (§5.2) |
 | `<itemId>.en` | item `english` | English voice |
 | `<dialogueId>.l<N>` | dialogue line N (1-based), normal speed | voice by speaker A/B |
 | `<dialogueId>.l<N>.slow` | same, slow (at least 1.45x the normal clip) | voice by speaker |
@@ -163,6 +164,24 @@ Clip IDs (the app only ever refers to clip IDs, never to file paths):
 | `<dialogueId>.q<N>.en` | dialogue question N read in English | English voice |
 | `sys.silence.<ms>` | silence: 500, 1000, 1500, 2000, 3000 (1500 is used by the commute playlist, §7.4) | — |
 | `sys.<name>` | fixed English prompts (see `docs/AUDIO.md`) | English voice |
+
+### 5.2 Learning voice vs quiz voices
+
+Each item has ONE primary voice (`<itemId>`, `.slow`) used for learning, and up to three alternative
+voices (`<itemId>.alt1..3` = the item's normal-speed text in the other voices of the engine; for Kokoro
+the three voices of `ZH_VOICES` other than the item's primary, in list order, so `alt1` is always the same
+voice for a given item). An engine with fewer voices yields fewer alts (`ZhEngine.alt_voices`); an old audio
+set has none. Dialogue lines keep their A/B speakers and have no alts; there are no slow alts.
+
+* Learning (quiz intro, unit page ▶, commute "new word" segments, every 🐢 slow button) uses the primary voice.
+* Quiz questions and the commute self-test prompt use an alt voice (§7.3, §7.4), so the learner cannot
+  answer by recognising the speaker heard when the word was taught.
+* Choosing is pure (`engine/altvoice.js`, `pickAltClip(itemId, rng, clips?)`: random, never the primary; if a
+  clip table is given only alts present in it; none -> the primary). The ONE fallback for a missing alt is
+  `resolveClipId(id, clips)` in `js/data/clips.js`, used by `audio/player.js`: `<id>.altK` not in the effective
+  table plays `<id>`; "slow" of an alt id plays the primary's `.slow` clip.
+* Alts exist per accent set like every Mandarin clip (the Singapore set may be partial; a missing alt falls
+  back to the Mainland alt through `effectiveClips`, then to the primary).
 
 UI contract: every ▶ button plays the NORMAL clip once and every 🐢 button the SLOW clip once. Only the
 automatic playback of a new word in the quiz intro (and the lock-screen play key there) is "normal, then slow".
@@ -281,6 +300,14 @@ Step shapes:
 | `true-false` | play Chinese + show an English meaning | tap ✓ or ✗ (50 % true) | any item at box ≥ 1 (fast, one-thumb) |
 | `dialogue` | play the dialogue | tap 1 of 4 English answers | dialogues |
 
+Voices: the audio of `listen-meaning` and `true-false` prompts and of every `meaning-audio` option is an
+alt-voice clip `<id>.altK` (§5.2), drawn with `rng` (a fresh draw per option, so the three options of one
+question usually sound different). It is stored in the question (`prompt.clip` / `options[i].clip`), so replaying
+the question uses the same voice. The 🐢 button of a question plays the item's PRIMARY slow clip: the
+voice the word was taught in, which makes it a hint rather than a second unknown speaker. The feedback panel's
+Replay also plays the primary voice. `makeQuestion(..., clips)` takes the effective clip table so only alts that
+exist are chosen.
+
 Distractors: same `type` first, then nearest units (same unit = distance 0), introduced items
 preferred within a rank; if fewer than the wanted number exist the question simply has fewer
 options (and degrades to `true-false` when no distractor exists); never an item
@@ -296,7 +323,9 @@ Target length ≈ `minutes` (default 8). Built from clip IDs only, so it can run
 * Section prompt `sys.review`, then per self-test item, in this order: due items; the new items
   just taught in this same playlist; not-due introduced items with the lowest box. If that pool is
   smaller than the remaining time it is cycled (reshuffled), up to 6 rounds:
-  `sys.whatMeans`(first only) `item → silence.3000 → item.en → silence.500 → item`
+  `sys.whatMeans`(first only) `item.altK → silence.3000 → item.en → silence.500 → item`
+  (the question is spoken by an alt voice, the repeat after the English by the primary/learning voice;
+  `altK` is drawn with `rng` among the alts present in `durations`, else the primary is used for both)
 * Optional dialogue: `sys.dialogue`, each line `l<N> → silence.500 → l<N>.en`, then all lines again at normal speed.
 * End with `sys.done`.
 
@@ -305,7 +334,7 @@ learner with many due items (checked in `tests/engine/fill.test.mjs` against the
 
 Each segment = `{ kind: "new"|"review"|"dialogue"|"prompt", refId, clips: [clipId…] }`.
 Between the two passes of a dialogue the playlist inserts `sys.again`. Duration is estimated
-from the manifest `dur` values (optional `durations` map), else 1.2 s per clip (slow ×1.8) plus
+from the manifest `dur` values (optional `durations` map), else 1.2 s per clip (slow ×1.8; an alt clip counts like its primary) plus
 silences; a dialogue is included only if it fits in 35 % of the target.
 Completing a `new` segment calls `introduce`; review segments update `seen`/`lastSeen` only
 (we cannot know if the listener understood). Listening seconds go to `daily.listenSec`.

@@ -39,7 +39,7 @@ import { setSfxEnabled } from "../audio/sfx.js";
 // ===== Section: State =====
 
 /** App version shown in Settings. Keep in step with VERSION in sw.js when releasing. */
-export const APP_VERSION = "1.1.0";
+export const APP_VERSION = "1.2.0";
 
 /**
  * @type {{curriculum: Object|null, clips: Object, durations: Object<string,number>,
